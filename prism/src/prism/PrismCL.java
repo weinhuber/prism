@@ -2928,18 +2928,22 @@ public class PrismCL implements PrismModelListener
 
 	public static void main(String[] args)
 	{
-		// Normal operation: just run PrismCL
-		if (!(args.length > 0 && "-ng".equals(args[0]))) {
-			new PrismCL().go(args);
-		}
-		// Nailgun server mode (-ng switch)
-		else {
+		if (args.length > 0 && args[0].equals("-ng")){
+			// Nailgun server mode (-ng switch)
 			try {
 				System.out.println("Starting PRISM-Nailgun server...");
 				com.martiansoftware.nailgun.NGServer.main(new String[0]);
 			} catch (NumberFormatException | UnknownHostException e) {
 				System.out.println("Failed to launch Nailgun server: " + e);
 			}
+		} else if (args.length > 0 && args[0].equals("-grpc")) {
+			// gRPC server mode (-grpc switch)
+			System.out.println("Starting PRISM-gRPC server...");
+			// TODO: start gRPC server
+		} else {
+			// Normal operation: just run PrismCL
+			System.out.println("Starting PRISM...");
+			new PrismCL().go(args);
 		}
 	}
 }
