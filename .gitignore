@@ -36,3 +36,8 @@ prism/\.project
 # Eclipse project custom settings
 \.settings/
 prism/\.settings/
+
+# GRPC Server files
+prism/src/grpc/dependency-reduced-pom.xml
+prism/src/grpc/server/tmpFileStorage/
+prism/src/grpc/target
