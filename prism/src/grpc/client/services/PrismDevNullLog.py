@@ -1,4 +1,4 @@
-import prismGrpc_pb2_grpc
+import prismGrpc_pb2
 from abc import ABC
 
 
@@ -8,4 +8,4 @@ class PrismDevNullLog(ABC):
 
     @staticmethod
     def get_proto():
-        return prismGrpc_pb2_grpc.PrismDevNullLog()
+        return prismGrpc_pb2.PrismDevNullLog()

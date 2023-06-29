@@ -7,6 +7,7 @@ from ModuleFile import ModuleFile
 from PrismException import PrismException
 from PropertyFile import PropertyFile
 from prismpy import PrismPy
+from services import prismGrpc_pb2
 
 
 class Prism(PrismPy, ABC):
@@ -49,7 +50,7 @@ class Prism(PrismPy, ABC):
             # - Prism(PrismFileLog("hidden"))
             # - Prism(PrismFileLog("stdout"))
 
-            request = prismGrpc_pb2_grpc.InitialiseRequest()
+            request = prismGrpc_pb2.InitialiseRequest()
             request.log.dev_null_log.CopyFrom(self.__proto_main_log)
 
             try:
