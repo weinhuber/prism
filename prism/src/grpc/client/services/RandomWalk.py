@@ -1,4 +1,4 @@
-import prism_pb2
+import prismGrpc_pb2_grpc
 
 
 class RandomWalk:

@@ -1,6 +1,6 @@
 from abc import ABC
 
-import prism_pb2
+import prismGrpc_pb2_grpc
 from PrismException import PrismException
 
 

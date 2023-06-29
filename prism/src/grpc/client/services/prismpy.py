@@ -3,7 +3,7 @@ import grpc
 from grpc._channel import _InactiveRpcError
 
 import prism_pb2_grpc
-import prism_pb2
+import prismGrpc_pb2_grpc
 import logging
 
 
