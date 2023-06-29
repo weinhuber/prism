@@ -1,5 +1,7 @@
 from abc import ABC
 
+import grpc
+
 import prism_pb2
 from ModuleFile import ModuleFile
 from PrismException import PrismException
@@ -50,9 +52,14 @@ class Prism(PrismPy, ABC):
             request = prism_pb2.InitialiseRequest()
             request.log.dev_null_log.CopyFrom(self.__proto_main_log)
 
-            # Call the Initialise method
-            response = self.stub.Initialise(request)
-            self.logger.info("Received message {}".format(response.result))
+            try:
+                # Call the Initialise method
+                response = self.stub.Initialise(request)
+                self.logger.info("Received message {}".format(response.result))
+            except grpc.RpcError as e:
+                self.logger.error("Could not establish connection to the gRPC server. Please make sure the Prism server is running.")
+                self.logger.error("gRPC error info: {}".format(e.details()))
+                exit(1)
 
     def parseAndLoadModelFile(self, model_file):
         self.logger.info("Parsing model file {}.".format(model_file))
