@@ -62,6 +62,7 @@ import simulator.method.CIiterations;
 import simulator.method.CIwidth;
 import simulator.method.SPRTMethod;
 import simulator.method.SimulationMethod;
+import grpc.server.PrismServer;
 
 // prism - command line version
 
@@ -2939,7 +2940,7 @@ public class PrismCL implements PrismModelListener
 		} else if (args.length > 0 && args[0].equals("-grpc")) {
 			// gRPC server mode (-grpc switch)
 			System.out.println("Starting PRISM-gRPC server...");
-			// TODO: start gRPC server
+			PrismServer.main(args);
 		} else {
 			// Normal operation: just run PrismCL
 			System.out.println("Starting PRISM...");

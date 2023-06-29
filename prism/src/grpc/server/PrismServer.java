@@ -78,10 +78,17 @@ public class PrismServer {
     /**
      * Main launches the server from the command line.
      */
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) {
         final PrismServer server = new PrismServer();
-        server.start();
-        server.blockUntilShutdown();
+        try {
+            server.start();
+            server.blockUntilShutdown();
+        } catch (IOException e) {
+            logger.warning("Caught an IOException: " + e.getMessage());
+        } catch (InterruptedException e) {
+            logger.warning("Caught an InterruptedException: " + e.getMessage());
+        }
     }
+
 
 }
