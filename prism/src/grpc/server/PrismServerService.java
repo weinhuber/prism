@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 // implementation of all prism services
 class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase {
 
-    private final FileStore fileStore = new FileStore("tmp/");
+    private final FileStore fileStore = new FileStore("src/grpc/server/tmpFileStorage/");
     private static final Logger logger = Logger.getLogger(PrismServer.class.getName());
 
     @Override

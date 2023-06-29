@@ -364,7 +364,7 @@ public final class PrismProtoServiceGrpc {
   public static PrismProtoServiceStub newStub(io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<PrismProtoServiceStub> factory =
       new io.grpc.stub.AbstractStub.StubFactory<PrismProtoServiceStub>() {
-        @Override
+        @java.lang.Override
         public PrismProtoServiceStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
           return new PrismProtoServiceStub(channel, callOptions);
         }
@@ -379,7 +379,7 @@ public final class PrismProtoServiceGrpc {
       io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<PrismProtoServiceBlockingStub> factory =
       new io.grpc.stub.AbstractStub.StubFactory<PrismProtoServiceBlockingStub>() {
-        @Override
+        @java.lang.Override
         public PrismProtoServiceBlockingStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
           return new PrismProtoServiceBlockingStub(channel, callOptions);
         }
@@ -394,7 +394,7 @@ public final class PrismProtoServiceGrpc {
       io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<PrismProtoServiceFutureStub> factory =
       new io.grpc.stub.AbstractStub.StubFactory<PrismProtoServiceFutureStub>() {
-        @Override
+        @java.lang.Override
         public PrismProtoServiceFutureStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
           return new PrismProtoServiceFutureStub(channel, callOptions);
         }
@@ -519,7 +519,7 @@ public final class PrismProtoServiceGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getClosePrismMethod(), responseObserver);
     }
 
-    @Override public final io.grpc.ServerServiceDefinition bindService() {
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
             getUploadFileMethod(),
@@ -613,7 +613,7 @@ public final class PrismProtoServiceGrpc {
       super(channel, callOptions);
     }
 
-    @Override
+    @java.lang.Override
     protected PrismProtoServiceStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new PrismProtoServiceStub(channel, callOptions);
@@ -752,7 +752,7 @@ public final class PrismProtoServiceGrpc {
       super(channel, callOptions);
     }
 
-    @Override
+    @java.lang.Override
     protected PrismProtoServiceBlockingStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new PrismProtoServiceBlockingStub(channel, callOptions);
@@ -870,7 +870,7 @@ public final class PrismProtoServiceGrpc {
       super(channel, callOptions);
     }
 
-    @Override
+    @java.lang.Override
     protected PrismProtoServiceFutureStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new PrismProtoServiceFutureStub(channel, callOptions);
@@ -1012,8 +1012,8 @@ public final class PrismProtoServiceGrpc {
       this.methodId = methodId;
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
+    @java.lang.Override
+    @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_INITIALISE:
@@ -1061,8 +1061,8 @@ public final class PrismProtoServiceGrpc {
       }
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
+    @java.lang.Override
+    @java.lang.SuppressWarnings("unchecked")
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
@@ -1079,12 +1079,12 @@ public final class PrismProtoServiceGrpc {
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     PrismProtoServiceBaseDescriptorSupplier() {}
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
       return grpc.server.services.PrismGrpc.getDescriptor();
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
       return getFileDescriptor().findServiceByName("PrismProtoService");
     }
@@ -1104,7 +1104,7 @@ public final class PrismProtoServiceGrpc {
       this.methodName = methodName;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
       return getServiceDescriptor().findMethodByName(methodName);
     }
