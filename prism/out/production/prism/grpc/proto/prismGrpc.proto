@@ -1,0 +1,144 @@
+syntax = "proto3";
+option java_package = "org.prismmodelchecker.proto";
+
+/*  file transfer */
+message UploadRequest {
+  oneof data {
+    string filename = 1;
+    bytes chunk_data = 2;
+  }
+}
+
+message UploadReply {
+  string filename = 1;
+}
+
+/* PRISM engine */
+
+message PrismDevNullLog {}
+
+message PrismFileLog {
+  enum OutputType {
+    STDOUT = 0;
+    HIDDEN = 1;
+  }
+
+  OutputType output = 1;
+}
+
+message PrismLog {
+  oneof log_type {
+    PrismDevNullLog dev_null_log = 1;
+    PrismFileLog file_log = 2;
+  }
+}
+
+message InitialiseRequest {
+  PrismLog log = 1;
+}
+
+message InitialiseResponse {
+  string result = 1;
+}
+
+message LoadPRISMModelRequest {
+  string model_file_name = 1;
+}
+
+message LoadPRISMModelResponse {
+  string status = 1;
+}
+
+
+message ParsePropertiesFileRequest {
+  string model_file_name = 1;
+  string properties_file_name = 2;
+}
+
+message ParsePropertiesFileResponse {
+  string status = 1;
+  repeated string properties = 2;
+}
+
+message DefineUndefinedConstantsRequest {
+  string model_file_name = 1;
+  string properties_file_name = 2;
+  int32 property_index = 3;
+  string const_range = 4;
+}
+
+message DefineUndefinedConstantsResponse {
+  string status = 1;
+}
+
+message ModelCheckRequest {
+  string properties_file_name = 1;
+  int32 property_index = 2;
+}
+
+message ModelCheckResponse {
+  double result = 1;
+}
+
+message ModelCheckWithConstantsRequest {
+  string properties_file_name = 1;
+  string constants_values = 2;
+  int32 property_index = 3;
+}
+
+message ParsePropertiesStringRequest {
+  string model_file_name = 1;
+  string property_string = 2;
+}
+
+message ParsePropertiesStringResponse {
+  string status = 1;
+}
+
+message ModelCheckStringRequest {
+  string property_string = 1;
+}
+
+message ModelCheckStringResponse {
+  string result = 1;
+}
+
+message ParseAndLoadModelRequest {
+  string model_file_name = 1;
+}
+
+message ParseAndLoadModelReply {
+  string result = 1;
+}
+
+message ClosePrismRequest {}
+
+message ClosePrismResponse {
+  string status = 1;
+}
+
+// Service Definitions
+service PrismProtoService {
+  // Generic method to upload files
+  rpc UploadFile (stream UploadRequest) returns (UploadReply) {}
+  // Initialise the PRISM engine
+  rpc Initialise(InitialiseRequest) returns (InitialiseResponse) {}
+  // Parse a model file
+  rpc ParseAndLoadModel(ParseAndLoadModelRequest) returns (ParseAndLoadModelReply) {}
+  // Load a PRISM model
+  rpc LoadPRISMModel(LoadPRISMModelRequest) returns (LoadPRISMModelResponse) {}
+  // Parse a properties file
+  rpc ParsePropertiesFile(ParsePropertiesFileRequest) returns (ParsePropertiesFileResponse) {}
+  // Define undefined constants
+  rpc DefineUndefinedConstants(DefineUndefinedConstantsRequest) returns (DefineUndefinedConstantsResponse) {}
+  // Model check
+  rpc ModelCheck(ModelCheckRequest) returns (ModelCheckResponse) {}
+  // Model check with constants
+  rpc ModelCheckWithConstants(ModelCheckWithConstantsRequest) returns (ModelCheckResponse) {}
+  // Parse a properties string
+  rpc ParsePropertiesString(ParsePropertiesStringRequest) returns (ParsePropertiesStringResponse) {}
+  // Model check a property specified as a string
+  rpc ModelCheckString(ModelCheckStringRequest) returns (ModelCheckStringResponse) {}
+  // Close down PRISM
+  rpc ClosePrism(ClosePrismRequest) returns (ClosePrismResponse) {}
+}
