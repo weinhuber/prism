@@ -73,7 +73,7 @@ class Prism(PrismPy, ABC):
         # Create a ParseModelRequest
         self.logger.info("Parsing model file {}.".format(upload_response.filename))
 
-        request = prismGrpc_pb2_grpc.ParseAndLoadModelRequest(
+        request = prismGrpc_pb2.ParseAndLoadModelRequest(
             model_file_name=upload_response.filename)
 
         # Make the RPC call to ParseModelFile
@@ -95,7 +95,7 @@ class Prism(PrismPy, ABC):
 
         # instruct prism to parse the uploaded file
         # Create a Parse Properties Request
-        request = prismGrpc_pb2_grpc.ParsePropertiesFileRequest(
+        request = prismGrpc_pb2.ParsePropertiesFileRequest(
             model_file_name=module_file.prism_module_name,
             properties_file_name=upload_response.filename)
 
@@ -110,7 +110,7 @@ class Prism(PrismPy, ABC):
         self.logger.info("Model checking property {}.".format(property_file))
 
         # Create a ModelCheckRequest
-        request = prismGrpc_pb2_grpc.ModelCheckRequest(
+        request = prismGrpc_pb2.ModelCheckRequest(
             properties_file_name=property_file.prism_property_name,
             property_index=property_object_index)
 
