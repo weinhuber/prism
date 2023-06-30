@@ -1,9 +1,11 @@
+import os
 from abc import ABC
 import grpc
 from grpc._channel import _InactiveRpcError
 
 import prismGrpc_pb2_grpc
 import prismpy_logger
+from model.prismpy_exceptions import PrismPyException
 
 
 class PrismPy(ABC):
@@ -32,8 +34,12 @@ class PrismPy(ABC):
         self.logger.info("Closing connection to gRPC service.")
         self.channel.close()
 
-    # private function to upload a file to the gRPC service
+    # function to upload a file to the gRPC service
     def upload_file(self, filename):
+        if not os.path.isfile(filename):
+            self.logger.error(f"File {filename} not found. Aborting upload.")
+            raise PrismPyException(f"File {filename} not found. Aborting upload.")
+
         try:
             # Upload file
             response = self.stub.UploadFile(self.__get_file_chunks(filename))
@@ -59,9 +65,6 @@ class PrismPy(ABC):
                         return
                     # yield the chunk to the gRPC service
                     yield prismGrpc_pb2_grpc.UploadRequest(chunk_data=piece)
-        except FileNotFoundError:
-            self.logger.error(f"File {filename} not found. Continues to upload empty file.")
-
         except Exception as e:
             self.logger.error(f"Unknown error.\n{str(e)}")
 
