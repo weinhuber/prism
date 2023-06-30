@@ -22,6 +22,7 @@ import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
@@ -56,7 +57,9 @@ public class PrismServer {
                 } catch (InterruptedException e) {
                     e.printStackTrace(System.err);
                 }
+                // sometimes server shuts down before logger can log
                 logger.info("server shut down");
+
             }
         });
     }
