@@ -2,9 +2,9 @@ from abc import ABC
 
 import grpc
 
-from model.ModuleFile import ModuleFile
+from model.module_file import ModuleFile
 from model.prismpy_exceptions import PrismPyException
-from model.PropertyFile import PropertyFile
+from model.property_file import PropertyFile
 from prismpy import PrismPy
 from services import prismGrpc_pb2
 

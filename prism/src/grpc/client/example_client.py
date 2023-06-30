@@ -1,5 +1,5 @@
-from services.Prism import Prism
-from model.PrismDevNullLog import PrismDevNullLog
+from services.prism import Prism
+from model.prism_dev_null_log import PrismDevNullLog
 
 # Create a log for PRISM output (hidden or stdout)
 mainLog = PrismDevNullLog()
