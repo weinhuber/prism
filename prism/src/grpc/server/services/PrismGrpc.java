@@ -1766,15 +1766,16 @@ public final class PrismGrpc {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.PrismFileLog.OutputType output = 1;</code>
-     * @return The enum numeric value on the wire for output.
+     * <code>string type = 1;</code>
+     * @return The type.
      */
-    int getOutputValue();
+    java.lang.String getType();
     /**
-     * <code>.PrismFileLog.OutputType output = 1;</code>
-     * @return The output.
+     * <code>string type = 1;</code>
+     * @return The bytes for type.
      */
-    grpc.server.services.PrismGrpc.PrismFileLog.OutputType getOutput();
+    com.google.protobuf.ByteString
+        getTypeBytes();
   }
   /**
    * Protobuf type {@code PrismFileLog}
@@ -1789,7 +1790,7 @@ public final class PrismGrpc {
       super(builder);
     }
     private PrismFileLog() {
-      output_ = 0;
+      type_ = "";
     }
 
     @java.lang.Override
@@ -1822,10 +1823,10 @@ public final class PrismGrpc {
             case 0:
               done = true;
               break;
-            case 8: {
-              int rawValue = input.readEnum();
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              output_ = rawValue;
+              type_ = s;
               break;
             }
             default: {
@@ -1860,131 +1861,42 @@ public final class PrismGrpc {
               grpc.server.services.PrismGrpc.PrismFileLog.class, grpc.server.services.PrismGrpc.PrismFileLog.Builder.class);
     }
 
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private volatile java.lang.Object type_;
     /**
-     * Protobuf enum {@code PrismFileLog.OutputType}
+     * <code>string type = 1;</code>
+     * @return The type.
      */
-    public enum OutputType
-        implements com.google.protobuf.ProtocolMessageEnum {
-      /**
-       * <code>STDOUT = 0;</code>
-       */
-      STDOUT(0),
-      /**
-       * <code>HIDDEN = 1;</code>
-       */
-      HIDDEN(1),
-      UNRECOGNIZED(-1),
-      ;
-
-      /**
-       * <code>STDOUT = 0;</code>
-       */
-      public static final int STDOUT_VALUE = 0;
-      /**
-       * <code>HIDDEN = 1;</code>
-       */
-      public static final int HIDDEN_VALUE = 1;
-
-
-      public final int getNumber() {
-        if (this == UNRECOGNIZED) {
-          throw new java.lang.IllegalArgumentException(
-              "Can't get the number of an unknown enum value.");
-        }
-        return value;
+    @java.lang.Override
+    public java.lang.String getType() {
+      java.lang.Object ref = type_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        type_ = s;
+        return s;
       }
-
-      /**
-       * @param value The numeric wire value of the corresponding enum entry.
-       * @return The enum associated with the given numeric wire value.
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static OutputType valueOf(int value) {
-        return forNumber(value);
-      }
-
-      /**
-       * @param value The numeric wire value of the corresponding enum entry.
-       * @return The enum associated with the given numeric wire value.
-       */
-      public static OutputType forNumber(int value) {
-        switch (value) {
-          case 0: return STDOUT;
-          case 1: return HIDDEN;
-          default: return null;
-        }
-      }
-
-      public static com.google.protobuf.Internal.EnumLiteMap<OutputType>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          OutputType> internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<OutputType>() {
-              public OutputType findValueByNumber(int number) {
-                return OutputType.forNumber(number);
-              }
-            };
-
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        if (this == UNRECOGNIZED) {
-          throw new java.lang.IllegalStateException(
-              "Can't get the descriptor of an unrecognized enum value.");
-        }
-        return getDescriptor().getValues().get(ordinal());
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return grpc.server.services.PrismGrpc.PrismFileLog.getDescriptor().getEnumTypes().get(0);
-      }
-
-      private static final OutputType[] VALUES = values();
-
-      public static OutputType valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        if (desc.getIndex() == -1) {
-          return UNRECOGNIZED;
-        }
-        return VALUES[desc.getIndex()];
-      }
-
-      private final int value;
-
-      private OutputType(int value) {
-        this.value = value;
-      }
-
-      // @@protoc_insertion_point(enum_scope:PrismFileLog.OutputType)
-    }
-
-    public static final int OUTPUT_FIELD_NUMBER = 1;
-    private int output_;
-    /**
-     * <code>.PrismFileLog.OutputType output = 1;</code>
-     * @return The enum numeric value on the wire for output.
-     */
-    @java.lang.Override public int getOutputValue() {
-      return output_;
     }
     /**
-     * <code>.PrismFileLog.OutputType output = 1;</code>
-     * @return The output.
+     * <code>string type = 1;</code>
+     * @return The bytes for type.
      */
-    @java.lang.Override public grpc.server.services.PrismGrpc.PrismFileLog.OutputType getOutput() {
-      @SuppressWarnings("deprecation")
-      grpc.server.services.PrismGrpc.PrismFileLog.OutputType result = grpc.server.services.PrismGrpc.PrismFileLog.OutputType.valueOf(output_);
-      return result == null ? grpc.server.services.PrismGrpc.PrismFileLog.OutputType.UNRECOGNIZED : result;
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTypeBytes() {
+      java.lang.Object ref = type_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        type_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2001,8 +1913,8 @@ public final class PrismGrpc {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (output_ != grpc.server.services.PrismGrpc.PrismFileLog.OutputType.STDOUT.getNumber()) {
-        output.writeEnum(1, output_);
+      if (!getTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, type_);
       }
       unknownFields.writeTo(output);
     }
@@ -2013,9 +1925,8 @@ public final class PrismGrpc {
       if (size != -1) return size;
 
       size = 0;
-      if (output_ != grpc.server.services.PrismGrpc.PrismFileLog.OutputType.STDOUT.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, output_);
+      if (!getTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, type_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2032,7 +1943,8 @@ public final class PrismGrpc {
       }
       grpc.server.services.PrismGrpc.PrismFileLog other = (grpc.server.services.PrismGrpc.PrismFileLog) obj;
 
-      if (output_ != other.output_) return false;
+      if (!getType()
+          .equals(other.getType())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2044,8 +1956,8 @@ public final class PrismGrpc {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + OUTPUT_FIELD_NUMBER;
-      hash = (53 * hash) + output_;
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getType().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2179,7 +2091,7 @@ public final class PrismGrpc {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        output_ = 0;
+        type_ = "";
 
         return this;
       }
@@ -2207,7 +2119,7 @@ public final class PrismGrpc {
       @java.lang.Override
       public grpc.server.services.PrismGrpc.PrismFileLog buildPartial() {
         grpc.server.services.PrismGrpc.PrismFileLog result = new grpc.server.services.PrismGrpc.PrismFileLog(this);
-        result.output_ = output_;
+        result.type_ = type_;
         onBuilt();
         return result;
       }
@@ -2256,8 +2168,9 @@ public final class PrismGrpc {
 
       public Builder mergeFrom(grpc.server.services.PrismGrpc.PrismFileLog other) {
         if (other == grpc.server.services.PrismGrpc.PrismFileLog.getDefaultInstance()) return this;
-        if (other.output_ != 0) {
-          setOutputValue(other.getOutputValue());
+        if (!other.getType().isEmpty()) {
+          type_ = other.type_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2288,56 +2201,78 @@ public final class PrismGrpc {
         return this;
       }
 
-      private int output_ = 0;
+      private java.lang.Object type_ = "";
       /**
-       * <code>.PrismFileLog.OutputType output = 1;</code>
-       * @return The enum numeric value on the wire for output.
+       * <code>string type = 1;</code>
+       * @return The type.
        */
-      @java.lang.Override public int getOutputValue() {
-        return output_;
-      }
-      /**
-       * <code>.PrismFileLog.OutputType output = 1;</code>
-       * @param value The enum numeric value on the wire for output to set.
-       * @return This builder for chaining.
-       */
-      public Builder setOutputValue(int value) {
-        
-        output_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.PrismFileLog.OutputType output = 1;</code>
-       * @return The output.
-       */
-      @java.lang.Override
-      public grpc.server.services.PrismGrpc.PrismFileLog.OutputType getOutput() {
-        @SuppressWarnings("deprecation")
-        grpc.server.services.PrismGrpc.PrismFileLog.OutputType result = grpc.server.services.PrismGrpc.PrismFileLog.OutputType.valueOf(output_);
-        return result == null ? grpc.server.services.PrismGrpc.PrismFileLog.OutputType.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.PrismFileLog.OutputType output = 1;</code>
-       * @param value The output to set.
-       * @return This builder for chaining.
-       */
-      public Builder setOutput(grpc.server.services.PrismGrpc.PrismFileLog.OutputType value) {
-        if (value == null) {
-          throw new NullPointerException();
+      public java.lang.String getType() {
+        java.lang.Object ref = type_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          type_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
         }
-        
-        output_ = value.getNumber();
+      }
+      /**
+       * <code>string type = 1;</code>
+       * @return The bytes for type.
+       */
+      public com.google.protobuf.ByteString
+          getTypeBytes() {
+        java.lang.Object ref = type_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          type_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string type = 1;</code>
+       * @param value The type to set.
+       * @return This builder for chaining.
+       */
+      public Builder setType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        type_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>.PrismFileLog.OutputType output = 1;</code>
+       * <code>string type = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearOutput() {
+      public Builder clearType() {
         
-        output_ = 0;
+        type_ = getDefaultInstance().getType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string type = 1;</code>
+       * @param value The bytes for type to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        type_ = value;
         onChanged();
         return this;
       }
@@ -15270,61 +15205,59 @@ public final class PrismGrpc {
       "\n\017prismGrpc.proto\"A\n\rUploadRequest\022\022\n\010fi" +
       "lename\030\001 \001(\tH\000\022\024\n\nchunk_data\030\002 \001(\014H\000B\006\n\004" +
       "data\"\037\n\013UploadReply\022\020\n\010filename\030\001 \001(\t\"\021\n" +
-      "\017PrismDevNullLog\"^\n\014PrismFileLog\022(\n\006outp" +
-      "ut\030\001 \001(\0162\030.PrismFileLog.OutputType\"$\n\nOu" +
-      "tputType\022\n\n\006STDOUT\020\000\022\n\n\006HIDDEN\020\001\"c\n\010Pris" +
-      "mLog\022(\n\014dev_null_log\030\001 \001(\0132\020.PrismDevNul" +
-      "lLogH\000\022!\n\010file_log\030\002 \001(\0132\r.PrismFileLogH" +
-      "\000B\n\n\010log_type\"+\n\021InitialiseRequest\022\026\n\003lo" +
-      "g\030\001 \001(\0132\t.PrismLog\"$\n\022InitialiseResponse" +
-      "\022\016\n\006result\030\001 \001(\t\"0\n\025LoadPRISMModelReques" +
-      "t\022\027\n\017model_file_name\030\001 \001(\t\"(\n\026LoadPRISMM" +
-      "odelResponse\022\016\n\006status\030\001 \001(\t\"S\n\032ParsePro" +
-      "pertiesFileRequest\022\027\n\017model_file_name\030\001 " +
-      "\001(\t\022\034\n\024properties_file_name\030\002 \001(\t\"A\n\033Par" +
-      "sePropertiesFileResponse\022\016\n\006status\030\001 \001(\t" +
-      "\022\022\n\nproperties\030\002 \003(\t\"\205\001\n\037DefineUndefined" +
-      "ConstantsRequest\022\027\n\017model_file_name\030\001 \001(" +
-      "\t\022\034\n\024properties_file_name\030\002 \001(\t\022\026\n\016prope" +
-      "rty_index\030\003 \001(\005\022\023\n\013const_range\030\004 \001(\t\"2\n " +
-      "DefineUndefinedConstantsResponse\022\016\n\006stat" +
-      "us\030\001 \001(\t\"I\n\021ModelCheckRequest\022\034\n\024propert" +
-      "ies_file_name\030\001 \001(\t\022\026\n\016property_index\030\002 " +
-      "\001(\005\"$\n\022ModelCheckResponse\022\016\n\006result\030\001 \001(" +
-      "\001\"p\n\036ModelCheckWithConstantsRequest\022\034\n\024p" +
-      "roperties_file_name\030\001 \001(\t\022\030\n\020constants_v" +
-      "alues\030\002 \001(\t\022\026\n\016property_index\030\003 \001(\005\"P\n\034P" +
-      "arsePropertiesStringRequest\022\027\n\017model_fil" +
-      "e_name\030\001 \001(\t\022\027\n\017property_string\030\002 \001(\t\"/\n" +
-      "\035ParsePropertiesStringResponse\022\016\n\006status" +
-      "\030\001 \001(\t\"2\n\027ModelCheckStringRequest\022\027\n\017pro" +
-      "perty_string\030\001 \001(\t\"*\n\030ModelCheckStringRe" +
-      "sponse\022\016\n\006result\030\001 \001(\t\"3\n\030ParseAndLoadMo" +
-      "delRequest\022\027\n\017model_file_name\030\001 \001(\t\"(\n\026P" +
-      "arseAndLoadModelReply\022\016\n\006result\030\001 \001(\t\"\023\n" +
-      "\021ClosePrismRequest\"$\n\022ClosePrismResponse" +
-      "\022\016\n\006status\030\001 \001(\t2\255\006\n\021PrismProtoService\022." +
-      "\n\nUploadFile\022\016.UploadRequest\032\014.UploadRep" +
-      "ly\"\000(\001\0227\n\nInitialise\022\022.InitialiseRequest" +
-      "\032\023.InitialiseResponse\"\000\022I\n\021ParseAndLoadM" +
-      "odel\022\031.ParseAndLoadModelRequest\032\027.ParseA" +
-      "ndLoadModelReply\"\000\022C\n\016LoadPRISMModel\022\026.L" +
-      "oadPRISMModelRequest\032\027.LoadPRISMModelRes" +
-      "ponse\"\000\022R\n\023ParsePropertiesFile\022\033.ParsePr" +
-      "opertiesFileRequest\032\034.ParsePropertiesFil" +
-      "eResponse\"\000\022a\n\030DefineUndefinedConstants\022" +
-      " .DefineUndefinedConstantsRequest\032!.Defi" +
-      "neUndefinedConstantsResponse\"\000\0227\n\nModelC" +
-      "heck\022\022.ModelCheckRequest\032\023.ModelCheckRes" +
-      "ponse\"\000\022Q\n\027ModelCheckWithConstants\022\037.Mod" +
-      "elCheckWithConstantsRequest\032\023.ModelCheck" +
-      "Response\"\000\022X\n\025ParsePropertiesString\022\035.Pa" +
-      "rsePropertiesStringRequest\032\036.ParseProper" +
-      "tiesStringResponse\"\000\022I\n\020ModelCheckString" +
-      "\022\030.ModelCheckStringRequest\032\031.ModelCheckS" +
-      "tringResponse\"\000\0227\n\nClosePrism\022\022.ClosePri" +
-      "smRequest\032\023.ClosePrismResponse\"\000B\026\n\024grpc" +
-      ".server.servicesb\006proto3"
+      "\017PrismDevNullLog\"\034\n\014PrismFileLog\022\014\n\004type" +
+      "\030\001 \001(\t\"c\n\010PrismLog\022(\n\014dev_null_log\030\001 \001(\013" +
+      "2\020.PrismDevNullLogH\000\022!\n\010file_log\030\002 \001(\0132\r" +
+      ".PrismFileLogH\000B\n\n\010log_type\"+\n\021Initialis" +
+      "eRequest\022\026\n\003log\030\001 \001(\0132\t.PrismLog\"$\n\022Init" +
+      "ialiseResponse\022\016\n\006result\030\001 \001(\t\"0\n\025LoadPR" +
+      "ISMModelRequest\022\027\n\017model_file_name\030\001 \001(\t" +
+      "\"(\n\026LoadPRISMModelResponse\022\016\n\006status\030\001 \001" +
+      "(\t\"S\n\032ParsePropertiesFileRequest\022\027\n\017mode" +
+      "l_file_name\030\001 \001(\t\022\034\n\024properties_file_nam" +
+      "e\030\002 \001(\t\"A\n\033ParsePropertiesFileResponse\022\016" +
+      "\n\006status\030\001 \001(\t\022\022\n\nproperties\030\002 \003(\t\"\205\001\n\037D" +
+      "efineUndefinedConstantsRequest\022\027\n\017model_" +
+      "file_name\030\001 \001(\t\022\034\n\024properties_file_name\030" +
+      "\002 \001(\t\022\026\n\016property_index\030\003 \001(\005\022\023\n\013const_r" +
+      "ange\030\004 \001(\t\"2\n DefineUndefinedConstantsRe" +
+      "sponse\022\016\n\006status\030\001 \001(\t\"I\n\021ModelCheckRequ" +
+      "est\022\034\n\024properties_file_name\030\001 \001(\t\022\026\n\016pro" +
+      "perty_index\030\002 \001(\005\"$\n\022ModelCheckResponse\022" +
+      "\016\n\006result\030\001 \001(\001\"p\n\036ModelCheckWithConstan" +
+      "tsRequest\022\034\n\024properties_file_name\030\001 \001(\t\022" +
+      "\030\n\020constants_values\030\002 \001(\t\022\026\n\016property_in" +
+      "dex\030\003 \001(\005\"P\n\034ParsePropertiesStringReques" +
+      "t\022\027\n\017model_file_name\030\001 \001(\t\022\027\n\017property_s" +
+      "tring\030\002 \001(\t\"/\n\035ParsePropertiesStringResp" +
+      "onse\022\016\n\006status\030\001 \001(\t\"2\n\027ModelCheckString" +
+      "Request\022\027\n\017property_string\030\001 \001(\t\"*\n\030Mode" +
+      "lCheckStringResponse\022\016\n\006result\030\001 \001(\t\"3\n\030" +
+      "ParseAndLoadModelRequest\022\027\n\017model_file_n" +
+      "ame\030\001 \001(\t\"(\n\026ParseAndLoadModelReply\022\016\n\006r" +
+      "esult\030\001 \001(\t\"\023\n\021ClosePrismRequest\"$\n\022Clos" +
+      "ePrismResponse\022\016\n\006status\030\001 \001(\t2\255\006\n\021Prism" +
+      "ProtoService\022.\n\nUploadFile\022\016.UploadReque" +
+      "st\032\014.UploadReply\"\000(\001\0227\n\nInitialise\022\022.Ini" +
+      "tialiseRequest\032\023.InitialiseResponse\"\000\022I\n" +
+      "\021ParseAndLoadModel\022\031.ParseAndLoadModelRe" +
+      "quest\032\027.ParseAndLoadModelReply\"\000\022C\n\016Load" +
+      "PRISMModel\022\026.LoadPRISMModelRequest\032\027.Loa" +
+      "dPRISMModelResponse\"\000\022R\n\023ParseProperties" +
+      "File\022\033.ParsePropertiesFileRequest\032\034.Pars" +
+      "ePropertiesFileResponse\"\000\022a\n\030DefineUndef" +
+      "inedConstants\022 .DefineUndefinedConstants" +
+      "Request\032!.DefineUndefinedConstantsRespon" +
+      "se\"\000\0227\n\nModelCheck\022\022.ModelCheckRequest\032\023" +
+      ".ModelCheckResponse\"\000\022Q\n\027ModelCheckWithC" +
+      "onstants\022\037.ModelCheckWithConstantsReques" +
+      "t\032\023.ModelCheckResponse\"\000\022X\n\025ParsePropert" +
+      "iesString\022\035.ParsePropertiesStringRequest" +
+      "\032\036.ParsePropertiesStringResponse\"\000\022I\n\020Mo" +
+      "delCheckString\022\030.ModelCheckStringRequest" +
+      "\032\031.ModelCheckStringResponse\"\000\0227\n\nClosePr" +
+      "ism\022\022.ClosePrismRequest\032\023.ClosePrismResp" +
+      "onse\"\000B\026\n\024grpc.server.servicesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -15353,7 +15286,7 @@ public final class PrismGrpc {
     internal_static_PrismFileLog_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PrismFileLog_descriptor,
-        new java.lang.String[] { "Output", });
+        new java.lang.String[] { "Type", });
     internal_static_PrismLog_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_PrismLog_fieldAccessorTable = new

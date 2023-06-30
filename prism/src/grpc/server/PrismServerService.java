@@ -10,6 +10,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import grpc.server.services.PrismGrpcLogger;
+import prism.*;
 
 // implementation of all prism services
 class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase {
@@ -84,21 +85,40 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
     public void initialise(PrismGrpc.InitialiseRequest request, StreamObserver<PrismGrpc.InitialiseResponse> responseObserver) {
         logger.info("Received initialise request");
 
-        // TODO: initialise prism
-        /*
-        // Create a log for PRISM output (hidden or stdout)
-        PrismLog mainLog = new PrismDevNullLog();
-        //PrismLog mainLog = new PrismFileLog("stdout");
+        String result = "Error";
 
-        // Initialise PRISM engine
-        Prism prism = new Prism(mainLog);
-        prism.initialise();
-        */
-        // TODO: Create lookup table with UID and corresponding ModulesFiles and PropertiesFiles
+        // Get the requested log type from request
+        PrismGrpc.PrismLog log = request.getLog();
+        PrismLog mainLog;
+
+        try {
+            if (log.hasDevNullLog()) {
+                mainLog = new PrismDevNullLog();
+                logger.info("Successfully initialised prism with log type: " + mainLog.toString());
+            } else if (log.hasFileLog()) {
+                String outputType = log.getFileLog().getType();
+                mainLog = new PrismFileLog(outputType);
+                logger.info("Successfully initialised prism with log type: " + mainLog.toString() + " and output type: " + outputType);
+            } else {
+                throw new IllegalArgumentException("Invalid log type");
+            }
+
+            // Initialise PRISM engine
+            Prism prism = new Prism(mainLog);
+            prism.initialise();
+            result = "Success";
+
+
+        }
+        catch (PrismException | IllegalArgumentException e) {
+            logger.warning("Error initialising prism: " + e.getMessage());
+            result += ": " + e.getMessage();
+        }
+
 
         // build response
         PrismGrpc.InitialiseResponse response = PrismGrpc.InitialiseResponse.newBuilder()
-                .setResult("Success")
+                .setResult(result)
                 .build();
 
         // send response

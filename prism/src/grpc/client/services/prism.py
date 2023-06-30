@@ -3,6 +3,8 @@ from abc import ABC
 import grpc
 
 from model.module_file import ModuleFile
+from model.prism_dev_null_log import PrismDevNullLog
+from model.prism_file_log import PrismFileLog
 from model.prismpy_exceptions import PrismPyException
 from model.property_file import PropertyFile
 from prismpy import PrismPy
@@ -14,25 +16,7 @@ class Prism(PrismPy, ABC):
 
     def __init__(self, main_log):
         super().__init__()
-        self.__proto_main_log = main_log.get_proto()
-        # TODO: CHECK whether this is correct with PrismFileLog() too
-
-        # # checking if the log is valid and transforming it into a protobuf type
-        # if isinstance(main_log, PrismFileLog):
-        #     self.__proto_main_log = prism_pb2.PrismLog.PrismFileLog()
-        #
-        #     # Assigning the output type to the corresponding protobuf type
-        #     if main_log.output == "hidden":
-        #         self.__proto_main_log.output = prism_pb2.PrismLog.PrismFileLog.STDOUT
-        #     elif main_log.output == "stdout":
-        #         self.__proto_main_log.output = prism_pb2.PrismLog.PrismFileLog.HIDDEN
-        #     else:
-        #         # this should never happen since we already double-check it in PrismFileLog.__init__()
-        #         raise PrismException("Invalid output type. Please use 'hidden' or 'stdout'.")
-        #
-        # elif isinstance(main_log, PrismDevNullLog):
-        #     self.__proto_main_log = PrismDevNullLog.get_proto()
-        #     super().__init__()
+        self.__proto_main_log = main_log
 
     def initialise(self):
         if self.__proto_main_log is None:
@@ -49,7 +33,9 @@ class Prism(PrismPy, ABC):
             # - Prism(PrismFileLog("hidden"))
             # - Prism(PrismFileLog("stdout"))
 
-            request = prismGrpc_pb2.InitialiseRequest()
+            # Create a request with PrismDevNullLog
+            request = prismGrpc_pb2.InitialiseRequest(
+                log=self.__proto_main_log.get_proto())
 
             try:
                 # Call the Initialise method
