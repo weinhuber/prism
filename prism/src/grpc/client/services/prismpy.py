@@ -6,6 +6,7 @@ from grpc._channel import _InactiveRpcError
 import prismGrpc_pb2_grpc
 import prismpy_logger
 from model.prismpy_exceptions import PrismPyException
+from services import prismGrpc_pb2
 
 
 class PrismPy(ABC):
@@ -55,7 +56,11 @@ class PrismPy(ABC):
     # private function to cut a file into chunks to be uploaded to the gRPC service
     def __get_file_chunks(self, filename):
         self.logger.info(f"Uploading file {filename} to gRPC service.")
+
         try:
+            # First, yield a request containing the filename
+            yield prismGrpc_pb2.UploadRequest(filename=filename)
+
             with open(filename, 'rb') as f:
                 while True:
                     # read a chunk of the file
@@ -64,7 +69,7 @@ class PrismPy(ABC):
                         # if the chunk is empty, we have reached the end of the file
                         return
                     # yield the chunk to the gRPC service
-                    yield prismGrpc_pb2_grpc.UploadRequest(chunk_data=piece)
+                    yield prismGrpc_pb2.UploadRequest(chunk_data=piece)
         except Exception as e:
             self.logger.error(f"Unknown error.\n{str(e)}")
 

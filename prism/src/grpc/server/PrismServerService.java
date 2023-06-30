@@ -9,6 +9,8 @@ import grpc.server.services.FileStore;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Optional;
+
 import grpc.server.services.PrismGrpcLogger;
 import prism.*;
 
@@ -134,11 +136,18 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
     @Override
     public StreamObserver<PrismGrpc.UploadRequest> uploadFile(StreamObserver<PrismGrpc.UploadReply> responseObserver) {
         ByteArrayOutputStream fileData = new ByteArrayOutputStream();
+        final String[] fileName = {""};
+
         logger.info("Received upload file request");
         return new StreamObserver<PrismGrpc.UploadRequest>() {
 
             @Override
             public void onNext(PrismGrpc.UploadRequest request) {
+
+                if (request.getDataCase() == PrismGrpc.UploadRequest.DataCase.FILENAME) {
+                    fileName[0] = request.getFilename();
+                    logger.info("Received filename: " + fileName[0]);
+                }
 
 
                 ByteString chunkData = request.getChunkData();
@@ -162,9 +171,9 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
             @Override
             public void onCompleted() {
                 logger.info("File upload completed");
-                String fileName = "";
+                String out = "";
                 try {
-                    fileName = fileStore.saveFile("test.txt", fileData);
+                    out = fileStore.saveFile(fileName[0], fileData);
                 } catch (IOException e) {
                     logger.warning("cannot save file: " + e.getMessage());
                     responseObserver.onError(
@@ -172,7 +181,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
                                     .withDescription("cannot save file: " + e.getMessage())
                                     .asRuntimeException());
                 }
-                PrismGrpc.UploadReply reply = PrismGrpc.UploadReply.newBuilder().setFilename(fileName).build();
+                PrismGrpc.UploadReply reply = PrismGrpc.UploadReply.newBuilder().setFilename(out).build();
                 responseObserver.onNext(reply);
                 responseObserver.onCompleted();
             }

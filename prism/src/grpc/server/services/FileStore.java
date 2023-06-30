@@ -13,14 +13,16 @@ public class FileStore {
     }
 
     public String saveFile(String fileName, ByteArrayOutputStream fileData) throws IOException {
-        String imageID = UUID.randomUUID().toString();
-        String filePath = fileFolder + imageID + fileName;
+        // cutting away path if present
+        String pureFileName = fileName.substring(fileName.lastIndexOf("/") + 1);
+
+        String filePath = fileFolder + pureFileName;
         FileOutputStream fileOutputStream = new FileOutputStream(filePath);
         fileData.writeTo(fileOutputStream);
         fileOutputStream.close();
 
         System.out.println("STORED: " + filePath);
-        return imageID;
+        return filePath;
     }
 
 }
