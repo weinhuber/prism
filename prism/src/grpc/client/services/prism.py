@@ -50,7 +50,6 @@ class Prism(PrismPy, ABC):
             # - Prism(PrismFileLog("stdout"))
 
             request = prismGrpc_pb2.InitialiseRequest()
-            request.log.dev_null_log.CopyFrom(self.__proto_main_log)
 
             try:
                 # Call the Initialise method
