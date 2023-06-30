@@ -2,10 +2,9 @@ from abc import ABC
 
 import grpc
 
-import prismGrpc_pb2_grpc
-from ModuleFile import ModuleFile
-from PrismException import PrismException
-from PropertyFile import PropertyFile
+from model.ModuleFile import ModuleFile
+from model.prismpy_exceptions import PrismPyException
+from model.PropertyFile import PropertyFile
 from prismpy import PrismPy
 from services import prismGrpc_pb2
 
@@ -38,7 +37,7 @@ class Prism(PrismPy, ABC):
     def initialise(self):
         if self.__proto_main_log is None:
             self.logger.error("No log file specified. Please specify a log file.")
-            raise PrismException("No log file specified. Please specify a log file.")
+            raise PrismPyException("No log file specified. Please specify a log file.")
         else:
             self.create_channel()
             self.logger.info(

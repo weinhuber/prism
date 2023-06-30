@@ -2,8 +2,7 @@ from abc import ABC
 import grpc
 from grpc._channel import _InactiveRpcError
 
-import prism_pb2_grpc
-import prism_pb2
+import prismGrpc_pb2_grpc
 import logging
 
 
@@ -40,7 +39,7 @@ class PrismPy(ABC):
         self.channel = grpc.insecure_channel('localhost:50051')
 
         # Create a stub (client)
-        self.stub = prism_pb2_grpc.PrismProtoServiceStub(self.channel)
+        self.stub = prismGrpc_pb2_grpc.PrismProtoServiceStub(self.channel)
 
     # private function to close the channel to the gRPC service
     def __close_channel(self):
@@ -73,7 +72,7 @@ class PrismPy(ABC):
                         # if the chunk is empty, we have reached the end of the file
                         return
                     # yield the chunk to the gRPC service
-                    yield prism_pb2.UploadRequest(chunk_data=piece)
+                    yield prismGrpc_pb2_grpc.UploadRequest(chunk_data=piece)
         except FileNotFoundError:
             self.logger.error(f"File {filename} not found. Continues to upload empty file.")
 

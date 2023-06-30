@@ -1,10 +1,12 @@
 from abc import ABC
 
-import prism_pb2
-from ModuleFile import ModuleFile
-from PrismException import PrismException
-from PropertyFile import PropertyFile
+import grpc
+
+from model.ModuleFile import ModuleFile
+from model.prismpy_exceptions import PrismPyException
+from model.PropertyFile import PropertyFile
 from prismpy import PrismPy
+from services import prismGrpc_pb2
 
 
 class Prism(PrismPy, ABC):
@@ -35,7 +37,7 @@ class Prism(PrismPy, ABC):
     def initialise(self):
         if self.__proto_main_log is None:
             self.logger.error("No log file specified. Please specify a log file.")
-            raise PrismException("No log file specified. Please specify a log file.")
+            raise PrismPyException("No log file specified. Please specify a log file.")
         else:
             self.create_channel()
             self.logger.info(
@@ -47,12 +49,17 @@ class Prism(PrismPy, ABC):
             # - Prism(PrismFileLog("hidden"))
             # - Prism(PrismFileLog("stdout"))
 
-            request = prism_pb2.InitialiseRequest()
+            request = prismGrpc_pb2.InitialiseRequest()
             request.log.dev_null_log.CopyFrom(self.__proto_main_log)
 
-            # Call the Initialise method
-            response = self.stub.Initialise(request)
-            self.logger.info("Received message {}".format(response.result))
+            try:
+                # Call the Initialise method
+                response = self.stub.Initialise(request)
+                self.logger.info("Received message {}".format(response.result))
+            except grpc.RpcError as e:
+                self.logger.error("Could not establish connection to the gRPC server. Please make sure the Prism server is running.")
+                self.logger.error("gRPC error info: {}".format(e.details()))
+                exit(1)
 
     def parseAndLoadModelFile(self, model_file):
         self.logger.info("Parsing model file {}.".format(model_file))
@@ -65,7 +72,7 @@ class Prism(PrismPy, ABC):
         # Create a ParseModelRequest
         self.logger.info("Parsing model file {}.".format(upload_response.filename))
 
-        request = prism_pb2.ParseAndLoadModelRequest(
+        request = prismGrpc_pb2.ParseAndLoadModelRequest(
             model_file_name=upload_response.filename)
 
         # Make the RPC call to ParseModelFile
@@ -87,7 +94,7 @@ class Prism(PrismPy, ABC):
 
         # instruct prism to parse the uploaded file
         # Create a Parse Properties Request
-        request = prism_pb2.ParsePropertiesFileRequest(
+        request = prismGrpc_pb2.ParsePropertiesFileRequest(
             model_file_name=module_file.prism_module_name,
             properties_file_name=upload_response.filename)
 
@@ -102,7 +109,7 @@ class Prism(PrismPy, ABC):
         self.logger.info("Model checking property {}.".format(property_file))
 
         # Create a ModelCheckRequest
-        request = prism_pb2.ModelCheckRequest(
+        request = prismGrpc_pb2.ModelCheckRequest(
             properties_file_name=property_file.prism_property_name,
             property_index=property_object_index)
 

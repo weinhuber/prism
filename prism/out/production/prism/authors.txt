@@ -27,4 +27,5 @@ mxk = Mark Kattenbelt <mark.kattenbelt@comlab.ox.ac.uk>
 nishan = Nishan Kamaleson <nxk249@bham.ac.uk>
 sergiogiro = sergiogiro <sergio.giro.ar@gmail.com>
 vojta = Vojtech Forejt <forejtv@gmail.com>
+weinhuber = Christoph Weinhuber <christoph.weinhuber@tum.de>
 (no author) = Dave Parker <dave.x.parker@gmail.com>
