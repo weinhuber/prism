@@ -12,14 +12,10 @@ class PrismFileLog:
             raise PrismPyException("Invalid output type for PrismFileLog. Please use 'hidden' or 'stdout'.")
 
     def get_proto(self):
-        proto = prismGrpc_pb2.PrismFileLog()
-
         if self.output == "hidden":
-            proto.output = prismGrpc_pb2.PrismFileLog.HIDDEN
-            return proto
+            return prismGrpc_pb2.PrismLog(file_log=prismGrpc_pb2.PrismFileLog(type='hidden'))
         elif self.output == "stdout":
-            proto.output = prismGrpc_pb2.PrismFileLog.STDOUT
-            return proto
+            return prismGrpc_pb2.PrismLog(file_log=prismGrpc_pb2.PrismFileLog(type='stdout'))
         else:
             # this should never happen since we already double-check it in PrismFileLog.__init__()
             raise PrismPyException("Invalid output type for PrismFileLog. Please use 'hidden' or 'stdout'.")

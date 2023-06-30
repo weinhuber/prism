@@ -8,4 +8,4 @@ class PrismDevNullLog(ABC):
 
     @staticmethod
     def get_proto():
-        return prismGrpc_pb2.PrismDevNullLog()
+        return prismGrpc_pb2.PrismLog(dev_null_log=prismGrpc_pb2.PrismDevNullLog())
