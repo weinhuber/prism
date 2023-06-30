@@ -3,12 +3,12 @@ import grpc
 from grpc._channel import _InactiveRpcError
 
 import prismGrpc_pb2_grpc
-import logging
+import prismpy_logger
 
 
 class PrismPy(ABC):
-    # logger
-    logger = None
+    # singleton logger
+    logger = prismpy_logger.PrismPyLogger().get_logger()
     # stub (client)
     stub = None
 
@@ -16,20 +16,6 @@ class PrismPy(ABC):
 
     # specify the size of chunks to read from the file
     __CHUNK_SIZE = 1024 * 1024  # 1MB
-
-    def __init__(self):
-        self.__setup_logger()
-
-    # private function to set up the logger
-    def __setup_logger(self):
-        logging.basicConfig(
-            level=logging.INFO,
-            format="%(asctime)s [%(levelname)s] %(message)s",
-            handlers=[
-                logging.StreamHandler()
-            ]
-        )
-        self.logger = logging.getLogger(__name__)
 
     # private function to create a channel to the gRPC service
     def create_channel(self):
@@ -56,7 +42,7 @@ class PrismPy(ABC):
 
         except _InactiveRpcError:
             # If there was an error, it is likely that the service is unavailable
-            self.logger.error(f"gRPC service seems to be unavailable. Please make sure the service is running.")
+            self.logger.error(f"gRPC service seems to be unavailable. Please make sure the service is running!!!.")
         except Exception as e:
             self.logger.error(f"Unknown error.\n{str(e)}")
 

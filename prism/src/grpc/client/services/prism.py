@@ -61,7 +61,7 @@ class Prism(PrismPy, ABC):
                 self.logger.error("gRPC error info: {}".format(e.details()))
                 exit(1)
 
-    def parseAndLoadModelFile(self, model_file):
+    def parse_and_load_model_file(self, model_file):
         self.logger.info("Parsing model file {}.".format(model_file))
 
         # first uploading the file to prism
@@ -82,7 +82,7 @@ class Prism(PrismPy, ABC):
 
         return ModuleFile(model_file, upload_response.filename)
 
-    def parsePropertiesFile(self, module_file, property_file):
+    def parse_properties_file(self, module_file, property_file):
         self.logger.info(
             "Parsing property file {} with module file {}".format(property_file, module_file.property_file_name))
         # TODO: Dictionary with lookup tables for uploaded model file and pointer to its object in the prism server
@@ -105,7 +105,7 @@ class Prism(PrismPy, ABC):
 
         return PropertyFile(module_file, property_file, upload_response.filename, response.properties)
 
-    def modelCheck(self, property_file, property_object_index):
+    def model_check(self, property_file, property_object_index):
         self.logger.info("Model checking property {}.".format(property_file))
 
         # Create a ModelCheckRequest
