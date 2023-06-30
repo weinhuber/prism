@@ -9,13 +9,13 @@ import grpc.server.services.FileStore;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.logging.Logger;
+import grpc.server.services.PrismGrpcLogger;
 
 // implementation of all prism services
 class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase {
 
     private final FileStore fileStore = new FileStore("src/grpc/server/tmpFileStorage/");
-    private static final Logger logger = Logger.getLogger(PrismServer.class.getName());
+    private final PrismGrpcLogger logger = PrismGrpcLogger.getLogger();
 
     @Override
     public void modelCheck(PrismGrpc.ModelCheckRequest request, StreamObserver<PrismGrpc.ModelCheckResponse> responseObserver) {

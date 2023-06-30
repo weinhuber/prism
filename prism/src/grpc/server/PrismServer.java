@@ -16,6 +16,7 @@
 
 package grpc.server;
 
+import grpc.server.services.PrismGrpcLogger;
 import io.grpc.Grpc;
 import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;
@@ -29,7 +30,7 @@ import java.util.logging.Logger;
  * Server that manages startup/shutdown of a {@code Greeter} server.
  */
 public class PrismServer {
-    private static final Logger logger = Logger.getLogger(PrismServer.class.getName());
+    private static final PrismGrpcLogger logger = PrismGrpcLogger.getLogger();
 
     private Server server;
 
@@ -49,13 +50,13 @@ public class PrismServer {
             @Override
             public void run() {
                 // Use stderr here since the logger may have been reset by its JVM shutdown hook.
-                System.err.println("*** shutting down gRPC server since JVM is shutting down");
+                logger.info("gracefully shutting down gRPC server since JVM is shutting down");
                 try {
                     PrismServer.this.stop();
                 } catch (InterruptedException e) {
                     e.printStackTrace(System.err);
                 }
-                System.err.println("*** server shut down");
+                logger.info("server shut down");
             }
         });
     }
