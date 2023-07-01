@@ -7,11 +7,16 @@ import grpc.server.services.PrismGrpc;
 import grpc.server.services.PrismProtoServiceGrpc;
 import grpc.server.services.FileStore;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import grpc.server.services.PrismGrpcLogger;
+import parser.ast.ModulesFile;
 import prism.*;
 
 // implementation of all prism services
@@ -19,6 +24,9 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
 
     private final FileStore fileStore = new FileStore("src/grpc/server/tmpFileStorage/");
     private final PrismGrpcLogger logger = PrismGrpcLogger.getLogger();
+
+    // dict storing all prism instances
+    private Map<String, Object> prismObjectMap = new HashMap<>();
 
     @Override
     public void modelCheck(PrismGrpc.ModelCheckRequest request, StreamObserver<PrismGrpc.ModelCheckResponse> responseObserver) {
@@ -63,17 +71,23 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
 
     @Override
     public void parseAndLoadModel(PrismGrpc.ParseAndLoadModelRequest request, StreamObserver<PrismGrpc.ParseAndLoadModelReply> responseObserver) {
-        logger.info("Received parseModelFile request");
-        logger.info("Received file: " + request.getModelFileName());
-        // TODO: parse model file
-        /*
+        logger.info("Received parseModelFile request for file: " + request.getModelFileName());
+
+        String result = "Error";
         // Parse and load a PRISM model from a file
-        ModulesFile modulesFile = prism.parseModelFile(new File("examples/dice.pm"));
-        prism.loadPRISMModel(modulesFile);
-         */
+        try{
+            Prism prism = (Prism) prismObjectMap.get("prism");
+            ModulesFile modulesFile = prism.parseModelFile(new File("src/grpc/server/tmpFileStorage/" + request.getModelFileName()));
+            prism.loadPRISMModel(modulesFile);
+            result = "Success";
+        } catch (PrismException | IllegalArgumentException | FileNotFoundException e) {
+            logger.warning("Error loading prism model: " + e.getMessage());
+        }
+
+
         // build response
         PrismGrpc.ParseAndLoadModelReply response = PrismGrpc.ParseAndLoadModelReply.newBuilder()
-                .setResult("Success")
+                .setResult(result)
                 .build();
         // send response
         responseObserver.onNext(response);
@@ -108,6 +122,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
             // Initialise PRISM engine
             Prism prism = new Prism(mainLog);
             prism.initialise();
+            prismObjectMap.put("prism", prism);
             result = "Success";
 
 
@@ -171,9 +186,11 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
             @Override
             public void onCompleted() {
                 logger.info("File upload completed");
-                String out = "";
+                // cutting away path if present
+                String pureFileName = fileName[0].substring(fileName[0].lastIndexOf("/") + 1);
+
                 try {
-                    out = fileStore.saveFile(fileName[0], fileData);
+                    fileStore.saveFile(pureFileName, fileData);
                 } catch (IOException e) {
                     logger.warning("cannot save file: " + e.getMessage());
                     responseObserver.onError(
@@ -181,7 +198,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
                                     .withDescription("cannot save file: " + e.getMessage())
                                     .asRuntimeException());
                 }
-                PrismGrpc.UploadReply reply = PrismGrpc.UploadReply.newBuilder().setFilename(out).build();
+                PrismGrpc.UploadReply reply = PrismGrpc.UploadReply.newBuilder().setFilename(pureFileName).build();
                 responseObserver.onNext(reply);
                 responseObserver.onCompleted();
             }

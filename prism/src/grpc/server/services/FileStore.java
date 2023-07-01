@@ -13,15 +13,12 @@ public class FileStore {
     }
 
     public String saveFile(String fileName, ByteArrayOutputStream fileData) throws IOException {
-        // cutting away path if present
-        String pureFileName = fileName.substring(fileName.lastIndexOf("/") + 1);
-
-        String filePath = fileFolder + pureFileName;
+        String filePath = fileFolder + fileName;
         FileOutputStream fileOutputStream = new FileOutputStream(filePath);
         fileData.writeTo(fileOutputStream);
         fileOutputStream.close();
 
-        System.out.println("STORED: " + filePath);
+        PrismGrpcLogger.getLogger().info("File saved to: " + filePath);
         return filePath;
     }
 

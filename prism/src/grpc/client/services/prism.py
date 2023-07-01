@@ -49,11 +49,10 @@ class Prism(PrismPy, ABC):
     def parse_and_load_model_file(self, model_file):
         # first uploading the file to prism server
         upload_response = self.upload_file(model_file)
-        self.logger.info("Uploaded file {}".format(model_file))
 
         # instruct prism to parse the uploaded file
         # Create a ParseModelRequest
-        self.logger.info("Parsing file {}.".format(model_file))
+        self.logger.info("Parsing file {}.".format(upload_response.filename))
 
         request = prismGrpc_pb2.ParseAndLoadModelRequest(
             model_file_name=upload_response.filename)
@@ -73,7 +72,6 @@ class Prism(PrismPy, ABC):
 
         # first uploading the file to prism
         upload_response = self.upload_file(property_file)
-        self.logger.info("Uploaded file {}".format(property_file))
 
         # instruct prism to parse the uploaded file
         # Create a Parse Properties Request

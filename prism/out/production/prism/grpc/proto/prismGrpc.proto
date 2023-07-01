@@ -19,12 +19,7 @@ message UploadReply {
 message PrismDevNullLog {}
 
 message PrismFileLog {
-  enum OutputType {
-    STDOUT = 0;
-    HIDDEN = 1;
-  }
-
-  OutputType output = 1;
+  string type = 1;
 }
 
 message PrismLog {
