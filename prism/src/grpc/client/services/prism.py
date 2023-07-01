@@ -7,6 +7,7 @@ from model.prism_dev_null_log import PrismDevNullLog
 from model.prism_file_log import PrismFileLog
 from model.prismpy_exceptions import PrismPyException
 from model.properties_file import PropertiesFile
+from model.result import Result
 from prismpy import PrismPy
 from services import prismGrpc_pb2, prismGrpc_pb2_grpc
 
@@ -106,20 +107,25 @@ class Prism(PrismPy, ABC):
 
         return properties_file
 
+    def model_check(self, properties_file, property_object_index):
+        self.logger.info("Model checking property {}.".format(properties_file.property_file_path))
 
-
-
-    def model_check(self, property_file, property_object_index):
-        self.logger.info("Model checking property {}.".format(property_file))
+        # Create ResultFile object to populate and return
+        result = Result()
 
         # Create a ModelCheckRequest
         request = prismGrpc_pb2.ModelCheckRequest(
-            properties_file_name=property_file.prism_property_name,
+            prism_object_id=str(id(self)),
+            property_object_id=str(id(properties_file)),
+            result_object_id=str(id(result)),
             property_index=property_object_index)
 
         # Make the RPC call to ModelCheck
         response = self.stub.ModelCheck(request)
 
+        # Populate the result object
+        result.result = response.result
+
         self.logger.info("Received message {}.".format(response.status))
 
-        return response.status
+        return result

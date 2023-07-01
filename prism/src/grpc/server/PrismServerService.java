@@ -233,6 +233,53 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         logger.info("propertyObject request completed with status: " + status);
     }
 
+
+    @Override
+    public void modelCheck(PrismGrpc.ModelCheckRequest request, StreamObserver<PrismGrpc.ModelCheckResponse> responseObserver) {
+        logger.info("Received modelCheck request");
+
+        // get prism id from request
+        String prismId = request.getPrismObjectId();
+
+        // get property id from request
+        String propertyId = request.getPropertyObjectId();
+
+        // get result id from request
+        String resultId = request.getResultObjectId();
+
+        String status = "Error";
+
+        String result = "";
+
+        // model check
+        try{
+            Prism prism = (Prism) prismObjectMap.get(prismId);
+            PropertiesFile propertiesFile = (PropertiesFile) prismObjectMap.get(propertyId);
+            Result modelCheckResult = prism.modelCheck(propertiesFile, propertiesFile.getPropertyObject(request.getPropertyIndex()));
+            result = modelCheckResult.getResultString();
+            prismObjectMap.put(resultId, modelCheckResult);
+            status = "Success";
+        } catch (PrismException | IllegalArgumentException e) {
+            logger.warning("Error loading prism properties: " + e.getMessage());
+            status += " : " + e.getMessage();
+        }
+
+        // build response
+        PrismGrpc.ModelCheckResponse response = PrismGrpc.ModelCheckResponse.newBuilder()
+                .setStatus(status)
+                .setResult(result)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+        logger.info("modelCheck request completed with status: " + status);
+
+
+    }
+
     // uploadFile is a service that allows the client to upload a file to the prism server
     @Override
     public StreamObserver<PrismGrpc.UploadRequest> uploadFile(StreamObserver<PrismGrpc.UploadReply> responseObserver) {

@@ -79,13 +79,14 @@ message DefineUndefinedConstantsResponse {
 
 message ModelCheckRequest {
   string prism_object_id = 1;
-  string properties_file_name = 2;
-  int32 property_index = 3;
+  string property_object_id = 2;
+  string result_object_id = 3;
+  int32 property_index = 4;
 }
 
 message ModelCheckResponse {
-  string prism_object_id = 1;
-  double status = 2;
+  string result = 1;
+  string status = 2;
 }
 
 message ModelCheckWithConstantsRequest {
@@ -172,10 +173,13 @@ service PrismProtoService {
   rpc ParsePropertiesFile(ParsePropertiesFileRequest) returns (ParsePropertiesFileResponse) {}
   // Get propety object from properties file
   rpc PropertyObject(PropertyObjectRequest) returns (PropertyObjectResponse) {}
-  // Define undefined constants
-  rpc DefineUndefinedConstants(DefineUndefinedConstantsRequest) returns (DefineUndefinedConstantsResponse) {}
   // Model check
   rpc ModelCheck(ModelCheckRequest) returns (ModelCheckResponse) {}
+
+
+  // Define undefined constants
+  rpc DefineUndefinedConstants(DefineUndefinedConstantsRequest) returns (DefineUndefinedConstantsResponse) {}
+
   // Model check with constants
   rpc ModelCheckWithConstants(ModelCheckWithConstantsRequest) returns (ModelCheckResponse) {}
   // Parse a properties string

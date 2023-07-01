@@ -203,37 +203,6 @@ public final class PrismProtoServiceGrpc {
     return getPropertyObjectMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest,
-      grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse> getDefineUndefinedConstantsMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "DefineUndefinedConstants",
-      requestType = grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest.class,
-      responseType = grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest,
-      grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse> getDefineUndefinedConstantsMethod() {
-    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest, grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse> getDefineUndefinedConstantsMethod;
-    if ((getDefineUndefinedConstantsMethod = PrismProtoServiceGrpc.getDefineUndefinedConstantsMethod) == null) {
-      synchronized (PrismProtoServiceGrpc.class) {
-        if ((getDefineUndefinedConstantsMethod = PrismProtoServiceGrpc.getDefineUndefinedConstantsMethod) == null) {
-          PrismProtoServiceGrpc.getDefineUndefinedConstantsMethod = getDefineUndefinedConstantsMethod =
-              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest, grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DefineUndefinedConstants"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("DefineUndefinedConstants"))
-              .build();
-        }
-      }
-    }
-    return getDefineUndefinedConstantsMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ModelCheckRequest,
       grpc.server.services.PrismGrpc.ModelCheckResponse> getModelCheckMethod;
 
@@ -263,6 +232,37 @@ public final class PrismProtoServiceGrpc {
       }
     }
     return getModelCheckMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest,
+      grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse> getDefineUndefinedConstantsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "DefineUndefinedConstants",
+      requestType = grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest.class,
+      responseType = grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest,
+      grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse> getDefineUndefinedConstantsMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest, grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse> getDefineUndefinedConstantsMethod;
+    if ((getDefineUndefinedConstantsMethod = PrismProtoServiceGrpc.getDefineUndefinedConstantsMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getDefineUndefinedConstantsMethod = PrismProtoServiceGrpc.getDefineUndefinedConstantsMethod) == null) {
+          PrismProtoServiceGrpc.getDefineUndefinedConstantsMethod = getDefineUndefinedConstantsMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest, grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DefineUndefinedConstants"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("DefineUndefinedConstants"))
+              .build();
+        }
+      }
+    }
+    return getDefineUndefinedConstantsMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ModelCheckWithConstantsRequest,
@@ -502,22 +502,22 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * Define undefined constants
-     * </pre>
-     */
-    public void defineUndefinedConstants(grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest request,
-        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDefineUndefinedConstantsMethod(), responseObserver);
-    }
-
-    /**
-     * <pre>
      * Model check
      * </pre>
      */
     public void modelCheck(grpc.server.services.PrismGrpc.ModelCheckRequest request,
         io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ModelCheckResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getModelCheckMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Define undefined constants
+     * </pre>
+     */
+    public void defineUndefinedConstants(grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDefineUndefinedConstantsMethod(), responseObserver);
     }
 
     /**
@@ -605,19 +605,19 @@ public final class PrismProtoServiceGrpc {
                 grpc.server.services.PrismGrpc.PropertyObjectResponse>(
                   this, METHODID_PROPERTY_OBJECT)))
           .addMethod(
-            getDefineUndefinedConstantsMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest,
-                grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse>(
-                  this, METHODID_DEFINE_UNDEFINED_CONSTANTS)))
-          .addMethod(
             getModelCheckMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 grpc.server.services.PrismGrpc.ModelCheckRequest,
                 grpc.server.services.PrismGrpc.ModelCheckResponse>(
                   this, METHODID_MODEL_CHECK)))
+          .addMethod(
+            getDefineUndefinedConstantsMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest,
+                grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse>(
+                  this, METHODID_DEFINE_UNDEFINED_CONSTANTS)))
           .addMethod(
             getModelCheckWithConstantsMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -735,17 +735,6 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * Define undefined constants
-     * </pre>
-     */
-    public void defineUndefinedConstants(grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest request,
-        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getDefineUndefinedConstantsMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     * <pre>
      * Model check
      * </pre>
      */
@@ -753,6 +742,17 @@ public final class PrismProtoServiceGrpc {
         io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ModelCheckResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getModelCheckMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Define undefined constants
+     * </pre>
+     */
+    public void defineUndefinedConstants(grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getDefineUndefinedConstantsMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -869,22 +869,22 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * Define undefined constants
-     * </pre>
-     */
-    public grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse defineUndefinedConstants(grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getDefineUndefinedConstantsMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
      * Model check
      * </pre>
      */
     public grpc.server.services.PrismGrpc.ModelCheckResponse modelCheck(grpc.server.services.PrismGrpc.ModelCheckRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getModelCheckMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Define undefined constants
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse defineUndefinedConstants(grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getDefineUndefinedConstantsMethod(), getCallOptions(), request);
     }
 
     /**
@@ -1002,17 +1002,6 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * Define undefined constants
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse> defineUndefinedConstants(
-        grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getDefineUndefinedConstantsMethod(), getCallOptions()), request);
-    }
-
-    /**
-     * <pre>
      * Model check
      * </pre>
      */
@@ -1020,6 +1009,17 @@ public final class PrismProtoServiceGrpc {
         grpc.server.services.PrismGrpc.ModelCheckRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getModelCheckMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Define undefined constants
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse> defineUndefinedConstants(
+        grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getDefineUndefinedConstantsMethod(), getCallOptions()), request);
     }
 
     /**
@@ -1072,8 +1072,8 @@ public final class PrismProtoServiceGrpc {
   private static final int METHODID_LOAD_PRISMMODEL = 2;
   private static final int METHODID_PARSE_PROPERTIES_FILE = 3;
   private static final int METHODID_PROPERTY_OBJECT = 4;
-  private static final int METHODID_DEFINE_UNDEFINED_CONSTANTS = 5;
-  private static final int METHODID_MODEL_CHECK = 6;
+  private static final int METHODID_MODEL_CHECK = 5;
+  private static final int METHODID_DEFINE_UNDEFINED_CONSTANTS = 6;
   private static final int METHODID_MODEL_CHECK_WITH_CONSTANTS = 7;
   private static final int METHODID_PARSE_PROPERTIES_STRING = 8;
   private static final int METHODID_MODEL_CHECK_STRING = 9;
@@ -1117,13 +1117,13 @@ public final class PrismProtoServiceGrpc {
           serviceImpl.propertyObject((grpc.server.services.PrismGrpc.PropertyObjectRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.PropertyObjectResponse>) responseObserver);
           break;
-        case METHODID_DEFINE_UNDEFINED_CONSTANTS:
-          serviceImpl.defineUndefinedConstants((grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest) request,
-              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse>) responseObserver);
-          break;
         case METHODID_MODEL_CHECK:
           serviceImpl.modelCheck((grpc.server.services.PrismGrpc.ModelCheckRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ModelCheckResponse>) responseObserver);
+          break;
+        case METHODID_DEFINE_UNDEFINED_CONSTANTS:
+          serviceImpl.defineUndefinedConstants((grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse>) responseObserver);
           break;
         case METHODID_MODEL_CHECK_WITH_CONSTANTS:
           serviceImpl.modelCheckWithConstants((grpc.server.services.PrismGrpc.ModelCheckWithConstantsRequest) request,
@@ -1211,8 +1211,8 @@ public final class PrismProtoServiceGrpc {
               .addMethod(getLoadPRISMModelMethod())
               .addMethod(getParsePropertiesFileMethod())
               .addMethod(getPropertyObjectMethod())
-              .addMethod(getDefineUndefinedConstantsMethod())
               .addMethod(getModelCheckMethod())
+              .addMethod(getDefineUndefinedConstantsMethod())
               .addMethod(getModelCheckWithConstantsMethod())
               .addMethod(getParsePropertiesStringMethod())
               .addMethod(getModelCheckStringMethod())

@@ -5,14 +5,14 @@ from services.prismpy import PrismPy
 
 
 class PropertiesFile(PrismPy, ABC):
-    property_file_name = None
+    property_file_path = None
     property_object_id = None
 
-    def __init__(self, property_file_name):
+    def __init__(self, property_file_path):
         super().__init__()
         self.create_channel()
         # name of original property file
-        self.property_file_name = property_file_name
+        self.property_file_path = property_file_path
         # id of the module object in the prism server
         self.module_object_id = str(id(self))
 

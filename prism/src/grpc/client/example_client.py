@@ -34,5 +34,6 @@ properties_file = prism.parse_properties_file(modules_file, "examples/dice.pctl"
 
 # Model check the first property from the file
 print(properties_file.get_property_object(0))
-# Result result = prism.modelCheck(propertiesFile, propertiesFile.getPropertyObject(0));
-# System.out.println(result.getResult());
+# Changed model_check to only accept a properties file and a property index
+result = prism.model_check(properties_file, 0)
+print(result.get_result())
