@@ -5,8 +5,8 @@ option java_package = "grpc.server.services";
 /*  file transfer */
 message UploadRequest {
   oneof data {
-    string filename = 1;
-    bytes chunk_data = 2;
+    string filename = 2;
+    bytes chunk_data = 3;
   }
 }
 
@@ -30,87 +30,107 @@ message PrismLog {
 }
 
 message InitialiseRequest {
-  PrismLog log = 1;
+  string prism_object_id = 1;
+  PrismLog log = 2;
 }
 
 message InitialiseResponse {
-  string result = 1;
+  string prism_object_id = 1;
+  string result = 2;
 }
 
 message LoadPRISMModelRequest {
-  string model_file_name = 1;
+  string prism_object_id = 1;
+  string model_file_name = 2;
 }
 
 message LoadPRISMModelResponse {
-  string status = 1;
+  string prism_object_id = 1;
+  string status = 2;
 }
 
 
 message ParsePropertiesFileRequest {
-  string model_file_name = 1;
-  string properties_file_name = 2;
+  string prism_object_id = 1;
+  string model_file_name = 2;
+  string properties_file_name = 3;
 }
 
 message ParsePropertiesFileResponse {
-  string status = 1;
-  repeated string properties = 2;
+  string prism_object_id = 1;
+  string status = 2;
+  repeated string properties = 3;
 }
 
 message DefineUndefinedConstantsRequest {
-  string model_file_name = 1;
-  string properties_file_name = 2;
-  int32 property_index = 3;
-  string const_range = 4;
+  string prism_object_id = 1;
+  string model_file_name = 2;
+  string properties_file_name = 3;
+  int32 property_index = 4;
+  string const_range = 5;
 }
 
 message DefineUndefinedConstantsResponse {
-  string status = 1;
+  string prism_object_id = 1;
+  string status = 2;
 }
 
 message ModelCheckRequest {
-  string properties_file_name = 1;
-  int32 property_index = 2;
-}
-
-message ModelCheckResponse {
-  double result = 1;
-}
-
-message ModelCheckWithConstantsRequest {
-  string properties_file_name = 1;
-  string constants_values = 2;
+  string prism_object_id = 1;
+  string properties_file_name = 2;
   int32 property_index = 3;
 }
 
+message ModelCheckResponse {
+  string prism_object_id = 1;
+  double result = 2;
+}
+
+message ModelCheckWithConstantsRequest {
+  string prism_object_id = 1;
+  string properties_file_name = 2;
+  string constants_values = 3;
+  int32 property_index = 4;
+}
+
 message ParsePropertiesStringRequest {
-  string model_file_name = 1;
-  string property_string = 2;
+  string prism_object_id = 1;
+  string model_file_name = 2;
+  string property_string = 3;
 }
 
 message ParsePropertiesStringResponse {
-  string status = 1;
+  string prism_object_id = 1;
+  string status = 2;
 }
 
 message ModelCheckStringRequest {
-  string property_string = 1;
+  string prism_object_id = 1;
+  string property_string = 2;
 }
 
 message ModelCheckStringResponse {
-  string result = 1;
+  string prism_object_id = 1;
+  string result = 2;
 }
 
 message ParseAndLoadModelRequest {
-  string model_file_name = 1;
+  string prism_object_id = 1;
+  string model_file_name = 2;
 }
 
 message ParseAndLoadModelReply {
-  string result = 1;
+  string prism_object_id = 1;
+  string result = 2;
 }
 
-message ClosePrismRequest {}
+message ClosePrismRequest {
+  string prism_object_id = 1;
+}
 
 message ClosePrismResponse {
-  string status = 1;
+  string prism_object_id = 1;
+  string status = 2;
 }
 
 // Service Definitions

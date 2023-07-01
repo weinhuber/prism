@@ -34,15 +34,16 @@ class Prism(PrismPy, ABC):
             # - Prism(PrismFileLog("stdout"))
 
             # Create a request with PrismDevNullLog
-            request = prismGrpc_pb2.InitialiseRequest(
-                log=self.__proto_main_log.get_proto())
+            request = prismGrpc_pb2.InitialiseRequest(prism_object_id=str(id(self)),
+                                                      log=self.__proto_main_log.get_proto())
 
             try:
                 # Call the Initialise method
                 response = self.stub.Initialise(request)
                 self.logger.info("Received message {}".format(response.result))
             except grpc.RpcError as e:
-                self.logger.error("Could not establish connection to the gRPC server. Please make sure the Prism server is running.")
+                self.logger.error(
+                    "Could not establish connection to the gRPC server. Please make sure the Prism server is running.")
                 self.logger.error("gRPC error info: {}".format(e.details()))
                 exit(1)
 
@@ -54,8 +55,8 @@ class Prism(PrismPy, ABC):
         # Create a ParseModelRequest
         self.logger.info("Parsing file {}.".format(upload_response.filename))
 
-        request = prismGrpc_pb2.ParseAndLoadModelRequest(
-            model_file_name=upload_response.filename)
+        request = prismGrpc_pb2.ParseAndLoadModelRequest(prism_object_id=str(id(self)),
+                                                         model_file_name=upload_response.filename)
 
         # Make the RPC call to ParseModelFile
         response = self.stub.ParseAndLoadModel(request)

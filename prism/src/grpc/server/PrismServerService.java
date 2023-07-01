@@ -73,10 +73,14 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
     public void parseAndLoadModel(PrismGrpc.ParseAndLoadModelRequest request, StreamObserver<PrismGrpc.ParseAndLoadModelReply> responseObserver) {
         logger.info("Received parseModelFile request for file: " + request.getModelFileName());
 
+        // get id from request
+        String id = request.getPrismObjectId();
+
         String result = "Error";
         // Parse and load a PRISM model from a file
+
         try{
-            Prism prism = (Prism) prismObjectMap.get("prism");
+            Prism prism = (Prism) prismObjectMap.get(id);
             ModulesFile modulesFile = prism.parseModelFile(new File("src/grpc/server/tmpFileStorage/" + request.getModelFileName()));
             prism.loadPRISMModel(modulesFile);
             result = "Success";
@@ -103,6 +107,9 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
 
         String result = "Error";
 
+        // get id from request
+        String id = request.getPrismObjectId();
+        System.out.println("id: " + id);
         // Get the requested log type from request
         PrismGrpc.PrismLog log = request.getLog();
         PrismLog mainLog;
@@ -122,7 +129,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
             // Initialise PRISM engine
             Prism prism = new Prism(mainLog);
             prism.initialise();
-            prismObjectMap.put("prism", prism);
+            prismObjectMap.put(id, prism);
             result = "Success";
 
 
