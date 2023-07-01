@@ -26,3 +26,19 @@ class PropertiesFile(PrismPy, ABC):
         self.logger.info("Received message {}.".format(response.status))
 
         return response.property
+
+    # def __forward(self, name, *args, **kwargs):
+    #     self.logger.info("Forwarding unsupported call {} to prism server.".format(name))
+    #     # create forward request
+    #     request = prismGrpc_pb2.PropertiesFileForwardMethodCallRequest(property_object_id=str(id(self)),
+    #                                                                    method=name,
+    #                                                                    args=args,
+    #                                                                    kwargs=kwargs)
+    #     # Make the RPC call to Forward
+    #     response = self.stub.PropertiesFileForwardMethodCall(request)
+    #     self.logger.info("Received message {}.".format(response.status))
+    #
+    #     return response.result
+    #
+    # def __getattr__(self, name):
+    #     return lambda *args, **kwargs: self.__forward(name, *args, **kwargs)

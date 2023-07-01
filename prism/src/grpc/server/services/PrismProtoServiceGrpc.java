@@ -17,6 +17,37 @@ public final class PrismProtoServiceGrpc {
   public static final String SERVICE_NAME = "PrismProtoService";
 
   // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest,
+      grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse> getPropertiesFileForwardMethodCallMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "PropertiesFileForwardMethodCall",
+      requestType = grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest.class,
+      responseType = grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest,
+      grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse> getPropertiesFileForwardMethodCallMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest, grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse> getPropertiesFileForwardMethodCallMethod;
+    if ((getPropertiesFileForwardMethodCallMethod = PrismProtoServiceGrpc.getPropertiesFileForwardMethodCallMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getPropertiesFileForwardMethodCallMethod = PrismProtoServiceGrpc.getPropertiesFileForwardMethodCallMethod) == null) {
+          PrismProtoServiceGrpc.getPropertiesFileForwardMethodCallMethod = getPropertiesFileForwardMethodCallMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest, grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "PropertiesFileForwardMethodCall"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("PropertiesFileForwardMethodCall"))
+              .build();
+        }
+      }
+    }
+    return getPropertiesFileForwardMethodCallMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.UploadRequest,
       grpc.server.services.PrismGrpc.UploadReply> getUploadFileMethod;
 
@@ -442,6 +473,16 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     * generic forwarding of method call
+     * </pre>
+     */
+    public void propertiesFileForwardMethodCall(grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getPropertiesFileForwardMethodCallMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
      * Generic method to upload files
      * </pre>
      */
@@ -563,6 +604,13 @@ public final class PrismProtoServiceGrpc {
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
+            getPropertiesFileForwardMethodCallMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest,
+                grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse>(
+                  this, METHODID_PROPERTIES_FILE_FORWARD_METHOD_CALL)))
+          .addMethod(
             getUploadFileMethod(),
             io.grpc.stub.ServerCalls.asyncClientStreamingCall(
               new MethodHandlers<
@@ -665,6 +713,17 @@ public final class PrismProtoServiceGrpc {
     protected PrismProtoServiceStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new PrismProtoServiceStub(channel, callOptions);
+    }
+
+    /**
+     * <pre>
+     * generic forwarding of method call
+     * </pre>
+     */
+    public void propertiesFileForwardMethodCall(grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getPropertiesFileForwardMethodCallMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -819,6 +878,16 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     * generic forwarding of method call
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse propertiesFileForwardMethodCall(grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getPropertiesFileForwardMethodCallMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
      * Initialise the PRISM engine
      * </pre>
      */
@@ -947,6 +1016,17 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     * generic forwarding of method call
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse> propertiesFileForwardMethodCall(
+        grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getPropertiesFileForwardMethodCallMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
      * Initialise the PRISM engine
      * </pre>
      */
@@ -1067,18 +1147,19 @@ public final class PrismProtoServiceGrpc {
     }
   }
 
-  private static final int METHODID_INITIALISE = 0;
-  private static final int METHODID_PARSE_MODEL_FILE = 1;
-  private static final int METHODID_LOAD_PRISMMODEL = 2;
-  private static final int METHODID_PARSE_PROPERTIES_FILE = 3;
-  private static final int METHODID_PROPERTY_OBJECT = 4;
-  private static final int METHODID_MODEL_CHECK = 5;
-  private static final int METHODID_DEFINE_UNDEFINED_CONSTANTS = 6;
-  private static final int METHODID_MODEL_CHECK_WITH_CONSTANTS = 7;
-  private static final int METHODID_PARSE_PROPERTIES_STRING = 8;
-  private static final int METHODID_MODEL_CHECK_STRING = 9;
-  private static final int METHODID_CLOSE_PRISM = 10;
-  private static final int METHODID_UPLOAD_FILE = 11;
+  private static final int METHODID_PROPERTIES_FILE_FORWARD_METHOD_CALL = 0;
+  private static final int METHODID_INITIALISE = 1;
+  private static final int METHODID_PARSE_MODEL_FILE = 2;
+  private static final int METHODID_LOAD_PRISMMODEL = 3;
+  private static final int METHODID_PARSE_PROPERTIES_FILE = 4;
+  private static final int METHODID_PROPERTY_OBJECT = 5;
+  private static final int METHODID_MODEL_CHECK = 6;
+  private static final int METHODID_DEFINE_UNDEFINED_CONSTANTS = 7;
+  private static final int METHODID_MODEL_CHECK_WITH_CONSTANTS = 8;
+  private static final int METHODID_PARSE_PROPERTIES_STRING = 9;
+  private static final int METHODID_MODEL_CHECK_STRING = 10;
+  private static final int METHODID_CLOSE_PRISM = 11;
+  private static final int METHODID_UPLOAD_FILE = 12;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1097,6 +1178,10 @@ public final class PrismProtoServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_PROPERTIES_FILE_FORWARD_METHOD_CALL:
+          serviceImpl.propertiesFileForwardMethodCall((grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse>) responseObserver);
+          break;
         case METHODID_INITIALISE:
           serviceImpl.initialise((grpc.server.services.PrismGrpc.InitialiseRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitialiseResponse>) responseObserver);
@@ -1205,6 +1290,7 @@ public final class PrismProtoServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new PrismProtoServiceFileDescriptorSupplier())
+              .addMethod(getPropertiesFileForwardMethodCallMethod())
               .addMethod(getUploadFileMethod())
               .addMethod(getInitialiseMethod())
               .addMethod(getParseModelFileMethod())

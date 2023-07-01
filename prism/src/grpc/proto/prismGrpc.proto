@@ -159,8 +159,24 @@ message PropertyObjectResponse {
   string property = 3;
 }
 
+message PropertiesFileForwardMethodCallRequest {
+  string property_object_id = 1;
+  string method = 2;
+  string args = 3;
+  string kwargs = 4;
+}
+
+message PropertiesFileForwardMethodCallResponse {
+  string property_object_id = 1;
+  string status = 2;
+  string result = 3;
+}
+
+
 // Service Definitions
 service PrismProtoService {
+  // generic forwarding of method call
+  rpc PropertiesFileForwardMethodCall(PropertiesFileForwardMethodCallRequest) returns (PropertiesFileForwardMethodCallResponse) {}
   // Generic method to upload files
   rpc UploadFile (stream UploadRequest) returns (UploadReply) {}
   // Initialise the PRISM engine

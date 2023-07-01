@@ -15,6 +15,11 @@ class PrismProtoServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.PropertiesFileForwardMethodCall = channel.unary_unary(
+                '/PrismProtoService/PropertiesFileForwardMethodCall',
+                request_serializer=prismGrpc__pb2.PropertiesFileForwardMethodCallRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.PropertiesFileForwardMethodCallResponse.FromString,
+                )
         self.UploadFile = channel.stream_unary(
                 '/PrismProtoService/UploadFile',
                 request_serializer=prismGrpc__pb2.UploadRequest.SerializeToString,
@@ -80,6 +85,13 @@ class PrismProtoServiceStub(object):
 class PrismProtoServiceServicer(object):
     """Service Definitions
     """
+
+    def PropertiesFileForwardMethodCall(self, request, context):
+        """generic forwarding of method call
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
     def UploadFile(self, request_iterator, context):
         """Generic method to upload files
@@ -168,6 +180,11 @@ class PrismProtoServiceServicer(object):
 
 def add_PrismProtoServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'PropertiesFileForwardMethodCall': grpc.unary_unary_rpc_method_handler(
+                    servicer.PropertiesFileForwardMethodCall,
+                    request_deserializer=prismGrpc__pb2.PropertiesFileForwardMethodCallRequest.FromString,
+                    response_serializer=prismGrpc__pb2.PropertiesFileForwardMethodCallResponse.SerializeToString,
+            ),
             'UploadFile': grpc.stream_unary_rpc_method_handler(
                     servicer.UploadFile,
                     request_deserializer=prismGrpc__pb2.UploadRequest.FromString,
@@ -238,6 +255,23 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
 class PrismProtoService(object):
     """Service Definitions
     """
+
+    @staticmethod
+    def PropertiesFileForwardMethodCall(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/PropertiesFileForwardMethodCall',
+            prismGrpc__pb2.PropertiesFileForwardMethodCallRequest.SerializeToString,
+            prismGrpc__pb2.PropertiesFileForwardMethodCallResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def UploadFile(request_iterator,
