@@ -4064,16 +4064,16 @@ public final class PrismGrpc {
         getPrismObjectIdBytes();
 
     /**
-     * <code>string result = 2;</code>
-     * @return The result.
+     * <code>string status = 2;</code>
+     * @return The status.
      */
-    java.lang.String getResult();
+    java.lang.String getStatus();
     /**
-     * <code>string result = 2;</code>
-     * @return The bytes for result.
+     * <code>string status = 2;</code>
+     * @return The bytes for status.
      */
     com.google.protobuf.ByteString
-        getResultBytes();
+        getStatusBytes();
   }
   /**
    * Protobuf type {@code InitialiseResponse}
@@ -4089,7 +4089,7 @@ public final class PrismGrpc {
     }
     private InitialiseResponse() {
       prismObjectId_ = "";
-      result_ = "";
+      status_ = "";
     }
 
     @java.lang.Override
@@ -4131,7 +4131,7 @@ public final class PrismGrpc {
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              result_ = s;
+              status_ = s;
               break;
             }
             default: {
@@ -4204,38 +4204,38 @@ public final class PrismGrpc {
       }
     }
 
-    public static final int RESULT_FIELD_NUMBER = 2;
-    private volatile java.lang.Object result_;
+    public static final int STATUS_FIELD_NUMBER = 2;
+    private volatile java.lang.Object status_;
     /**
-     * <code>string result = 2;</code>
-     * @return The result.
+     * <code>string status = 2;</code>
+     * @return The status.
      */
     @java.lang.Override
-    public java.lang.String getResult() {
-      java.lang.Object ref = result_;
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        result_ = s;
+        status_ = s;
         return s;
       }
     }
     /**
-     * <code>string result = 2;</code>
-     * @return The bytes for result.
+     * <code>string status = 2;</code>
+     * @return The bytes for status.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getResultBytes() {
-      java.lang.Object ref = result_;
+        getStatusBytes() {
+      java.lang.Object ref = status_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        result_ = b;
+        status_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -4259,8 +4259,8 @@ public final class PrismGrpc {
       if (!getPrismObjectIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, prismObjectId_);
       }
-      if (!getResultBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, result_);
+      if (!getStatusBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, status_);
       }
       unknownFields.writeTo(output);
     }
@@ -4274,8 +4274,8 @@ public final class PrismGrpc {
       if (!getPrismObjectIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, prismObjectId_);
       }
-      if (!getResultBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, result_);
+      if (!getStatusBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, status_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4294,8 +4294,8 @@ public final class PrismGrpc {
 
       if (!getPrismObjectId()
           .equals(other.getPrismObjectId())) return false;
-      if (!getResult()
-          .equals(other.getResult())) return false;
+      if (!getStatus()
+          .equals(other.getStatus())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4309,8 +4309,8 @@ public final class PrismGrpc {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + PRISM_OBJECT_ID_FIELD_NUMBER;
       hash = (53 * hash) + getPrismObjectId().hashCode();
-      hash = (37 * hash) + RESULT_FIELD_NUMBER;
-      hash = (53 * hash) + getResult().hashCode();
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getStatus().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4446,7 +4446,7 @@ public final class PrismGrpc {
         super.clear();
         prismObjectId_ = "";
 
-        result_ = "";
+        status_ = "";
 
         return this;
       }
@@ -4475,7 +4475,7 @@ public final class PrismGrpc {
       public grpc.server.services.PrismGrpc.InitialiseResponse buildPartial() {
         grpc.server.services.PrismGrpc.InitialiseResponse result = new grpc.server.services.PrismGrpc.InitialiseResponse(this);
         result.prismObjectId_ = prismObjectId_;
-        result.result_ = result_;
+        result.status_ = status_;
         onBuilt();
         return result;
       }
@@ -4528,8 +4528,8 @@ public final class PrismGrpc {
           prismObjectId_ = other.prismObjectId_;
           onChanged();
         }
-        if (!other.getResult().isEmpty()) {
-          result_ = other.result_;
+        if (!other.getStatus().isEmpty()) {
+          status_ = other.status_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -4552,1442 +4552,6 @@ public final class PrismGrpc {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (grpc.server.services.PrismGrpc.InitialiseResponse) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object prismObjectId_ = "";
-      /**
-       * <code>string prism_object_id = 1;</code>
-       * @return The prismObjectId.
-       */
-      public java.lang.String getPrismObjectId() {
-        java.lang.Object ref = prismObjectId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          prismObjectId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string prism_object_id = 1;</code>
-       * @return The bytes for prismObjectId.
-       */
-      public com.google.protobuf.ByteString
-          getPrismObjectIdBytes() {
-        java.lang.Object ref = prismObjectId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          prismObjectId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string prism_object_id = 1;</code>
-       * @param value The prismObjectId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPrismObjectId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        prismObjectId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string prism_object_id = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPrismObjectId() {
-        
-        prismObjectId_ = getDefaultInstance().getPrismObjectId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string prism_object_id = 1;</code>
-       * @param value The bytes for prismObjectId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPrismObjectIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        prismObjectId_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object result_ = "";
-      /**
-       * <code>string result = 2;</code>
-       * @return The result.
-       */
-      public java.lang.String getResult() {
-        java.lang.Object ref = result_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          result_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string result = 2;</code>
-       * @return The bytes for result.
-       */
-      public com.google.protobuf.ByteString
-          getResultBytes() {
-        java.lang.Object ref = result_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          result_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string result = 2;</code>
-       * @param value The result to set.
-       * @return This builder for chaining.
-       */
-      public Builder setResult(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        result_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string result = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearResult() {
-        
-        result_ = getDefaultInstance().getResult();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string result = 2;</code>
-       * @param value The bytes for result to set.
-       * @return This builder for chaining.
-       */
-      public Builder setResultBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        result_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:InitialiseResponse)
-    }
-
-    // @@protoc_insertion_point(class_scope:InitialiseResponse)
-    private static final grpc.server.services.PrismGrpc.InitialiseResponse DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.InitialiseResponse();
-    }
-
-    public static grpc.server.services.PrismGrpc.InitialiseResponse getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<InitialiseResponse>
-        PARSER = new com.google.protobuf.AbstractParser<InitialiseResponse>() {
-      @java.lang.Override
-      public InitialiseResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new InitialiseResponse(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<InitialiseResponse> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<InitialiseResponse> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public grpc.server.services.PrismGrpc.InitialiseResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface LoadPRISMModelRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:LoadPRISMModelRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string prism_object_id = 1;</code>
-     * @return The prismObjectId.
-     */
-    java.lang.String getPrismObjectId();
-    /**
-     * <code>string prism_object_id = 1;</code>
-     * @return The bytes for prismObjectId.
-     */
-    com.google.protobuf.ByteString
-        getPrismObjectIdBytes();
-
-    /**
-     * <code>string model_file_name = 2;</code>
-     * @return The modelFileName.
-     */
-    java.lang.String getModelFileName();
-    /**
-     * <code>string model_file_name = 2;</code>
-     * @return The bytes for modelFileName.
-     */
-    com.google.protobuf.ByteString
-        getModelFileNameBytes();
-  }
-  /**
-   * Protobuf type {@code LoadPRISMModelRequest}
-   */
-  public static final class LoadPRISMModelRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:LoadPRISMModelRequest)
-      LoadPRISMModelRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use LoadPRISMModelRequest.newBuilder() to construct.
-    private LoadPRISMModelRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private LoadPRISMModelRequest() {
-      prismObjectId_ = "";
-      modelFileName_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new LoadPRISMModelRequest();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private LoadPRISMModelRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              prismObjectId_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              modelFileName_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              grpc.server.services.PrismGrpc.LoadPRISMModelRequest.class, grpc.server.services.PrismGrpc.LoadPRISMModelRequest.Builder.class);
-    }
-
-    public static final int PRISM_OBJECT_ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object prismObjectId_;
-    /**
-     * <code>string prism_object_id = 1;</code>
-     * @return The prismObjectId.
-     */
-    @java.lang.Override
-    public java.lang.String getPrismObjectId() {
-      java.lang.Object ref = prismObjectId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        prismObjectId_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string prism_object_id = 1;</code>
-     * @return The bytes for prismObjectId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getPrismObjectIdBytes() {
-      java.lang.Object ref = prismObjectId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        prismObjectId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int MODEL_FILE_NAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object modelFileName_;
-    /**
-     * <code>string model_file_name = 2;</code>
-     * @return The modelFileName.
-     */
-    @java.lang.Override
-    public java.lang.String getModelFileName() {
-      java.lang.Object ref = modelFileName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        modelFileName_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string model_file_name = 2;</code>
-     * @return The bytes for modelFileName.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getModelFileNameBytes() {
-      java.lang.Object ref = modelFileName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        modelFileName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getPrismObjectIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, prismObjectId_);
-      }
-      if (!getModelFileNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, modelFileName_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getPrismObjectIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, prismObjectId_);
-      }
-      if (!getModelFileNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, modelFileName_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof grpc.server.services.PrismGrpc.LoadPRISMModelRequest)) {
-        return super.equals(obj);
-      }
-      grpc.server.services.PrismGrpc.LoadPRISMModelRequest other = (grpc.server.services.PrismGrpc.LoadPRISMModelRequest) obj;
-
-      if (!getPrismObjectId()
-          .equals(other.getPrismObjectId())) return false;
-      if (!getModelFileName()
-          .equals(other.getModelFileName())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + PRISM_OBJECT_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getPrismObjectId().hashCode();
-      hash = (37 * hash) + MODEL_FILE_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getModelFileName().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(grpc.server.services.PrismGrpc.LoadPRISMModelRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code LoadPRISMModelRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:LoadPRISMModelRequest)
-        grpc.server.services.PrismGrpc.LoadPRISMModelRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                grpc.server.services.PrismGrpc.LoadPRISMModelRequest.class, grpc.server.services.PrismGrpc.LoadPRISMModelRequest.Builder.class);
-      }
-
-      // Construct using grpc.server.services.PrismGrpc.LoadPRISMModelRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        prismObjectId_ = "";
-
-        modelFileName_ = "";
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public grpc.server.services.PrismGrpc.LoadPRISMModelRequest getDefaultInstanceForType() {
-        return grpc.server.services.PrismGrpc.LoadPRISMModelRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public grpc.server.services.PrismGrpc.LoadPRISMModelRequest build() {
-        grpc.server.services.PrismGrpc.LoadPRISMModelRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public grpc.server.services.PrismGrpc.LoadPRISMModelRequest buildPartial() {
-        grpc.server.services.PrismGrpc.LoadPRISMModelRequest result = new grpc.server.services.PrismGrpc.LoadPRISMModelRequest(this);
-        result.prismObjectId_ = prismObjectId_;
-        result.modelFileName_ = modelFileName_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof grpc.server.services.PrismGrpc.LoadPRISMModelRequest) {
-          return mergeFrom((grpc.server.services.PrismGrpc.LoadPRISMModelRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(grpc.server.services.PrismGrpc.LoadPRISMModelRequest other) {
-        if (other == grpc.server.services.PrismGrpc.LoadPRISMModelRequest.getDefaultInstance()) return this;
-        if (!other.getPrismObjectId().isEmpty()) {
-          prismObjectId_ = other.prismObjectId_;
-          onChanged();
-        }
-        if (!other.getModelFileName().isEmpty()) {
-          modelFileName_ = other.modelFileName_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        grpc.server.services.PrismGrpc.LoadPRISMModelRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (grpc.server.services.PrismGrpc.LoadPRISMModelRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object prismObjectId_ = "";
-      /**
-       * <code>string prism_object_id = 1;</code>
-       * @return The prismObjectId.
-       */
-      public java.lang.String getPrismObjectId() {
-        java.lang.Object ref = prismObjectId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          prismObjectId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string prism_object_id = 1;</code>
-       * @return The bytes for prismObjectId.
-       */
-      public com.google.protobuf.ByteString
-          getPrismObjectIdBytes() {
-        java.lang.Object ref = prismObjectId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          prismObjectId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string prism_object_id = 1;</code>
-       * @param value The prismObjectId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPrismObjectId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        prismObjectId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string prism_object_id = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPrismObjectId() {
-        
-        prismObjectId_ = getDefaultInstance().getPrismObjectId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string prism_object_id = 1;</code>
-       * @param value The bytes for prismObjectId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPrismObjectIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        prismObjectId_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object modelFileName_ = "";
-      /**
-       * <code>string model_file_name = 2;</code>
-       * @return The modelFileName.
-       */
-      public java.lang.String getModelFileName() {
-        java.lang.Object ref = modelFileName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          modelFileName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string model_file_name = 2;</code>
-       * @return The bytes for modelFileName.
-       */
-      public com.google.protobuf.ByteString
-          getModelFileNameBytes() {
-        java.lang.Object ref = modelFileName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          modelFileName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string model_file_name = 2;</code>
-       * @param value The modelFileName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setModelFileName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        modelFileName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string model_file_name = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearModelFileName() {
-        
-        modelFileName_ = getDefaultInstance().getModelFileName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string model_file_name = 2;</code>
-       * @param value The bytes for modelFileName to set.
-       * @return This builder for chaining.
-       */
-      public Builder setModelFileNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        modelFileName_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:LoadPRISMModelRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:LoadPRISMModelRequest)
-    private static final grpc.server.services.PrismGrpc.LoadPRISMModelRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.LoadPRISMModelRequest();
-    }
-
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<LoadPRISMModelRequest>
-        PARSER = new com.google.protobuf.AbstractParser<LoadPRISMModelRequest>() {
-      @java.lang.Override
-      public LoadPRISMModelRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new LoadPRISMModelRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<LoadPRISMModelRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<LoadPRISMModelRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public grpc.server.services.PrismGrpc.LoadPRISMModelRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface LoadPRISMModelResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:LoadPRISMModelResponse)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string prism_object_id = 1;</code>
-     * @return The prismObjectId.
-     */
-    java.lang.String getPrismObjectId();
-    /**
-     * <code>string prism_object_id = 1;</code>
-     * @return The bytes for prismObjectId.
-     */
-    com.google.protobuf.ByteString
-        getPrismObjectIdBytes();
-
-    /**
-     * <code>string status = 2;</code>
-     * @return The status.
-     */
-    java.lang.String getStatus();
-    /**
-     * <code>string status = 2;</code>
-     * @return The bytes for status.
-     */
-    com.google.protobuf.ByteString
-        getStatusBytes();
-  }
-  /**
-   * Protobuf type {@code LoadPRISMModelResponse}
-   */
-  public static final class LoadPRISMModelResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:LoadPRISMModelResponse)
-      LoadPRISMModelResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use LoadPRISMModelResponse.newBuilder() to construct.
-    private LoadPRISMModelResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private LoadPRISMModelResponse() {
-      prismObjectId_ = "";
-      status_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new LoadPRISMModelResponse();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private LoadPRISMModelResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              prismObjectId_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              status_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelResponse_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelResponse_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              grpc.server.services.PrismGrpc.LoadPRISMModelResponse.class, grpc.server.services.PrismGrpc.LoadPRISMModelResponse.Builder.class);
-    }
-
-    public static final int PRISM_OBJECT_ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object prismObjectId_;
-    /**
-     * <code>string prism_object_id = 1;</code>
-     * @return The prismObjectId.
-     */
-    @java.lang.Override
-    public java.lang.String getPrismObjectId() {
-      java.lang.Object ref = prismObjectId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        prismObjectId_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string prism_object_id = 1;</code>
-     * @return The bytes for prismObjectId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getPrismObjectIdBytes() {
-      java.lang.Object ref = prismObjectId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        prismObjectId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int STATUS_FIELD_NUMBER = 2;
-    private volatile java.lang.Object status_;
-    /**
-     * <code>string status = 2;</code>
-     * @return The status.
-     */
-    @java.lang.Override
-    public java.lang.String getStatus() {
-      java.lang.Object ref = status_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        status_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string status = 2;</code>
-     * @return The bytes for status.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getStatusBytes() {
-      java.lang.Object ref = status_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        status_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getPrismObjectIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, prismObjectId_);
-      }
-      if (!getStatusBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, status_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getPrismObjectIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, prismObjectId_);
-      }
-      if (!getStatusBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, status_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof grpc.server.services.PrismGrpc.LoadPRISMModelResponse)) {
-        return super.equals(obj);
-      }
-      grpc.server.services.PrismGrpc.LoadPRISMModelResponse other = (grpc.server.services.PrismGrpc.LoadPRISMModelResponse) obj;
-
-      if (!getPrismObjectId()
-          .equals(other.getPrismObjectId())) return false;
-      if (!getStatus()
-          .equals(other.getStatus())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + PRISM_OBJECT_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getPrismObjectId().hashCode();
-      hash = (37 * hash) + STATUS_FIELD_NUMBER;
-      hash = (53 * hash) + getStatus().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(grpc.server.services.PrismGrpc.LoadPRISMModelResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code LoadPRISMModelResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:LoadPRISMModelResponse)
-        grpc.server.services.PrismGrpc.LoadPRISMModelResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelResponse_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelResponse_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                grpc.server.services.PrismGrpc.LoadPRISMModelResponse.class, grpc.server.services.PrismGrpc.LoadPRISMModelResponse.Builder.class);
-      }
-
-      // Construct using grpc.server.services.PrismGrpc.LoadPRISMModelResponse.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        prismObjectId_ = "";
-
-        status_ = "";
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelResponse_descriptor;
-      }
-
-      @java.lang.Override
-      public grpc.server.services.PrismGrpc.LoadPRISMModelResponse getDefaultInstanceForType() {
-        return grpc.server.services.PrismGrpc.LoadPRISMModelResponse.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public grpc.server.services.PrismGrpc.LoadPRISMModelResponse build() {
-        grpc.server.services.PrismGrpc.LoadPRISMModelResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public grpc.server.services.PrismGrpc.LoadPRISMModelResponse buildPartial() {
-        grpc.server.services.PrismGrpc.LoadPRISMModelResponse result = new grpc.server.services.PrismGrpc.LoadPRISMModelResponse(this);
-        result.prismObjectId_ = prismObjectId_;
-        result.status_ = status_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof grpc.server.services.PrismGrpc.LoadPRISMModelResponse) {
-          return mergeFrom((grpc.server.services.PrismGrpc.LoadPRISMModelResponse)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(grpc.server.services.PrismGrpc.LoadPRISMModelResponse other) {
-        if (other == grpc.server.services.PrismGrpc.LoadPRISMModelResponse.getDefaultInstance()) return this;
-        if (!other.getPrismObjectId().isEmpty()) {
-          prismObjectId_ = other.prismObjectId_;
-          onChanged();
-        }
-        if (!other.getStatus().isEmpty()) {
-          status_ = other.status_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        grpc.server.services.PrismGrpc.LoadPRISMModelResponse parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (grpc.server.services.PrismGrpc.LoadPRISMModelResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6134,6 +4698,1592 @@ public final class PrismGrpc {
       }
       /**
        * <code>string status = 2;</code>
+       * @param value The bytes for status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatusBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:InitialiseResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:InitialiseResponse)
+    private static final grpc.server.services.PrismGrpc.InitialiseResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.InitialiseResponse();
+    }
+
+    public static grpc.server.services.PrismGrpc.InitialiseResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<InitialiseResponse>
+        PARSER = new com.google.protobuf.AbstractParser<InitialiseResponse>() {
+      @java.lang.Override
+      public InitialiseResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InitialiseResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<InitialiseResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InitialiseResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.server.services.PrismGrpc.InitialiseResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface LoadPRISMModelRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:LoadPRISMModelRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The prismObjectId.
+     */
+    java.lang.String getPrismObjectId();
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The bytes for prismObjectId.
+     */
+    com.google.protobuf.ByteString
+        getPrismObjectIdBytes();
+
+    /**
+     * <code>string module_object_id = 2;</code>
+     * @return The moduleObjectId.
+     */
+    java.lang.String getModuleObjectId();
+    /**
+     * <code>string module_object_id = 2;</code>
+     * @return The bytes for moduleObjectId.
+     */
+    com.google.protobuf.ByteString
+        getModuleObjectIdBytes();
+  }
+  /**
+   * Protobuf type {@code LoadPRISMModelRequest}
+   */
+  public static final class LoadPRISMModelRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:LoadPRISMModelRequest)
+      LoadPRISMModelRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use LoadPRISMModelRequest.newBuilder() to construct.
+    private LoadPRISMModelRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private LoadPRISMModelRequest() {
+      prismObjectId_ = "";
+      moduleObjectId_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new LoadPRISMModelRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private LoadPRISMModelRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              prismObjectId_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              moduleObjectId_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.server.services.PrismGrpc.LoadPRISMModelRequest.class, grpc.server.services.PrismGrpc.LoadPRISMModelRequest.Builder.class);
+    }
+
+    public static final int PRISM_OBJECT_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object prismObjectId_;
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The prismObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getPrismObjectId() {
+      java.lang.Object ref = prismObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        prismObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The bytes for prismObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPrismObjectIdBytes() {
+      java.lang.Object ref = prismObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        prismObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MODULE_OBJECT_ID_FIELD_NUMBER = 2;
+    private volatile java.lang.Object moduleObjectId_;
+    /**
+     * <code>string module_object_id = 2;</code>
+     * @return The moduleObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getModuleObjectId() {
+      java.lang.Object ref = moduleObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        moduleObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string module_object_id = 2;</code>
+     * @return The bytes for moduleObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getModuleObjectIdBytes() {
+      java.lang.Object ref = moduleObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        moduleObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getPrismObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, prismObjectId_);
+      }
+      if (!getModuleObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, moduleObjectId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getPrismObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, prismObjectId_);
+      }
+      if (!getModuleObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, moduleObjectId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.server.services.PrismGrpc.LoadPRISMModelRequest)) {
+        return super.equals(obj);
+      }
+      grpc.server.services.PrismGrpc.LoadPRISMModelRequest other = (grpc.server.services.PrismGrpc.LoadPRISMModelRequest) obj;
+
+      if (!getPrismObjectId()
+          .equals(other.getPrismObjectId())) return false;
+      if (!getModuleObjectId()
+          .equals(other.getModuleObjectId())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PRISM_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getPrismObjectId().hashCode();
+      hash = (37 * hash) + MODULE_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getModuleObjectId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.server.services.PrismGrpc.LoadPRISMModelRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code LoadPRISMModelRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:LoadPRISMModelRequest)
+        grpc.server.services.PrismGrpc.LoadPRISMModelRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.server.services.PrismGrpc.LoadPRISMModelRequest.class, grpc.server.services.PrismGrpc.LoadPRISMModelRequest.Builder.class);
+      }
+
+      // Construct using grpc.server.services.PrismGrpc.LoadPRISMModelRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        prismObjectId_ = "";
+
+        moduleObjectId_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.LoadPRISMModelRequest getDefaultInstanceForType() {
+        return grpc.server.services.PrismGrpc.LoadPRISMModelRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.LoadPRISMModelRequest build() {
+        grpc.server.services.PrismGrpc.LoadPRISMModelRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.LoadPRISMModelRequest buildPartial() {
+        grpc.server.services.PrismGrpc.LoadPRISMModelRequest result = new grpc.server.services.PrismGrpc.LoadPRISMModelRequest(this);
+        result.prismObjectId_ = prismObjectId_;
+        result.moduleObjectId_ = moduleObjectId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.server.services.PrismGrpc.LoadPRISMModelRequest) {
+          return mergeFrom((grpc.server.services.PrismGrpc.LoadPRISMModelRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.server.services.PrismGrpc.LoadPRISMModelRequest other) {
+        if (other == grpc.server.services.PrismGrpc.LoadPRISMModelRequest.getDefaultInstance()) return this;
+        if (!other.getPrismObjectId().isEmpty()) {
+          prismObjectId_ = other.prismObjectId_;
+          onChanged();
+        }
+        if (!other.getModuleObjectId().isEmpty()) {
+          moduleObjectId_ = other.moduleObjectId_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.server.services.PrismGrpc.LoadPRISMModelRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.server.services.PrismGrpc.LoadPRISMModelRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object prismObjectId_ = "";
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @return The prismObjectId.
+       */
+      public java.lang.String getPrismObjectId() {
+        java.lang.Object ref = prismObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          prismObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @return The bytes for prismObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getPrismObjectIdBytes() {
+        java.lang.Object ref = prismObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          prismObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @param value The prismObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPrismObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        prismObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPrismObjectId() {
+        
+        prismObjectId_ = getDefaultInstance().getPrismObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @param value The bytes for prismObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPrismObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        prismObjectId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object moduleObjectId_ = "";
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @return The moduleObjectId.
+       */
+      public java.lang.String getModuleObjectId() {
+        java.lang.Object ref = moduleObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          moduleObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @return The bytes for moduleObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getModuleObjectIdBytes() {
+        java.lang.Object ref = moduleObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          moduleObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @param value The moduleObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModuleObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        moduleObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearModuleObjectId() {
+        
+        moduleObjectId_ = getDefaultInstance().getModuleObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @param value The bytes for moduleObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModuleObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        moduleObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:LoadPRISMModelRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:LoadPRISMModelRequest)
+    private static final grpc.server.services.PrismGrpc.LoadPRISMModelRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.LoadPRISMModelRequest();
+    }
+
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<LoadPRISMModelRequest>
+        PARSER = new com.google.protobuf.AbstractParser<LoadPRISMModelRequest>() {
+      @java.lang.Override
+      public LoadPRISMModelRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new LoadPRISMModelRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<LoadPRISMModelRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<LoadPRISMModelRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.server.services.PrismGrpc.LoadPRISMModelRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface LoadPRISMModelResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:LoadPRISMModelResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The prismObjectId.
+     */
+    java.lang.String getPrismObjectId();
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The bytes for prismObjectId.
+     */
+    com.google.protobuf.ByteString
+        getPrismObjectIdBytes();
+
+    /**
+     * <code>string module_object_id = 2;</code>
+     * @return The moduleObjectId.
+     */
+    java.lang.String getModuleObjectId();
+    /**
+     * <code>string module_object_id = 2;</code>
+     * @return The bytes for moduleObjectId.
+     */
+    com.google.protobuf.ByteString
+        getModuleObjectIdBytes();
+
+    /**
+     * <code>string status = 3;</code>
+     * @return The status.
+     */
+    java.lang.String getStatus();
+    /**
+     * <code>string status = 3;</code>
+     * @return The bytes for status.
+     */
+    com.google.protobuf.ByteString
+        getStatusBytes();
+  }
+  /**
+   * Protobuf type {@code LoadPRISMModelResponse}
+   */
+  public static final class LoadPRISMModelResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:LoadPRISMModelResponse)
+      LoadPRISMModelResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use LoadPRISMModelResponse.newBuilder() to construct.
+    private LoadPRISMModelResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private LoadPRISMModelResponse() {
+      prismObjectId_ = "";
+      moduleObjectId_ = "";
+      status_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new LoadPRISMModelResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private LoadPRISMModelResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              prismObjectId_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              moduleObjectId_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              status_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.server.services.PrismGrpc.LoadPRISMModelResponse.class, grpc.server.services.PrismGrpc.LoadPRISMModelResponse.Builder.class);
+    }
+
+    public static final int PRISM_OBJECT_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object prismObjectId_;
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The prismObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getPrismObjectId() {
+      java.lang.Object ref = prismObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        prismObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The bytes for prismObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPrismObjectIdBytes() {
+      java.lang.Object ref = prismObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        prismObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MODULE_OBJECT_ID_FIELD_NUMBER = 2;
+    private volatile java.lang.Object moduleObjectId_;
+    /**
+     * <code>string module_object_id = 2;</code>
+     * @return The moduleObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getModuleObjectId() {
+      java.lang.Object ref = moduleObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        moduleObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string module_object_id = 2;</code>
+     * @return The bytes for moduleObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getModuleObjectIdBytes() {
+      java.lang.Object ref = moduleObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        moduleObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 3;
+    private volatile java.lang.Object status_;
+    /**
+     * <code>string status = 3;</code>
+     * @return The status.
+     */
+    @java.lang.Override
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        status_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string status = 3;</code>
+     * @return The bytes for status.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getStatusBytes() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        status_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getPrismObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, prismObjectId_);
+      }
+      if (!getModuleObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, moduleObjectId_);
+      }
+      if (!getStatusBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, status_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getPrismObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, prismObjectId_);
+      }
+      if (!getModuleObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, moduleObjectId_);
+      }
+      if (!getStatusBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, status_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.server.services.PrismGrpc.LoadPRISMModelResponse)) {
+        return super.equals(obj);
+      }
+      grpc.server.services.PrismGrpc.LoadPRISMModelResponse other = (grpc.server.services.PrismGrpc.LoadPRISMModelResponse) obj;
+
+      if (!getPrismObjectId()
+          .equals(other.getPrismObjectId())) return false;
+      if (!getModuleObjectId()
+          .equals(other.getModuleObjectId())) return false;
+      if (!getStatus()
+          .equals(other.getStatus())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PRISM_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getPrismObjectId().hashCode();
+      hash = (37 * hash) + MODULE_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getModuleObjectId().hashCode();
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getStatus().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.LoadPRISMModelResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.server.services.PrismGrpc.LoadPRISMModelResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code LoadPRISMModelResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:LoadPRISMModelResponse)
+        grpc.server.services.PrismGrpc.LoadPRISMModelResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.server.services.PrismGrpc.LoadPRISMModelResponse.class, grpc.server.services.PrismGrpc.LoadPRISMModelResponse.Builder.class);
+      }
+
+      // Construct using grpc.server.services.PrismGrpc.LoadPRISMModelResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        prismObjectId_ = "";
+
+        moduleObjectId_ = "";
+
+        status_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.server.services.PrismGrpc.internal_static_LoadPRISMModelResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.LoadPRISMModelResponse getDefaultInstanceForType() {
+        return grpc.server.services.PrismGrpc.LoadPRISMModelResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.LoadPRISMModelResponse build() {
+        grpc.server.services.PrismGrpc.LoadPRISMModelResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.LoadPRISMModelResponse buildPartial() {
+        grpc.server.services.PrismGrpc.LoadPRISMModelResponse result = new grpc.server.services.PrismGrpc.LoadPRISMModelResponse(this);
+        result.prismObjectId_ = prismObjectId_;
+        result.moduleObjectId_ = moduleObjectId_;
+        result.status_ = status_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.server.services.PrismGrpc.LoadPRISMModelResponse) {
+          return mergeFrom((grpc.server.services.PrismGrpc.LoadPRISMModelResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.server.services.PrismGrpc.LoadPRISMModelResponse other) {
+        if (other == grpc.server.services.PrismGrpc.LoadPRISMModelResponse.getDefaultInstance()) return this;
+        if (!other.getPrismObjectId().isEmpty()) {
+          prismObjectId_ = other.prismObjectId_;
+          onChanged();
+        }
+        if (!other.getModuleObjectId().isEmpty()) {
+          moduleObjectId_ = other.moduleObjectId_;
+          onChanged();
+        }
+        if (!other.getStatus().isEmpty()) {
+          status_ = other.status_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.server.services.PrismGrpc.LoadPRISMModelResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.server.services.PrismGrpc.LoadPRISMModelResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object prismObjectId_ = "";
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @return The prismObjectId.
+       */
+      public java.lang.String getPrismObjectId() {
+        java.lang.Object ref = prismObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          prismObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @return The bytes for prismObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getPrismObjectIdBytes() {
+        java.lang.Object ref = prismObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          prismObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @param value The prismObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPrismObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        prismObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPrismObjectId() {
+        
+        prismObjectId_ = getDefaultInstance().getPrismObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @param value The bytes for prismObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPrismObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        prismObjectId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object moduleObjectId_ = "";
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @return The moduleObjectId.
+       */
+      public java.lang.String getModuleObjectId() {
+        java.lang.Object ref = moduleObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          moduleObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @return The bytes for moduleObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getModuleObjectIdBytes() {
+        java.lang.Object ref = moduleObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          moduleObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @param value The moduleObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModuleObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        moduleObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearModuleObjectId() {
+        
+        moduleObjectId_ = getDefaultInstance().getModuleObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @param value The bytes for moduleObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModuleObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        moduleObjectId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object status_ = "";
+      /**
+       * <code>string status = 3;</code>
+       * @return The status.
+       */
+      public java.lang.String getStatus() {
+        java.lang.Object ref = status_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          status_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string status = 3;</code>
+       * @return The bytes for status.
+       */
+      public com.google.protobuf.ByteString
+          getStatusBytes() {
+        java.lang.Object ref = status_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          status_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string status = 3;</code>
+       * @param value The status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatus(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string status = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStatus() {
+        
+        status_ = getDefaultInstance().getStatus();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string status = 3;</code>
        * @param value The bytes for status to set.
        * @return This builder for chaining.
        */
@@ -10618,10 +10768,10 @@ public final class PrismGrpc {
         getPrismObjectIdBytes();
 
     /**
-     * <code>double result = 2;</code>
-     * @return The result.
+     * <code>double status = 2;</code>
+     * @return The status.
      */
-    double getResult();
+    double getStatus();
   }
   /**
    * Protobuf type {@code ModelCheckResponse}
@@ -10677,7 +10827,7 @@ public final class PrismGrpc {
             }
             case 17: {
 
-              result_ = input.readDouble();
+              status_ = input.readDouble();
               break;
             }
             default: {
@@ -10750,15 +10900,15 @@ public final class PrismGrpc {
       }
     }
 
-    public static final int RESULT_FIELD_NUMBER = 2;
-    private double result_;
+    public static final int STATUS_FIELD_NUMBER = 2;
+    private double status_;
     /**
-     * <code>double result = 2;</code>
-     * @return The result.
+     * <code>double status = 2;</code>
+     * @return The status.
      */
     @java.lang.Override
-    public double getResult() {
-      return result_;
+    public double getStatus() {
+      return status_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -10778,8 +10928,8 @@ public final class PrismGrpc {
       if (!getPrismObjectIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, prismObjectId_);
       }
-      if (result_ != 0D) {
-        output.writeDouble(2, result_);
+      if (status_ != 0D) {
+        output.writeDouble(2, status_);
       }
       unknownFields.writeTo(output);
     }
@@ -10793,9 +10943,9 @@ public final class PrismGrpc {
       if (!getPrismObjectIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, prismObjectId_);
       }
-      if (result_ != 0D) {
+      if (status_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(2, result_);
+          .computeDoubleSize(2, status_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -10814,9 +10964,9 @@ public final class PrismGrpc {
 
       if (!getPrismObjectId()
           .equals(other.getPrismObjectId())) return false;
-      if (java.lang.Double.doubleToLongBits(getResult())
+      if (java.lang.Double.doubleToLongBits(getStatus())
           != java.lang.Double.doubleToLongBits(
-              other.getResult())) return false;
+              other.getStatus())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -10830,9 +10980,9 @@ public final class PrismGrpc {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + PRISM_OBJECT_ID_FIELD_NUMBER;
       hash = (53 * hash) + getPrismObjectId().hashCode();
-      hash = (37 * hash) + RESULT_FIELD_NUMBER;
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getResult()));
+          java.lang.Double.doubleToLongBits(getStatus()));
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -10968,7 +11118,7 @@ public final class PrismGrpc {
         super.clear();
         prismObjectId_ = "";
 
-        result_ = 0D;
+        status_ = 0D;
 
         return this;
       }
@@ -10997,7 +11147,7 @@ public final class PrismGrpc {
       public grpc.server.services.PrismGrpc.ModelCheckResponse buildPartial() {
         grpc.server.services.PrismGrpc.ModelCheckResponse result = new grpc.server.services.PrismGrpc.ModelCheckResponse(this);
         result.prismObjectId_ = prismObjectId_;
-        result.result_ = result_;
+        result.status_ = status_;
         onBuilt();
         return result;
       }
@@ -11050,8 +11200,8 @@ public final class PrismGrpc {
           prismObjectId_ = other.prismObjectId_;
           onChanged();
         }
-        if (other.getResult() != 0D) {
-          setResult(other.getResult());
+        if (other.getStatus() != 0D) {
+          setStatus(other.getStatus());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -11158,33 +11308,33 @@ public final class PrismGrpc {
         return this;
       }
 
-      private double result_ ;
+      private double status_ ;
       /**
-       * <code>double result = 2;</code>
-       * @return The result.
+       * <code>double status = 2;</code>
+       * @return The status.
        */
       @java.lang.Override
-      public double getResult() {
-        return result_;
+      public double getStatus() {
+        return status_;
       }
       /**
-       * <code>double result = 2;</code>
-       * @param value The result to set.
+       * <code>double status = 2;</code>
+       * @param value The status to set.
        * @return This builder for chaining.
        */
-      public Builder setResult(double value) {
+      public Builder setStatus(double value) {
         
-        result_ = value;
+        status_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>double result = 2;</code>
+       * <code>double status = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearResult() {
+      public Builder clearStatus() {
         
-        result_ = 0D;
+        status_ = 0D;
         onChanged();
         return this;
       }
@@ -14500,16 +14650,16 @@ public final class PrismGrpc {
         getPrismObjectIdBytes();
 
     /**
-     * <code>string result = 2;</code>
-     * @return The result.
+     * <code>string status = 2;</code>
+     * @return The status.
      */
-    java.lang.String getResult();
+    java.lang.String getStatus();
     /**
-     * <code>string result = 2;</code>
-     * @return The bytes for result.
+     * <code>string status = 2;</code>
+     * @return The bytes for status.
      */
     com.google.protobuf.ByteString
-        getResultBytes();
+        getStatusBytes();
   }
   /**
    * Protobuf type {@code ModelCheckStringResponse}
@@ -14525,7 +14675,7 @@ public final class PrismGrpc {
     }
     private ModelCheckStringResponse() {
       prismObjectId_ = "";
-      result_ = "";
+      status_ = "";
     }
 
     @java.lang.Override
@@ -14567,7 +14717,7 @@ public final class PrismGrpc {
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              result_ = s;
+              status_ = s;
               break;
             }
             default: {
@@ -14640,38 +14790,38 @@ public final class PrismGrpc {
       }
     }
 
-    public static final int RESULT_FIELD_NUMBER = 2;
-    private volatile java.lang.Object result_;
+    public static final int STATUS_FIELD_NUMBER = 2;
+    private volatile java.lang.Object status_;
     /**
-     * <code>string result = 2;</code>
-     * @return The result.
+     * <code>string status = 2;</code>
+     * @return The status.
      */
     @java.lang.Override
-    public java.lang.String getResult() {
-      java.lang.Object ref = result_;
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        result_ = s;
+        status_ = s;
         return s;
       }
     }
     /**
-     * <code>string result = 2;</code>
-     * @return The bytes for result.
+     * <code>string status = 2;</code>
+     * @return The bytes for status.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getResultBytes() {
-      java.lang.Object ref = result_;
+        getStatusBytes() {
+      java.lang.Object ref = status_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        result_ = b;
+        status_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -14695,8 +14845,8 @@ public final class PrismGrpc {
       if (!getPrismObjectIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, prismObjectId_);
       }
-      if (!getResultBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, result_);
+      if (!getStatusBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, status_);
       }
       unknownFields.writeTo(output);
     }
@@ -14710,8 +14860,8 @@ public final class PrismGrpc {
       if (!getPrismObjectIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, prismObjectId_);
       }
-      if (!getResultBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, result_);
+      if (!getStatusBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, status_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -14730,8 +14880,8 @@ public final class PrismGrpc {
 
       if (!getPrismObjectId()
           .equals(other.getPrismObjectId())) return false;
-      if (!getResult()
-          .equals(other.getResult())) return false;
+      if (!getStatus()
+          .equals(other.getStatus())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -14745,8 +14895,8 @@ public final class PrismGrpc {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + PRISM_OBJECT_ID_FIELD_NUMBER;
       hash = (53 * hash) + getPrismObjectId().hashCode();
-      hash = (37 * hash) + RESULT_FIELD_NUMBER;
-      hash = (53 * hash) + getResult().hashCode();
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getStatus().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -14882,7 +15032,7 @@ public final class PrismGrpc {
         super.clear();
         prismObjectId_ = "";
 
-        result_ = "";
+        status_ = "";
 
         return this;
       }
@@ -14911,7 +15061,7 @@ public final class PrismGrpc {
       public grpc.server.services.PrismGrpc.ModelCheckStringResponse buildPartial() {
         grpc.server.services.PrismGrpc.ModelCheckStringResponse result = new grpc.server.services.PrismGrpc.ModelCheckStringResponse(this);
         result.prismObjectId_ = prismObjectId_;
-        result.result_ = result_;
+        result.status_ = status_;
         onBuilt();
         return result;
       }
@@ -14964,8 +15114,8 @@ public final class PrismGrpc {
           prismObjectId_ = other.prismObjectId_;
           onChanged();
         }
-        if (!other.getResult().isEmpty()) {
-          result_ = other.result_;
+        if (!other.getStatus().isEmpty()) {
+          status_ = other.status_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -15073,78 +15223,78 @@ public final class PrismGrpc {
         return this;
       }
 
-      private java.lang.Object result_ = "";
+      private java.lang.Object status_ = "";
       /**
-       * <code>string result = 2;</code>
-       * @return The result.
+       * <code>string status = 2;</code>
+       * @return The status.
        */
-      public java.lang.String getResult() {
-        java.lang.Object ref = result_;
+      public java.lang.String getStatus() {
+        java.lang.Object ref = status_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          result_ = s;
+          status_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string result = 2;</code>
-       * @return The bytes for result.
+       * <code>string status = 2;</code>
+       * @return The bytes for status.
        */
       public com.google.protobuf.ByteString
-          getResultBytes() {
-        java.lang.Object ref = result_;
+          getStatusBytes() {
+        java.lang.Object ref = status_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          result_ = b;
+          status_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string result = 2;</code>
-       * @param value The result to set.
+       * <code>string status = 2;</code>
+       * @param value The status to set.
        * @return This builder for chaining.
        */
-      public Builder setResult(
+      public Builder setStatus(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        result_ = value;
+        status_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string result = 2;</code>
+       * <code>string status = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearResult() {
+      public Builder clearStatus() {
         
-        result_ = getDefaultInstance().getResult();
+        status_ = getDefaultInstance().getStatus();
         onChanged();
         return this;
       }
       /**
-       * <code>string result = 2;</code>
-       * @param value The bytes for result to set.
+       * <code>string status = 2;</code>
+       * @param value The bytes for status to set.
        * @return This builder for chaining.
        */
-      public Builder setResultBytes(
+      public Builder setStatusBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        result_ = value;
+        status_ = value;
         onChanged();
         return this;
       }
@@ -15936,16 +16086,16 @@ public final class PrismGrpc {
         getPrismObjectIdBytes();
 
     /**
-     * <code>string result = 2;</code>
-     * @return The result.
+     * <code>string status = 2;</code>
+     * @return The status.
      */
-    java.lang.String getResult();
+    java.lang.String getStatus();
     /**
-     * <code>string result = 2;</code>
-     * @return The bytes for result.
+     * <code>string status = 2;</code>
+     * @return The bytes for status.
      */
     com.google.protobuf.ByteString
-        getResultBytes();
+        getStatusBytes();
   }
   /**
    * Protobuf type {@code ParseAndLoadModelReply}
@@ -15961,7 +16111,7 @@ public final class PrismGrpc {
     }
     private ParseAndLoadModelReply() {
       prismObjectId_ = "";
-      result_ = "";
+      status_ = "";
     }
 
     @java.lang.Override
@@ -16003,7 +16153,7 @@ public final class PrismGrpc {
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              result_ = s;
+              status_ = s;
               break;
             }
             default: {
@@ -16076,38 +16226,38 @@ public final class PrismGrpc {
       }
     }
 
-    public static final int RESULT_FIELD_NUMBER = 2;
-    private volatile java.lang.Object result_;
+    public static final int STATUS_FIELD_NUMBER = 2;
+    private volatile java.lang.Object status_;
     /**
-     * <code>string result = 2;</code>
-     * @return The result.
+     * <code>string status = 2;</code>
+     * @return The status.
      */
     @java.lang.Override
-    public java.lang.String getResult() {
-      java.lang.Object ref = result_;
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        result_ = s;
+        status_ = s;
         return s;
       }
     }
     /**
-     * <code>string result = 2;</code>
-     * @return The bytes for result.
+     * <code>string status = 2;</code>
+     * @return The bytes for status.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getResultBytes() {
-      java.lang.Object ref = result_;
+        getStatusBytes() {
+      java.lang.Object ref = status_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        result_ = b;
+        status_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -16131,8 +16281,8 @@ public final class PrismGrpc {
       if (!getPrismObjectIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, prismObjectId_);
       }
-      if (!getResultBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, result_);
+      if (!getStatusBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, status_);
       }
       unknownFields.writeTo(output);
     }
@@ -16146,8 +16296,8 @@ public final class PrismGrpc {
       if (!getPrismObjectIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, prismObjectId_);
       }
-      if (!getResultBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, result_);
+      if (!getStatusBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, status_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -16166,8 +16316,8 @@ public final class PrismGrpc {
 
       if (!getPrismObjectId()
           .equals(other.getPrismObjectId())) return false;
-      if (!getResult()
-          .equals(other.getResult())) return false;
+      if (!getStatus()
+          .equals(other.getStatus())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -16181,8 +16331,8 @@ public final class PrismGrpc {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + PRISM_OBJECT_ID_FIELD_NUMBER;
       hash = (53 * hash) + getPrismObjectId().hashCode();
-      hash = (37 * hash) + RESULT_FIELD_NUMBER;
-      hash = (53 * hash) + getResult().hashCode();
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getStatus().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -16318,7 +16468,7 @@ public final class PrismGrpc {
         super.clear();
         prismObjectId_ = "";
 
-        result_ = "";
+        status_ = "";
 
         return this;
       }
@@ -16347,7 +16497,7 @@ public final class PrismGrpc {
       public grpc.server.services.PrismGrpc.ParseAndLoadModelReply buildPartial() {
         grpc.server.services.PrismGrpc.ParseAndLoadModelReply result = new grpc.server.services.PrismGrpc.ParseAndLoadModelReply(this);
         result.prismObjectId_ = prismObjectId_;
-        result.result_ = result_;
+        result.status_ = status_;
         onBuilt();
         return result;
       }
@@ -16400,8 +16550,8 @@ public final class PrismGrpc {
           prismObjectId_ = other.prismObjectId_;
           onChanged();
         }
-        if (!other.getResult().isEmpty()) {
-          result_ = other.result_;
+        if (!other.getStatus().isEmpty()) {
+          status_ = other.status_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -16509,78 +16659,78 @@ public final class PrismGrpc {
         return this;
       }
 
-      private java.lang.Object result_ = "";
+      private java.lang.Object status_ = "";
       /**
-       * <code>string result = 2;</code>
-       * @return The result.
+       * <code>string status = 2;</code>
+       * @return The status.
        */
-      public java.lang.String getResult() {
-        java.lang.Object ref = result_;
+      public java.lang.String getStatus() {
+        java.lang.Object ref = status_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          result_ = s;
+          status_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string result = 2;</code>
-       * @return The bytes for result.
+       * <code>string status = 2;</code>
+       * @return The bytes for status.
        */
       public com.google.protobuf.ByteString
-          getResultBytes() {
-        java.lang.Object ref = result_;
+          getStatusBytes() {
+        java.lang.Object ref = status_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          result_ = b;
+          status_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string result = 2;</code>
-       * @param value The result to set.
+       * <code>string status = 2;</code>
+       * @param value The status to set.
        * @return This builder for chaining.
        */
-      public Builder setResult(
+      public Builder setStatus(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        result_ = value;
+        status_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string result = 2;</code>
+       * <code>string status = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearResult() {
+      public Builder clearStatus() {
         
-        result_ = getDefaultInstance().getResult();
+        status_ = getDefaultInstance().getStatus();
         onChanged();
         return this;
       }
       /**
-       * <code>string result = 2;</code>
-       * @param value The bytes for result to set.
+       * <code>string status = 2;</code>
+       * @param value The bytes for status to set.
        * @return This builder for chaining.
        */
-      public Builder setResultBytes(
+      public Builder setStatusBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        result_ = value;
+        status_ = value;
         onChanged();
         return this;
       }
@@ -17923,6 +18073,1742 @@ public final class PrismGrpc {
 
   }
 
+  public interface ParseModelFileRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ParseModelFileRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The prismObjectId.
+     */
+    java.lang.String getPrismObjectId();
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The bytes for prismObjectId.
+     */
+    com.google.protobuf.ByteString
+        getPrismObjectIdBytes();
+
+    /**
+     * <code>string module_object_id = 2;</code>
+     * @return The moduleObjectId.
+     */
+    java.lang.String getModuleObjectId();
+    /**
+     * <code>string module_object_id = 2;</code>
+     * @return The bytes for moduleObjectId.
+     */
+    com.google.protobuf.ByteString
+        getModuleObjectIdBytes();
+
+    /**
+     * <code>string model_file_name = 3;</code>
+     * @return The modelFileName.
+     */
+    java.lang.String getModelFileName();
+    /**
+     * <code>string model_file_name = 3;</code>
+     * @return The bytes for modelFileName.
+     */
+    com.google.protobuf.ByteString
+        getModelFileNameBytes();
+  }
+  /**
+   * Protobuf type {@code ParseModelFileRequest}
+   */
+  public static final class ParseModelFileRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ParseModelFileRequest)
+      ParseModelFileRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ParseModelFileRequest.newBuilder() to construct.
+    private ParseModelFileRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ParseModelFileRequest() {
+      prismObjectId_ = "";
+      moduleObjectId_ = "";
+      modelFileName_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ParseModelFileRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ParseModelFileRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              prismObjectId_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              moduleObjectId_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              modelFileName_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.server.services.PrismGrpc.internal_static_ParseModelFileRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.server.services.PrismGrpc.internal_static_ParseModelFileRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.server.services.PrismGrpc.ParseModelFileRequest.class, grpc.server.services.PrismGrpc.ParseModelFileRequest.Builder.class);
+    }
+
+    public static final int PRISM_OBJECT_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object prismObjectId_;
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The prismObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getPrismObjectId() {
+      java.lang.Object ref = prismObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        prismObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The bytes for prismObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPrismObjectIdBytes() {
+      java.lang.Object ref = prismObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        prismObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MODULE_OBJECT_ID_FIELD_NUMBER = 2;
+    private volatile java.lang.Object moduleObjectId_;
+    /**
+     * <code>string module_object_id = 2;</code>
+     * @return The moduleObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getModuleObjectId() {
+      java.lang.Object ref = moduleObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        moduleObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string module_object_id = 2;</code>
+     * @return The bytes for moduleObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getModuleObjectIdBytes() {
+      java.lang.Object ref = moduleObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        moduleObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MODEL_FILE_NAME_FIELD_NUMBER = 3;
+    private volatile java.lang.Object modelFileName_;
+    /**
+     * <code>string model_file_name = 3;</code>
+     * @return The modelFileName.
+     */
+    @java.lang.Override
+    public java.lang.String getModelFileName() {
+      java.lang.Object ref = modelFileName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        modelFileName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string model_file_name = 3;</code>
+     * @return The bytes for modelFileName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getModelFileNameBytes() {
+      java.lang.Object ref = modelFileName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        modelFileName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getPrismObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, prismObjectId_);
+      }
+      if (!getModuleObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, moduleObjectId_);
+      }
+      if (!getModelFileNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, modelFileName_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getPrismObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, prismObjectId_);
+      }
+      if (!getModuleObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, moduleObjectId_);
+      }
+      if (!getModelFileNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, modelFileName_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.server.services.PrismGrpc.ParseModelFileRequest)) {
+        return super.equals(obj);
+      }
+      grpc.server.services.PrismGrpc.ParseModelFileRequest other = (grpc.server.services.PrismGrpc.ParseModelFileRequest) obj;
+
+      if (!getPrismObjectId()
+          .equals(other.getPrismObjectId())) return false;
+      if (!getModuleObjectId()
+          .equals(other.getModuleObjectId())) return false;
+      if (!getModelFileName()
+          .equals(other.getModelFileName())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PRISM_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getPrismObjectId().hashCode();
+      hash = (37 * hash) + MODULE_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getModuleObjectId().hashCode();
+      hash = (37 * hash) + MODEL_FILE_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getModelFileName().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.server.services.PrismGrpc.ParseModelFileRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.server.services.PrismGrpc.ParseModelFileRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ParseModelFileRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ParseModelFileRequest)
+        grpc.server.services.PrismGrpc.ParseModelFileRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.server.services.PrismGrpc.internal_static_ParseModelFileRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.server.services.PrismGrpc.internal_static_ParseModelFileRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.server.services.PrismGrpc.ParseModelFileRequest.class, grpc.server.services.PrismGrpc.ParseModelFileRequest.Builder.class);
+      }
+
+      // Construct using grpc.server.services.PrismGrpc.ParseModelFileRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        prismObjectId_ = "";
+
+        moduleObjectId_ = "";
+
+        modelFileName_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.server.services.PrismGrpc.internal_static_ParseModelFileRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.ParseModelFileRequest getDefaultInstanceForType() {
+        return grpc.server.services.PrismGrpc.ParseModelFileRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.ParseModelFileRequest build() {
+        grpc.server.services.PrismGrpc.ParseModelFileRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.ParseModelFileRequest buildPartial() {
+        grpc.server.services.PrismGrpc.ParseModelFileRequest result = new grpc.server.services.PrismGrpc.ParseModelFileRequest(this);
+        result.prismObjectId_ = prismObjectId_;
+        result.moduleObjectId_ = moduleObjectId_;
+        result.modelFileName_ = modelFileName_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.server.services.PrismGrpc.ParseModelFileRequest) {
+          return mergeFrom((grpc.server.services.PrismGrpc.ParseModelFileRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.server.services.PrismGrpc.ParseModelFileRequest other) {
+        if (other == grpc.server.services.PrismGrpc.ParseModelFileRequest.getDefaultInstance()) return this;
+        if (!other.getPrismObjectId().isEmpty()) {
+          prismObjectId_ = other.prismObjectId_;
+          onChanged();
+        }
+        if (!other.getModuleObjectId().isEmpty()) {
+          moduleObjectId_ = other.moduleObjectId_;
+          onChanged();
+        }
+        if (!other.getModelFileName().isEmpty()) {
+          modelFileName_ = other.modelFileName_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.server.services.PrismGrpc.ParseModelFileRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.server.services.PrismGrpc.ParseModelFileRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object prismObjectId_ = "";
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @return The prismObjectId.
+       */
+      public java.lang.String getPrismObjectId() {
+        java.lang.Object ref = prismObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          prismObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @return The bytes for prismObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getPrismObjectIdBytes() {
+        java.lang.Object ref = prismObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          prismObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @param value The prismObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPrismObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        prismObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPrismObjectId() {
+        
+        prismObjectId_ = getDefaultInstance().getPrismObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @param value The bytes for prismObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPrismObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        prismObjectId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object moduleObjectId_ = "";
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @return The moduleObjectId.
+       */
+      public java.lang.String getModuleObjectId() {
+        java.lang.Object ref = moduleObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          moduleObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @return The bytes for moduleObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getModuleObjectIdBytes() {
+        java.lang.Object ref = moduleObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          moduleObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @param value The moduleObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModuleObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        moduleObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearModuleObjectId() {
+        
+        moduleObjectId_ = getDefaultInstance().getModuleObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @param value The bytes for moduleObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModuleObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        moduleObjectId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object modelFileName_ = "";
+      /**
+       * <code>string model_file_name = 3;</code>
+       * @return The modelFileName.
+       */
+      public java.lang.String getModelFileName() {
+        java.lang.Object ref = modelFileName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          modelFileName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string model_file_name = 3;</code>
+       * @return The bytes for modelFileName.
+       */
+      public com.google.protobuf.ByteString
+          getModelFileNameBytes() {
+        java.lang.Object ref = modelFileName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          modelFileName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string model_file_name = 3;</code>
+       * @param value The modelFileName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModelFileName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        modelFileName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string model_file_name = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearModelFileName() {
+        
+        modelFileName_ = getDefaultInstance().getModelFileName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string model_file_name = 3;</code>
+       * @param value The bytes for modelFileName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModelFileNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        modelFileName_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ParseModelFileRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:ParseModelFileRequest)
+    private static final grpc.server.services.PrismGrpc.ParseModelFileRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.ParseModelFileRequest();
+    }
+
+    public static grpc.server.services.PrismGrpc.ParseModelFileRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ParseModelFileRequest>
+        PARSER = new com.google.protobuf.AbstractParser<ParseModelFileRequest>() {
+      @java.lang.Override
+      public ParseModelFileRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ParseModelFileRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ParseModelFileRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ParseModelFileRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.server.services.PrismGrpc.ParseModelFileRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ParseModelFileResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ParseModelFileResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The prismObjectId.
+     */
+    java.lang.String getPrismObjectId();
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The bytes for prismObjectId.
+     */
+    com.google.protobuf.ByteString
+        getPrismObjectIdBytes();
+
+    /**
+     * <code>string module_object_id = 2;</code>
+     * @return The moduleObjectId.
+     */
+    java.lang.String getModuleObjectId();
+    /**
+     * <code>string module_object_id = 2;</code>
+     * @return The bytes for moduleObjectId.
+     */
+    com.google.protobuf.ByteString
+        getModuleObjectIdBytes();
+
+    /**
+     * <code>string status = 3;</code>
+     * @return The status.
+     */
+    java.lang.String getStatus();
+    /**
+     * <code>string status = 3;</code>
+     * @return The bytes for status.
+     */
+    com.google.protobuf.ByteString
+        getStatusBytes();
+  }
+  /**
+   * Protobuf type {@code ParseModelFileResponse}
+   */
+  public static final class ParseModelFileResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ParseModelFileResponse)
+      ParseModelFileResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ParseModelFileResponse.newBuilder() to construct.
+    private ParseModelFileResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ParseModelFileResponse() {
+      prismObjectId_ = "";
+      moduleObjectId_ = "";
+      status_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ParseModelFileResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ParseModelFileResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              prismObjectId_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              moduleObjectId_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              status_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.server.services.PrismGrpc.internal_static_ParseModelFileResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.server.services.PrismGrpc.internal_static_ParseModelFileResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.server.services.PrismGrpc.ParseModelFileResponse.class, grpc.server.services.PrismGrpc.ParseModelFileResponse.Builder.class);
+    }
+
+    public static final int PRISM_OBJECT_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object prismObjectId_;
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The prismObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getPrismObjectId() {
+      java.lang.Object ref = prismObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        prismObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The bytes for prismObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPrismObjectIdBytes() {
+      java.lang.Object ref = prismObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        prismObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MODULE_OBJECT_ID_FIELD_NUMBER = 2;
+    private volatile java.lang.Object moduleObjectId_;
+    /**
+     * <code>string module_object_id = 2;</code>
+     * @return The moduleObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getModuleObjectId() {
+      java.lang.Object ref = moduleObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        moduleObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string module_object_id = 2;</code>
+     * @return The bytes for moduleObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getModuleObjectIdBytes() {
+      java.lang.Object ref = moduleObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        moduleObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 3;
+    private volatile java.lang.Object status_;
+    /**
+     * <code>string status = 3;</code>
+     * @return The status.
+     */
+    @java.lang.Override
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        status_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string status = 3;</code>
+     * @return The bytes for status.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getStatusBytes() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        status_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getPrismObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, prismObjectId_);
+      }
+      if (!getModuleObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, moduleObjectId_);
+      }
+      if (!getStatusBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, status_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getPrismObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, prismObjectId_);
+      }
+      if (!getModuleObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, moduleObjectId_);
+      }
+      if (!getStatusBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, status_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.server.services.PrismGrpc.ParseModelFileResponse)) {
+        return super.equals(obj);
+      }
+      grpc.server.services.PrismGrpc.ParseModelFileResponse other = (grpc.server.services.PrismGrpc.ParseModelFileResponse) obj;
+
+      if (!getPrismObjectId()
+          .equals(other.getPrismObjectId())) return false;
+      if (!getModuleObjectId()
+          .equals(other.getModuleObjectId())) return false;
+      if (!getStatus()
+          .equals(other.getStatus())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PRISM_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getPrismObjectId().hashCode();
+      hash = (37 * hash) + MODULE_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getModuleObjectId().hashCode();
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getStatus().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.server.services.PrismGrpc.ParseModelFileResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.ParseModelFileResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.server.services.PrismGrpc.ParseModelFileResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ParseModelFileResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ParseModelFileResponse)
+        grpc.server.services.PrismGrpc.ParseModelFileResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.server.services.PrismGrpc.internal_static_ParseModelFileResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.server.services.PrismGrpc.internal_static_ParseModelFileResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.server.services.PrismGrpc.ParseModelFileResponse.class, grpc.server.services.PrismGrpc.ParseModelFileResponse.Builder.class);
+      }
+
+      // Construct using grpc.server.services.PrismGrpc.ParseModelFileResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        prismObjectId_ = "";
+
+        moduleObjectId_ = "";
+
+        status_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.server.services.PrismGrpc.internal_static_ParseModelFileResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.ParseModelFileResponse getDefaultInstanceForType() {
+        return grpc.server.services.PrismGrpc.ParseModelFileResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.ParseModelFileResponse build() {
+        grpc.server.services.PrismGrpc.ParseModelFileResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.ParseModelFileResponse buildPartial() {
+        grpc.server.services.PrismGrpc.ParseModelFileResponse result = new grpc.server.services.PrismGrpc.ParseModelFileResponse(this);
+        result.prismObjectId_ = prismObjectId_;
+        result.moduleObjectId_ = moduleObjectId_;
+        result.status_ = status_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.server.services.PrismGrpc.ParseModelFileResponse) {
+          return mergeFrom((grpc.server.services.PrismGrpc.ParseModelFileResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.server.services.PrismGrpc.ParseModelFileResponse other) {
+        if (other == grpc.server.services.PrismGrpc.ParseModelFileResponse.getDefaultInstance()) return this;
+        if (!other.getPrismObjectId().isEmpty()) {
+          prismObjectId_ = other.prismObjectId_;
+          onChanged();
+        }
+        if (!other.getModuleObjectId().isEmpty()) {
+          moduleObjectId_ = other.moduleObjectId_;
+          onChanged();
+        }
+        if (!other.getStatus().isEmpty()) {
+          status_ = other.status_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.server.services.PrismGrpc.ParseModelFileResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.server.services.PrismGrpc.ParseModelFileResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object prismObjectId_ = "";
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @return The prismObjectId.
+       */
+      public java.lang.String getPrismObjectId() {
+        java.lang.Object ref = prismObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          prismObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @return The bytes for prismObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getPrismObjectIdBytes() {
+        java.lang.Object ref = prismObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          prismObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @param value The prismObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPrismObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        prismObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPrismObjectId() {
+        
+        prismObjectId_ = getDefaultInstance().getPrismObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @param value The bytes for prismObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPrismObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        prismObjectId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object moduleObjectId_ = "";
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @return The moduleObjectId.
+       */
+      public java.lang.String getModuleObjectId() {
+        java.lang.Object ref = moduleObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          moduleObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @return The bytes for moduleObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getModuleObjectIdBytes() {
+        java.lang.Object ref = moduleObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          moduleObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @param value The moduleObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModuleObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        moduleObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearModuleObjectId() {
+        
+        moduleObjectId_ = getDefaultInstance().getModuleObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string module_object_id = 2;</code>
+       * @param value The bytes for moduleObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModuleObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        moduleObjectId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object status_ = "";
+      /**
+       * <code>string status = 3;</code>
+       * @return The status.
+       */
+      public java.lang.String getStatus() {
+        java.lang.Object ref = status_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          status_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string status = 3;</code>
+       * @return The bytes for status.
+       */
+      public com.google.protobuf.ByteString
+          getStatusBytes() {
+        java.lang.Object ref = status_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          status_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string status = 3;</code>
+       * @param value The status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatus(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string status = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStatus() {
+        
+        status_ = getDefaultInstance().getStatus();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string status = 3;</code>
+       * @param value The bytes for status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatusBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ParseModelFileResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:ParseModelFileResponse)
+    private static final grpc.server.services.PrismGrpc.ParseModelFileResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.ParseModelFileResponse();
+    }
+
+    public static grpc.server.services.PrismGrpc.ParseModelFileResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ParseModelFileResponse>
+        PARSER = new com.google.protobuf.AbstractParser<ParseModelFileResponse>() {
+      @java.lang.Override
+      public ParseModelFileResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ParseModelFileResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ParseModelFileResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ParseModelFileResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.server.services.PrismGrpc.ParseModelFileResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_UploadRequest_descriptor;
   private static final 
@@ -18043,6 +19929,16 @@ public final class PrismGrpc {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ClosePrismResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ParseModelFileRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ParseModelFileRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ParseModelFileResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ParseModelFileResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -18061,65 +19957,73 @@ public final class PrismGrpc {
       ".PrismFileLogH\000B\n\n\010log_type\"D\n\021Initialis" +
       "eRequest\022\027\n\017prism_object_id\030\001 \001(\t\022\026\n\003log" +
       "\030\002 \001(\0132\t.PrismLog\"=\n\022InitialiseResponse\022" +
-      "\027\n\017prism_object_id\030\001 \001(\t\022\016\n\006result\030\002 \001(\t" +
-      "\"I\n\025LoadPRISMModelRequest\022\027\n\017prism_objec" +
-      "t_id\030\001 \001(\t\022\027\n\017model_file_name\030\002 \001(\t\"A\n\026L" +
-      "oadPRISMModelResponse\022\027\n\017prism_object_id" +
-      "\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"l\n\032ParsePropertie" +
-      "sFileRequest\022\027\n\017prism_object_id\030\001 \001(\t\022\027\n" +
-      "\017model_file_name\030\002 \001(\t\022\034\n\024properties_fil" +
-      "e_name\030\003 \001(\t\"Z\n\033ParsePropertiesFileRespo" +
-      "nse\022\027\n\017prism_object_id\030\001 \001(\t\022\016\n\006status\030\002" +
-      " \001(\t\022\022\n\nproperties\030\003 \003(\t\"\236\001\n\037DefineUndef" +
-      "inedConstantsRequest\022\027\n\017prism_object_id\030" +
-      "\001 \001(\t\022\027\n\017model_file_name\030\002 \001(\t\022\034\n\024proper" +
-      "ties_file_name\030\003 \001(\t\022\026\n\016property_index\030\004" +
-      " \001(\005\022\023\n\013const_range\030\005 \001(\t\"K\n DefineUndef" +
-      "inedConstantsResponse\022\027\n\017prism_object_id" +
-      "\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"b\n\021ModelCheckRequ" +
-      "est\022\027\n\017prism_object_id\030\001 \001(\t\022\034\n\024properti" +
-      "es_file_name\030\002 \001(\t\022\026\n\016property_index\030\003 \001" +
-      "(\005\"=\n\022ModelCheckResponse\022\027\n\017prism_object" +
-      "_id\030\001 \001(\t\022\016\n\006result\030\002 \001(\001\"\211\001\n\036ModelCheck" +
-      "WithConstantsRequest\022\027\n\017prism_object_id\030" +
-      "\001 \001(\t\022\034\n\024properties_file_name\030\002 \001(\t\022\030\n\020c" +
-      "onstants_values\030\003 \001(\t\022\026\n\016property_index\030" +
-      "\004 \001(\005\"i\n\034ParsePropertiesStringRequest\022\027\n" +
-      "\017prism_object_id\030\001 \001(\t\022\027\n\017model_file_nam" +
-      "e\030\002 \001(\t\022\027\n\017property_string\030\003 \001(\t\"H\n\035Pars" +
-      "ePropertiesStringResponse\022\027\n\017prism_objec" +
-      "t_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"K\n\027ModelCheck" +
-      "StringRequest\022\027\n\017prism_object_id\030\001 \001(\t\022\027" +
-      "\n\017property_string\030\002 \001(\t\"C\n\030ModelCheckStr" +
-      "ingResponse\022\027\n\017prism_object_id\030\001 \001(\t\022\016\n\006" +
-      "result\030\002 \001(\t\"L\n\030ParseAndLoadModelRequest" +
-      "\022\027\n\017prism_object_id\030\001 \001(\t\022\027\n\017model_file_" +
-      "name\030\002 \001(\t\"A\n\026ParseAndLoadModelReply\022\027\n\017" +
-      "prism_object_id\030\001 \001(\t\022\016\n\006result\030\002 \001(\t\",\n" +
-      "\021ClosePrismRequest\022\027\n\017prism_object_id\030\001 " +
-      "\001(\t\"=\n\022ClosePrismResponse\022\027\n\017prism_objec" +
-      "t_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t2\255\006\n\021PrismProt" +
-      "oService\022.\n\nUploadFile\022\016.UploadRequest\032\014" +
-      ".UploadReply\"\000(\001\0227\n\nInitialise\022\022.Initial" +
-      "iseRequest\032\023.InitialiseResponse\"\000\022I\n\021Par" +
-      "seAndLoadModel\022\031.ParseAndLoadModelReques" +
-      "t\032\027.ParseAndLoadModelReply\"\000\022C\n\016LoadPRIS" +
-      "MModel\022\026.LoadPRISMModelRequest\032\027.LoadPRI" +
-      "SMModelResponse\"\000\022R\n\023ParsePropertiesFile" +
-      "\022\033.ParsePropertiesFileRequest\032\034.ParsePro" +
-      "pertiesFileResponse\"\000\022a\n\030DefineUndefined" +
-      "Constants\022 .DefineUndefinedConstantsRequ" +
-      "est\032!.DefineUndefinedConstantsResponse\"\000" +
-      "\0227\n\nModelCheck\022\022.ModelCheckRequest\032\023.Mod" +
-      "elCheckResponse\"\000\022Q\n\027ModelCheckWithConst" +
-      "ants\022\037.ModelCheckWithConstantsRequest\032\023." +
-      "ModelCheckResponse\"\000\022X\n\025ParsePropertiesS" +
-      "tring\022\035.ParsePropertiesStringRequest\032\036.P" +
-      "arsePropertiesStringResponse\"\000\022I\n\020ModelC" +
-      "heckString\022\030.ModelCheckStringRequest\032\031.M" +
-      "odelCheckStringResponse\"\000\0227\n\nClosePrism\022" +
-      "\022.ClosePrismRequest\032\023.ClosePrismResponse" +
-      "\"\000B\026\n\024grpc.server.servicesb\006proto3"
+      "\027\n\017prism_object_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t" +
+      "\"J\n\025LoadPRISMModelRequest\022\027\n\017prism_objec" +
+      "t_id\030\001 \001(\t\022\030\n\020module_object_id\030\002 \001(\t\"[\n\026" +
+      "LoadPRISMModelResponse\022\027\n\017prism_object_i" +
+      "d\030\001 \001(\t\022\030\n\020module_object_id\030\002 \001(\t\022\016\n\006sta" +
+      "tus\030\003 \001(\t\"l\n\032ParsePropertiesFileRequest\022" +
+      "\027\n\017prism_object_id\030\001 \001(\t\022\027\n\017model_file_n" +
+      "ame\030\002 \001(\t\022\034\n\024properties_file_name\030\003 \001(\t\"" +
+      "Z\n\033ParsePropertiesFileResponse\022\027\n\017prism_" +
+      "object_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\022\n\nprope" +
+      "rties\030\003 \003(\t\"\236\001\n\037DefineUndefinedConstants" +
+      "Request\022\027\n\017prism_object_id\030\001 \001(\t\022\027\n\017mode" +
+      "l_file_name\030\002 \001(\t\022\034\n\024properties_file_nam" +
+      "e\030\003 \001(\t\022\026\n\016property_index\030\004 \001(\005\022\023\n\013const" +
+      "_range\030\005 \001(\t\"K\n DefineUndefinedConstants" +
+      "Response\022\027\n\017prism_object_id\030\001 \001(\t\022\016\n\006sta" +
+      "tus\030\002 \001(\t\"b\n\021ModelCheckRequest\022\027\n\017prism_" +
+      "object_id\030\001 \001(\t\022\034\n\024properties_file_name\030" +
+      "\002 \001(\t\022\026\n\016property_index\030\003 \001(\005\"=\n\022ModelCh" +
+      "eckResponse\022\027\n\017prism_object_id\030\001 \001(\t\022\016\n\006" +
+      "status\030\002 \001(\001\"\211\001\n\036ModelCheckWithConstants" +
+      "Request\022\027\n\017prism_object_id\030\001 \001(\t\022\034\n\024prop" +
+      "erties_file_name\030\002 \001(\t\022\030\n\020constants_valu" +
+      "es\030\003 \001(\t\022\026\n\016property_index\030\004 \001(\005\"i\n\034Pars" +
+      "ePropertiesStringRequest\022\027\n\017prism_object" +
+      "_id\030\001 \001(\t\022\027\n\017model_file_name\030\002 \001(\t\022\027\n\017pr" +
+      "operty_string\030\003 \001(\t\"H\n\035ParsePropertiesSt" +
+      "ringResponse\022\027\n\017prism_object_id\030\001 \001(\t\022\016\n" +
+      "\006status\030\002 \001(\t\"K\n\027ModelCheckStringRequest" +
+      "\022\027\n\017prism_object_id\030\001 \001(\t\022\027\n\017property_st" +
+      "ring\030\002 \001(\t\"C\n\030ModelCheckStringResponse\022\027" +
+      "\n\017prism_object_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"" +
+      "L\n\030ParseAndLoadModelRequest\022\027\n\017prism_obj" +
+      "ect_id\030\001 \001(\t\022\027\n\017model_file_name\030\002 \001(\t\"A\n" +
+      "\026ParseAndLoadModelReply\022\027\n\017prism_object_" +
+      "id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\",\n\021ClosePrismRe" +
+      "quest\022\027\n\017prism_object_id\030\001 \001(\t\"=\n\022CloseP" +
+      "rismResponse\022\027\n\017prism_object_id\030\001 \001(\t\022\016\n" +
+      "\006status\030\002 \001(\t\"c\n\025ParseModelFileRequest\022\027" +
+      "\n\017prism_object_id\030\001 \001(\t\022\030\n\020module_object" +
+      "_id\030\002 \001(\t\022\027\n\017model_file_name\030\003 \001(\t\"[\n\026Pa" +
+      "rseModelFileResponse\022\027\n\017prism_object_id\030" +
+      "\001 \001(\t\022\030\n\020module_object_id\030\002 \001(\t\022\016\n\006statu" +
+      "s\030\003 \001(\t2\362\006\n\021PrismProtoService\022.\n\nUploadF" +
+      "ile\022\016.UploadRequest\032\014.UploadReply\"\000(\001\0227\n" +
+      "\nInitialise\022\022.InitialiseRequest\032\023.Initia" +
+      "liseResponse\"\000\022C\n\016ParseModelFile\022\026.Parse" +
+      "ModelFileRequest\032\027.ParseModelFileRespons" +
+      "e\"\000\022C\n\016LoadPRISMModel\022\026.LoadPRISMModelRe" +
+      "quest\032\027.LoadPRISMModelResponse\"\000\022I\n\021Pars" +
+      "eAndLoadModel\022\031.ParseAndLoadModelRequest" +
+      "\032\027.ParseAndLoadModelReply\"\000\022R\n\023ParseProp" +
+      "ertiesFile\022\033.ParsePropertiesFileRequest\032" +
+      "\034.ParsePropertiesFileResponse\"\000\022a\n\030Defin" +
+      "eUndefinedConstants\022 .DefineUndefinedCon" +
+      "stantsRequest\032!.DefineUndefinedConstants" +
+      "Response\"\000\0227\n\nModelCheck\022\022.ModelCheckReq" +
+      "uest\032\023.ModelCheckResponse\"\000\022Q\n\027ModelChec" +
+      "kWithConstants\022\037.ModelCheckWithConstants" +
+      "Request\032\023.ModelCheckResponse\"\000\022X\n\025ParseP" +
+      "ropertiesString\022\035.ParsePropertiesStringR" +
+      "equest\032\036.ParsePropertiesStringResponse\"\000" +
+      "\022I\n\020ModelCheckString\022\030.ModelCheckStringR" +
+      "equest\032\031.ModelCheckStringResponse\"\000\0227\n\nC" +
+      "losePrism\022\022.ClosePrismRequest\032\023.ClosePri" +
+      "smResponse\"\000B\026\n\024grpc.server.servicesb\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -18166,19 +20070,19 @@ public final class PrismGrpc {
     internal_static_InitialiseResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitialiseResponse_descriptor,
-        new java.lang.String[] { "PrismObjectId", "Result", });
+        new java.lang.String[] { "PrismObjectId", "Status", });
     internal_static_LoadPRISMModelRequest_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_LoadPRISMModelRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LoadPRISMModelRequest_descriptor,
-        new java.lang.String[] { "PrismObjectId", "ModelFileName", });
+        new java.lang.String[] { "PrismObjectId", "ModuleObjectId", });
     internal_static_LoadPRISMModelResponse_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_LoadPRISMModelResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LoadPRISMModelResponse_descriptor,
-        new java.lang.String[] { "PrismObjectId", "Status", });
+        new java.lang.String[] { "PrismObjectId", "ModuleObjectId", "Status", });
     internal_static_ParsePropertiesFileRequest_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_ParsePropertiesFileRequest_fieldAccessorTable = new
@@ -18214,7 +20118,7 @@ public final class PrismGrpc {
     internal_static_ModelCheckResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ModelCheckResponse_descriptor,
-        new java.lang.String[] { "PrismObjectId", "Result", });
+        new java.lang.String[] { "PrismObjectId", "Status", });
     internal_static_ModelCheckWithConstantsRequest_descriptor =
       getDescriptor().getMessageTypes().get(15);
     internal_static_ModelCheckWithConstantsRequest_fieldAccessorTable = new
@@ -18244,7 +20148,7 @@ public final class PrismGrpc {
     internal_static_ModelCheckStringResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ModelCheckStringResponse_descriptor,
-        new java.lang.String[] { "PrismObjectId", "Result", });
+        new java.lang.String[] { "PrismObjectId", "Status", });
     internal_static_ParseAndLoadModelRequest_descriptor =
       getDescriptor().getMessageTypes().get(20);
     internal_static_ParseAndLoadModelRequest_fieldAccessorTable = new
@@ -18256,7 +20160,7 @@ public final class PrismGrpc {
     internal_static_ParseAndLoadModelReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ParseAndLoadModelReply_descriptor,
-        new java.lang.String[] { "PrismObjectId", "Result", });
+        new java.lang.String[] { "PrismObjectId", "Status", });
     internal_static_ClosePrismRequest_descriptor =
       getDescriptor().getMessageTypes().get(22);
     internal_static_ClosePrismRequest_fieldAccessorTable = new
@@ -18269,6 +20173,18 @@ public final class PrismGrpc {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClosePrismResponse_descriptor,
         new java.lang.String[] { "PrismObjectId", "Status", });
+    internal_static_ParseModelFileRequest_descriptor =
+      getDescriptor().getMessageTypes().get(24);
+    internal_static_ParseModelFileRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ParseModelFileRequest_descriptor,
+        new java.lang.String[] { "PrismObjectId", "ModuleObjectId", "ModelFileName", });
+    internal_static_ParseModelFileResponse_descriptor =
+      getDescriptor().getMessageTypes().get(25);
+    internal_static_ParseModelFileResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ParseModelFileResponse_descriptor,
+        new java.lang.String[] { "PrismObjectId", "ModuleObjectId", "Status", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -36,17 +36,18 @@ message InitialiseRequest {
 
 message InitialiseResponse {
   string prism_object_id = 1;
-  string result = 2;
+  string status = 2;
 }
 
 message LoadPRISMModelRequest {
   string prism_object_id = 1;
-  string model_file_name = 2;
+  string module_object_id = 2;
 }
 
 message LoadPRISMModelResponse {
   string prism_object_id = 1;
-  string status = 2;
+  string module_object_id = 2;
+  string status = 3;
 }
 
 
@@ -83,7 +84,7 @@ message ModelCheckRequest {
 
 message ModelCheckResponse {
   string prism_object_id = 1;
-  double result = 2;
+  double status = 2;
 }
 
 message ModelCheckWithConstantsRequest {
@@ -111,7 +112,7 @@ message ModelCheckStringRequest {
 
 message ModelCheckStringResponse {
   string prism_object_id = 1;
-  string result = 2;
+  string status = 2;
 }
 
 message ParseAndLoadModelRequest {
@@ -121,7 +122,7 @@ message ParseAndLoadModelRequest {
 
 message ParseAndLoadModelReply {
   string prism_object_id = 1;
-  string result = 2;
+  string status = 2;
 }
 
 message ClosePrismRequest {
@@ -133,16 +134,35 @@ message ClosePrismResponse {
   string status = 2;
 }
 
+message ParseModelFileRequest {
+  string prism_object_id = 1;
+  string module_object_id = 2;
+  string model_file_name = 3;
+}
+
+message ParseModelFileResponse {
+  string prism_object_id = 1;
+  string module_object_id = 2;
+  string status = 3;
+}
+
+
+
 // Service Definitions
 service PrismProtoService {
   // Generic method to upload files
   rpc UploadFile (stream UploadRequest) returns (UploadReply) {}
   // Initialise the PRISM engine
   rpc Initialise(InitialiseRequest) returns (InitialiseResponse) {}
-  // Parse a model file
-  rpc ParseAndLoadModel(ParseAndLoadModelRequest) returns (ParseAndLoadModelReply) {}
+  // Parse model file
+  rpc ParseModelFile(ParseModelFileRequest) returns (ParseModelFileResponse) {}
   // Load a PRISM model
   rpc LoadPRISMModel(LoadPRISMModelRequest) returns (LoadPRISMModelResponse) {}
+
+  // to delete
+  // Parse and load model file
+  rpc ParseAndLoadModel(ParseAndLoadModelRequest) returns (ParseAndLoadModelReply) {}
+
   // Parse a properties file
   rpc ParsePropertiesFile(ParsePropertiesFileRequest) returns (ParsePropertiesFileResponse) {}
   // Define undefined constants

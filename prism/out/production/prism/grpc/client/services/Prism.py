@@ -8,7 +8,7 @@ from model.prism_file_log import PrismFileLog
 from model.prismpy_exceptions import PrismPyException
 from model.property_file import PropertyFile
 from prismpy import PrismPy
-from services import prismGrpc_pb2
+from services import prismGrpc_pb2, prismGrpc_pb2_grpc
 
 
 class Prism(PrismPy, ABC):
@@ -40,12 +40,49 @@ class Prism(PrismPy, ABC):
             try:
                 # Call the Initialise method
                 response = self.stub.Initialise(request)
-                self.logger.info("Received message {}".format(response.result))
+                self.logger.info("Received message {}".format(response.status))
             except grpc.RpcError as e:
                 self.logger.error(
                     "Could not establish connection to the gRPC server. Please make sure the Prism server is running.")
                 self.logger.error("gRPC error info: {}".format(e.details()))
                 exit(1)
+
+    def parse_model_file(self, model_file_path):
+        # first uploading the model file to prism server
+        upload_response = self.upload_file(model_file_path)
+
+        # create ModuleFile object to populate and return
+        module_file = ModuleFile(model_file_path)
+
+        # instruct prism to parse the uploaded file
+        self.logger.info("Parsing file {}.".format(upload_response.filename))
+
+        # Create a ParseModelRequest
+        request = prismGrpc_pb2.ParseModelFileRequest(prism_object_id=str(id(self)),
+                                                      module_object_id=str(id(module_file)),
+                                                      model_file_name=upload_response.filename)
+
+        # Make the RPC call to ParseModelFile
+        response = self.stub.ParseModelFile(request)
+
+        self.logger.info("Received message {}.".format(response.status))
+
+        return module_file
+
+    def load_prism_model(self, module_file):
+        self.logger.info("Loading prism model with module file" + module_file.property_file_name)
+
+        # Create a LoadPRISMModelRequest
+        request = prismGrpc_pb2.LoadPRISMModelRequest(prism_object_id=str(id(self)),
+                                                      module_object_id=str(id(module_file)))
+
+        # Make the RPC call to LoadPRISMModel
+        response = self.stub.LoadPRISMModel(request)
+
+        self.logger.info("Received message {}.".format(response.status))
+
+        return
+
 
     def parse_and_load_model_file(self, model_file):
         # first uploading the file to prism server
@@ -61,7 +98,7 @@ class Prism(PrismPy, ABC):
         # Make the RPC call to ParseModelFile
         response = self.stub.ParseAndLoadModel(request)
 
-        self.logger.info("Received message {}.".format(response.result))
+        self.logger.info("Received message {}.".format(response.status))
 
         return ModuleFile(model_file, upload_response.filename)
 
@@ -98,6 +135,6 @@ class Prism(PrismPy, ABC):
         # Make the RPC call to ModelCheck
         response = self.stub.ModelCheck(request)
 
-        self.logger.info("Received message {}.".format(response.result))
+        self.logger.info("Received message {}.".format(response.status))
 
-        return response.result
+        return response.status
