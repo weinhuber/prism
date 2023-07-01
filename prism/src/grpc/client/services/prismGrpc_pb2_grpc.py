@@ -40,6 +40,11 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.ParsePropertiesFileRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.ParsePropertiesFileResponse.FromString,
                 )
+        self.PropertyObject = channel.unary_unary(
+                '/PrismProtoService/PropertyObject',
+                request_serializer=prismGrpc__pb2.PropertyObjectRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.PropertyObjectResponse.FromString,
+                )
         self.DefineUndefinedConstants = channel.unary_unary(
                 '/PrismProtoService/DefineUndefinedConstants',
                 request_serializer=prismGrpc__pb2.DefineUndefinedConstantsRequest.SerializeToString,
@@ -106,6 +111,13 @@ class PrismProtoServiceServicer(object):
 
     def ParsePropertiesFile(self, request, context):
         """Parse a properties file
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def PropertyObject(self, request, context):
+        """Get propety object from properties file
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -180,6 +192,11 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     servicer.ParsePropertiesFile,
                     request_deserializer=prismGrpc__pb2.ParsePropertiesFileRequest.FromString,
                     response_serializer=prismGrpc__pb2.ParsePropertiesFileResponse.SerializeToString,
+            ),
+            'PropertyObject': grpc.unary_unary_rpc_method_handler(
+                    servicer.PropertyObject,
+                    request_deserializer=prismGrpc__pb2.PropertyObjectRequest.FromString,
+                    response_serializer=prismGrpc__pb2.PropertyObjectResponse.SerializeToString,
             ),
             'DefineUndefinedConstants': grpc.unary_unary_rpc_method_handler(
                     servicer.DefineUndefinedConstants,
@@ -304,6 +321,23 @@ class PrismProtoService(object):
         return grpc.experimental.unary_unary(request, target, '/PrismProtoService/ParsePropertiesFile',
             prismGrpc__pb2.ParsePropertiesFileRequest.SerializeToString,
             prismGrpc__pb2.ParsePropertiesFileResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def PropertyObject(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/PropertyObject',
+            prismGrpc__pb2.PropertyObjectRequest.SerializeToString,
+            prismGrpc__pb2.PropertyObjectResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

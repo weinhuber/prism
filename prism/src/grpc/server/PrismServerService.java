@@ -197,6 +197,42 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         logger.info("parsePropertiesFile request completed with status: " + status);
     }
 
+
+    @Override
+    public void propertyObject(PrismGrpc.PropertyObjectRequest request, StreamObserver<PrismGrpc.PropertyObjectResponse> responseObserver) {
+        logger.info("Received propertyObject request");
+
+        // get property id from request
+        String propertyId = request.getPropertyObjectId();
+
+        String status = "Error";
+
+        String property = "";
+
+        // load prism properties
+        try{
+            PropertiesFile propertiesFile = (PropertiesFile) prismObjectMap.get(propertyId);
+            property = propertiesFile.getPropertyObject(request.getPropertyIndex()).toString();
+            status = "Success";
+        } catch (IllegalArgumentException e) {
+            logger.warning("Error loading prism properties: " + e.getMessage());
+            status += " : " + e.getMessage();
+        }
+
+        // build response
+        PrismGrpc.PropertyObjectResponse response = PrismGrpc.PropertyObjectResponse.newBuilder()
+                .setStatus(status)
+                .setProperty(property)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+        logger.info("propertyObject request completed with status: " + status);
+    }
+
     // uploadFile is a service that allows the client to upload a file to the prism server
     @Override
     public StreamObserver<PrismGrpc.UploadRequest> uploadFile(StreamObserver<PrismGrpc.UploadReply> responseObserver) {

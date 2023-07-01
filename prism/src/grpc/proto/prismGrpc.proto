@@ -147,7 +147,16 @@ message ParseModelFileResponse {
   string status = 3;
 }
 
+message PropertyObjectRequest {
+  string property_object_id = 1;
+  int32 property_index = 2;
+}
 
+message PropertyObjectResponse {
+  string property_object_id = 1;
+  string status = 2;
+  string property = 3;
+}
 
 // Service Definitions
 service PrismProtoService {
@@ -159,8 +168,10 @@ service PrismProtoService {
   rpc ParseModelFile(ParseModelFileRequest) returns (ParseModelFileResponse) {}
   // Load a PRISM model
   rpc LoadPRISMModel(LoadPRISMModelRequest) returns (LoadPRISMModelResponse) {}
-    // Parse a properties file
+  // Parse a properties file
   rpc ParsePropertiesFile(ParsePropertiesFileRequest) returns (ParsePropertiesFileResponse) {}
+  // Get propety object from properties file
+  rpc PropertyObject(PropertyObjectRequest) returns (PropertyObjectResponse) {}
   // Define undefined constants
   rpc DefineUndefinedConstants(DefineUndefinedConstantsRequest) returns (DefineUndefinedConstantsResponse) {}
   // Model check

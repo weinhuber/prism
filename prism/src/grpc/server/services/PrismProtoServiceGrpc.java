@@ -172,6 +172,37 @@ public final class PrismProtoServiceGrpc {
     return getParsePropertiesFileMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.PropertyObjectRequest,
+      grpc.server.services.PrismGrpc.PropertyObjectResponse> getPropertyObjectMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "PropertyObject",
+      requestType = grpc.server.services.PrismGrpc.PropertyObjectRequest.class,
+      responseType = grpc.server.services.PrismGrpc.PropertyObjectResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.PropertyObjectRequest,
+      grpc.server.services.PrismGrpc.PropertyObjectResponse> getPropertyObjectMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.PropertyObjectRequest, grpc.server.services.PrismGrpc.PropertyObjectResponse> getPropertyObjectMethod;
+    if ((getPropertyObjectMethod = PrismProtoServiceGrpc.getPropertyObjectMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getPropertyObjectMethod = PrismProtoServiceGrpc.getPropertyObjectMethod) == null) {
+          PrismProtoServiceGrpc.getPropertyObjectMethod = getPropertyObjectMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.PropertyObjectRequest, grpc.server.services.PrismGrpc.PropertyObjectResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "PropertyObject"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.PropertyObjectRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.PropertyObjectResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("PropertyObject"))
+              .build();
+        }
+      }
+    }
+    return getPropertyObjectMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest,
       grpc.server.services.PrismGrpc.DefineUndefinedConstantsResponse> getDefineUndefinedConstantsMethod;
 
@@ -461,6 +492,16 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     * Get propety object from properties file
+     * </pre>
+     */
+    public void propertyObject(grpc.server.services.PrismGrpc.PropertyObjectRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.PropertyObjectResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getPropertyObjectMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
      * Define undefined constants
      * </pre>
      */
@@ -556,6 +597,13 @@ public final class PrismProtoServiceGrpc {
                 grpc.server.services.PrismGrpc.ParsePropertiesFileRequest,
                 grpc.server.services.PrismGrpc.ParsePropertiesFileResponse>(
                   this, METHODID_PARSE_PROPERTIES_FILE)))
+          .addMethod(
+            getPropertyObjectMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.PropertyObjectRequest,
+                grpc.server.services.PrismGrpc.PropertyObjectResponse>(
+                  this, METHODID_PROPERTY_OBJECT)))
           .addMethod(
             getDefineUndefinedConstantsMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -672,6 +720,17 @@ public final class PrismProtoServiceGrpc {
         io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ParsePropertiesFileResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getParsePropertiesFileMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Get propety object from properties file
+     * </pre>
+     */
+    public void propertyObject(grpc.server.services.PrismGrpc.PropertyObjectRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.PropertyObjectResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getPropertyObjectMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -800,6 +859,16 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     * Get propety object from properties file
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.PropertyObjectResponse propertyObject(grpc.server.services.PrismGrpc.PropertyObjectRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getPropertyObjectMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
      * Define undefined constants
      * </pre>
      */
@@ -922,6 +991,17 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     * Get propety object from properties file
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.PropertyObjectResponse> propertyObject(
+        grpc.server.services.PrismGrpc.PropertyObjectRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getPropertyObjectMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
      * Define undefined constants
      * </pre>
      */
@@ -991,13 +1071,14 @@ public final class PrismProtoServiceGrpc {
   private static final int METHODID_PARSE_MODEL_FILE = 1;
   private static final int METHODID_LOAD_PRISMMODEL = 2;
   private static final int METHODID_PARSE_PROPERTIES_FILE = 3;
-  private static final int METHODID_DEFINE_UNDEFINED_CONSTANTS = 4;
-  private static final int METHODID_MODEL_CHECK = 5;
-  private static final int METHODID_MODEL_CHECK_WITH_CONSTANTS = 6;
-  private static final int METHODID_PARSE_PROPERTIES_STRING = 7;
-  private static final int METHODID_MODEL_CHECK_STRING = 8;
-  private static final int METHODID_CLOSE_PRISM = 9;
-  private static final int METHODID_UPLOAD_FILE = 10;
+  private static final int METHODID_PROPERTY_OBJECT = 4;
+  private static final int METHODID_DEFINE_UNDEFINED_CONSTANTS = 5;
+  private static final int METHODID_MODEL_CHECK = 6;
+  private static final int METHODID_MODEL_CHECK_WITH_CONSTANTS = 7;
+  private static final int METHODID_PARSE_PROPERTIES_STRING = 8;
+  private static final int METHODID_MODEL_CHECK_STRING = 9;
+  private static final int METHODID_CLOSE_PRISM = 10;
+  private static final int METHODID_UPLOAD_FILE = 11;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1031,6 +1112,10 @@ public final class PrismProtoServiceGrpc {
         case METHODID_PARSE_PROPERTIES_FILE:
           serviceImpl.parsePropertiesFile((grpc.server.services.PrismGrpc.ParsePropertiesFileRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ParsePropertiesFileResponse>) responseObserver);
+          break;
+        case METHODID_PROPERTY_OBJECT:
+          serviceImpl.propertyObject((grpc.server.services.PrismGrpc.PropertyObjectRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.PropertyObjectResponse>) responseObserver);
           break;
         case METHODID_DEFINE_UNDEFINED_CONSTANTS:
           serviceImpl.defineUndefinedConstants((grpc.server.services.PrismGrpc.DefineUndefinedConstantsRequest) request,
@@ -1125,6 +1210,7 @@ public final class PrismProtoServiceGrpc {
               .addMethod(getParseModelFileMethod())
               .addMethod(getLoadPRISMModelMethod())
               .addMethod(getParsePropertiesFileMethod())
+              .addMethod(getPropertyObjectMethod())
               .addMethod(getDefineUndefinedConstantsMethod())
               .addMethod(getModelCheckMethod())
               .addMethod(getModelCheckWithConstantsMethod())
