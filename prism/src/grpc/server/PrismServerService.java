@@ -109,7 +109,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
 
         // get id from request
         String id = request.getPrismObjectId();
-        System.out.println("id: " + id);
+
         // Get the requested log type from request
         PrismGrpc.PrismLog log = request.getLog();
         PrismLog mainLog;
@@ -129,9 +129,10 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
             // Initialise PRISM engine
             Prism prism = new Prism(mainLog);
             prism.initialise();
+
+            // store prism object in dict for later use
             prismObjectMap.put(id, prism);
             result = "Success";
-
 
         }
         catch (PrismException | IllegalArgumentException e) {
