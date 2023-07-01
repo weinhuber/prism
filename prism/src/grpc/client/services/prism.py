@@ -2,11 +2,11 @@ from abc import ABC
 
 import grpc
 
-from model.module_file import ModuleFile
+from model.modules_file import ModulesFile
 from model.prism_dev_null_log import PrismDevNullLog
 from model.prism_file_log import PrismFileLog
 from model.prismpy_exceptions import PrismPyException
-from model.property_file import PropertyFile
+from model.properties_file import PropertiesFile
 from prismpy import PrismPy
 from services import prismGrpc_pb2, prismGrpc_pb2_grpc
 
@@ -48,18 +48,18 @@ class Prism(PrismPy, ABC):
                 exit(1)
 
     def parse_model_file(self, model_file_path):
-        # first uploading the model file to prism server
+        # upload the model file to prism server
         upload_response = self.upload_file(model_file_path)
 
         # create ModuleFile object to populate and return
-        module_file = ModuleFile(model_file_path)
+        modules_file = ModulesFile(model_file_path)
 
         # instruct prism to parse the uploaded file
         self.logger.info("Parsing file {}.".format(upload_response.filename))
 
         # Create a ParseModelRequest
         request = prismGrpc_pb2.ParseModelFileRequest(prism_object_id=str(id(self)),
-                                                      module_object_id=str(id(module_file)),
+                                                      module_object_id=str(id(modules_file)),
                                                       model_file_name=upload_response.filename)
 
         # Make the RPC call to ParseModelFile
@@ -67,10 +67,10 @@ class Prism(PrismPy, ABC):
 
         self.logger.info("Received message {}.".format(response.status))
 
-        return module_file
+        return modules_file
 
     def load_prism_model(self, module_file):
-        self.logger.info("Loading prism model with module file" + module_file.property_file_name)
+        self.logger.info("Loading prism model with module file" + module_file.model_file_name)
 
         # Create a LoadPRISMModelRequest
         request = prismGrpc_pb2.LoadPRISMModelRequest(prism_object_id=str(id(self)),
@@ -83,46 +83,31 @@ class Prism(PrismPy, ABC):
 
         return
 
-
-    def parse_and_load_model_file(self, model_file):
-        # first uploading the file to prism server
-        upload_response = self.upload_file(model_file)
-
-        # instruct prism to parse the uploaded file
-        # Create a ParseModelRequest
-        self.logger.info("Parsing file {}.".format(upload_response.filename))
-
-        request = prismGrpc_pb2.ParseAndLoadModelRequest(prism_object_id=str(id(self)),
-                                                         model_file_name=upload_response.filename)
-
-        # Make the RPC call to ParseModelFile
-        response = self.stub.ParseAndLoadModel(request)
-
-        self.logger.info("Received message {}.".format(response.status))
-
-        return ModuleFile(model_file, upload_response.filename)
-
-    def parse_properties_file(self, module_file, property_file):
+    def parse_properties_file(self, module_file, property_file_path):
         self.logger.info(
-            "Parsing property file {} with module file {}".format(property_file, module_file.property_file_name))
-        # TODO: Dictionary with lookup tables for uploaded model file and pointer to its object in the prism server
-        # something like (python filename, prism file id)
+            "Parse property file " + property_file_path)
 
-        # first uploading the file to prism
-        upload_response = self.upload_file(property_file)
+        # upload the model file to prism server
+        upload_response = self.upload_file(property_file_path)
 
-        # instruct prism to parse the uploaded file
-        # Create a Parse Properties Request
-        request = prismGrpc_pb2.ParsePropertiesFileRequest(
-            model_file_name=module_file.prism_module_name,
-            properties_file_name=upload_response.filename)
+        # create PropertiesFile object to populate and return
+        properties_file = PropertiesFile(property_file_path)
+
+        # create ParsePropertiesFileRequest
+        request = prismGrpc_pb2.ParsePropertiesFileRequest(prism_object_id=str(id(self)),
+                                                           module_object_id=str(id(module_file)),
+                                                           property_object_id=str(id(properties_file)),
+                                                           properties_file_name=upload_response.filename)
 
         # Make the RPC call to ParsePropertiesFile
         response = self.stub.ParsePropertiesFile(request)
 
         self.logger.info("Received message {}.".format(response.status))
 
-        return PropertyFile(module_file, property_file, upload_response.filename, response.properties)
+        return properties_file
+
+
+
 
     def model_check(self, property_file, property_object_index):
         self.logger.info("Model checking property {}.".format(property_file))

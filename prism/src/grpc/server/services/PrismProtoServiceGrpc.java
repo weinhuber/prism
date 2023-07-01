@@ -141,37 +141,6 @@ public final class PrismProtoServiceGrpc {
     return getLoadPRISMModelMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ParseAndLoadModelRequest,
-      grpc.server.services.PrismGrpc.ParseAndLoadModelReply> getParseAndLoadModelMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "ParseAndLoadModel",
-      requestType = grpc.server.services.PrismGrpc.ParseAndLoadModelRequest.class,
-      responseType = grpc.server.services.PrismGrpc.ParseAndLoadModelReply.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ParseAndLoadModelRequest,
-      grpc.server.services.PrismGrpc.ParseAndLoadModelReply> getParseAndLoadModelMethod() {
-    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ParseAndLoadModelRequest, grpc.server.services.PrismGrpc.ParseAndLoadModelReply> getParseAndLoadModelMethod;
-    if ((getParseAndLoadModelMethod = PrismProtoServiceGrpc.getParseAndLoadModelMethod) == null) {
-      synchronized (PrismProtoServiceGrpc.class) {
-        if ((getParseAndLoadModelMethod = PrismProtoServiceGrpc.getParseAndLoadModelMethod) == null) {
-          PrismProtoServiceGrpc.getParseAndLoadModelMethod = getParseAndLoadModelMethod =
-              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.ParseAndLoadModelRequest, grpc.server.services.PrismGrpc.ParseAndLoadModelReply>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ParseAndLoadModel"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.server.services.PrismGrpc.ParseAndLoadModelRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.server.services.PrismGrpc.ParseAndLoadModelReply.getDefaultInstance()))
-              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("ParseAndLoadModel"))
-              .build();
-        }
-      }
-    }
-    return getParseAndLoadModelMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ParsePropertiesFileRequest,
       grpc.server.services.PrismGrpc.ParsePropertiesFileResponse> getParsePropertiesFileMethod;
 
@@ -482,17 +451,6 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * to delete
-     * Parse and load model file
-     * </pre>
-     */
-    public void parseAndLoadModel(grpc.server.services.PrismGrpc.ParseAndLoadModelRequest request,
-        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ParseAndLoadModelReply> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getParseAndLoadModelMethod(), responseObserver);
-    }
-
-    /**
-     * <pre>
      * Parse a properties file
      * </pre>
      */
@@ -591,13 +549,6 @@ public final class PrismProtoServiceGrpc {
                 grpc.server.services.PrismGrpc.LoadPRISMModelRequest,
                 grpc.server.services.PrismGrpc.LoadPRISMModelResponse>(
                   this, METHODID_LOAD_PRISMMODEL)))
-          .addMethod(
-            getParseAndLoadModelMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                grpc.server.services.PrismGrpc.ParseAndLoadModelRequest,
-                grpc.server.services.PrismGrpc.ParseAndLoadModelReply>(
-                  this, METHODID_PARSE_AND_LOAD_MODEL)))
           .addMethod(
             getParsePropertiesFileMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -710,18 +661,6 @@ public final class PrismProtoServiceGrpc {
         io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.LoadPRISMModelResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getLoadPRISMModelMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     * <pre>
-     * to delete
-     * Parse and load model file
-     * </pre>
-     */
-    public void parseAndLoadModel(grpc.server.services.PrismGrpc.ParseAndLoadModelRequest request,
-        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ParseAndLoadModelReply> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getParseAndLoadModelMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -851,17 +790,6 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * to delete
-     * Parse and load model file
-     * </pre>
-     */
-    public grpc.server.services.PrismGrpc.ParseAndLoadModelReply parseAndLoadModel(grpc.server.services.PrismGrpc.ParseAndLoadModelRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getParseAndLoadModelMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
      * Parse a properties file
      * </pre>
      */
@@ -983,18 +911,6 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * to delete
-     * Parse and load model file
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.ParseAndLoadModelReply> parseAndLoadModel(
-        grpc.server.services.PrismGrpc.ParseAndLoadModelRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getParseAndLoadModelMethod(), getCallOptions()), request);
-    }
-
-    /**
-     * <pre>
      * Parse a properties file
      * </pre>
      */
@@ -1074,15 +990,14 @@ public final class PrismProtoServiceGrpc {
   private static final int METHODID_INITIALISE = 0;
   private static final int METHODID_PARSE_MODEL_FILE = 1;
   private static final int METHODID_LOAD_PRISMMODEL = 2;
-  private static final int METHODID_PARSE_AND_LOAD_MODEL = 3;
-  private static final int METHODID_PARSE_PROPERTIES_FILE = 4;
-  private static final int METHODID_DEFINE_UNDEFINED_CONSTANTS = 5;
-  private static final int METHODID_MODEL_CHECK = 6;
-  private static final int METHODID_MODEL_CHECK_WITH_CONSTANTS = 7;
-  private static final int METHODID_PARSE_PROPERTIES_STRING = 8;
-  private static final int METHODID_MODEL_CHECK_STRING = 9;
-  private static final int METHODID_CLOSE_PRISM = 10;
-  private static final int METHODID_UPLOAD_FILE = 11;
+  private static final int METHODID_PARSE_PROPERTIES_FILE = 3;
+  private static final int METHODID_DEFINE_UNDEFINED_CONSTANTS = 4;
+  private static final int METHODID_MODEL_CHECK = 5;
+  private static final int METHODID_MODEL_CHECK_WITH_CONSTANTS = 6;
+  private static final int METHODID_PARSE_PROPERTIES_STRING = 7;
+  private static final int METHODID_MODEL_CHECK_STRING = 8;
+  private static final int METHODID_CLOSE_PRISM = 9;
+  private static final int METHODID_UPLOAD_FILE = 10;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1112,10 +1027,6 @@ public final class PrismProtoServiceGrpc {
         case METHODID_LOAD_PRISMMODEL:
           serviceImpl.loadPRISMModel((grpc.server.services.PrismGrpc.LoadPRISMModelRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.LoadPRISMModelResponse>) responseObserver);
-          break;
-        case METHODID_PARSE_AND_LOAD_MODEL:
-          serviceImpl.parseAndLoadModel((grpc.server.services.PrismGrpc.ParseAndLoadModelRequest) request,
-              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ParseAndLoadModelReply>) responseObserver);
           break;
         case METHODID_PARSE_PROPERTIES_FILE:
           serviceImpl.parsePropertiesFile((grpc.server.services.PrismGrpc.ParsePropertiesFileRequest) request,
@@ -1213,7 +1124,6 @@ public final class PrismProtoServiceGrpc {
               .addMethod(getInitialiseMethod())
               .addMethod(getParseModelFileMethod())
               .addMethod(getLoadPRISMModelMethod())
-              .addMethod(getParseAndLoadModelMethod())
               .addMethod(getParsePropertiesFileMethod())
               .addMethod(getDefineUndefinedConstantsMethod())
               .addMethod(getModelCheckMethod())

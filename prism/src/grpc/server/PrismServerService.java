@@ -17,6 +17,7 @@ import java.util.Optional;
 
 import grpc.server.services.PrismGrpcLogger;
 import parser.ast.ModulesFile;
+import parser.ast.PropertiesFile;
 import prism.*;
 
 // implementation of all prism services
@@ -28,78 +29,6 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
     // dict storing all prism instances
     private Map<String, Object> prismObjectMap = new HashMap<>();
 
-//    @Override
-//    public void modelCheck(PrismGrpc.ModelCheckRequest request, StreamObserver<PrismGrpc.ModelCheckResponse> responseObserver) {
-//        logger.info("Received modelCheck request");
-//        logger.info("Received property file name: " + request.getPropertiesFileName() + " at index " + request.getPropertyIndex());
-//
-//        // TODO: Call prism to model check
-//
-//
-//        // build response
-//        PrismGrpc.ModelCheckResponse response = PrismGrpc.ModelCheckResponse.newBuilder()
-//                .setResult(0.16666650772094727)
-//                .build();
-//        // send response
-//        responseObserver.onNext(response);
-//
-//        // complete call
-//        responseObserver.onCompleted();
-//        logger.info("modelCheck request completed with response: " + response.getResult());
-//
-//    }
-
-    @Override
-    public void parsePropertiesFile(PrismGrpc.ParsePropertiesFileRequest request, StreamObserver<PrismGrpc.ParsePropertiesFileResponse> responseObserver) {
-        logger.info("Received parsePropertiesFile request");
-        logger.info("Received file: " + request.getPropertiesFileName());
-        // TODO: Call prism to parse properties file
-
-        // build response
-        PrismGrpc.ParsePropertiesFileResponse response = PrismGrpc.ParsePropertiesFileResponse.newBuilder()
-                .setStatus("Success")
-                .addAllProperties(Arrays.asList("P=? [ F s=7&d=6 ]", "P=? [ F s=7&d=x ]", "R=? [ F s=7 ]"))
-                .build();
-        // send response
-        responseObserver.onNext(response);
-
-        // complete call
-        responseObserver.onCompleted();
-        logger.info("parsePropertiesFile request completed with response: " + response.getStatus());
-
-    }
-
-    @Override
-    public void parseAndLoadModel(PrismGrpc.ParseAndLoadModelRequest request, StreamObserver<PrismGrpc.ParseAndLoadModelReply> responseObserver) {
-        logger.info("Received parseModelFile request for file: " + request.getModelFileName());
-
-        // get id from request
-        String id = request.getPrismObjectId();
-
-        String status = "Error";
-        // Parse and load a PRISM model from a file
-
-        try{
-            Prism prism = (Prism) prismObjectMap.get(id);
-            ModulesFile modulesFile = prism.parseModelFile(new File("src/grpc/server/tmpFileStorage/" + request.getModelFileName()));
-            prism.loadPRISMModel(modulesFile);
-            status = "Success";
-        } catch (PrismException | IllegalArgumentException | FileNotFoundException e) {
-            logger.warning("Error loading prism model: " + e.getMessage());
-        }
-
-
-        // build response
-        PrismGrpc.ParseAndLoadModelReply response = PrismGrpc.ParseAndLoadModelReply.newBuilder()
-                .setStatus(status)
-                .build();
-        // send response
-        responseObserver.onNext(response);
-
-        // complete call
-        responseObserver.onCompleted();
-        logger.info("parseModelFile request completed with response: " + status);
-    }
 
     @Override
     public void initialise(PrismGrpc.InitialiseRequest request, StreamObserver<PrismGrpc.InitialiseResponse> responseObserver) {
@@ -160,19 +89,19 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         logger.info("Received parseModelFile request for file: " + request.getModelFileName());
 
         // get prism id from request
-        String prism_id = request.getPrismObjectId();
+        String prismId = request.getPrismObjectId();
 
         // get module id from request
-        String module_id = request.getModuleObjectId();
+        String moduleId = request.getModuleObjectId();
 
 
         String status = "Error";
         // Parse and load a PRISM model from a file
 
         try{
-            Prism prism = (Prism) prismObjectMap.get(prism_id);
+            Prism prism = (Prism) prismObjectMap.get(prismId);
             ModulesFile modulesFile = prism.parseModelFile(new File("src/grpc/server/tmpFileStorage/" + request.getModelFileName()));
-            prismObjectMap.put(module_id, modulesFile);
+            prismObjectMap.put(moduleId, modulesFile);
             status = "Success";
         } catch (PrismException | IllegalArgumentException | FileNotFoundException e) {
             logger.warning("Error loading prism model: " + e.getMessage());
@@ -192,23 +121,22 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         logger.info("parseModelFile request completed with status: " + status);
     }
 
-
     @Override
     public void loadPRISMModel(PrismGrpc.LoadPRISMModelRequest request, StreamObserver<PrismGrpc.LoadPRISMModelResponse> responseObserver) {
         logger.info("Received loadPRISMModel request");
 
         // get prism id from request
-        String prism_id = request.getPrismObjectId();
+        String prismId = request.getPrismObjectId();
 
         // get module id from request
-        String module_id = request.getModuleObjectId();
+        String moduleId = request.getModuleObjectId();
 
         String status = "Error";
 
         // load prism model
         try{
-            Prism prism = (Prism) prismObjectMap.get(prism_id);
-            ModulesFile modulesFile = (ModulesFile) prismObjectMap.get(module_id);
+            Prism prism = (Prism) prismObjectMap.get(prismId);
+            ModulesFile modulesFile = (ModulesFile) prismObjectMap.get(moduleId);
             prism.loadPRISMModel(modulesFile);
             status = "Success";
         } catch (PrismException | IllegalArgumentException e) {
@@ -228,6 +156,45 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         logger.info("loadPRISMModel request completed with status: " + status);
 
 
+    }
+
+    @Override
+    public void parsePropertiesFile(PrismGrpc.ParsePropertiesFileRequest request, StreamObserver<PrismGrpc.ParsePropertiesFileResponse> responseObserver) {
+        logger.info("Received parsePropertiesFile request for file: " + request.getPropertiesFileName());
+
+        // get prism id from request
+        String prismId = request.getPrismObjectId();
+
+        // get module id from request
+        String moduleId = request.getModuleObjectId();
+
+        // get property id from request
+        String propertyId = request.getPropertyObjectId();
+
+        String status = "Error";
+
+        // Parse and load a PRISM properties file
+        try{
+            Prism prism = (Prism) prismObjectMap.get(prismId);
+            ModulesFile modulesFile = (ModulesFile) prismObjectMap.get(moduleId);
+            PropertiesFile propertiesFile = prism.parsePropertiesFile(modulesFile, new File("src/grpc/server/tmpFileStorage/" + request.getPropertiesFileName()));
+            prismObjectMap.put(propertyId, propertiesFile);
+            status = "Success";
+        } catch (PrismException | IllegalArgumentException | FileNotFoundException e) {
+            logger.warning("Error loading prism properties: " + e.getMessage());
+            status += " : " + e.getMessage();
+        }
+
+        // build response
+        PrismGrpc.ParsePropertiesFileResponse response = PrismGrpc.ParsePropertiesFileResponse.newBuilder()
+                .setStatus(status)
+                .build();
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+        logger.info("parsePropertiesFile request completed with status: " + status);
     }
 
     // uploadFile is a service that allows the client to upload a file to the prism server

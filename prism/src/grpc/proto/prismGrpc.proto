@@ -53,14 +53,15 @@ message LoadPRISMModelResponse {
 
 message ParsePropertiesFileRequest {
   string prism_object_id = 1;
-  string model_file_name = 2;
-  string properties_file_name = 3;
+  string module_object_id = 2;
+  string property_object_id = 3;
+  string properties_file_name = 4;
 }
 
 message ParsePropertiesFileResponse {
   string prism_object_id = 1;
   string status = 2;
-  repeated string properties = 3;
+  string properties = 3;
 }
 
 message DefineUndefinedConstantsRequest {
@@ -158,12 +159,7 @@ service PrismProtoService {
   rpc ParseModelFile(ParseModelFileRequest) returns (ParseModelFileResponse) {}
   // Load a PRISM model
   rpc LoadPRISMModel(LoadPRISMModelRequest) returns (LoadPRISMModelResponse) {}
-
-  // to delete
-  // Parse and load model file
-  rpc ParseAndLoadModel(ParseAndLoadModelRequest) returns (ParseAndLoadModelReply) {}
-
-  // Parse a properties file
+    // Parse a properties file
   rpc ParsePropertiesFile(ParsePropertiesFileRequest) returns (ParsePropertiesFileResponse) {}
   // Define undefined constants
   rpc DefineUndefinedConstants(DefineUndefinedConstantsRequest) returns (DefineUndefinedConstantsResponse) {}

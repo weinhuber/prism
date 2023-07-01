@@ -1,7 +1,7 @@
-class ModuleFile:
+class PropertiesFile:
 
     property_file_name = None
-    module_object_id = None
+    property_object_id = None
 
     def __init__(self, property_file_name):
         # name of original property file

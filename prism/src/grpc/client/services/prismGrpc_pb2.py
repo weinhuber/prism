@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fprismGrpc.proto\"A\n\rUploadRequest\x12\x12\n\x08\x66ilename\x18\x02 \x01(\tH\x00\x12\x14\n\nchunk_data\x18\x03 \x01(\x0cH\x00\x42\x06\n\x04\x64\x61ta\"\x1f\n\x0bUploadReply\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\"\x11\n\x0fPrismDevNullLog\"\x1c\n\x0cPrismFileLog\x12\x0c\n\x04type\x18\x01 \x01(\t\"c\n\x08PrismLog\x12(\n\x0c\x64\x65v_null_log\x18\x01 \x01(\x0b\x32\x10.PrismDevNullLogH\x00\x12!\n\x08\x66ile_log\x18\x02 \x01(\x0b\x32\r.PrismFileLogH\x00\x42\n\n\x08log_type\"D\n\x11InitialiseRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x16\n\x03log\x18\x02 \x01(\x0b\x32\t.PrismLog\"=\n\x12InitialiseResponse\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\t\"J\n\x15LoadPRISMModelRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x18\n\x10module_object_id\x18\x02 \x01(\t\"[\n\x16LoadPRISMModelResponse\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x18\n\x10module_object_id\x18\x02 \x01(\t\x12\x0e\n\x06status\x18\x03 \x01(\t\"l\n\x1aParsePropertiesFileRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x17\n\x0fmodel_file_name\x18\x02 \x01(\t\x12\x1c\n\x14properties_file_name\x18\x03 \x01(\t\"Z\n\x1bParsePropertiesFileResponse\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\t\x12\x12\n\nproperties\x18\x03 \x03(\t\"\x9e\x01\n\x1f\x44\x65\x66ineUndefinedConstantsRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x17\n\x0fmodel_file_name\x18\x02 \x01(\t\x12\x1c\n\x14properties_file_name\x18\x03 \x01(\t\x12\x16\n\x0eproperty_index\x18\x04 \x01(\x05\x12\x13\n\x0b\x63onst_range\x18\x05 \x01(\t\"K\n DefineUndefinedConstantsResponse\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\t\"b\n\x11ModelCheckRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x1c\n\x14properties_file_name\x18\x02 \x01(\t\x12\x16\n\x0eproperty_index\x18\x03 \x01(\x05\"=\n\x12ModelCheckResponse\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\x01\"\x89\x01\n\x1eModelCheckWithConstantsRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x1c\n\x14properties_file_name\x18\x02 \x01(\t\x12\x18\n\x10\x63onstants_values\x18\x03 \x01(\t\x12\x16\n\x0eproperty_index\x18\x04 \x01(\x05\"i\n\x1cParsePropertiesStringRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x17\n\x0fmodel_file_name\x18\x02 \x01(\t\x12\x17\n\x0fproperty_string\x18\x03 \x01(\t\"H\n\x1dParsePropertiesStringResponse\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\t\"K\n\x17ModelCheckStringRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x17\n\x0fproperty_string\x18\x02 \x01(\t\"C\n\x18ModelCheckStringResponse\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\t\"L\n\x18ParseAndLoadModelRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x17\n\x0fmodel_file_name\x18\x02 \x01(\t\"A\n\x16ParseAndLoadModelReply\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\t\",\n\x11\x43losePrismRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\"=\n\x12\x43losePrismResponse\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\t\"c\n\x15ParseModelFileRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x18\n\x10module_object_id\x18\x02 \x01(\t\x12\x17\n\x0fmodel_file_name\x18\x03 \x01(\t\"[\n\x16ParseModelFileResponse\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x18\n\x10module_object_id\x18\x02 \x01(\t\x12\x0e\n\x06status\x18\x03 \x01(\t2\xf2\x06\n\x11PrismProtoService\x12.\n\nUploadFile\x12\x0e.UploadRequest\x1a\x0c.UploadReply\"\x00(\x01\x12\x37\n\nInitialise\x12\x12.InitialiseRequest\x1a\x13.InitialiseResponse\"\x00\x12\x43\n\x0eParseModelFile\x12\x16.ParseModelFileRequest\x1a\x17.ParseModelFileResponse\"\x00\x12\x43\n\x0eLoadPRISMModel\x12\x16.LoadPRISMModelRequest\x1a\x17.LoadPRISMModelResponse\"\x00\x12I\n\x11ParseAndLoadModel\x12\x19.ParseAndLoadModelRequest\x1a\x17.ParseAndLoadModelReply\"\x00\x12R\n\x13ParsePropertiesFile\x12\x1b.ParsePropertiesFileRequest\x1a\x1c.ParsePropertiesFileResponse\"\x00\x12\x61\n\x18\x44\x65\x66ineUndefinedConstants\x12 .DefineUndefinedConstantsRequest\x1a!.DefineUndefinedConstantsResponse\"\x00\x12\x37\n\nModelCheck\x12\x12.ModelCheckRequest\x1a\x13.ModelCheckResponse\"\x00\x12Q\n\x17ModelCheckWithConstants\x12\x1f.ModelCheckWithConstantsRequest\x1a\x13.ModelCheckResponse\"\x00\x12X\n\x15ParsePropertiesString\x12\x1d.ParsePropertiesStringRequest\x1a\x1e.ParsePropertiesStringResponse\"\x00\x12I\n\x10ModelCheckString\x12\x18.ModelCheckStringRequest\x1a\x19.ModelCheckStringResponse\"\x00\x12\x37\n\nClosePrism\x12\x12.ClosePrismRequest\x1a\x13.ClosePrismResponse\"\x00\x42\x16\n\x14grpc.server.servicesb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fprismGrpc.proto\"A\n\rUploadRequest\x12\x12\n\x08\x66ilename\x18\x02 \x01(\tH\x00\x12\x14\n\nchunk_data\x18\x03 \x01(\x0cH\x00\x42\x06\n\x04\x64\x61ta\"\x1f\n\x0bUploadReply\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\"\x11\n\x0fPrismDevNullLog\"\x1c\n\x0cPrismFileLog\x12\x0c\n\x04type\x18\x01 \x01(\t\"c\n\x08PrismLog\x12(\n\x0c\x64\x65v_null_log\x18\x01 \x01(\x0b\x32\x10.PrismDevNullLogH\x00\x12!\n\x08\x66ile_log\x18\x02 \x01(\x0b\x32\r.PrismFileLogH\x00\x42\n\n\x08log_type\"D\n\x11InitialiseRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x16\n\x03log\x18\x02 \x01(\x0b\x32\t.PrismLog\"=\n\x12InitialiseResponse\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\t\"J\n\x15LoadPRISMModelRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x18\n\x10module_object_id\x18\x02 \x01(\t\"[\n\x16LoadPRISMModelResponse\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x18\n\x10module_object_id\x18\x02 \x01(\t\x12\x0e\n\x06status\x18\x03 \x01(\t\"\x89\x01\n\x1aParsePropertiesFileRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x18\n\x10module_object_id\x18\x02 \x01(\t\x12\x1a\n\x12property_object_id\x18\x03 \x01(\t\x12\x1c\n\x14properties_file_name\x18\x04 \x01(\t\"Z\n\x1bParsePropertiesFileResponse\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\t\x12\x12\n\nproperties\x18\x03 \x01(\t\"\x9e\x01\n\x1f\x44\x65\x66ineUndefinedConstantsRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x17\n\x0fmodel_file_name\x18\x02 \x01(\t\x12\x1c\n\x14properties_file_name\x18\x03 \x01(\t\x12\x16\n\x0eproperty_index\x18\x04 \x01(\x05\x12\x13\n\x0b\x63onst_range\x18\x05 \x01(\t\"K\n DefineUndefinedConstantsResponse\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\t\"b\n\x11ModelCheckRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x1c\n\x14properties_file_name\x18\x02 \x01(\t\x12\x16\n\x0eproperty_index\x18\x03 \x01(\x05\"=\n\x12ModelCheckResponse\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\x01\"\x89\x01\n\x1eModelCheckWithConstantsRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x1c\n\x14properties_file_name\x18\x02 \x01(\t\x12\x18\n\x10\x63onstants_values\x18\x03 \x01(\t\x12\x16\n\x0eproperty_index\x18\x04 \x01(\x05\"i\n\x1cParsePropertiesStringRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x17\n\x0fmodel_file_name\x18\x02 \x01(\t\x12\x17\n\x0fproperty_string\x18\x03 \x01(\t\"H\n\x1dParsePropertiesStringResponse\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\t\"K\n\x17ModelCheckStringRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x17\n\x0fproperty_string\x18\x02 \x01(\t\"C\n\x18ModelCheckStringResponse\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\t\"L\n\x18ParseAndLoadModelRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x17\n\x0fmodel_file_name\x18\x02 \x01(\t\"A\n\x16ParseAndLoadModelReply\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\t\",\n\x11\x43losePrismRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\"=\n\x12\x43losePrismResponse\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x0e\n\x06status\x18\x02 \x01(\t\"c\n\x15ParseModelFileRequest\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x18\n\x10module_object_id\x18\x02 \x01(\t\x12\x17\n\x0fmodel_file_name\x18\x03 \x01(\t\"[\n\x16ParseModelFileResponse\x12\x17\n\x0fprism_object_id\x18\x01 \x01(\t\x12\x18\n\x10module_object_id\x18\x02 \x01(\t\x12\x0e\n\x06status\x18\x03 \x01(\t2\xa7\x06\n\x11PrismProtoService\x12.\n\nUploadFile\x12\x0e.UploadRequest\x1a\x0c.UploadReply\"\x00(\x01\x12\x37\n\nInitialise\x12\x12.InitialiseRequest\x1a\x13.InitialiseResponse\"\x00\x12\x43\n\x0eParseModelFile\x12\x16.ParseModelFileRequest\x1a\x17.ParseModelFileResponse\"\x00\x12\x43\n\x0eLoadPRISMModel\x12\x16.LoadPRISMModelRequest\x1a\x17.LoadPRISMModelResponse\"\x00\x12R\n\x13ParsePropertiesFile\x12\x1b.ParsePropertiesFileRequest\x1a\x1c.ParsePropertiesFileResponse\"\x00\x12\x61\n\x18\x44\x65\x66ineUndefinedConstants\x12 .DefineUndefinedConstantsRequest\x1a!.DefineUndefinedConstantsResponse\"\x00\x12\x37\n\nModelCheck\x12\x12.ModelCheckRequest\x1a\x13.ModelCheckResponse\"\x00\x12Q\n\x17ModelCheckWithConstants\x12\x1f.ModelCheckWithConstantsRequest\x1a\x13.ModelCheckResponse\"\x00\x12X\n\x15ParsePropertiesString\x12\x1d.ParsePropertiesStringRequest\x1a\x1e.ParsePropertiesStringResponse\"\x00\x12I\n\x10ModelCheckString\x12\x18.ModelCheckStringRequest\x1a\x19.ModelCheckStringResponse\"\x00\x12\x37\n\nClosePrism\x12\x12.ClosePrismRequest\x1a\x13.ClosePrismResponse\"\x00\x42\x16\n\x14grpc.server.servicesb\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'prismGrpc_pb2', globals())
@@ -39,40 +39,40 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _LOADPRISMMODELREQUEST._serialized_end=476
   _LOADPRISMMODELRESPONSE._serialized_start=478
   _LOADPRISMMODELRESPONSE._serialized_end=569
-  _PARSEPROPERTIESFILEREQUEST._serialized_start=571
-  _PARSEPROPERTIESFILEREQUEST._serialized_end=679
-  _PARSEPROPERTIESFILERESPONSE._serialized_start=681
-  _PARSEPROPERTIESFILERESPONSE._serialized_end=771
-  _DEFINEUNDEFINEDCONSTANTSREQUEST._serialized_start=774
-  _DEFINEUNDEFINEDCONSTANTSREQUEST._serialized_end=932
-  _DEFINEUNDEFINEDCONSTANTSRESPONSE._serialized_start=934
-  _DEFINEUNDEFINEDCONSTANTSRESPONSE._serialized_end=1009
-  _MODELCHECKREQUEST._serialized_start=1011
-  _MODELCHECKREQUEST._serialized_end=1109
-  _MODELCHECKRESPONSE._serialized_start=1111
-  _MODELCHECKRESPONSE._serialized_end=1172
-  _MODELCHECKWITHCONSTANTSREQUEST._serialized_start=1175
-  _MODELCHECKWITHCONSTANTSREQUEST._serialized_end=1312
-  _PARSEPROPERTIESSTRINGREQUEST._serialized_start=1314
-  _PARSEPROPERTIESSTRINGREQUEST._serialized_end=1419
-  _PARSEPROPERTIESSTRINGRESPONSE._serialized_start=1421
-  _PARSEPROPERTIESSTRINGRESPONSE._serialized_end=1493
-  _MODELCHECKSTRINGREQUEST._serialized_start=1495
-  _MODELCHECKSTRINGREQUEST._serialized_end=1570
-  _MODELCHECKSTRINGRESPONSE._serialized_start=1572
-  _MODELCHECKSTRINGRESPONSE._serialized_end=1639
-  _PARSEANDLOADMODELREQUEST._serialized_start=1641
-  _PARSEANDLOADMODELREQUEST._serialized_end=1717
-  _PARSEANDLOADMODELREPLY._serialized_start=1719
-  _PARSEANDLOADMODELREPLY._serialized_end=1784
-  _CLOSEPRISMREQUEST._serialized_start=1786
-  _CLOSEPRISMREQUEST._serialized_end=1830
-  _CLOSEPRISMRESPONSE._serialized_start=1832
-  _CLOSEPRISMRESPONSE._serialized_end=1893
-  _PARSEMODELFILEREQUEST._serialized_start=1895
-  _PARSEMODELFILEREQUEST._serialized_end=1994
-  _PARSEMODELFILERESPONSE._serialized_start=1996
-  _PARSEMODELFILERESPONSE._serialized_end=2087
-  _PRISMPROTOSERVICE._serialized_start=2090
-  _PRISMPROTOSERVICE._serialized_end=2972
+  _PARSEPROPERTIESFILEREQUEST._serialized_start=572
+  _PARSEPROPERTIESFILEREQUEST._serialized_end=709
+  _PARSEPROPERTIESFILERESPONSE._serialized_start=711
+  _PARSEPROPERTIESFILERESPONSE._serialized_end=801
+  _DEFINEUNDEFINEDCONSTANTSREQUEST._serialized_start=804
+  _DEFINEUNDEFINEDCONSTANTSREQUEST._serialized_end=962
+  _DEFINEUNDEFINEDCONSTANTSRESPONSE._serialized_start=964
+  _DEFINEUNDEFINEDCONSTANTSRESPONSE._serialized_end=1039
+  _MODELCHECKREQUEST._serialized_start=1041
+  _MODELCHECKREQUEST._serialized_end=1139
+  _MODELCHECKRESPONSE._serialized_start=1141
+  _MODELCHECKRESPONSE._serialized_end=1202
+  _MODELCHECKWITHCONSTANTSREQUEST._serialized_start=1205
+  _MODELCHECKWITHCONSTANTSREQUEST._serialized_end=1342
+  _PARSEPROPERTIESSTRINGREQUEST._serialized_start=1344
+  _PARSEPROPERTIESSTRINGREQUEST._serialized_end=1449
+  _PARSEPROPERTIESSTRINGRESPONSE._serialized_start=1451
+  _PARSEPROPERTIESSTRINGRESPONSE._serialized_end=1523
+  _MODELCHECKSTRINGREQUEST._serialized_start=1525
+  _MODELCHECKSTRINGREQUEST._serialized_end=1600
+  _MODELCHECKSTRINGRESPONSE._serialized_start=1602
+  _MODELCHECKSTRINGRESPONSE._serialized_end=1669
+  _PARSEANDLOADMODELREQUEST._serialized_start=1671
+  _PARSEANDLOADMODELREQUEST._serialized_end=1747
+  _PARSEANDLOADMODELREPLY._serialized_start=1749
+  _PARSEANDLOADMODELREPLY._serialized_end=1814
+  _CLOSEPRISMREQUEST._serialized_start=1816
+  _CLOSEPRISMREQUEST._serialized_end=1860
+  _CLOSEPRISMRESPONSE._serialized_start=1862
+  _CLOSEPRISMRESPONSE._serialized_end=1923
+  _PARSEMODELFILEREQUEST._serialized_start=1925
+  _PARSEMODELFILEREQUEST._serialized_end=2024
+  _PARSEMODELFILERESPONSE._serialized_start=2026
+  _PARSEMODELFILERESPONSE._serialized_end=2117
+  _PRISMPROTOSERVICE._serialized_start=2120
+  _PRISMPROTOSERVICE._serialized_end=2927
 # @@protoc_insertion_point(module_scope)

@@ -35,11 +35,6 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.LoadPRISMModelRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.LoadPRISMModelResponse.FromString,
                 )
-        self.ParseAndLoadModel = channel.unary_unary(
-                '/PrismProtoService/ParseAndLoadModel',
-                request_serializer=prismGrpc__pb2.ParseAndLoadModelRequest.SerializeToString,
-                response_deserializer=prismGrpc__pb2.ParseAndLoadModelReply.FromString,
-                )
         self.ParsePropertiesFile = channel.unary_unary(
                 '/PrismProtoService/ParsePropertiesFile',
                 request_serializer=prismGrpc__pb2.ParsePropertiesFileRequest.SerializeToString,
@@ -104,14 +99,6 @@ class PrismProtoServiceServicer(object):
 
     def LoadPRISMModel(self, request, context):
         """Load a PRISM model
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def ParseAndLoadModel(self, request, context):
-        """to delete
-        Parse and load model file
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -188,11 +175,6 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     servicer.LoadPRISMModel,
                     request_deserializer=prismGrpc__pb2.LoadPRISMModelRequest.FromString,
                     response_serializer=prismGrpc__pb2.LoadPRISMModelResponse.SerializeToString,
-            ),
-            'ParseAndLoadModel': grpc.unary_unary_rpc_method_handler(
-                    servicer.ParseAndLoadModel,
-                    request_deserializer=prismGrpc__pb2.ParseAndLoadModelRequest.FromString,
-                    response_serializer=prismGrpc__pb2.ParseAndLoadModelReply.SerializeToString,
             ),
             'ParsePropertiesFile': grpc.unary_unary_rpc_method_handler(
                     servicer.ParsePropertiesFile,
@@ -305,23 +287,6 @@ class PrismProtoService(object):
         return grpc.experimental.unary_unary(request, target, '/PrismProtoService/LoadPRISMModel',
             prismGrpc__pb2.LoadPRISMModelRequest.SerializeToString,
             prismGrpc__pb2.LoadPRISMModelResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def ParseAndLoadModel(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/ParseAndLoadModel',
-            prismGrpc__pb2.ParseAndLoadModelRequest.SerializeToString,
-            prismGrpc__pb2.ParseAndLoadModelReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

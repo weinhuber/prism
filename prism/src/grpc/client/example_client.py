@@ -18,8 +18,11 @@ prism.initialise()
 # prism3.initialise()
 
 # Parse and load a PRISM model from a file
-module_file = prism.parse_model_file("examples/dice.pm")
-prism.load_prism_model(module_file)
+modules_file = prism.parse_model_file("examples/dice.pm")
+prism.load_prism_model(modules_file)
+
+# Parse and load a properties model for the model
+properties_file = prism.parse_properties_file(modules_file, "examples/dice.pctl")
 
 
 # # Parse and load a property from the file
