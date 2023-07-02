@@ -1,5 +1,3 @@
-import uuid
-
 from model.prismpy_model import PrismPyBaseModel
 
 

@@ -1,26 +1,19 @@
 import uuid
-
 import grpc
-
 from model.modules_file import ModulesFile
-from model.prism_dev_null_log import PrismDevNullLog
-from model.prism_file_log import PrismFileLog
 from model.prismpy_exceptions import PrismPyException
 from model.properties_file import PropertiesFile
 from model.result import Result
-from services import prismGrpc_pb2, prismGrpc_pb2_grpc
+from services import prismGrpc_pb2
 from model.prismpy_model import PrismPyBaseModel
 
 
 class Prism(PrismPyBaseModel):
     __proto_main_log = None
 
-    prism_object_id = None
-
     def __init__(self, main_log):
         super().__init__()
         self.__proto_main_log = main_log
-        self.prism_object_id = str(uuid.uuid4())
 
     def initialise(self):
         if self.__proto_main_log is None:
@@ -37,7 +30,7 @@ class Prism(PrismPyBaseModel):
             # - Prism(PrismFileLog("stdout"))
 
             # Create a request with PrismDevNullLog
-            request = prismGrpc_pb2.InitialiseRequest(prism_object_id=self.prism_object_id,
+            request = prismGrpc_pb2.InitialiseRequest(prism_object_id=self.object_id,
                                                       log=self.__proto_main_log.get_proto())
 
             try:
@@ -61,7 +54,7 @@ class Prism(PrismPyBaseModel):
         self.logger.info("Parsing file {}.".format(upload_response.filename))
 
         # Create a ParseModelRequest
-        request = prismGrpc_pb2.ParseModelFileRequest(prism_object_id=self.prism_object_id,
+        request = prismGrpc_pb2.ParseModelFileRequest(prism_object_id=self.object_id,
                                                       module_object_id=modules_file.object_id,
                                                       model_file_name=upload_response.filename)
 
@@ -76,7 +69,7 @@ class Prism(PrismPyBaseModel):
         self.logger.info("Loading prism model with module file" + module_file.model_file_name)
 
         # Create a LoadPRISMModelRequest
-        request = prismGrpc_pb2.LoadPRISMModelRequest(prism_object_id=self.prism_object_id,
+        request = prismGrpc_pb2.LoadPRISMModelRequest(prism_object_id=self.object_id,
                                                       module_object_id=module_file.object_id)
 
         # Make the RPC call to LoadPRISMModel
@@ -97,7 +90,7 @@ class Prism(PrismPyBaseModel):
         properties_file = PropertiesFile(property_file_path)
 
         # create ParsePropertiesFileRequest
-        request = prismGrpc_pb2.ParsePropertiesFileRequest(prism_object_id=self.prism_object_id,
+        request = prismGrpc_pb2.ParsePropertiesFileRequest(prism_object_id=self.object_id,
                                                            module_object_id=module_file.object_id,
                                                            properties_file_object_id=properties_file.object_id,
                                                            properties_file_name=upload_response.filename)
@@ -117,7 +110,7 @@ class Prism(PrismPyBaseModel):
 
         # Create a ModelCheckRequest
         request = prismGrpc_pb2.ModelCheckRequest(
-            prism_object_id=self.prism_object_id,
+            prism_object_id=self.object_id,
             properties_file_object_id=properties_file.object_id,
             property_object_id=property_object.object_id,
             result_object_id=result.object_id)

@@ -60,7 +60,10 @@ class PrismPyBaseModel(ABC):
             request = prismGrpc_pb2.DeleteObjectRequest(object_id=self.__object_id)
 
             # send request
-            self.stub.DeleteObject(request)
+            try:
+                self.stub.DeleteObject(request)
+            except _InactiveRpcError:
+                self.logger.error(f"gRPC service seems to be unavailable. Please make sure the service is running.")
             self.__close_channel()
 
         # function to upload a file to the gRPC service
