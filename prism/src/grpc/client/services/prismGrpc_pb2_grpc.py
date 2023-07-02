@@ -60,6 +60,11 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.GetUndefinedConstantsUsedInPropertyRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.GetUndefinedConstantsUsedInPropertyResponse.FromString,
                 )
+        self.AddValue = channel.unary_unary(
+                '/PrismProtoService/AddValue',
+                request_serializer=prismGrpc__pb2.AddValueRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.AddValueResponse.FromString,
+                )
         self.DefineUndefinedConstants = channel.unary_unary(
                 '/PrismProtoService/DefineUndefinedConstants',
                 request_serializer=prismGrpc__pb2.DefineUndefinedConstantsRequest.SerializeToString,
@@ -154,6 +159,13 @@ class PrismProtoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def AddValue(self, request, context):
+        """add values
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def DefineUndefinedConstants(self, request, context):
         """Define undefined constants
         """
@@ -236,6 +248,11 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     servicer.GetUndefinedConstantsUsedInProperty,
                     request_deserializer=prismGrpc__pb2.GetUndefinedConstantsUsedInPropertyRequest.FromString,
                     response_serializer=prismGrpc__pb2.GetUndefinedConstantsUsedInPropertyResponse.SerializeToString,
+            ),
+            'AddValue': grpc.unary_unary_rpc_method_handler(
+                    servicer.AddValue,
+                    request_deserializer=prismGrpc__pb2.AddValueRequest.FromString,
+                    response_serializer=prismGrpc__pb2.AddValueResponse.SerializeToString,
             ),
             'DefineUndefinedConstants': grpc.unary_unary_rpc_method_handler(
                     servicer.DefineUndefinedConstants,
@@ -423,6 +440,23 @@ class PrismProtoService(object):
         return grpc.experimental.unary_unary(request, target, '/PrismProtoService/GetUndefinedConstantsUsedInProperty',
             prismGrpc__pb2.GetUndefinedConstantsUsedInPropertyRequest.SerializeToString,
             prismGrpc__pb2.GetUndefinedConstantsUsedInPropertyResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def AddValue(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/AddValue',
+            prismGrpc__pb2.AddValueRequest.SerializeToString,
+            prismGrpc__pb2.AddValueResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

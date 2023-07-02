@@ -1,3 +1,6 @@
+import uuid
+
+
 class ModulesFile:
 
     model_file_name = None
@@ -7,5 +10,5 @@ class ModulesFile:
         # name of original property file
         self.model_file_name = model_file_name
         # id of the module object in the prism server
-        self.module_object_id = str(id(self))
+        self.module_object_id = str(uuid.uuid4())
 

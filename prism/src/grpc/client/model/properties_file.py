@@ -1,3 +1,4 @@
+import uuid
 from abc import ABC
 
 from model.property_object import PropertyObject
@@ -11,11 +12,10 @@ class PropertiesFile(PrismPy, ABC):
 
     def __init__(self, property_file_path):
         super().__init__()
-        self.create_channel()
         # name of original property file
         self.property_file_path = property_file_path
         # id of the module object in the prism server
-        self.module_object_id = str(id(self))
+        self.properties_file_object_id = str(uuid.uuid4())
 
     def get_property_object(self, property_index):
         self.logger.info("Get property object {}.".format(property_index))
@@ -23,8 +23,8 @@ class PropertiesFile(PrismPy, ABC):
         property_object = PropertyObject()
 
         # create GetPropertyObjectRequest
-        request = prismGrpc_pb2.GetPropertyObjectRequest(properties_file_object_id=str(id(self)),
-                                                         property_object_id=str(id(property_object)),
+        request = prismGrpc_pb2.GetPropertyObjectRequest(properties_file_object_id=self.properties_file_object_id,
+                                                         property_object_id=property_object.property_object_id,
                                                          property_index=property_index)
 
         # Make the RPC call to GetPropertyObject
@@ -56,8 +56,8 @@ class PropertiesFile(PrismPy, ABC):
         self.logger.info("Get undefined constants used in property {}.".format(property_object))
 
         # create GetUndefinedConstantsUsedInPropertyRequest
-        request = prismGrpc_pb2.GetUndefinedConstantsUsedInPropertyRequest(properties_file_object_id=str(id(self)),
-                                                                           property_object_id=str(id(property_object)))
+        request = prismGrpc_pb2.GetUndefinedConstantsUsedInPropertyRequest(properties_file_object_id=self.properties_file_object_id,
+                                                                           property_object_id=property_object.property_object_id)
 
         # Make the RPC call to GetUndefinedConstantsUsedInProperty
         response = self.stub.GetUndefinedConstantsUsedInProperty(request)

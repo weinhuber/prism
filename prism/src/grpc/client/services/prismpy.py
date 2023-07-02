@@ -8,6 +8,7 @@ import prismpy_logger
 from model.prismpy_exceptions import PrismPyException
 from services import prismGrpc_pb2
 
+
 # TODO: Think about making this a singleton
 
 class PrismPy(ABC):
@@ -21,8 +22,11 @@ class PrismPy(ABC):
     # specify the size of chunks to read from the file
     __CHUNK_SIZE = 1024 * 1024  # 1MB
 
+    def __init__(self):
+        self.__create_channel()
+
     # private function to create a channel to the gRPC service
-    def create_channel(self):
+    def __create_channel(self):
         self.logger.info("Establishing connection to gRPC service.")
 
         # Open a gRPC channel
@@ -83,4 +87,3 @@ class PrismPy(ABC):
     def __del__(self):
         if self.channel is not None:
             self.__close_channel()
-

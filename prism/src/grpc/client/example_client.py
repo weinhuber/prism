@@ -1,3 +1,4 @@
+from model.Values import Values
 from services.prism import Prism
 from model.prism_dev_null_log import PrismDevNullLog
 from model.prism_file_log import PrismFileLog
@@ -40,5 +41,7 @@ print(result.get_result())
 
 # Model check the second property from the file (which has an undefined constant, whose value we set to 3)
 consts = properties_file.get_undefined_constants_used_in_property(properties_file.get_property_object(1))
+const_name = consts[0]
 
-
+vals = Values()
+vals.add_value(const_name, 3)

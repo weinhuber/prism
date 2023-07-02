@@ -182,6 +182,16 @@ message GetUndefinedConstantsUsedInPropertyResponse {
   repeated string constants = 2;
 }
 
+message AddValueRequest {
+  string values_object_id = 1;
+  string const_name = 2;
+  int32 value = 3;
+}
+
+message AddValueResponse {
+  string status = 2;
+}
+
 
 // Service Definitions
 service PrismProtoService {
@@ -203,6 +213,8 @@ service PrismProtoService {
   rpc ModelCheck(ModelCheckRequest) returns (ModelCheckResponse) {}
   // Get undefined constants used in property
   rpc GetUndefinedConstantsUsedInProperty(GetUndefinedConstantsUsedInPropertyRequest) returns (GetUndefinedConstantsUsedInPropertyResponse) {}
+  // add values
+  rpc AddValue(AddValueRequest) returns (AddValueResponse) {}
 
   // Define undefined constants
   rpc DefineUndefinedConstants(DefineUndefinedConstantsRequest) returns (DefineUndefinedConstantsResponse) {}

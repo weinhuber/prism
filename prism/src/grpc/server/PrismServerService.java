@@ -13,10 +13,13 @@ import java.io.IOException;
 import java.util.*;
 
 import grpc.server.services.PrismGrpcLogger;
+import parser.Values;
 import parser.ast.ModulesFile;
 import parser.ast.PropertiesFile;
 import parser.ast.Property;
 import prism.*;
+
+import javax.swing.*;
 
 // implementation of all prism services
 class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase {
@@ -326,6 +329,49 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         // complete call
         responseObserver.onCompleted();
         logger.info("getUndefinedConstantsUsedInProperty request completed with status: " + status);
+    }
+
+
+    @Override
+    public void addValue(PrismGrpc.AddValueRequest request, StreamObserver<PrismGrpc.AddValueResponse> responseObserver) {
+        logger.info("Received addValue request");
+
+        // get values object id
+        String valuesObjectId = request.getValuesObjectId();
+        System.out.println("valuesObjectId: " + valuesObjectId);
+
+        String status = "Error";
+
+        // add value
+        try {
+            Values values = new Values();
+
+            // check if value object already exists
+            if(!prismObjectMap.containsKey(valuesObjectId)){
+                // create new values object
+                prismObjectMap.put(valuesObjectId, values);
+            } else {
+                values = (Values) prismObjectMap.get(valuesObjectId);
+            }
+            values.addValue(request.getConstName(), request.getValue());
+            status = "Success";
+        } catch (IllegalArgumentException e) {
+            logger.warning("Error adding value: " + e.getMessage());
+            status += " : " + e.getMessage();
+        }
+
+        // build response
+        PrismGrpc.AddValueResponse response = PrismGrpc.AddValueResponse.newBuilder()
+                .setStatus(status)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+        logger.info("addValue request completed with status: " + status);
+
     }
 
     // uploadFile is a service that allows the client to upload a file to the prism server

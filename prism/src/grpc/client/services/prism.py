@@ -1,3 +1,4 @@
+import uuid
 from abc import ABC
 
 import grpc
@@ -15,16 +16,18 @@ from services import prismGrpc_pb2, prismGrpc_pb2_grpc
 class Prism(PrismPy, ABC):
     __proto_main_log = None
 
+    prism_object_id = None
+
     def __init__(self, main_log):
         super().__init__()
         self.__proto_main_log = main_log
+        self.prism_object_id = str(uuid.uuid4())
 
     def initialise(self):
         if self.__proto_main_log is None:
             self.logger.error("No log file specified. Please specify a log file.")
             raise PrismPyException("No log file specified. Please specify a log file.")
         else:
-            self.create_channel()
             self.logger.info(
                 "Initialising Prism Engine with output {}.".format(self.__proto_main_log.__class__.__name__))
 
@@ -35,7 +38,7 @@ class Prism(PrismPy, ABC):
             # - Prism(PrismFileLog("stdout"))
 
             # Create a request with PrismDevNullLog
-            request = prismGrpc_pb2.InitialiseRequest(prism_object_id=str(id(self)),
+            request = prismGrpc_pb2.InitialiseRequest(prism_object_id=self.prism_object_id,
                                                       log=self.__proto_main_log.get_proto())
 
             try:
@@ -59,8 +62,8 @@ class Prism(PrismPy, ABC):
         self.logger.info("Parsing file {}.".format(upload_response.filename))
 
         # Create a ParseModelRequest
-        request = prismGrpc_pb2.ParseModelFileRequest(prism_object_id=str(id(self)),
-                                                      module_object_id=str(id(modules_file)),
+        request = prismGrpc_pb2.ParseModelFileRequest(prism_object_id=self.prism_object_id,
+                                                      module_object_id=modules_file.module_object_id,
                                                       model_file_name=upload_response.filename)
 
         # Make the RPC call to ParseModelFile
@@ -74,8 +77,8 @@ class Prism(PrismPy, ABC):
         self.logger.info("Loading prism model with module file" + module_file.model_file_name)
 
         # Create a LoadPRISMModelRequest
-        request = prismGrpc_pb2.LoadPRISMModelRequest(prism_object_id=str(id(self)),
-                                                      module_object_id=str(id(module_file)))
+        request = prismGrpc_pb2.LoadPRISMModelRequest(prism_object_id=self.prism_object_id,
+                                                      module_object_id=module_file.module_object_id)
 
         # Make the RPC call to LoadPRISMModel
         response = self.stub.LoadPRISMModel(request)
@@ -95,9 +98,9 @@ class Prism(PrismPy, ABC):
         properties_file = PropertiesFile(property_file_path)
 
         # create ParsePropertiesFileRequest
-        request = prismGrpc_pb2.ParsePropertiesFileRequest(prism_object_id=str(id(self)),
-                                                           module_object_id=str(id(module_file)),
-                                                           properties_file_object_id=str(id(properties_file)),
+        request = prismGrpc_pb2.ParsePropertiesFileRequest(prism_object_id=self.prism_object_id,
+                                                           module_object_id=module_file.module_object_id,
+                                                           properties_file_object_id=properties_file.properties_file_object_id,
                                                            properties_file_name=upload_response.filename)
 
         # Make the RPC call to ParsePropertiesFile
@@ -115,9 +118,9 @@ class Prism(PrismPy, ABC):
 
         # Create a ModelCheckRequest
         request = prismGrpc_pb2.ModelCheckRequest(
-            prism_object_id=str(id(self)),
-            properties_file_object_id=str(id(properties_file)),
-            result_object_id=str(id(result)),
+            prism_object_id=self.prism_object_id,
+            properties_file_object_id=properties_file.properties_file_object_id,
+            result_object_id=result.result_object_id,
             property_index=property_object_index)
 
         # Make the RPC call to ModelCheck
