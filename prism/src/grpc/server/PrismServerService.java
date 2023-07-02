@@ -338,7 +338,6 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
 
         // get values object id
         String valuesObjectId = request.getValuesObjectId();
-        System.out.println("valuesObjectId: " + valuesObjectId);
 
         String status = "Error";
 
@@ -372,6 +371,46 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         responseObserver.onCompleted();
         logger.info("addValue request completed with status: " + status);
 
+    }
+
+
+    @Override
+    public void setSomeUndefinedConstants(PrismGrpc.SetSomeUndefinedConstantsRequest request, StreamObserver<PrismGrpc.SetSomeUndefinedConstantsResponse> responseObserver) {
+        logger.info("Received setSomeUndefinedConstants request");
+
+        // get properties file id from request
+        String propertiesFileId = request.getPropertiesFileObjectId();
+
+        // get values object id from request
+        String valuesObjectId = request.getValuesObjectId();
+
+        String status = "Error";
+
+        // set some undefined constants
+        try{
+            PropertiesFile propertiesFile = (PropertiesFile) prismObjectMap.get(propertiesFileId);
+            Values values = (Values) prismObjectMap.get(valuesObjectId);
+            propertiesFile.setSomeUndefinedConstants(values);
+            status = "Success";
+
+        } catch (IllegalArgumentException e) {
+            logger.warning("Error loading prism properties: " + e.getMessage());
+            status += " : " + e.getMessage();
+        } catch (PrismException e) {
+            throw new RuntimeException(e);
+        }
+
+        // build response
+        PrismGrpc.SetSomeUndefinedConstantsResponse response = PrismGrpc.SetSomeUndefinedConstantsResponse.newBuilder()
+                .setStatus(status)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+        logger.info("setSomeUndefinedConstants request completed with status: " + status);
     }
 
     // uploadFile is a service that allows the client to upload a file to the prism server

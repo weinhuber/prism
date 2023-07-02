@@ -192,6 +192,15 @@ message AddValueResponse {
   string status = 2;
 }
 
+message SetSomeUndefinedConstantsRequest {
+  string properties_file_object_id = 1;
+  string values_object_id = 2;
+}
+
+message SetSomeUndefinedConstantsResponse {
+  string status = 1;
+}
+
 
 // Service Definitions
 service PrismProtoService {
@@ -215,6 +224,8 @@ service PrismProtoService {
   rpc GetUndefinedConstantsUsedInProperty(GetUndefinedConstantsUsedInPropertyRequest) returns (GetUndefinedConstantsUsedInPropertyResponse) {}
   // add values
   rpc AddValue(AddValueRequest) returns (AddValueResponse) {}
+  // set some undefined constants
+  rpc SetSomeUndefinedConstants(SetSomeUndefinedConstantsRequest) returns (SetSomeUndefinedConstantsResponse) {}
 
   // Define undefined constants
   rpc DefineUndefinedConstants(DefineUndefinedConstantsRequest) returns (DefineUndefinedConstantsResponse) {}

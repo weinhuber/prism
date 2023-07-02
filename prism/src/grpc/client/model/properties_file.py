@@ -56,8 +56,9 @@ class PropertiesFile(PrismPy, ABC):
         self.logger.info("Get undefined constants used in property {}.".format(property_object))
 
         # create GetUndefinedConstantsUsedInPropertyRequest
-        request = prismGrpc_pb2.GetUndefinedConstantsUsedInPropertyRequest(properties_file_object_id=self.properties_file_object_id,
-                                                                           property_object_id=property_object.property_object_id)
+        request = prismGrpc_pb2.GetUndefinedConstantsUsedInPropertyRequest(
+            properties_file_object_id=self.properties_file_object_id,
+            property_object_id=property_object.property_object_id)
 
         # Make the RPC call to GetUndefinedConstantsUsedInProperty
         response = self.stub.GetUndefinedConstantsUsedInProperty(request)
@@ -65,3 +66,16 @@ class PropertiesFile(PrismPy, ABC):
 
         return response.constants
 
+    def set_some_undefined_constants(self, values):
+        self.logger.info("Set some undefined constants {}.".format(values))
+
+        # create SetSomeUndefinedConstantsRequest
+        request = prismGrpc_pb2.SetSomeUndefinedConstantsRequest(
+            properties_file_object_id=self.properties_file_object_id,
+            values_object_id=values.values_object_id)
+
+        # Make the RPC call to SetSomeUndefinedConstants
+        response = self.stub.SetSomeUndefinedConstants(request)
+        self.logger.info("Received message {}.".format(response.status))
+
+        return response.status

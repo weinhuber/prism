@@ -45,3 +45,4 @@ const_name = consts[0]
 
 vals = Values()
 vals.add_value(const_name, 3)
+properties_file.set_some_undefined_constants(vals)
