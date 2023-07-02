@@ -1,5 +1,5 @@
 import uuid
-from model.prismpy_model import PrismPyBaseModel
+from model.prismpy_base_model import PrismPyBaseModel
 
 
 class Result(PrismPyBaseModel):

@@ -1,12 +1,13 @@
-from model.Values import Values
+from model.undefined_constants import UndefinedConstants
+from model.values import Values
 from model.prism import Prism
 from model.prism_dev_null_log import PrismDevNullLog
 from model.prism_file_log import PrismFileLog
 
 # Create a log for PRISM output (hidden or stdout)
 main_log = PrismDevNullLog()
-main_log2 = PrismFileLog("stdout")
-main_log3 = PrismFileLog("hidden")
+# main_log2 = PrismFileLog("stdout")
+# main_log3 = PrismFileLog("hidden")
 
 # Initialise PRISM engine
 prism = Prism(main_log)
@@ -45,6 +46,7 @@ const_name = consts[0]
 
 vals = Values()
 vals.add_value(const_name, 3)
+# here we synchronise with server during "add_value" call and not after Value object is created
 properties_file.set_some_undefined_constants(vals)
 print(properties_file.get_property_object(1), " for ", vals)
 
@@ -52,4 +54,7 @@ result = prism.model_check(properties_file, properties_file.get_property_object(
 print(result.get_result())
 
 
-
+# Model check the second property from the file
+# (which has an undefined constant, which we check over a range 0,1,2)
+undef_consts = UndefinedConstants(modules_file, properties_file, properties_file.get_property_object(1))
+# here we synchronise with server after undefined constants object is created

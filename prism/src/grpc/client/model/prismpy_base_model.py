@@ -13,7 +13,6 @@ class PrismPyBaseModel(ABC):
     # specify the size of chunks to read from the file
     __CHUNK_SIZE = 1024 * 1024  # 1MB
 
-
     # singleton logger
     logger = prismpy_logger.PrismPyLogger().get_logger()
 
@@ -110,4 +109,3 @@ class PrismPyBaseModel(ABC):
                     self.logger.info(f"Uploaded chunk of size {len(piece)}")
         except Exception as e:
             self.logger.error(f"Unknown error.\n{str(e)}")
-

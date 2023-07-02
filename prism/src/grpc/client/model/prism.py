@@ -5,7 +5,7 @@ from model.prismpy_exceptions import PrismPyException
 from model.properties_file import PropertiesFile
 from model.result import Result
 from services import prismGrpc_pb2
-from model.prismpy_model import PrismPyBaseModel
+from model.prismpy_base_model import PrismPyBaseModel
 
 
 class Prism(PrismPyBaseModel):

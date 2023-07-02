@@ -1,6 +1,6 @@
 from services import prismGrpc_pb2
 from model.prismpy_exceptions import PrismPyException
-from model.prismpy_model import PrismPyBaseModel
+from model.prismpy_base_model import PrismPyBaseModel
 
 
 class PrismFileLog(PrismPyBaseModel):
