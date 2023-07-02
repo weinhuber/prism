@@ -21,6 +21,7 @@ prism.initialise()
 
 # Parse and load a PRISM model from a file
 modules_file = prism.parse_model_file("examples/dice.pm")
+print(modules_file.object_id)
 prism.load_prism_model(modules_file)
 
 # modules_file2 = prism2.parse_model_file("examples/dice.pm")

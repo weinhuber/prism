@@ -421,6 +421,50 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         logger.info("setSomeUndefinedConstants request completed with status: " + status);
     }
 
+    @Override
+    public void initUndefinedConstants(PrismGrpc.InitUndefinedConstantsRequest request, StreamObserver<PrismGrpc.InitUndefinedConstantsResponse> responseObserver) {
+        logger.info("Received initUndefinedConstants request");
+
+        // get modules file id from request
+        String modulesFileId = request.getModuleObjectId();
+
+        // get properties file object id from request
+        String propertiesFileId = request.getPropertiesFileObjectId();
+
+        // get property object id from request
+        String propertyId = request.getPropertyObjectId();
+
+        // get undefined constants object id from request
+        String undefinedConstantsId = request.getUndefinedConstantsObjectId();
+
+        String status = "Error";
+
+        // init undefined constants
+        try{
+            ModulesFile modulesFile = (ModulesFile) prismObjectMap.get(modulesFileId);
+            PropertiesFile propertiesFile = (PropertiesFile) prismObjectMap.get(propertiesFileId);
+            Property property = (Property) prismObjectMap.get(propertyId);
+            UndefinedConstants undefinedConstants = new UndefinedConstants(modulesFile, propertiesFile, property);
+            prismObjectMap.put(undefinedConstantsId, undefinedConstants);
+            status = "Success";
+
+        } catch (IllegalArgumentException e) {
+            logger.warning("Error loading prism properties: " + e.getMessage());
+            status += " : " + e.getMessage();
+        }
+
+        // build response
+        PrismGrpc.InitUndefinedConstantsResponse response = PrismGrpc.InitUndefinedConstantsResponse.newBuilder()
+                .setStatus(status)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+        logger.info("initUndefinedConstants request completed with status: " + status);
+    }
 
     @Override
     public void deleteObject(PrismGrpc.DeleteObjectRequest request, StreamObserver<PrismGrpc.DeleteObjectResponse> responseObserver) {

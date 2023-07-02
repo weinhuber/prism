@@ -75,25 +75,10 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.SetSomeUndefinedConstantsRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.SetSomeUndefinedConstantsResponse.FromString,
                 )
-        self.DefineUndefinedConstants = channel.unary_unary(
-                '/PrismProtoService/DefineUndefinedConstants',
-                request_serializer=prismGrpc__pb2.DefineUndefinedConstantsRequest.SerializeToString,
-                response_deserializer=prismGrpc__pb2.DefineUndefinedConstantsResponse.FromString,
-                )
-        self.ModelCheckWithConstants = channel.unary_unary(
-                '/PrismProtoService/ModelCheckWithConstants',
-                request_serializer=prismGrpc__pb2.ModelCheckWithConstantsRequest.SerializeToString,
-                response_deserializer=prismGrpc__pb2.ModelCheckResponse.FromString,
-                )
-        self.ParsePropertiesString = channel.unary_unary(
-                '/PrismProtoService/ParsePropertiesString',
-                request_serializer=prismGrpc__pb2.ParsePropertiesStringRequest.SerializeToString,
-                response_deserializer=prismGrpc__pb2.ParsePropertiesStringResponse.FromString,
-                )
-        self.ModelCheckString = channel.unary_unary(
-                '/PrismProtoService/ModelCheckString',
-                request_serializer=prismGrpc__pb2.ModelCheckStringRequest.SerializeToString,
-                response_deserializer=prismGrpc__pb2.ModelCheckStringResponse.FromString,
+        self.InitUndefinedConstants = channel.unary_unary(
+                '/PrismProtoService/InitUndefinedConstants',
+                request_serializer=prismGrpc__pb2.InitUndefinedConstantsRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.InitUndefinedConstantsResponse.FromString,
                 )
         self.ClosePrism = channel.unary_unary(
                 '/PrismProtoService/ClosePrism',
@@ -190,29 +175,8 @@ class PrismProtoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def DefineUndefinedConstants(self, request, context):
-        """Define undefined constants
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def ModelCheckWithConstants(self, request, context):
-        """Model check with constants
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def ParsePropertiesString(self, request, context):
-        """Parse a properties string
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def ModelCheckString(self, request, context):
-        """Model check a property specified as a string
+    def InitUndefinedConstants(self, request, context):
+        """init undefined constants
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -288,25 +252,10 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     request_deserializer=prismGrpc__pb2.SetSomeUndefinedConstantsRequest.FromString,
                     response_serializer=prismGrpc__pb2.SetSomeUndefinedConstantsResponse.SerializeToString,
             ),
-            'DefineUndefinedConstants': grpc.unary_unary_rpc_method_handler(
-                    servicer.DefineUndefinedConstants,
-                    request_deserializer=prismGrpc__pb2.DefineUndefinedConstantsRequest.FromString,
-                    response_serializer=prismGrpc__pb2.DefineUndefinedConstantsResponse.SerializeToString,
-            ),
-            'ModelCheckWithConstants': grpc.unary_unary_rpc_method_handler(
-                    servicer.ModelCheckWithConstants,
-                    request_deserializer=prismGrpc__pb2.ModelCheckWithConstantsRequest.FromString,
-                    response_serializer=prismGrpc__pb2.ModelCheckResponse.SerializeToString,
-            ),
-            'ParsePropertiesString': grpc.unary_unary_rpc_method_handler(
-                    servicer.ParsePropertiesString,
-                    request_deserializer=prismGrpc__pb2.ParsePropertiesStringRequest.FromString,
-                    response_serializer=prismGrpc__pb2.ParsePropertiesStringResponse.SerializeToString,
-            ),
-            'ModelCheckString': grpc.unary_unary_rpc_method_handler(
-                    servicer.ModelCheckString,
-                    request_deserializer=prismGrpc__pb2.ModelCheckStringRequest.FromString,
-                    response_serializer=prismGrpc__pb2.ModelCheckStringResponse.SerializeToString,
+            'InitUndefinedConstants': grpc.unary_unary_rpc_method_handler(
+                    servicer.InitUndefinedConstants,
+                    request_deserializer=prismGrpc__pb2.InitUndefinedConstantsRequest.FromString,
+                    response_serializer=prismGrpc__pb2.InitUndefinedConstantsResponse.SerializeToString,
             ),
             'ClosePrism': grpc.unary_unary_rpc_method_handler(
                     servicer.ClosePrism,
@@ -529,7 +478,7 @@ class PrismProtoService(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def DefineUndefinedConstants(request,
+    def InitUndefinedConstants(request,
             target,
             options=(),
             channel_credentials=None,
@@ -539,60 +488,9 @@ class PrismProtoService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/DefineUndefinedConstants',
-            prismGrpc__pb2.DefineUndefinedConstantsRequest.SerializeToString,
-            prismGrpc__pb2.DefineUndefinedConstantsResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def ModelCheckWithConstants(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/ModelCheckWithConstants',
-            prismGrpc__pb2.ModelCheckWithConstantsRequest.SerializeToString,
-            prismGrpc__pb2.ModelCheckResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def ParsePropertiesString(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/ParsePropertiesString',
-            prismGrpc__pb2.ParsePropertiesStringRequest.SerializeToString,
-            prismGrpc__pb2.ParsePropertiesStringResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def ModelCheckString(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/ModelCheckString',
-            prismGrpc__pb2.ModelCheckStringRequest.SerializeToString,
-            prismGrpc__pb2.ModelCheckStringResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/InitUndefinedConstants',
+            prismGrpc__pb2.InitUndefinedConstantsRequest.SerializeToString,
+            prismGrpc__pb2.InitUndefinedConstantsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

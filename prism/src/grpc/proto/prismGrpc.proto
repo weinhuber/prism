@@ -64,18 +64,8 @@ message ParsePropertiesFileResponse {
   string properties = 3;
 }
 
-message DefineUndefinedConstantsRequest {
-  string prism_object_id = 1;
-  string model_file_name = 2;
-  string properties_file_name = 3;
-  int32 property_index = 4;
-  string const_range = 5;
-}
 
-message DefineUndefinedConstantsResponse {
-  string prism_object_id = 1;
-  string status = 2;
-}
+
 
 message ModelCheckRequest {
   string prism_object_id = 1;
@@ -89,33 +79,14 @@ message ModelCheckResponse {
   string status = 2;
 }
 
-message ModelCheckWithConstantsRequest {
-  string prism_object_id = 1;
-  string properties_file_name = 2;
-  string constants_values = 3;
-  int32 property_index = 4;
-}
 
-message ParsePropertiesStringRequest {
-  string prism_object_id = 1;
-  string model_file_name = 2;
-  string property_string = 3;
-}
 
-message ParsePropertiesStringResponse {
-  string prism_object_id = 1;
-  string status = 2;
-}
 
-message ModelCheckStringRequest {
-  string prism_object_id = 1;
-  string property_string = 2;
-}
 
-message ModelCheckStringResponse {
-  string prism_object_id = 1;
-  string status = 2;
-}
+
+
+
+
 
 message ParseAndLoadModelRequest {
   string prism_object_id = 1;
@@ -210,6 +181,17 @@ message DeleteObjectResponse {
   string status = 1;
 }
 
+message InitUndefinedConstantsRequest {
+  string module_object_id = 1;
+  string properties_file_object_id = 2;
+  string property_object_id = 3;
+  string undefined_constants_object_id = 4;
+}
+
+message InitUndefinedConstantsResponse {
+  string status = 1;
+}
+
 // Service Definitions
 service PrismProtoService {
   // delete a PRISM object
@@ -236,16 +218,9 @@ service PrismProtoService {
   rpc AddValue(AddValueRequest) returns (AddValueResponse) {}
   // set some undefined constants
   rpc SetSomeUndefinedConstants(SetSomeUndefinedConstantsRequest) returns (SetSomeUndefinedConstantsResponse) {}
+  // init undefined constants
+  rpc InitUndefinedConstants(InitUndefinedConstantsRequest) returns (InitUndefinedConstantsResponse) {}
 
-  // Define undefined constants
-  rpc DefineUndefinedConstants(DefineUndefinedConstantsRequest) returns (DefineUndefinedConstantsResponse) {}
-
-  // Model check with constants
-  rpc ModelCheckWithConstants(ModelCheckWithConstantsRequest) returns (ModelCheckResponse) {}
-  // Parse a properties string
-  rpc ParsePropertiesString(ParsePropertiesStringRequest) returns (ParsePropertiesStringResponse) {}
-  // Model check a property specified as a string
-  rpc ModelCheckString(ModelCheckStringRequest) returns (ModelCheckStringResponse) {}
   // Close down PRISM
   rpc ClosePrism(ClosePrismRequest) returns (ClosePrismResponse) {}
 }
