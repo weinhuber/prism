@@ -9,6 +9,8 @@ class Values(PrismPy, ABC):
 
     values_object_id = None
 
+    current_values = None
+
     def __init__(self):
         super().__init__()
         self.values_object_id = str(uuid.uuid4())
@@ -20,4 +22,8 @@ class Values(PrismPy, ABC):
 
         response = self.stub.AddValue(request)
         self.logger.info("Received message {}.".format(response.status))
+        self.current_values = response.result
         return response.status
+
+    def __str__(self):
+        return str(self.current_values)

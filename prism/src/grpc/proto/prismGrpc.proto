@@ -189,6 +189,7 @@ message AddValueRequest {
 }
 
 message AddValueResponse {
+  string result = 1;
   string status = 2;
 }
 

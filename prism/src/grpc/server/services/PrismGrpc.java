@@ -25958,6 +25958,18 @@ public final class PrismGrpc {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <code>string result = 1;</code>
+     * @return The result.
+     */
+    java.lang.String getResult();
+    /**
+     * <code>string result = 1;</code>
+     * @return The bytes for result.
+     */
+    com.google.protobuf.ByteString
+        getResultBytes();
+
+    /**
      * <code>string status = 2;</code>
      * @return The status.
      */
@@ -25982,6 +25994,7 @@ public final class PrismGrpc {
       super(builder);
     }
     private AddValueResponse() {
+      result_ = "";
       status_ = "";
     }
 
@@ -26015,6 +26028,12 @@ public final class PrismGrpc {
             case 0:
               done = true;
               break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              result_ = s;
+              break;
+            }
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
@@ -26051,6 +26070,44 @@ public final class PrismGrpc {
       return grpc.server.services.PrismGrpc.internal_static_AddValueResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               grpc.server.services.PrismGrpc.AddValueResponse.class, grpc.server.services.PrismGrpc.AddValueResponse.Builder.class);
+    }
+
+    public static final int RESULT_FIELD_NUMBER = 1;
+    private volatile java.lang.Object result_;
+    /**
+     * <code>string result = 1;</code>
+     * @return The result.
+     */
+    @java.lang.Override
+    public java.lang.String getResult() {
+      java.lang.Object ref = result_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        result_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string result = 1;</code>
+     * @return The bytes for result.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getResultBytes() {
+      java.lang.Object ref = result_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        result_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int STATUS_FIELD_NUMBER = 2;
@@ -26105,6 +26162,9 @@ public final class PrismGrpc {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (!getResultBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, result_);
+      }
       if (!getStatusBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, status_);
       }
@@ -26117,6 +26177,9 @@ public final class PrismGrpc {
       if (size != -1) return size;
 
       size = 0;
+      if (!getResultBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, result_);
+      }
       if (!getStatusBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, status_);
       }
@@ -26135,6 +26198,8 @@ public final class PrismGrpc {
       }
       grpc.server.services.PrismGrpc.AddValueResponse other = (grpc.server.services.PrismGrpc.AddValueResponse) obj;
 
+      if (!getResult()
+          .equals(other.getResult())) return false;
       if (!getStatus()
           .equals(other.getStatus())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -26148,6 +26213,8 @@ public final class PrismGrpc {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + RESULT_FIELD_NUMBER;
+      hash = (53 * hash) + getResult().hashCode();
       hash = (37 * hash) + STATUS_FIELD_NUMBER;
       hash = (53 * hash) + getStatus().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -26283,6 +26350,8 @@ public final class PrismGrpc {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        result_ = "";
+
         status_ = "";
 
         return this;
@@ -26311,6 +26380,7 @@ public final class PrismGrpc {
       @java.lang.Override
       public grpc.server.services.PrismGrpc.AddValueResponse buildPartial() {
         grpc.server.services.PrismGrpc.AddValueResponse result = new grpc.server.services.PrismGrpc.AddValueResponse(this);
+        result.result_ = result_;
         result.status_ = status_;
         onBuilt();
         return result;
@@ -26360,6 +26430,10 @@ public final class PrismGrpc {
 
       public Builder mergeFrom(grpc.server.services.PrismGrpc.AddValueResponse other) {
         if (other == grpc.server.services.PrismGrpc.AddValueResponse.getDefaultInstance()) return this;
+        if (!other.getResult().isEmpty()) {
+          result_ = other.result_;
+          onChanged();
+        }
         if (!other.getStatus().isEmpty()) {
           status_ = other.status_;
           onChanged();
@@ -26390,6 +26464,82 @@ public final class PrismGrpc {
             mergeFrom(parsedMessage);
           }
         }
+        return this;
+      }
+
+      private java.lang.Object result_ = "";
+      /**
+       * <code>string result = 1;</code>
+       * @return The result.
+       */
+      public java.lang.String getResult() {
+        java.lang.Object ref = result_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          result_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string result = 1;</code>
+       * @return The bytes for result.
+       */
+      public com.google.protobuf.ByteString
+          getResultBytes() {
+        java.lang.Object ref = result_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          result_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string result = 1;</code>
+       * @param value The result to set.
+       * @return This builder for chaining.
+       */
+      public Builder setResult(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        result_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string result = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearResult() {
+        
+        result_ = getDefaultInstance().getResult();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string result = 1;</code>
+       * @param value The bytes for result to set.
+       * @return This builder for chaining.
+       */
+      public Builder setResultBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        result_ = value;
+        onChanged();
         return this;
       }
 
@@ -28067,45 +28217,45 @@ public final class PrismGrpc {
       "nstantsUsedInPropertyResponse\022\016\n\006status\030" +
       "\001 \001(\t\022\021\n\tconstants\030\002 \003(\t\"N\n\017AddValueRequ" +
       "est\022\030\n\020values_object_id\030\001 \001(\t\022\022\n\nconst_n" +
-      "ame\030\002 \001(\t\022\r\n\005value\030\003 \001(\005\"\"\n\020AddValueResp" +
-      "onse\022\016\n\006status\030\002 \001(\t\"_\n SetSomeUndefined" +
-      "ConstantsRequest\022!\n\031properties_file_obje" +
-      "ct_id\030\001 \001(\t\022\030\n\020values_object_id\030\002 \001(\t\"3\n" +
-      "!SetSomeUndefinedConstantsResponse\022\016\n\006st" +
-      "atus\030\001 \001(\t2\213\n\n\021PrismProtoService\022v\n\037Prop" +
-      "ertiesFileForwardMethodCall\022\'.Properties" +
-      "FileForwardMethodCallRequest\032(.Propertie" +
-      "sFileForwardMethodCallResponse\"\000\022.\n\nUplo" +
-      "adFile\022\016.UploadRequest\032\014.UploadReply\"\000(\001" +
-      "\0227\n\nInitialise\022\022.InitialiseRequest\032\023.Ini" +
-      "tialiseResponse\"\000\022C\n\016ParseModelFile\022\026.Pa" +
-      "rseModelFileRequest\032\027.ParseModelFileResp" +
-      "onse\"\000\022C\n\016LoadPRISMModel\022\026.LoadPRISMMode" +
-      "lRequest\032\027.LoadPRISMModelResponse\"\000\022R\n\023P" +
-      "arsePropertiesFile\022\033.ParsePropertiesFile" +
-      "Request\032\034.ParsePropertiesFileResponse\"\000\022" +
-      "L\n\021GetPropertyObject\022\031.GetPropertyObject" +
-      "Request\032\032.GetPropertyObjectResponse\"\000\0227\n" +
-      "\nModelCheck\022\022.ModelCheckRequest\032\023.ModelC" +
-      "heckResponse\"\000\022\202\001\n#GetUndefinedConstants" +
-      "UsedInProperty\022+.GetUndefinedConstantsUs" +
-      "edInPropertyRequest\032,.GetUndefinedConsta" +
-      "ntsUsedInPropertyResponse\"\000\0221\n\010AddValue\022" +
-      "\020.AddValueRequest\032\021.AddValueResponse\"\000\022d" +
-      "\n\031SetSomeUndefinedConstants\022!.SetSomeUnd" +
-      "efinedConstantsRequest\032\".SetSomeUndefine" +
-      "dConstantsResponse\"\000\022a\n\030DefineUndefinedC" +
-      "onstants\022 .DefineUndefinedConstantsReque" +
-      "st\032!.DefineUndefinedConstantsResponse\"\000\022" +
-      "Q\n\027ModelCheckWithConstants\022\037.ModelCheckW" +
-      "ithConstantsRequest\032\023.ModelCheckResponse" +
-      "\"\000\022X\n\025ParsePropertiesString\022\035.ParsePrope" +
-      "rtiesStringRequest\032\036.ParsePropertiesStri" +
-      "ngResponse\"\000\022I\n\020ModelCheckString\022\030.Model" +
-      "CheckStringRequest\032\031.ModelCheckStringRes" +
-      "ponse\"\000\0227\n\nClosePrism\022\022.ClosePrismReques" +
-      "t\032\023.ClosePrismResponse\"\000B\026\n\024grpc.server." +
-      "servicesb\006proto3"
+      "ame\030\002 \001(\t\022\r\n\005value\030\003 \001(\005\"2\n\020AddValueResp" +
+      "onse\022\016\n\006result\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"_\n " +
+      "SetSomeUndefinedConstantsRequest\022!\n\031prop" +
+      "erties_file_object_id\030\001 \001(\t\022\030\n\020values_ob" +
+      "ject_id\030\002 \001(\t\"3\n!SetSomeUndefinedConstan" +
+      "tsResponse\022\016\n\006status\030\001 \001(\t2\213\n\n\021PrismProt" +
+      "oService\022v\n\037PropertiesFileForwardMethodC" +
+      "all\022\'.PropertiesFileForwardMethodCallReq" +
+      "uest\032(.PropertiesFileForwardMethodCallRe" +
+      "sponse\"\000\022.\n\nUploadFile\022\016.UploadRequest\032\014" +
+      ".UploadReply\"\000(\001\0227\n\nInitialise\022\022.Initial" +
+      "iseRequest\032\023.InitialiseResponse\"\000\022C\n\016Par" +
+      "seModelFile\022\026.ParseModelFileRequest\032\027.Pa" +
+      "rseModelFileResponse\"\000\022C\n\016LoadPRISMModel" +
+      "\022\026.LoadPRISMModelRequest\032\027.LoadPRISMMode" +
+      "lResponse\"\000\022R\n\023ParsePropertiesFile\022\033.Par" +
+      "sePropertiesFileRequest\032\034.ParsePropertie" +
+      "sFileResponse\"\000\022L\n\021GetPropertyObject\022\031.G" +
+      "etPropertyObjectRequest\032\032.GetPropertyObj" +
+      "ectResponse\"\000\0227\n\nModelCheck\022\022.ModelCheck" +
+      "Request\032\023.ModelCheckResponse\"\000\022\202\001\n#GetUn" +
+      "definedConstantsUsedInProperty\022+.GetUnde" +
+      "finedConstantsUsedInPropertyRequest\032,.Ge" +
+      "tUndefinedConstantsUsedInPropertyRespons" +
+      "e\"\000\0221\n\010AddValue\022\020.AddValueRequest\032\021.AddV" +
+      "alueResponse\"\000\022d\n\031SetSomeUndefinedConsta" +
+      "nts\022!.SetSomeUndefinedConstantsRequest\032\"" +
+      ".SetSomeUndefinedConstantsResponse\"\000\022a\n\030" +
+      "DefineUndefinedConstants\022 .DefineUndefin" +
+      "edConstantsRequest\032!.DefineUndefinedCons" +
+      "tantsResponse\"\000\022Q\n\027ModelCheckWithConstan" +
+      "ts\022\037.ModelCheckWithConstantsRequest\032\023.Mo" +
+      "delCheckResponse\"\000\022X\n\025ParsePropertiesStr" +
+      "ing\022\035.ParsePropertiesStringRequest\032\036.Par" +
+      "sePropertiesStringResponse\"\000\022I\n\020ModelChe" +
+      "ckString\022\030.ModelCheckStringRequest\032\031.Mod" +
+      "elCheckStringResponse\"\000\0227\n\nClosePrism\022\022." +
+      "ClosePrismRequest\032\023.ClosePrismResponse\"\000" +
+      "B\026\n\024grpc.server.servicesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -28314,7 +28464,7 @@ public final class PrismGrpc {
     internal_static_AddValueResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AddValueResponse_descriptor,
-        new java.lang.String[] { "Status", });
+        new java.lang.String[] { "Result", "Status", });
     internal_static_SetSomeUndefinedConstantsRequest_descriptor =
       getDescriptor().getMessageTypes().get(34);
     internal_static_SetSomeUndefinedConstantsRequest_fieldAccessorTable = new

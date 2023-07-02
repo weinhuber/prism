@@ -341,6 +341,8 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
 
         String status = "Error";
 
+        String result = "";
+
         // add value
         try {
             Values values = new Values();
@@ -353,6 +355,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
                 values = (Values) prismObjectMap.get(valuesObjectId);
             }
             values.addValue(request.getConstName(), request.getValue());
+            result = values.toString();
             status = "Success";
         } catch (IllegalArgumentException e) {
             logger.warning("Error adding value: " + e.getMessage());
@@ -362,6 +365,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         // build response
         PrismGrpc.AddValueResponse response = PrismGrpc.AddValueResponse.newBuilder()
                 .setStatus(status)
+                .setResult(result)
                 .build();
 
         // send response
