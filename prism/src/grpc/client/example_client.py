@@ -50,3 +50,6 @@ print(properties_file.get_property_object(1), " for ", vals)
 
 result = prism.model_check(properties_file, properties_file.get_property_object(1))
 print(result.get_result())
+
+
+print(properties_file.__object_id_accessed)

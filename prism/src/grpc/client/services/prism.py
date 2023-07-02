@@ -63,7 +63,7 @@ class Prism(PrismPy, PrismPyBaseModel):
 
         # Create a ParseModelRequest
         request = prismGrpc_pb2.ParseModelFileRequest(prism_object_id=self.prism_object_id,
-                                                      module_object_id=modules_file.module_object_id,
+                                                      module_object_id=modules_file.object_id,
                                                       model_file_name=upload_response.filename)
 
         # Make the RPC call to ParseModelFile
@@ -78,7 +78,7 @@ class Prism(PrismPy, PrismPyBaseModel):
 
         # Create a LoadPRISMModelRequest
         request = prismGrpc_pb2.LoadPRISMModelRequest(prism_object_id=self.prism_object_id,
-                                                      module_object_id=module_file.module_object_id)
+                                                      module_object_id=module_file.object_id)
 
         # Make the RPC call to LoadPRISMModel
         response = self.stub.LoadPRISMModel(request)
@@ -99,8 +99,8 @@ class Prism(PrismPy, PrismPyBaseModel):
 
         # create ParsePropertiesFileRequest
         request = prismGrpc_pb2.ParsePropertiesFileRequest(prism_object_id=self.prism_object_id,
-                                                           module_object_id=module_file.module_object_id,
-                                                           properties_file_object_id=properties_file.properties_file_object_id,
+                                                           module_object_id=module_file.object_id,
+                                                           properties_file_object_id=properties_file.object_id,
                                                            properties_file_name=upload_response.filename)
 
         # Make the RPC call to ParsePropertiesFile
@@ -119,7 +119,7 @@ class Prism(PrismPy, PrismPyBaseModel):
         # Create a ModelCheckRequest
         request = prismGrpc_pb2.ModelCheckRequest(
             prism_object_id=self.prism_object_id,
-            properties_file_object_id=properties_file.properties_file_object_id,
+            properties_file_object_id=properties_file.object_id,
             property_object_id=property_object.property_object_id,
             result_object_id=result.result_object_id)
 

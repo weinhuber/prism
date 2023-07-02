@@ -7,16 +7,13 @@ from services.prismpy import PrismPy
 from model.prismpy_model import PrismPyBaseModel
 
 
-class PropertiesFile(PrismPy, PrismPyBaseModel):
+class PropertiesFile(PrismPyBaseModel):
     property_file_path = None
-    properties_file_object_id = None
 
     def __init__(self, property_file_path):
         super().__init__()
         # name of original property file
         self.property_file_path = property_file_path
-        # id of the module object in the prism server
-        self.properties_file_object_id = str(uuid.uuid4())
 
     def get_property_object(self, property_index):
         self.logger.info("Get property object {}.".format(property_index))
@@ -24,7 +21,7 @@ class PropertiesFile(PrismPy, PrismPyBaseModel):
         property_object = PropertyObject()
 
         # create GetPropertyObjectRequest
-        request = prismGrpc_pb2.GetPropertyObjectRequest(properties_file_object_id=self.properties_file_object_id,
+        request = prismGrpc_pb2.GetPropertyObjectRequest(properties_file_object_id=self.object_id,
                                                          property_object_id=property_object.property_object_id,
                                                          property_index=property_index)
 
@@ -58,7 +55,7 @@ class PropertiesFile(PrismPy, PrismPyBaseModel):
 
         # create GetUndefinedConstantsUsedInPropertyRequest
         request = prismGrpc_pb2.GetUndefinedConstantsUsedInPropertyRequest(
-            properties_file_object_id=self.properties_file_object_id,
+            properties_file_object_id=self.object_id,
             property_object_id=property_object.property_object_id)
 
         # Make the RPC call to GetUndefinedConstantsUsedInProperty
@@ -72,7 +69,7 @@ class PropertiesFile(PrismPy, PrismPyBaseModel):
 
         # create SetSomeUndefinedConstantsRequest
         request = prismGrpc_pb2.SetSomeUndefinedConstantsRequest(
-            properties_file_object_id=self.properties_file_object_id,
+            properties_file_object_id=self.object_id,
             values_object_id=values.values_object_id)
 
         # Make the RPC call to SetSomeUndefinedConstants

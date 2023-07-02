@@ -7,6 +7,7 @@ class PrismFileLog(PrismPyBaseModel):
     output = None
 
     def __init__(self, output):
+        super().__init__()
         if output == "hidden" or output == "stdout":
             self.output = output
         else:
