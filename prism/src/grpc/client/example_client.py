@@ -39,5 +39,6 @@ result = prism.model_check(properties_file, 0)
 print(result.get_result())
 
 # Model check the second property from the file (which has an undefined constant, whose value we set to 3)
-#consts = properties_file.get_undefined_constants_used_in_property(properties_file.get_property_object(1))
+consts = properties_file.get_undefined_constants_used_in_property(properties_file.get_property_object(1))
+
 

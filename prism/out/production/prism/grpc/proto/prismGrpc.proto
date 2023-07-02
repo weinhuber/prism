@@ -150,7 +150,8 @@ message ParseModelFileResponse {
 
 message GetPropertyObjectRequest {
   string properties_file_object_id = 1;
-  int32 property_index = 2;
+  string property_object_id = 2;
+  int32 property_index = 3;
 }
 
 message GetPropertyObjectResponse {
@@ -173,8 +174,12 @@ message PropertiesFileForwardMethodCallResponse {
 }
 message GetUndefinedConstantsUsedInPropertyRequest {
   string properties_file_object_id = 1;
-  string properties_file_name = 2;
-  int32 property_index = 3;
+  string property_object_id = 2;
+}
+
+message GetUndefinedConstantsUsedInPropertyResponse {
+  string status = 1;
+  repeated string constants = 2;
 }
 
 
@@ -196,6 +201,8 @@ service PrismProtoService {
   rpc GetPropertyObject(GetPropertyObjectRequest) returns (GetPropertyObjectResponse) {}
   // Model check
   rpc ModelCheck(ModelCheckRequest) returns (ModelCheckResponse) {}
+  // Get undefined constants used in property
+  rpc GetUndefinedConstantsUsedInProperty(GetUndefinedConstantsUsedInPropertyRequest) returns (GetUndefinedConstantsUsedInPropertyResponse) {}
 
   // Define undefined constants
   rpc DefineUndefinedConstants(DefineUndefinedConstantsRequest) returns (DefineUndefinedConstantsResponse) {}

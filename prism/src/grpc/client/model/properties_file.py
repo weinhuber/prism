@@ -51,3 +51,17 @@ class PropertiesFile(PrismPy, ABC):
     #
     # def __getattr__(self, name):
     #     return lambda *args, **kwargs: self.__forward(name, *args, **kwargs)
+
+    def get_undefined_constants_used_in_property(self, property_object):
+        self.logger.info("Get undefined constants used in property {}.".format(property_object))
+
+        # create GetUndefinedConstantsUsedInPropertyRequest
+        request = prismGrpc_pb2.GetUndefinedConstantsUsedInPropertyRequest(properties_file_object_id=str(id(self)),
+                                                                           property_object_id=str(id(property_object)))
+
+        # Make the RPC call to GetUndefinedConstantsUsedInProperty
+        response = self.stub.GetUndefinedConstantsUsedInProperty(request)
+        self.logger.info("Received message {}.".format(response.status))
+
+        return response.constants
+

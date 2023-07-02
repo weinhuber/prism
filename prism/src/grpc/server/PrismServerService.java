@@ -10,10 +10,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import grpc.server.services.PrismGrpcLogger;
 import parser.ast.ModulesFile;
@@ -240,7 +237,6 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
     }
 
 
-
     @Override
     public void modelCheck(PrismGrpc.ModelCheckRequest request, StreamObserver<PrismGrpc.ModelCheckResponse> responseObserver) {
         logger.info("Received modelCheck request");
@@ -285,6 +281,51 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         logger.info("modelCheck request completed with status: " + status);
 
 
+    }
+
+    @Override
+    public void getUndefinedConstantsUsedInProperty(PrismGrpc.GetUndefinedConstantsUsedInPropertyRequest request, StreamObserver<PrismGrpc.GetUndefinedConstantsUsedInPropertyResponse> responseObserver) {
+        logger.info("Received getUndefinedConstantsUsedInProperty request");
+
+        // get properties file id from request
+        String propertiesFileId = request.getPropertiesFileObjectId();
+
+        // get property id from request
+        String propertyId = request.getPropertyObjectId();
+
+        String status = "Error";
+
+        List<String> constants = null;
+
+        // get undefined constants
+        try{
+            PropertiesFile propertiesFile = (PropertiesFile) prismObjectMap.get(propertiesFileId);
+            Property propertyObject = (Property) prismObjectMap.get(propertyId);
+            constants = propertiesFile.getUndefinedConstantsUsedInProperty(propertyObject);
+            status = "Success";
+            
+        } catch (IllegalArgumentException e) {
+            logger.warning("Error loading prism properties: " + e.getMessage());
+            status += " : " + e.getMessage();
+        }
+
+        // build response
+        PrismGrpc.GetUndefinedConstantsUsedInPropertyResponse.Builder responseBuilder = PrismGrpc.GetUndefinedConstantsUsedInPropertyResponse.newBuilder()
+                .setStatus(status);
+
+        if(constants != null){
+            responseBuilder.addAllConstants(constants);
+        }
+
+        PrismGrpc.GetUndefinedConstantsUsedInPropertyResponse response = responseBuilder.build();
+
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+        logger.info("getUndefinedConstantsUsedInProperty request completed with status: " + status);
     }
 
     // uploadFile is a service that allows the client to upload a file to the prism server

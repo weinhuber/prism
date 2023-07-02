@@ -55,6 +55,11 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.ModelCheckRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.ModelCheckResponse.FromString,
                 )
+        self.GetUndefinedConstantsUsedInProperty = channel.unary_unary(
+                '/PrismProtoService/GetUndefinedConstantsUsedInProperty',
+                request_serializer=prismGrpc__pb2.GetUndefinedConstantsUsedInPropertyRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.GetUndefinedConstantsUsedInPropertyResponse.FromString,
+                )
         self.DefineUndefinedConstants = channel.unary_unary(
                 '/PrismProtoService/DefineUndefinedConstants',
                 request_serializer=prismGrpc__pb2.DefineUndefinedConstantsRequest.SerializeToString,
@@ -142,6 +147,13 @@ class PrismProtoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetUndefinedConstantsUsedInProperty(self, request, context):
+        """Get undefined constants used in property
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def DefineUndefinedConstants(self, request, context):
         """Define undefined constants
         """
@@ -219,6 +231,11 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     servicer.ModelCheck,
                     request_deserializer=prismGrpc__pb2.ModelCheckRequest.FromString,
                     response_serializer=prismGrpc__pb2.ModelCheckResponse.SerializeToString,
+            ),
+            'GetUndefinedConstantsUsedInProperty': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetUndefinedConstantsUsedInProperty,
+                    request_deserializer=prismGrpc__pb2.GetUndefinedConstantsUsedInPropertyRequest.FromString,
+                    response_serializer=prismGrpc__pb2.GetUndefinedConstantsUsedInPropertyResponse.SerializeToString,
             ),
             'DefineUndefinedConstants': grpc.unary_unary_rpc_method_handler(
                     servicer.DefineUndefinedConstants,
@@ -389,6 +406,23 @@ class PrismProtoService(object):
         return grpc.experimental.unary_unary(request, target, '/PrismProtoService/ModelCheck',
             prismGrpc__pb2.ModelCheckRequest.SerializeToString,
             prismGrpc__pb2.ModelCheckResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetUndefinedConstantsUsedInProperty(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/GetUndefinedConstantsUsedInProperty',
+            prismGrpc__pb2.GetUndefinedConstantsUsedInPropertyRequest.SerializeToString,
+            prismGrpc__pb2.GetUndefinedConstantsUsedInPropertyResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
