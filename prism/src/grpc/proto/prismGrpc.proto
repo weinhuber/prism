@@ -192,6 +192,15 @@ message InitUndefinedConstantsResponse {
   string status = 1;
 }
 
+message DefineUsingConstSwitchRequest{
+  string undefined_constants_object_id = 1;
+  string constant = 2;
+}
+
+message DefineUsingConstSwitchResponse{
+  string status = 1;
+}
+
 // Service Definitions
 service PrismProtoService {
   // delete a PRISM object
@@ -220,7 +229,8 @@ service PrismProtoService {
   rpc SetSomeUndefinedConstants(SetSomeUndefinedConstantsRequest) returns (SetSomeUndefinedConstantsResponse) {}
   // init undefined constants
   rpc InitUndefinedConstants(InitUndefinedConstantsRequest) returns (InitUndefinedConstantsResponse) {}
-
+  // define using const switch for undefined constants
+  rpc DefineUsingConstSwitch(DefineUsingConstSwitchRequest) returns (DefineUsingConstSwitchResponse) {}
   // Close down PRISM
   rpc ClosePrism(ClosePrismRequest) returns (ClosePrismResponse) {}
 }

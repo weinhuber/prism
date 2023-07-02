@@ -7,9 +7,9 @@ class UndefinedConstants(PrismPyBaseModel):
 
     def __init__(self, modules_file, properties_file, property_object):
         super().__init__()
-        self.init_undefined_constants(modules_file, properties_file, property_object)
+        self.__init_undefined_constants(modules_file, properties_file, property_object)
 
-    def init_undefined_constants(self, modules_file, properties_file, property_object):
+    def __init_undefined_constants(self, modules_file, properties_file, property_object):
         self.logger.info("Initializing undefined constants.")
 
         # create request
@@ -20,4 +20,15 @@ class UndefinedConstants(PrismPyBaseModel):
 
         # Make the RPC call to InitUndefinedConstants
         response = self.stub.InitUndefinedConstants(request)
+        self.logger.info("Received message {}.".format(response.status))
+
+    def define_using_const_switch(self, constant):
+        self.logger.info("Define using const switch {}.".format(constant))
+
+        # create request
+        request = prismGrpc_pb2.DefineUsingConstSwitchRequest(undefined_constants_object_id=self.object_id,
+                                                              constant=constant)
+
+        # Make the RPC call to DefineUsingConstSwitch
+        response = self.stub.DefineUsingConstSwitch(request)
         self.logger.info("Received message {}.".format(response.status))

@@ -420,6 +420,37 @@ public final class PrismProtoServiceGrpc {
     return getInitUndefinedConstantsMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DefineUsingConstSwitchRequest,
+      grpc.server.services.PrismGrpc.DefineUsingConstSwitchResponse> getDefineUsingConstSwitchMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "DefineUsingConstSwitch",
+      requestType = grpc.server.services.PrismGrpc.DefineUsingConstSwitchRequest.class,
+      responseType = grpc.server.services.PrismGrpc.DefineUsingConstSwitchResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DefineUsingConstSwitchRequest,
+      grpc.server.services.PrismGrpc.DefineUsingConstSwitchResponse> getDefineUsingConstSwitchMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DefineUsingConstSwitchRequest, grpc.server.services.PrismGrpc.DefineUsingConstSwitchResponse> getDefineUsingConstSwitchMethod;
+    if ((getDefineUsingConstSwitchMethod = PrismProtoServiceGrpc.getDefineUsingConstSwitchMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getDefineUsingConstSwitchMethod = PrismProtoServiceGrpc.getDefineUsingConstSwitchMethod) == null) {
+          PrismProtoServiceGrpc.getDefineUsingConstSwitchMethod = getDefineUsingConstSwitchMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.DefineUsingConstSwitchRequest, grpc.server.services.PrismGrpc.DefineUsingConstSwitchResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DefineUsingConstSwitch"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.DefineUsingConstSwitchRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.DefineUsingConstSwitchResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("DefineUsingConstSwitch"))
+              .build();
+        }
+      }
+    }
+    return getDefineUsingConstSwitchMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ClosePrismRequest,
       grpc.server.services.PrismGrpc.ClosePrismResponse> getClosePrismMethod;
 
@@ -634,6 +665,16 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     * define using const switch for undefined constants
+     * </pre>
+     */
+    public void defineUsingConstSwitch(grpc.server.services.PrismGrpc.DefineUsingConstSwitchRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.DefineUsingConstSwitchResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDefineUsingConstSwitchMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
      * Close down PRISM
      * </pre>
      */
@@ -735,6 +776,13 @@ public final class PrismProtoServiceGrpc {
                 grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest,
                 grpc.server.services.PrismGrpc.InitUndefinedConstantsResponse>(
                   this, METHODID_INIT_UNDEFINED_CONSTANTS)))
+          .addMethod(
+            getDefineUsingConstSwitchMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.DefineUsingConstSwitchRequest,
+                grpc.server.services.PrismGrpc.DefineUsingConstSwitchResponse>(
+                  this, METHODID_DEFINE_USING_CONST_SWITCH)))
           .addMethod(
             getClosePrismMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -908,6 +956,17 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     * define using const switch for undefined constants
+     * </pre>
+     */
+    public void defineUsingConstSwitch(grpc.server.services.PrismGrpc.DefineUsingConstSwitchRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.DefineUsingConstSwitchResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getDefineUsingConstSwitchMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
      * Close down PRISM
      * </pre>
      */
@@ -1053,6 +1112,16 @@ public final class PrismProtoServiceGrpc {
     public grpc.server.services.PrismGrpc.InitUndefinedConstantsResponse initUndefinedConstants(grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getInitUndefinedConstantsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * define using const switch for undefined constants
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.DefineUsingConstSwitchResponse defineUsingConstSwitch(grpc.server.services.PrismGrpc.DefineUsingConstSwitchRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getDefineUsingConstSwitchMethod(), getCallOptions(), request);
     }
 
     /**
@@ -1217,6 +1286,17 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     * define using const switch for undefined constants
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.DefineUsingConstSwitchResponse> defineUsingConstSwitch(
+        grpc.server.services.PrismGrpc.DefineUsingConstSwitchRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getDefineUsingConstSwitchMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
      * Close down PRISM
      * </pre>
      */
@@ -1239,8 +1319,9 @@ public final class PrismProtoServiceGrpc {
   private static final int METHODID_ADD_VALUE = 9;
   private static final int METHODID_SET_SOME_UNDEFINED_CONSTANTS = 10;
   private static final int METHODID_INIT_UNDEFINED_CONSTANTS = 11;
-  private static final int METHODID_CLOSE_PRISM = 12;
-  private static final int METHODID_UPLOAD_FILE = 13;
+  private static final int METHODID_DEFINE_USING_CONST_SWITCH = 12;
+  private static final int METHODID_CLOSE_PRISM = 13;
+  private static final int METHODID_UPLOAD_FILE = 14;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1306,6 +1387,10 @@ public final class PrismProtoServiceGrpc {
         case METHODID_INIT_UNDEFINED_CONSTANTS:
           serviceImpl.initUndefinedConstants((grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitUndefinedConstantsResponse>) responseObserver);
+          break;
+        case METHODID_DEFINE_USING_CONST_SWITCH:
+          serviceImpl.defineUsingConstSwitch((grpc.server.services.PrismGrpc.DefineUsingConstSwitchRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.DefineUsingConstSwitchResponse>) responseObserver);
           break;
         case METHODID_CLOSE_PRISM:
           serviceImpl.closePrism((grpc.server.services.PrismGrpc.ClosePrismRequest) request,
@@ -1388,6 +1473,7 @@ public final class PrismProtoServiceGrpc {
               .addMethod(getAddValueMethod())
               .addMethod(getSetSomeUndefinedConstantsMethod())
               .addMethod(getInitUndefinedConstantsMethod())
+              .addMethod(getDefineUsingConstSwitchMethod())
               .addMethod(getClosePrismMethod())
               .build();
         }

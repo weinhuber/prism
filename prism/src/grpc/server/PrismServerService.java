@@ -467,8 +467,44 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
     }
 
     @Override
+    public void defineUsingConstSwitch(PrismGrpc.DefineUsingConstSwitchRequest request, StreamObserver<PrismGrpc.DefineUsingConstSwitchResponse> responseObserver) {
+        logger.info("Received defineUsingConstSwitch request");
+
+        // get undefined constants object id from request
+        String undefinedConstantsId = request.getUndefinedConstantsObjectId();
+
+        // get constant from request
+        String constant = request.getConstant();
+
+        String status = "Error";
+
+        // define using const switch
+        try{
+            UndefinedConstants undefinedConstants = (UndefinedConstants) prismObjectMap.get(undefinedConstantsId);
+            undefinedConstants.defineUsingConstSwitch(constant);
+            status = "Success";
+        } catch (PrismException | IllegalArgumentException e) {
+            logger.warning("Error defining using const switch: " + e.getMessage());
+            status += " : " + e.getMessage();
+        }
+
+        // build response
+        PrismGrpc.DefineUsingConstSwitchResponse response = PrismGrpc.DefineUsingConstSwitchResponse.newBuilder()
+                .setStatus(status)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+        logger.info("defineUsingConstSwitch request completed with status: " + status);
+
+    }
+
+    @Override
     public void deleteObject(PrismGrpc.DeleteObjectRequest request, StreamObserver<PrismGrpc.DeleteObjectResponse> responseObserver) {
-        logger.info("Received deleteObject request");
+        logger.info("[Garbage Collector] - Received deleteObject request");
 
         // get object id from request
         String objectId = request.getObjectId();
@@ -478,11 +514,11 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         // delete object
         try{
             Object objectToDelete = prismObjectMap.get(objectId);
-            logger.info("Deleting object: " + objectToDelete.getClass().getSimpleName());
+            logger.info("[Garbage Collector] - Deleting object: " + objectToDelete.getClass().getSimpleName());
             prismObjectMap.remove(objectId);
             status = "Success";
         } catch (NullPointerException e) {
-            logger.warning("Error deleting object: " + e.getMessage());
+            logger.warning("[Garbage Collector] - Error deleting object: " + e.getMessage());
             status += " : " + e.getMessage();
         }
 
@@ -496,7 +532,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
 
         // complete call
         responseObserver.onCompleted();
-        logger.info("deleteObject request completed with status: " + status);
+        logger.info("[Garbage Collector] - deleteObject request completed with status: " + status);
     }
 
     // uploadFile is a service that allows the client to upload a file to the prism server

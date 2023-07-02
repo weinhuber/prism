@@ -80,6 +80,11 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.InitUndefinedConstantsRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.InitUndefinedConstantsResponse.FromString,
                 )
+        self.DefineUsingConstSwitch = channel.unary_unary(
+                '/PrismProtoService/DefineUsingConstSwitch',
+                request_serializer=prismGrpc__pb2.DefineUsingConstSwitchRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.DefineUsingConstSwitchResponse.FromString,
+                )
         self.ClosePrism = channel.unary_unary(
                 '/PrismProtoService/ClosePrism',
                 request_serializer=prismGrpc__pb2.ClosePrismRequest.SerializeToString,
@@ -182,6 +187,13 @@ class PrismProtoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def DefineUsingConstSwitch(self, request, context):
+        """define using const switch for undefined constants
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def ClosePrism(self, request, context):
         """Close down PRISM
         """
@@ -256,6 +268,11 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     servicer.InitUndefinedConstants,
                     request_deserializer=prismGrpc__pb2.InitUndefinedConstantsRequest.FromString,
                     response_serializer=prismGrpc__pb2.InitUndefinedConstantsResponse.SerializeToString,
+            ),
+            'DefineUsingConstSwitch': grpc.unary_unary_rpc_method_handler(
+                    servicer.DefineUsingConstSwitch,
+                    request_deserializer=prismGrpc__pb2.DefineUsingConstSwitchRequest.FromString,
+                    response_serializer=prismGrpc__pb2.DefineUsingConstSwitchResponse.SerializeToString,
             ),
             'ClosePrism': grpc.unary_unary_rpc_method_handler(
                     servicer.ClosePrism,
@@ -491,6 +508,23 @@ class PrismProtoService(object):
         return grpc.experimental.unary_unary(request, target, '/PrismProtoService/InitUndefinedConstants',
             prismGrpc__pb2.InitUndefinedConstantsRequest.SerializeToString,
             prismGrpc__pb2.InitUndefinedConstantsResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DefineUsingConstSwitch(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/DefineUsingConstSwitch',
+            prismGrpc__pb2.DefineUsingConstSwitchRequest.SerializeToString,
+            prismGrpc__pb2.DefineUsingConstSwitchResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
