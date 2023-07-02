@@ -15,6 +15,11 @@ class PrismProtoServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.PropertiesFileForwardMethodCall = channel.unary_unary(
+                '/PrismProtoService/PropertiesFileForwardMethodCall',
+                request_serializer=prismGrpc__pb2.PropertiesFileForwardMethodCallRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.PropertiesFileForwardMethodCallResponse.FromString,
+                )
         self.UploadFile = channel.stream_unary(
                 '/PrismProtoService/UploadFile',
                 request_serializer=prismGrpc__pb2.UploadRequest.SerializeToString,
@@ -35,25 +40,25 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.LoadPRISMModelRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.LoadPRISMModelResponse.FromString,
                 )
-        self.ParseAndLoadModel = channel.unary_unary(
-                '/PrismProtoService/ParseAndLoadModel',
-                request_serializer=prismGrpc__pb2.ParseAndLoadModelRequest.SerializeToString,
-                response_deserializer=prismGrpc__pb2.ParseAndLoadModelReply.FromString,
-                )
         self.ParsePropertiesFile = channel.unary_unary(
                 '/PrismProtoService/ParsePropertiesFile',
                 request_serializer=prismGrpc__pb2.ParsePropertiesFileRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.ParsePropertiesFileResponse.FromString,
                 )
-        self.DefineUndefinedConstants = channel.unary_unary(
-                '/PrismProtoService/DefineUndefinedConstants',
-                request_serializer=prismGrpc__pb2.DefineUndefinedConstantsRequest.SerializeToString,
-                response_deserializer=prismGrpc__pb2.DefineUndefinedConstantsResponse.FromString,
+        self.GetPropertyObject = channel.unary_unary(
+                '/PrismProtoService/GetPropertyObject',
+                request_serializer=prismGrpc__pb2.GetPropertyObjectRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.GetPropertyObjectResponse.FromString,
                 )
         self.ModelCheck = channel.unary_unary(
                 '/PrismProtoService/ModelCheck',
                 request_serializer=prismGrpc__pb2.ModelCheckRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.ModelCheckResponse.FromString,
+                )
+        self.DefineUndefinedConstants = channel.unary_unary(
+                '/PrismProtoService/DefineUndefinedConstants',
+                request_serializer=prismGrpc__pb2.DefineUndefinedConstantsRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.DefineUndefinedConstantsResponse.FromString,
                 )
         self.ModelCheckWithConstants = channel.unary_unary(
                 '/PrismProtoService/ModelCheckWithConstants',
@@ -80,6 +85,13 @@ class PrismProtoServiceStub(object):
 class PrismProtoServiceServicer(object):
     """Service Definitions
     """
+
+    def PropertiesFileForwardMethodCall(self, request, context):
+        """generic forwarding of method call
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
     def UploadFile(self, request_iterator, context):
         """Generic method to upload files
@@ -109,14 +121,6 @@ class PrismProtoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def ParseAndLoadModel(self, request, context):
-        """to delete
-        Parse and load model file
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
     def ParsePropertiesFile(self, request, context):
         """Parse a properties file
         """
@@ -124,8 +128,8 @@ class PrismProtoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def DefineUndefinedConstants(self, request, context):
-        """Define undefined constants
+    def GetPropertyObject(self, request, context):
+        """Get propety object from properties file
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -133,6 +137,13 @@ class PrismProtoServiceServicer(object):
 
     def ModelCheck(self, request, context):
         """Model check
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DefineUndefinedConstants(self, request, context):
+        """Define undefined constants
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -169,6 +180,11 @@ class PrismProtoServiceServicer(object):
 
 def add_PrismProtoServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'PropertiesFileForwardMethodCall': grpc.unary_unary_rpc_method_handler(
+                    servicer.PropertiesFileForwardMethodCall,
+                    request_deserializer=prismGrpc__pb2.PropertiesFileForwardMethodCallRequest.FromString,
+                    response_serializer=prismGrpc__pb2.PropertiesFileForwardMethodCallResponse.SerializeToString,
+            ),
             'UploadFile': grpc.stream_unary_rpc_method_handler(
                     servicer.UploadFile,
                     request_deserializer=prismGrpc__pb2.UploadRequest.FromString,
@@ -189,25 +205,25 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     request_deserializer=prismGrpc__pb2.LoadPRISMModelRequest.FromString,
                     response_serializer=prismGrpc__pb2.LoadPRISMModelResponse.SerializeToString,
             ),
-            'ParseAndLoadModel': grpc.unary_unary_rpc_method_handler(
-                    servicer.ParseAndLoadModel,
-                    request_deserializer=prismGrpc__pb2.ParseAndLoadModelRequest.FromString,
-                    response_serializer=prismGrpc__pb2.ParseAndLoadModelReply.SerializeToString,
-            ),
             'ParsePropertiesFile': grpc.unary_unary_rpc_method_handler(
                     servicer.ParsePropertiesFile,
                     request_deserializer=prismGrpc__pb2.ParsePropertiesFileRequest.FromString,
                     response_serializer=prismGrpc__pb2.ParsePropertiesFileResponse.SerializeToString,
             ),
-            'DefineUndefinedConstants': grpc.unary_unary_rpc_method_handler(
-                    servicer.DefineUndefinedConstants,
-                    request_deserializer=prismGrpc__pb2.DefineUndefinedConstantsRequest.FromString,
-                    response_serializer=prismGrpc__pb2.DefineUndefinedConstantsResponse.SerializeToString,
+            'GetPropertyObject': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetPropertyObject,
+                    request_deserializer=prismGrpc__pb2.GetPropertyObjectRequest.FromString,
+                    response_serializer=prismGrpc__pb2.GetPropertyObjectResponse.SerializeToString,
             ),
             'ModelCheck': grpc.unary_unary_rpc_method_handler(
                     servicer.ModelCheck,
                     request_deserializer=prismGrpc__pb2.ModelCheckRequest.FromString,
                     response_serializer=prismGrpc__pb2.ModelCheckResponse.SerializeToString,
+            ),
+            'DefineUndefinedConstants': grpc.unary_unary_rpc_method_handler(
+                    servicer.DefineUndefinedConstants,
+                    request_deserializer=prismGrpc__pb2.DefineUndefinedConstantsRequest.FromString,
+                    response_serializer=prismGrpc__pb2.DefineUndefinedConstantsResponse.SerializeToString,
             ),
             'ModelCheckWithConstants': grpc.unary_unary_rpc_method_handler(
                     servicer.ModelCheckWithConstants,
@@ -239,6 +255,23 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
 class PrismProtoService(object):
     """Service Definitions
     """
+
+    @staticmethod
+    def PropertiesFileForwardMethodCall(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/PropertiesFileForwardMethodCall',
+            prismGrpc__pb2.PropertiesFileForwardMethodCallRequest.SerializeToString,
+            prismGrpc__pb2.PropertiesFileForwardMethodCallResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def UploadFile(request_iterator,
@@ -309,23 +342,6 @@ class PrismProtoService(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def ParseAndLoadModel(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/ParseAndLoadModel',
-            prismGrpc__pb2.ParseAndLoadModelRequest.SerializeToString,
-            prismGrpc__pb2.ParseAndLoadModelReply.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
     def ParsePropertiesFile(request,
             target,
             options=(),
@@ -343,7 +359,7 @@ class PrismProtoService(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def DefineUndefinedConstants(request,
+    def GetPropertyObject(request,
             target,
             options=(),
             channel_credentials=None,
@@ -353,9 +369,9 @@ class PrismProtoService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/DefineUndefinedConstants',
-            prismGrpc__pb2.DefineUndefinedConstantsRequest.SerializeToString,
-            prismGrpc__pb2.DefineUndefinedConstantsResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/GetPropertyObject',
+            prismGrpc__pb2.GetPropertyObjectRequest.SerializeToString,
+            prismGrpc__pb2.GetPropertyObjectResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -373,6 +389,23 @@ class PrismProtoService(object):
         return grpc.experimental.unary_unary(request, target, '/PrismProtoService/ModelCheck',
             prismGrpc__pb2.ModelCheckRequest.SerializeToString,
             prismGrpc__pb2.ModelCheckResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DefineUndefinedConstants(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/DefineUndefinedConstants',
+            prismGrpc__pb2.DefineUndefinedConstantsRequest.SerializeToString,
+            prismGrpc__pb2.DefineUndefinedConstantsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

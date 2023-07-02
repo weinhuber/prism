@@ -148,12 +148,12 @@ message ParseModelFileResponse {
   string status = 3;
 }
 
-message PropertyObjectRequest {
+message GetPropertyObjectRequest {
   string properties_file_object_id = 1;
   int32 property_index = 2;
 }
 
-message PropertyObjectResponse {
+message GetPropertyObjectResponse {
   string properties_file_object_id = 1;
   string status = 2;
   string property = 3;
@@ -193,7 +193,7 @@ service PrismProtoService {
   // Parse a properties file
   rpc ParsePropertiesFile(ParsePropertiesFileRequest) returns (ParsePropertiesFileResponse) {}
   // Get propety object from properties file
-  rpc PropertyObject(PropertyObjectRequest) returns (PropertyObjectResponse) {}
+  rpc GetPropertyObject(GetPropertyObjectRequest) returns (GetPropertyObjectResponse) {}
   // Model check
   rpc ModelCheck(ModelCheckRequest) returns (ModelCheckResponse) {}
 

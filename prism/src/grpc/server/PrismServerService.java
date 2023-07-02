@@ -199,7 +199,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
 
 
     @Override
-    public void propertyObject(PrismGrpc.PropertyObjectRequest request, StreamObserver<PrismGrpc.PropertyObjectResponse> responseObserver) {
+    public void getPropertyObject(PrismGrpc.GetPropertyObjectRequest request, StreamObserver<PrismGrpc.GetPropertyObjectResponse> responseObserver) {
         logger.info("Received propertyObject request");
 
         // get property id from request
@@ -220,7 +220,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         }
 
         // build response
-        PrismGrpc.PropertyObjectResponse response = PrismGrpc.PropertyObjectResponse.newBuilder()
+        PrismGrpc.GetPropertyObjectResponse response = PrismGrpc.GetPropertyObjectResponse.newBuilder()
                 .setStatus(status)
                 .setProperty(property)
                 .build();
@@ -232,6 +232,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         responseObserver.onCompleted();
         logger.info("propertyObject request completed with status: " + status);
     }
+
 
 
     @Override

@@ -8,6 +8,7 @@ import prismpy_logger
 from model.prismpy_exceptions import PrismPyException
 from services import prismGrpc_pb2
 
+# TODO: Think about making this a singleton
 
 class PrismPy(ABC):
     # singleton logger

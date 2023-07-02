@@ -45,10 +45,10 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.ParsePropertiesFileRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.ParsePropertiesFileResponse.FromString,
                 )
-        self.PropertyObject = channel.unary_unary(
-                '/PrismProtoService/PropertyObject',
-                request_serializer=prismGrpc__pb2.PropertyObjectRequest.SerializeToString,
-                response_deserializer=prismGrpc__pb2.PropertyObjectResponse.FromString,
+        self.GetPropertyObject = channel.unary_unary(
+                '/PrismProtoService/GetPropertyObject',
+                request_serializer=prismGrpc__pb2.GetPropertyObjectRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.GetPropertyObjectResponse.FromString,
                 )
         self.ModelCheck = channel.unary_unary(
                 '/PrismProtoService/ModelCheck',
@@ -128,7 +128,7 @@ class PrismProtoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def PropertyObject(self, request, context):
+    def GetPropertyObject(self, request, context):
         """Get propety object from properties file
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -210,10 +210,10 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     request_deserializer=prismGrpc__pb2.ParsePropertiesFileRequest.FromString,
                     response_serializer=prismGrpc__pb2.ParsePropertiesFileResponse.SerializeToString,
             ),
-            'PropertyObject': grpc.unary_unary_rpc_method_handler(
-                    servicer.PropertyObject,
-                    request_deserializer=prismGrpc__pb2.PropertyObjectRequest.FromString,
-                    response_serializer=prismGrpc__pb2.PropertyObjectResponse.SerializeToString,
+            'GetPropertyObject': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetPropertyObject,
+                    request_deserializer=prismGrpc__pb2.GetPropertyObjectRequest.FromString,
+                    response_serializer=prismGrpc__pb2.GetPropertyObjectResponse.SerializeToString,
             ),
             'ModelCheck': grpc.unary_unary_rpc_method_handler(
                     servicer.ModelCheck,
@@ -359,7 +359,7 @@ class PrismProtoService(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def PropertyObject(request,
+    def GetPropertyObject(request,
             target,
             options=(),
             channel_credentials=None,
@@ -369,9 +369,9 @@ class PrismProtoService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/PropertyObject',
-            prismGrpc__pb2.PropertyObjectRequest.SerializeToString,
-            prismGrpc__pb2.PropertyObjectResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/GetPropertyObject',
+            prismGrpc__pb2.GetPropertyObjectRequest.SerializeToString,
+            prismGrpc__pb2.GetPropertyObjectResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

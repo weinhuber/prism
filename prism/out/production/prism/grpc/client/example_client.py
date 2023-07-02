@@ -13,20 +13,31 @@ prism.initialise()
 
 # prism2 = Prism(main_log2)
 # prism2.initialise()
-#
+
 # prism3 = Prism(main_log3)
 # prism3.initialise()
 
 # Parse and load a PRISM model from a file
-module_file = prism.parse_model_file("examples/dice.pm")
-print("later: " + str(id(module_file)))
-prism.load_prism_model(module_file)
+modules_file = prism.parse_model_file("examples/dice.pm")
+prism.load_prism_model(modules_file)
 
+# modules_file2 = prism2.parse_model_file("examples/dice.pm")
+# prism2.load_prism_model(modules_file2)
 
-# # Parse and load a property from the file
-# propertiesFile = prism.parse_properties_file(modulesFile, "examples/dice.pctl")
-#
-# # Model check the first property from the file
-# print(propertiesFile.get_property_object(0))
-# result = prism.model_check(propertiesFile, 0)
-# print(result)
+# modules_file3 = prism3.parse_model_file("examples/dice.pm")
+# prism3.load_prism_model(modules_file3)
+
+# Parse and load a properties model for the model
+properties_file = prism.parse_properties_file(modules_file, "examples/dice.pctl")
+# properties_file2 = prism2.parse_properties_file(modules_file2, "examples/dice.pctl")
+# properties_file3 = prism3.parse_properties_file(modules_file3, "examples/dice.pctl")
+
+# Model check the first property from the file
+print(properties_file.get_property_object(0))
+# Changed model_check to only accept a properties file and a property index
+result = prism.model_check(properties_file, 0)
+print(result.get_result())
+
+# Model check the second property from the file (which has an undefined constant, whose value we set to 3)
+#consts = properties_file.get_undefined_constants_used_in_property(properties_file.get_property_object(1))
+
