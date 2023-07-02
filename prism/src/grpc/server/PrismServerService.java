@@ -18,6 +18,7 @@ import java.util.Optional;
 import grpc.server.services.PrismGrpcLogger;
 import parser.ast.ModulesFile;
 import parser.ast.PropertiesFile;
+import parser.ast.Property;
 import prism.*;
 
 // implementation of all prism services
@@ -202,8 +203,11 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
     public void getPropertyObject(PrismGrpc.GetPropertyObjectRequest request, StreamObserver<PrismGrpc.GetPropertyObjectResponse> responseObserver) {
         logger.info("Received propertyObject request");
 
-        // get property id from request
-        String propertyId = request.getPropertiesFileObjectId();
+        // get properties file id from request
+        String propertiesFileId = request.getPropertiesFileObjectId();
+
+        // ger property object id from request
+        String propertyObjectId = request.getPropertyObjectId();
 
         String status = "Error";
 
@@ -211,8 +215,10 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
 
         // load prism properties
         try{
-            PropertiesFile propertiesFile = (PropertiesFile) prismObjectMap.get(propertyId);
-            property = propertiesFile.getPropertyObject(request.getPropertyIndex()).toString();
+            PropertiesFile propertiesFile = (PropertiesFile) prismObjectMap.get(propertiesFileId);
+            Property propertyObject = propertiesFile.getPropertyObject(request.getPropertyIndex());
+            prismObjectMap.put(propertyObjectId, propertyObject);
+            property = propertyObject.toString();
             status = "Success";
         } catch (IllegalArgumentException e) {
             logger.warning("Error loading prism properties: " + e.getMessage());

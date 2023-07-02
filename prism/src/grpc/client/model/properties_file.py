@@ -1,5 +1,6 @@
 from abc import ABC
 
+from model.property_object import PropertyObject
 from services import prismGrpc_pb2
 from services.prismpy import PrismPy
 
@@ -18,14 +19,22 @@ class PropertiesFile(PrismPy, ABC):
 
     def get_property_object(self, property_index):
         self.logger.info("Get property object {}.".format(property_index))
+        # creating property object to populate and return
+        property_object = PropertyObject()
+
         # create GetPropertyObjectRequest
         request = prismGrpc_pb2.GetPropertyObjectRequest(properties_file_object_id=str(id(self)),
+                                                         property_object_id=str(id(property_object)),
                                                          property_index=property_index)
+
         # Make the RPC call to GetPropertyObject
         response = self.stub.GetPropertyObject(request)
         self.logger.info("Received message {}.".format(response.status))
 
-        return response.property
+        # populate property object
+        property_object.property_string = response.property
+
+        return property_object
 
     # def __forward(self, name, *args, **kwargs):
     #     self.logger.info("Forwarding unsupported call {} to prism server.".format(name))
