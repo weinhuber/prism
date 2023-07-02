@@ -1,7 +1,9 @@
 import uuid
 
+from model.prismpy_model import PrismPyBaseModel
 
-class ModulesFile:
+
+class ModulesFile(PrismPyBaseModel):
 
     model_file_name = None
     module_object_id = None

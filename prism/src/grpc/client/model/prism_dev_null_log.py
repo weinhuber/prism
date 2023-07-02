@@ -1,10 +1,10 @@
 from services import prismGrpc_pb2
-from abc import ABC
+from model.prismpy_model import PrismPyBaseModel
 
 
-class PrismDevNullLog(ABC):
+class PrismDevNullLog(PrismPyBaseModel):
     def __init__(self):
-        pass
+        super().__init__()
 
     @staticmethod
     def get_proto():

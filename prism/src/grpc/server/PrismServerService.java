@@ -421,6 +421,40 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         logger.info("setSomeUndefinedConstants request completed with status: " + status);
     }
 
+
+    @Override
+    public void deleteObject(PrismGrpc.DeleteObjectRequest request, StreamObserver<PrismGrpc.DeleteObjectResponse> responseObserver) {
+        logger.info("Received deleteObject request");
+
+        // get object id from request
+        String objectId = request.getObjectId();
+
+        String status = "Error";
+
+        // delete object
+        try{
+            Object objectToDelete = prismObjectMap.get(objectId);
+            logger.info("Deleting object: " + objectToDelete.toString());
+            prismObjectMap.remove(objectId);
+            status = "Success";
+        } catch (NullPointerException e) {
+            logger.warning("Error deleting object: " + e.getMessage());
+            status += " : " + e.getMessage();
+        }
+
+        // build response
+        PrismGrpc.DeleteObjectResponse response = PrismGrpc.DeleteObjectResponse.newBuilder()
+                .setStatus(status)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+        logger.info("deleteObject request completed with status: " + status);
+    }
+
     // uploadFile is a service that allows the client to upload a file to the prism server
     @Override
     public StreamObserver<PrismGrpc.UploadRequest> uploadFile(StreamObserver<PrismGrpc.UploadReply> responseObserver) {

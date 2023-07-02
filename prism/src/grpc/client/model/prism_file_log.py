@@ -1,8 +1,9 @@
 from services import prismGrpc_pb2
 from model.prismpy_exceptions import PrismPyException
+from model.prismpy_model import PrismPyBaseModel
 
 
-class PrismFileLog:
+class PrismFileLog(PrismPyBaseModel):
     output = None
 
     def __init__(self, output):

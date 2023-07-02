@@ -17,6 +17,37 @@ public final class PrismProtoServiceGrpc {
   public static final String SERVICE_NAME = "PrismProtoService";
 
   // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DeleteObjectRequest,
+      grpc.server.services.PrismGrpc.DeleteObjectResponse> getDeleteObjectMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "DeleteObject",
+      requestType = grpc.server.services.PrismGrpc.DeleteObjectRequest.class,
+      responseType = grpc.server.services.PrismGrpc.DeleteObjectResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DeleteObjectRequest,
+      grpc.server.services.PrismGrpc.DeleteObjectResponse> getDeleteObjectMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DeleteObjectRequest, grpc.server.services.PrismGrpc.DeleteObjectResponse> getDeleteObjectMethod;
+    if ((getDeleteObjectMethod = PrismProtoServiceGrpc.getDeleteObjectMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getDeleteObjectMethod = PrismProtoServiceGrpc.getDeleteObjectMethod) == null) {
+          PrismProtoServiceGrpc.getDeleteObjectMethod = getDeleteObjectMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.DeleteObjectRequest, grpc.server.services.PrismGrpc.DeleteObjectResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteObject"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.DeleteObjectRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.DeleteObjectResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("DeleteObject"))
+              .build();
+        }
+      }
+    }
+    return getDeleteObjectMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest,
       grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse> getPropertiesFileForwardMethodCallMethod;
 
@@ -566,6 +597,16 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     * delete a PRISM object
+     * </pre>
+     */
+    public void deleteObject(grpc.server.services.PrismGrpc.DeleteObjectRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.DeleteObjectResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteObjectMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
      * generic forwarding of method call
      * </pre>
      */
@@ -727,6 +768,13 @@ public final class PrismProtoServiceGrpc {
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
+            getDeleteObjectMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.DeleteObjectRequest,
+                grpc.server.services.PrismGrpc.DeleteObjectResponse>(
+                  this, METHODID_DELETE_OBJECT)))
+          .addMethod(
             getPropertiesFileForwardMethodCallMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
@@ -857,6 +905,17 @@ public final class PrismProtoServiceGrpc {
     protected PrismProtoServiceStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new PrismProtoServiceStub(channel, callOptions);
+    }
+
+    /**
+     * <pre>
+     * delete a PRISM object
+     * </pre>
+     */
+    public void deleteObject(grpc.server.services.PrismGrpc.DeleteObjectRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.DeleteObjectResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getDeleteObjectMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -1055,6 +1114,16 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     * delete a PRISM object
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.DeleteObjectResponse deleteObject(grpc.server.services.PrismGrpc.DeleteObjectRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getDeleteObjectMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
      * generic forwarding of method call
      * </pre>
      */
@@ -1223,6 +1292,17 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     * delete a PRISM object
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.DeleteObjectResponse> deleteObject(
+        grpc.server.services.PrismGrpc.DeleteObjectRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getDeleteObjectMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
      * generic forwarding of method call
      * </pre>
      */
@@ -1387,22 +1467,23 @@ public final class PrismProtoServiceGrpc {
     }
   }
 
-  private static final int METHODID_PROPERTIES_FILE_FORWARD_METHOD_CALL = 0;
-  private static final int METHODID_INITIALISE = 1;
-  private static final int METHODID_PARSE_MODEL_FILE = 2;
-  private static final int METHODID_LOAD_PRISMMODEL = 3;
-  private static final int METHODID_PARSE_PROPERTIES_FILE = 4;
-  private static final int METHODID_GET_PROPERTY_OBJECT = 5;
-  private static final int METHODID_MODEL_CHECK = 6;
-  private static final int METHODID_GET_UNDEFINED_CONSTANTS_USED_IN_PROPERTY = 7;
-  private static final int METHODID_ADD_VALUE = 8;
-  private static final int METHODID_SET_SOME_UNDEFINED_CONSTANTS = 9;
-  private static final int METHODID_DEFINE_UNDEFINED_CONSTANTS = 10;
-  private static final int METHODID_MODEL_CHECK_WITH_CONSTANTS = 11;
-  private static final int METHODID_PARSE_PROPERTIES_STRING = 12;
-  private static final int METHODID_MODEL_CHECK_STRING = 13;
-  private static final int METHODID_CLOSE_PRISM = 14;
-  private static final int METHODID_UPLOAD_FILE = 15;
+  private static final int METHODID_DELETE_OBJECT = 0;
+  private static final int METHODID_PROPERTIES_FILE_FORWARD_METHOD_CALL = 1;
+  private static final int METHODID_INITIALISE = 2;
+  private static final int METHODID_PARSE_MODEL_FILE = 3;
+  private static final int METHODID_LOAD_PRISMMODEL = 4;
+  private static final int METHODID_PARSE_PROPERTIES_FILE = 5;
+  private static final int METHODID_GET_PROPERTY_OBJECT = 6;
+  private static final int METHODID_MODEL_CHECK = 7;
+  private static final int METHODID_GET_UNDEFINED_CONSTANTS_USED_IN_PROPERTY = 8;
+  private static final int METHODID_ADD_VALUE = 9;
+  private static final int METHODID_SET_SOME_UNDEFINED_CONSTANTS = 10;
+  private static final int METHODID_DEFINE_UNDEFINED_CONSTANTS = 11;
+  private static final int METHODID_MODEL_CHECK_WITH_CONSTANTS = 12;
+  private static final int METHODID_PARSE_PROPERTIES_STRING = 13;
+  private static final int METHODID_MODEL_CHECK_STRING = 14;
+  private static final int METHODID_CLOSE_PRISM = 15;
+  private static final int METHODID_UPLOAD_FILE = 16;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1421,6 +1502,10 @@ public final class PrismProtoServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_DELETE_OBJECT:
+          serviceImpl.deleteObject((grpc.server.services.PrismGrpc.DeleteObjectRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.DeleteObjectResponse>) responseObserver);
+          break;
         case METHODID_PROPERTIES_FILE_FORWARD_METHOD_CALL:
           serviceImpl.propertiesFileForwardMethodCall((grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse>) responseObserver);
@@ -1545,6 +1630,7 @@ public final class PrismProtoServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new PrismProtoServiceFileDescriptorSupplier())
+              .addMethod(getDeleteObjectMethod())
               .addMethod(getPropertiesFileForwardMethodCallMethod())
               .addMethod(getUploadFileMethod())
               .addMethod(getInitialiseMethod())

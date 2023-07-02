@@ -1,5 +1,4 @@
 import uuid
-from abc import ABC
 
 import grpc
 
@@ -11,9 +10,10 @@ from model.properties_file import PropertiesFile
 from model.result import Result
 from prismpy import PrismPy
 from services import prismGrpc_pb2, prismGrpc_pb2_grpc
+from model.prismpy_model import PrismPyBaseModel
 
 
-class Prism(PrismPy, ABC):
+class Prism(PrismPy, PrismPyBaseModel):
     __proto_main_log = None
 
     prism_object_id = None

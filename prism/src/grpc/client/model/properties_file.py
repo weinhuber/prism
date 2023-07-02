@@ -4,9 +4,10 @@ from abc import ABC
 from model.property_object import PropertyObject
 from services import prismGrpc_pb2
 from services.prismpy import PrismPy
+from model.prismpy_model import PrismPyBaseModel
 
 
-class PropertiesFile(PrismPy, ABC):
+class PropertiesFile(PrismPy, PrismPyBaseModel):
     property_file_path = None
     properties_file_object_id = None
 

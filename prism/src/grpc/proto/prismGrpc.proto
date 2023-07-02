@@ -202,9 +202,18 @@ message SetSomeUndefinedConstantsResponse {
   string status = 1;
 }
 
+message DeleteObjectRequest {
+  string object_id = 1;
+}
+
+message DeleteObjectResponse {
+  string status = 1;
+}
 
 // Service Definitions
 service PrismProtoService {
+  // delete a PRISM object
+  rpc DeleteObject(DeleteObjectRequest) returns (DeleteObjectResponse) {}
   // generic forwarding of method call
   rpc PropertiesFileForwardMethodCall(PropertiesFileForwardMethodCallRequest) returns (PropertiesFileForwardMethodCallResponse) {}
   // Generic method to upload files

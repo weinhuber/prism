@@ -1,8 +1,8 @@
 import uuid
+from model.prismpy_model import PrismPyBaseModel
 
 
-class Result:
-
+class Result(PrismPyBaseModel):
     result_object_id = None
 
     result = None

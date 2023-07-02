@@ -1,7 +1,8 @@
 import uuid
+from model.prismpy_model import PrismPyBaseModel
 
 
-class PropertyObject:
+class PropertyObject(PrismPyBaseModel):
     property_object_id = None
     property_string = None
 

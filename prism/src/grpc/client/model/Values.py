@@ -1,12 +1,10 @@
 import uuid
-from abc import ABC
-
 from services import prismGrpc_pb2
 from services.prismpy import PrismPy
+from model.prismpy_model import PrismPyBaseModel
 
 
-class Values(PrismPy, ABC):
-
+class Values(PrismPy, PrismPyBaseModel):
     values_object_id = None
 
     current_values = None

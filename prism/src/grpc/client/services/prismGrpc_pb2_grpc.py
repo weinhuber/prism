@@ -15,6 +15,11 @@ class PrismProtoServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.DeleteObject = channel.unary_unary(
+                '/PrismProtoService/DeleteObject',
+                request_serializer=prismGrpc__pb2.DeleteObjectRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.DeleteObjectResponse.FromString,
+                )
         self.PropertiesFileForwardMethodCall = channel.unary_unary(
                 '/PrismProtoService/PropertiesFileForwardMethodCall',
                 request_serializer=prismGrpc__pb2.PropertiesFileForwardMethodCallRequest.SerializeToString,
@@ -100,6 +105,13 @@ class PrismProtoServiceStub(object):
 class PrismProtoServiceServicer(object):
     """Service Definitions
     """
+
+    def DeleteObject(self, request, context):
+        """delete a PRISM object
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
     def PropertiesFileForwardMethodCall(self, request, context):
         """generic forwarding of method call
@@ -216,6 +228,11 @@ class PrismProtoServiceServicer(object):
 
 def add_PrismProtoServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'DeleteObject': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteObject,
+                    request_deserializer=prismGrpc__pb2.DeleteObjectRequest.FromString,
+                    response_serializer=prismGrpc__pb2.DeleteObjectResponse.SerializeToString,
+            ),
             'PropertiesFileForwardMethodCall': grpc.unary_unary_rpc_method_handler(
                     servicer.PropertiesFileForwardMethodCall,
                     request_deserializer=prismGrpc__pb2.PropertiesFileForwardMethodCallRequest.FromString,
@@ -306,6 +323,23 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
 class PrismProtoService(object):
     """Service Definitions
     """
+
+    @staticmethod
+    def DeleteObject(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/DeleteObject',
+            prismGrpc__pb2.DeleteObjectRequest.SerializeToString,
+            prismGrpc__pb2.DeleteObjectResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def PropertiesFileForwardMethodCall(request,
