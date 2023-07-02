@@ -97,7 +97,7 @@ class Prism(PrismPy, ABC):
         # create ParsePropertiesFileRequest
         request = prismGrpc_pb2.ParsePropertiesFileRequest(prism_object_id=str(id(self)),
                                                            module_object_id=str(id(module_file)),
-                                                           property_object_id=str(id(properties_file)),
+                                                           properties_file_object_id=str(id(properties_file)),
                                                            properties_file_name=upload_response.filename)
 
         # Make the RPC call to ParsePropertiesFile
@@ -116,7 +116,7 @@ class Prism(PrismPy, ABC):
         # Create a ModelCheckRequest
         request = prismGrpc_pb2.ModelCheckRequest(
             prism_object_id=str(id(self)),
-            property_object_id=str(id(properties_file)),
+            properties_file_object_id=str(id(properties_file)),
             result_object_id=str(id(result)),
             property_index=property_object_index)
 

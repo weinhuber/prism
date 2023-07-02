@@ -169,7 +169,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         String moduleId = request.getModuleObjectId();
 
         // get property id from request
-        String propertyId = request.getPropertyObjectId();
+        String propertyId = request.getPropertiesFileObjectId();
 
         String status = "Error";
 
@@ -203,7 +203,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         logger.info("Received propertyObject request");
 
         // get property id from request
-        String propertyId = request.getPropertyObjectId();
+        String propertyId = request.getPropertiesFileObjectId();
 
         String status = "Error";
 
@@ -242,7 +242,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         String prismId = request.getPrismObjectId();
 
         // get property id from request
-        String propertyId = request.getPropertyObjectId();
+        String propertyId = request.getPropertiesFileObjectId();
 
         // get result id from request
         String resultId = request.getResultObjectId();
