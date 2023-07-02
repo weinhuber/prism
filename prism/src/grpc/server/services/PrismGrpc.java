@@ -10072,22 +10072,28 @@ public final class PrismGrpc {
         getPropertiesFileObjectIdBytes();
 
     /**
-     * <code>string result_object_id = 3;</code>
+     * <code>string property_object_id = 3;</code>
+     * @return The propertyObjectId.
+     */
+    java.lang.String getPropertyObjectId();
+    /**
+     * <code>string property_object_id = 3;</code>
+     * @return The bytes for propertyObjectId.
+     */
+    com.google.protobuf.ByteString
+        getPropertyObjectIdBytes();
+
+    /**
+     * <code>string result_object_id = 4;</code>
      * @return The resultObjectId.
      */
     java.lang.String getResultObjectId();
     /**
-     * <code>string result_object_id = 3;</code>
+     * <code>string result_object_id = 4;</code>
      * @return The bytes for resultObjectId.
      */
     com.google.protobuf.ByteString
         getResultObjectIdBytes();
-
-    /**
-     * <code>int32 property_index = 4;</code>
-     * @return The propertyIndex.
-     */
-    int getPropertyIndex();
   }
   /**
    * Protobuf type {@code ModelCheckRequest}
@@ -10104,6 +10110,7 @@ public final class PrismGrpc {
     private ModelCheckRequest() {
       prismObjectId_ = "";
       propertiesFileObjectId_ = "";
+      propertyObjectId_ = "";
       resultObjectId_ = "";
     }
 
@@ -10152,12 +10159,13 @@ public final class PrismGrpc {
             case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              resultObjectId_ = s;
+              propertyObjectId_ = s;
               break;
             }
-            case 32: {
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              propertyIndex_ = input.readInt32();
+              resultObjectId_ = s;
               break;
             }
             default: {
@@ -10268,10 +10276,48 @@ public final class PrismGrpc {
       }
     }
 
-    public static final int RESULT_OBJECT_ID_FIELD_NUMBER = 3;
+    public static final int PROPERTY_OBJECT_ID_FIELD_NUMBER = 3;
+    private volatile java.lang.Object propertyObjectId_;
+    /**
+     * <code>string property_object_id = 3;</code>
+     * @return The propertyObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getPropertyObjectId() {
+      java.lang.Object ref = propertyObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        propertyObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string property_object_id = 3;</code>
+     * @return The bytes for propertyObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPropertyObjectIdBytes() {
+      java.lang.Object ref = propertyObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        propertyObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int RESULT_OBJECT_ID_FIELD_NUMBER = 4;
     private volatile java.lang.Object resultObjectId_;
     /**
-     * <code>string result_object_id = 3;</code>
+     * <code>string result_object_id = 4;</code>
      * @return The resultObjectId.
      */
     @java.lang.Override
@@ -10288,7 +10334,7 @@ public final class PrismGrpc {
       }
     }
     /**
-     * <code>string result_object_id = 3;</code>
+     * <code>string result_object_id = 4;</code>
      * @return The bytes for resultObjectId.
      */
     @java.lang.Override
@@ -10304,17 +10350,6 @@ public final class PrismGrpc {
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
-    }
-
-    public static final int PROPERTY_INDEX_FIELD_NUMBER = 4;
-    private int propertyIndex_;
-    /**
-     * <code>int32 property_index = 4;</code>
-     * @return The propertyIndex.
-     */
-    @java.lang.Override
-    public int getPropertyIndex() {
-      return propertyIndex_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -10337,11 +10372,11 @@ public final class PrismGrpc {
       if (!getPropertiesFileObjectIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, propertiesFileObjectId_);
       }
-      if (!getResultObjectIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, resultObjectId_);
+      if (!getPropertyObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, propertyObjectId_);
       }
-      if (propertyIndex_ != 0) {
-        output.writeInt32(4, propertyIndex_);
+      if (!getResultObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, resultObjectId_);
       }
       unknownFields.writeTo(output);
     }
@@ -10358,12 +10393,11 @@ public final class PrismGrpc {
       if (!getPropertiesFileObjectIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, propertiesFileObjectId_);
       }
-      if (!getResultObjectIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, resultObjectId_);
+      if (!getPropertyObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, propertyObjectId_);
       }
-      if (propertyIndex_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, propertyIndex_);
+      if (!getResultObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, resultObjectId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -10384,10 +10418,10 @@ public final class PrismGrpc {
           .equals(other.getPrismObjectId())) return false;
       if (!getPropertiesFileObjectId()
           .equals(other.getPropertiesFileObjectId())) return false;
+      if (!getPropertyObjectId()
+          .equals(other.getPropertyObjectId())) return false;
       if (!getResultObjectId()
           .equals(other.getResultObjectId())) return false;
-      if (getPropertyIndex()
-          != other.getPropertyIndex()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -10403,10 +10437,10 @@ public final class PrismGrpc {
       hash = (53 * hash) + getPrismObjectId().hashCode();
       hash = (37 * hash) + PROPERTIES_FILE_OBJECT_ID_FIELD_NUMBER;
       hash = (53 * hash) + getPropertiesFileObjectId().hashCode();
+      hash = (37 * hash) + PROPERTY_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getPropertyObjectId().hashCode();
       hash = (37 * hash) + RESULT_OBJECT_ID_FIELD_NUMBER;
       hash = (53 * hash) + getResultObjectId().hashCode();
-      hash = (37 * hash) + PROPERTY_INDEX_FIELD_NUMBER;
-      hash = (53 * hash) + getPropertyIndex();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -10544,9 +10578,9 @@ public final class PrismGrpc {
 
         propertiesFileObjectId_ = "";
 
-        resultObjectId_ = "";
+        propertyObjectId_ = "";
 
-        propertyIndex_ = 0;
+        resultObjectId_ = "";
 
         return this;
       }
@@ -10576,8 +10610,8 @@ public final class PrismGrpc {
         grpc.server.services.PrismGrpc.ModelCheckRequest result = new grpc.server.services.PrismGrpc.ModelCheckRequest(this);
         result.prismObjectId_ = prismObjectId_;
         result.propertiesFileObjectId_ = propertiesFileObjectId_;
+        result.propertyObjectId_ = propertyObjectId_;
         result.resultObjectId_ = resultObjectId_;
-        result.propertyIndex_ = propertyIndex_;
         onBuilt();
         return result;
       }
@@ -10634,12 +10668,13 @@ public final class PrismGrpc {
           propertiesFileObjectId_ = other.propertiesFileObjectId_;
           onChanged();
         }
+        if (!other.getPropertyObjectId().isEmpty()) {
+          propertyObjectId_ = other.propertyObjectId_;
+          onChanged();
+        }
         if (!other.getResultObjectId().isEmpty()) {
           resultObjectId_ = other.resultObjectId_;
           onChanged();
-        }
-        if (other.getPropertyIndex() != 0) {
-          setPropertyIndex(other.getPropertyIndex());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -10822,9 +10857,85 @@ public final class PrismGrpc {
         return this;
       }
 
+      private java.lang.Object propertyObjectId_ = "";
+      /**
+       * <code>string property_object_id = 3;</code>
+       * @return The propertyObjectId.
+       */
+      public java.lang.String getPropertyObjectId() {
+        java.lang.Object ref = propertyObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          propertyObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string property_object_id = 3;</code>
+       * @return The bytes for propertyObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getPropertyObjectIdBytes() {
+        java.lang.Object ref = propertyObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          propertyObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string property_object_id = 3;</code>
+       * @param value The propertyObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPropertyObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        propertyObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string property_object_id = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPropertyObjectId() {
+        
+        propertyObjectId_ = getDefaultInstance().getPropertyObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string property_object_id = 3;</code>
+       * @param value The bytes for propertyObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPropertyObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        propertyObjectId_ = value;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object resultObjectId_ = "";
       /**
-       * <code>string result_object_id = 3;</code>
+       * <code>string result_object_id = 4;</code>
        * @return The resultObjectId.
        */
       public java.lang.String getResultObjectId() {
@@ -10840,7 +10951,7 @@ public final class PrismGrpc {
         }
       }
       /**
-       * <code>string result_object_id = 3;</code>
+       * <code>string result_object_id = 4;</code>
        * @return The bytes for resultObjectId.
        */
       public com.google.protobuf.ByteString
@@ -10857,7 +10968,7 @@ public final class PrismGrpc {
         }
       }
       /**
-       * <code>string result_object_id = 3;</code>
+       * <code>string result_object_id = 4;</code>
        * @param value The resultObjectId to set.
        * @return This builder for chaining.
        */
@@ -10872,7 +10983,7 @@ public final class PrismGrpc {
         return this;
       }
       /**
-       * <code>string result_object_id = 3;</code>
+       * <code>string result_object_id = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearResultObjectId() {
@@ -10882,7 +10993,7 @@ public final class PrismGrpc {
         return this;
       }
       /**
-       * <code>string result_object_id = 3;</code>
+       * <code>string result_object_id = 4;</code>
        * @param value The bytes for resultObjectId to set.
        * @return This builder for chaining.
        */
@@ -10894,37 +11005,6 @@ public final class PrismGrpc {
   checkByteStringIsUtf8(value);
         
         resultObjectId_ = value;
-        onChanged();
-        return this;
-      }
-
-      private int propertyIndex_ ;
-      /**
-       * <code>int32 property_index = 4;</code>
-       * @return The propertyIndex.
-       */
-      @java.lang.Override
-      public int getPropertyIndex() {
-        return propertyIndex_;
-      }
-      /**
-       * <code>int32 property_index = 4;</code>
-       * @param value The propertyIndex to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPropertyIndex(int value) {
-        
-        propertyIndex_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 property_index = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPropertyIndex() {
-        
-        propertyIndex_ = 0;
         onChanged();
         return this;
       }
@@ -28172,90 +28252,90 @@ public final class PrismGrpc {
       " \001(\t\022\026\n\016property_index\030\004 \001(\005\022\023\n\013const_ra" +
       "nge\030\005 \001(\t\"K\n DefineUndefinedConstantsRes" +
       "ponse\022\027\n\017prism_object_id\030\001 \001(\t\022\016\n\006status" +
-      "\030\002 \001(\t\"\201\001\n\021ModelCheckRequest\022\027\n\017prism_ob" +
+      "\030\002 \001(\t\"\205\001\n\021ModelCheckRequest\022\027\n\017prism_ob" +
       "ject_id\030\001 \001(\t\022!\n\031properties_file_object_" +
-      "id\030\002 \001(\t\022\030\n\020result_object_id\030\003 \001(\t\022\026\n\016pr" +
-      "operty_index\030\004 \001(\005\"4\n\022ModelCheckResponse" +
-      "\022\016\n\006result\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"\211\001\n\036Mod" +
-      "elCheckWithConstantsRequest\022\027\n\017prism_obj" +
-      "ect_id\030\001 \001(\t\022\034\n\024properties_file_name\030\002 \001" +
-      "(\t\022\030\n\020constants_values\030\003 \001(\t\022\026\n\016property" +
-      "_index\030\004 \001(\005\"i\n\034ParsePropertiesStringReq" +
-      "uest\022\027\n\017prism_object_id\030\001 \001(\t\022\027\n\017model_f" +
-      "ile_name\030\002 \001(\t\022\027\n\017property_string\030\003 \001(\t\"" +
-      "H\n\035ParsePropertiesStringResponse\022\027\n\017pris" +
-      "m_object_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"K\n\027Mod" +
-      "elCheckStringRequest\022\027\n\017prism_object_id\030" +
-      "\001 \001(\t\022\027\n\017property_string\030\002 \001(\t\"C\n\030ModelC" +
-      "heckStringResponse\022\027\n\017prism_object_id\030\001 " +
-      "\001(\t\022\016\n\006status\030\002 \001(\t\"L\n\030ParseAndLoadModel" +
-      "Request\022\027\n\017prism_object_id\030\001 \001(\t\022\027\n\017mode" +
-      "l_file_name\030\002 \001(\t\"A\n\026ParseAndLoadModelRe" +
-      "ply\022\027\n\017prism_object_id\030\001 \001(\t\022\016\n\006status\030\002" +
-      " \001(\t\",\n\021ClosePrismRequest\022\027\n\017prism_objec" +
-      "t_id\030\001 \001(\t\"=\n\022ClosePrismResponse\022\027\n\017pris" +
-      "m_object_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"c\n\025Par" +
-      "seModelFileRequest\022\027\n\017prism_object_id\030\001 " +
-      "\001(\t\022\030\n\020module_object_id\030\002 \001(\t\022\027\n\017model_f" +
-      "ile_name\030\003 \001(\t\"[\n\026ParseModelFileResponse" +
-      "\022\027\n\017prism_object_id\030\001 \001(\t\022\030\n\020module_obje" +
-      "ct_id\030\002 \001(\t\022\016\n\006status\030\003 \001(\t\"q\n\030GetProper" +
-      "tyObjectRequest\022!\n\031properties_file_objec" +
-      "t_id\030\001 \001(\t\022\032\n\022property_object_id\030\002 \001(\t\022\026" +
-      "\n\016property_index\030\003 \001(\005\"`\n\031GetPropertyObj" +
-      "ectResponse\022!\n\031properties_file_object_id" +
-      "\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\020\n\010property\030\003 \001(\t" +
-      "\"y\n&PropertiesFileForwardMethodCallReque" +
-      "st\022!\n\031properties_file_object_id\030\001 \001(\t\022\016\n" +
-      "\006method\030\002 \001(\t\022\014\n\004args\030\003 \001(\t\022\016\n\006kwargs\030\004 " +
-      "\001(\t\"l\n\'PropertiesFileForwardMethodCallRe" +
-      "sponse\022!\n\031properties_file_object_id\030\001 \001(" +
-      "\t\022\016\n\006status\030\002 \001(\t\022\016\n\006result\030\003 \001(\t\"k\n*Get" +
-      "UndefinedConstantsUsedInPropertyRequest\022" +
-      "!\n\031properties_file_object_id\030\001 \001(\t\022\032\n\022pr" +
-      "operty_object_id\030\002 \001(\t\"P\n+GetUndefinedCo" +
-      "nstantsUsedInPropertyResponse\022\016\n\006status\030" +
-      "\001 \001(\t\022\021\n\tconstants\030\002 \003(\t\"N\n\017AddValueRequ" +
-      "est\022\030\n\020values_object_id\030\001 \001(\t\022\022\n\nconst_n" +
-      "ame\030\002 \001(\t\022\r\n\005value\030\003 \001(\005\"2\n\020AddValueResp" +
-      "onse\022\016\n\006result\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"_\n " +
-      "SetSomeUndefinedConstantsRequest\022!\n\031prop" +
-      "erties_file_object_id\030\001 \001(\t\022\030\n\020values_ob" +
-      "ject_id\030\002 \001(\t\"3\n!SetSomeUndefinedConstan" +
-      "tsResponse\022\016\n\006status\030\001 \001(\t2\213\n\n\021PrismProt" +
-      "oService\022v\n\037PropertiesFileForwardMethodC" +
-      "all\022\'.PropertiesFileForwardMethodCallReq" +
-      "uest\032(.PropertiesFileForwardMethodCallRe" +
-      "sponse\"\000\022.\n\nUploadFile\022\016.UploadRequest\032\014" +
-      ".UploadReply\"\000(\001\0227\n\nInitialise\022\022.Initial" +
-      "iseRequest\032\023.InitialiseResponse\"\000\022C\n\016Par" +
-      "seModelFile\022\026.ParseModelFileRequest\032\027.Pa" +
-      "rseModelFileResponse\"\000\022C\n\016LoadPRISMModel" +
-      "\022\026.LoadPRISMModelRequest\032\027.LoadPRISMMode" +
-      "lResponse\"\000\022R\n\023ParsePropertiesFile\022\033.Par" +
-      "sePropertiesFileRequest\032\034.ParsePropertie" +
-      "sFileResponse\"\000\022L\n\021GetPropertyObject\022\031.G" +
-      "etPropertyObjectRequest\032\032.GetPropertyObj" +
-      "ectResponse\"\000\0227\n\nModelCheck\022\022.ModelCheck" +
-      "Request\032\023.ModelCheckResponse\"\000\022\202\001\n#GetUn" +
-      "definedConstantsUsedInProperty\022+.GetUnde" +
-      "finedConstantsUsedInPropertyRequest\032,.Ge" +
-      "tUndefinedConstantsUsedInPropertyRespons" +
-      "e\"\000\0221\n\010AddValue\022\020.AddValueRequest\032\021.AddV" +
-      "alueResponse\"\000\022d\n\031SetSomeUndefinedConsta" +
-      "nts\022!.SetSomeUndefinedConstantsRequest\032\"" +
-      ".SetSomeUndefinedConstantsResponse\"\000\022a\n\030" +
-      "DefineUndefinedConstants\022 .DefineUndefin" +
-      "edConstantsRequest\032!.DefineUndefinedCons" +
-      "tantsResponse\"\000\022Q\n\027ModelCheckWithConstan" +
-      "ts\022\037.ModelCheckWithConstantsRequest\032\023.Mo" +
-      "delCheckResponse\"\000\022X\n\025ParsePropertiesStr" +
-      "ing\022\035.ParsePropertiesStringRequest\032\036.Par" +
-      "sePropertiesStringResponse\"\000\022I\n\020ModelChe" +
-      "ckString\022\030.ModelCheckStringRequest\032\031.Mod" +
-      "elCheckStringResponse\"\000\0227\n\nClosePrism\022\022." +
-      "ClosePrismRequest\032\023.ClosePrismResponse\"\000" +
-      "B\026\n\024grpc.server.servicesb\006proto3"
+      "id\030\002 \001(\t\022\032\n\022property_object_id\030\003 \001(\t\022\030\n\020" +
+      "result_object_id\030\004 \001(\t\"4\n\022ModelCheckResp" +
+      "onse\022\016\n\006result\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"\211\001\n" +
+      "\036ModelCheckWithConstantsRequest\022\027\n\017prism" +
+      "_object_id\030\001 \001(\t\022\034\n\024properties_file_name" +
+      "\030\002 \001(\t\022\030\n\020constants_values\030\003 \001(\t\022\026\n\016prop" +
+      "erty_index\030\004 \001(\005\"i\n\034ParsePropertiesStrin" +
+      "gRequest\022\027\n\017prism_object_id\030\001 \001(\t\022\027\n\017mod" +
+      "el_file_name\030\002 \001(\t\022\027\n\017property_string\030\003 " +
+      "\001(\t\"H\n\035ParsePropertiesStringResponse\022\027\n\017" +
+      "prism_object_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"K\n" +
+      "\027ModelCheckStringRequest\022\027\n\017prism_object" +
+      "_id\030\001 \001(\t\022\027\n\017property_string\030\002 \001(\t\"C\n\030Mo" +
+      "delCheckStringResponse\022\027\n\017prism_object_i" +
+      "d\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"L\n\030ParseAndLoadM" +
+      "odelRequest\022\027\n\017prism_object_id\030\001 \001(\t\022\027\n\017" +
+      "model_file_name\030\002 \001(\t\"A\n\026ParseAndLoadMod" +
+      "elReply\022\027\n\017prism_object_id\030\001 \001(\t\022\016\n\006stat" +
+      "us\030\002 \001(\t\",\n\021ClosePrismRequest\022\027\n\017prism_o" +
+      "bject_id\030\001 \001(\t\"=\n\022ClosePrismResponse\022\027\n\017" +
+      "prism_object_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"c\n" +
+      "\025ParseModelFileRequest\022\027\n\017prism_object_i" +
+      "d\030\001 \001(\t\022\030\n\020module_object_id\030\002 \001(\t\022\027\n\017mod" +
+      "el_file_name\030\003 \001(\t\"[\n\026ParseModelFileResp" +
+      "onse\022\027\n\017prism_object_id\030\001 \001(\t\022\030\n\020module_" +
+      "object_id\030\002 \001(\t\022\016\n\006status\030\003 \001(\t\"q\n\030GetPr" +
+      "opertyObjectRequest\022!\n\031properties_file_o" +
+      "bject_id\030\001 \001(\t\022\032\n\022property_object_id\030\002 \001" +
+      "(\t\022\026\n\016property_index\030\003 \001(\005\"`\n\031GetPropert" +
+      "yObjectResponse\022!\n\031properties_file_objec" +
+      "t_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\020\n\010property\030\003" +
+      " \001(\t\"y\n&PropertiesFileForwardMethodCallR" +
+      "equest\022!\n\031properties_file_object_id\030\001 \001(" +
+      "\t\022\016\n\006method\030\002 \001(\t\022\014\n\004args\030\003 \001(\t\022\016\n\006kwarg" +
+      "s\030\004 \001(\t\"l\n\'PropertiesFileForwardMethodCa" +
+      "llResponse\022!\n\031properties_file_object_id\030" +
+      "\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\016\n\006result\030\003 \001(\t\"k\n" +
+      "*GetUndefinedConstantsUsedInPropertyRequ" +
+      "est\022!\n\031properties_file_object_id\030\001 \001(\t\022\032" +
+      "\n\022property_object_id\030\002 \001(\t\"P\n+GetUndefin" +
+      "edConstantsUsedInPropertyResponse\022\016\n\006sta" +
+      "tus\030\001 \001(\t\022\021\n\tconstants\030\002 \003(\t\"N\n\017AddValue" +
+      "Request\022\030\n\020values_object_id\030\001 \001(\t\022\022\n\ncon" +
+      "st_name\030\002 \001(\t\022\r\n\005value\030\003 \001(\005\"2\n\020AddValue" +
+      "Response\022\016\n\006result\030\001 \001(\t\022\016\n\006status\030\002 \001(\t" +
+      "\"_\n SetSomeUndefinedConstantsRequest\022!\n\031" +
+      "properties_file_object_id\030\001 \001(\t\022\030\n\020value" +
+      "s_object_id\030\002 \001(\t\"3\n!SetSomeUndefinedCon" +
+      "stantsResponse\022\016\n\006status\030\001 \001(\t2\213\n\n\021Prism" +
+      "ProtoService\022v\n\037PropertiesFileForwardMet" +
+      "hodCall\022\'.PropertiesFileForwardMethodCal" +
+      "lRequest\032(.PropertiesFileForwardMethodCa" +
+      "llResponse\"\000\022.\n\nUploadFile\022\016.UploadReque" +
+      "st\032\014.UploadReply\"\000(\001\0227\n\nInitialise\022\022.Ini" +
+      "tialiseRequest\032\023.InitialiseResponse\"\000\022C\n" +
+      "\016ParseModelFile\022\026.ParseModelFileRequest\032" +
+      "\027.ParseModelFileResponse\"\000\022C\n\016LoadPRISMM" +
+      "odel\022\026.LoadPRISMModelRequest\032\027.LoadPRISM" +
+      "ModelResponse\"\000\022R\n\023ParsePropertiesFile\022\033" +
+      ".ParsePropertiesFileRequest\032\034.ParsePrope" +
+      "rtiesFileResponse\"\000\022L\n\021GetPropertyObject" +
+      "\022\031.GetPropertyObjectRequest\032\032.GetPropert" +
+      "yObjectResponse\"\000\0227\n\nModelCheck\022\022.ModelC" +
+      "heckRequest\032\023.ModelCheckResponse\"\000\022\202\001\n#G" +
+      "etUndefinedConstantsUsedInProperty\022+.Get" +
+      "UndefinedConstantsUsedInPropertyRequest\032" +
+      ",.GetUndefinedConstantsUsedInPropertyRes" +
+      "ponse\"\000\0221\n\010AddValue\022\020.AddValueRequest\032\021." +
+      "AddValueResponse\"\000\022d\n\031SetSomeUndefinedCo" +
+      "nstants\022!.SetSomeUndefinedConstantsReque" +
+      "st\032\".SetSomeUndefinedConstantsResponse\"\000" +
+      "\022a\n\030DefineUndefinedConstants\022 .DefineUnd" +
+      "efinedConstantsRequest\032!.DefineUndefined" +
+      "ConstantsResponse\"\000\022Q\n\027ModelCheckWithCon" +
+      "stants\022\037.ModelCheckWithConstantsRequest\032" +
+      "\023.ModelCheckResponse\"\000\022X\n\025ParsePropertie" +
+      "sString\022\035.ParsePropertiesStringRequest\032\036" +
+      ".ParsePropertiesStringResponse\"\000\022I\n\020Mode" +
+      "lCheckString\022\030.ModelCheckStringRequest\032\031" +
+      ".ModelCheckStringResponse\"\000\0227\n\nClosePris" +
+      "m\022\022.ClosePrismRequest\032\023.ClosePrismRespon" +
+      "se\"\000B\026\n\024grpc.server.servicesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -28344,7 +28424,7 @@ public final class PrismGrpc {
     internal_static_ModelCheckRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ModelCheckRequest_descriptor,
-        new java.lang.String[] { "PrismObjectId", "PropertiesFileObjectId", "ResultObjectId", "PropertyIndex", });
+        new java.lang.String[] { "PrismObjectId", "PropertiesFileObjectId", "PropertyObjectId", "ResultObjectId", });
     internal_static_ModelCheckResponse_descriptor =
       getDescriptor().getMessageTypes().get(14);
     internal_static_ModelCheckResponse_fieldAccessorTable = new

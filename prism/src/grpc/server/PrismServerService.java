@@ -206,7 +206,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         // get properties file id from request
         String propertiesFileId = request.getPropertiesFileObjectId();
 
-        // ger property object id from request
+        // get property object id from request
         String propertyObjectId = request.getPropertyObjectId();
 
         String status = "Error";
@@ -244,11 +244,14 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
     public void modelCheck(PrismGrpc.ModelCheckRequest request, StreamObserver<PrismGrpc.ModelCheckResponse> responseObserver) {
         logger.info("Received modelCheck request");
 
-        // get prism id from request
-        String prismId = request.getPrismObjectId();
+        // get prism object id from request
+        String prismObjectId = request.getPrismObjectId();
 
-        // get property id from request
-        String propertyId = request.getPropertiesFileObjectId();
+        // get property files object id from request
+        String propertiesFileObjectId = request.getPropertiesFileObjectId();
+
+        // get property object id from request
+        String propertyObjectId = request.getPropertyObjectId();
 
         // get result id from request
         String resultId = request.getResultObjectId();
@@ -259,9 +262,10 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
 
         // model check
         try{
-            Prism prism = (Prism) prismObjectMap.get(prismId);
-            PropertiesFile propertiesFile = (PropertiesFile) prismObjectMap.get(propertyId);
-            Result modelCheckResult = prism.modelCheck(propertiesFile, propertiesFile.getPropertyObject(request.getPropertyIndex()));
+            Prism prism = (Prism) prismObjectMap.get(prismObjectId);
+            PropertiesFile propertiesFile = (PropertiesFile) prismObjectMap.get(propertiesFileObjectId);
+            Property propertyObject = (Property) prismObjectMap.get(propertyObjectId);
+            Result modelCheckResult = prism.modelCheck(propertiesFile, propertyObject);
             result = modelCheckResult.getResultString();
             prismObjectMap.put(resultId, modelCheckResult);
             status = "Success";

@@ -36,7 +36,7 @@ properties_file = prism.parse_properties_file(modules_file, "examples/dice.pctl"
 # Model check the first property from the file
 print(properties_file.get_property_object(0))
 # Changed model_check to only accept a properties file and a property index
-result = prism.model_check(properties_file, 0)
+result = prism.model_check(properties_file, properties_file.get_property_object(0))
 print(result.get_result())
 
 # Model check the second property from the file (which has an undefined constant, whose value we set to 3)
@@ -48,3 +48,5 @@ vals.add_value(const_name, 3)
 properties_file.set_some_undefined_constants(vals)
 print(properties_file.get_property_object(1), " for ", vals)
 
+result = prism.model_check(properties_file, properties_file.get_property_object(1))
+print(result.get_result())

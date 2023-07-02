@@ -110,7 +110,7 @@ class Prism(PrismPy, ABC):
 
         return properties_file
 
-    def model_check(self, properties_file, property_object_index):
+    def model_check(self, properties_file, property_object):
         self.logger.info("Model checking property {}.".format(properties_file.property_file_path))
 
         # Create ResultFile object to populate and return
@@ -120,8 +120,8 @@ class Prism(PrismPy, ABC):
         request = prismGrpc_pb2.ModelCheckRequest(
             prism_object_id=self.prism_object_id,
             properties_file_object_id=properties_file.properties_file_object_id,
-            result_object_id=result.result_object_id,
-            property_index=property_object_index)
+            property_object_id=property_object.property_object_id,
+            result_object_id=result.result_object_id)
 
         # Make the RPC call to ModelCheck
         response = self.stub.ModelCheck(request)

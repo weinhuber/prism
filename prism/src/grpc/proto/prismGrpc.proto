@@ -80,8 +80,8 @@ message DefineUndefinedConstantsResponse {
 message ModelCheckRequest {
   string prism_object_id = 1;
   string properties_file_object_id = 2;
-  string result_object_id = 3;
-  int32 property_index = 4;
+  string property_object_id = 3;
+  string result_object_id = 4;
 }
 
 message ModelCheckResponse {
