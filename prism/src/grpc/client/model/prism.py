@@ -8,12 +8,11 @@ from model.prism_file_log import PrismFileLog
 from model.prismpy_exceptions import PrismPyException
 from model.properties_file import PropertiesFile
 from model.result import Result
-from prismpy import PrismPy
 from services import prismGrpc_pb2, prismGrpc_pb2_grpc
 from model.prismpy_model import PrismPyBaseModel
 
 
-class Prism(PrismPy, PrismPyBaseModel):
+class Prism(PrismPyBaseModel):
     __proto_main_log = None
 
     prism_object_id = None
@@ -120,8 +119,8 @@ class Prism(PrismPy, PrismPyBaseModel):
         request = prismGrpc_pb2.ModelCheckRequest(
             prism_object_id=self.prism_object_id,
             properties_file_object_id=properties_file.object_id,
-            property_object_id=property_object.property_object_id,
-            result_object_id=result.result_object_id)
+            property_object_id=property_object.object_id,
+            result_object_id=result.object_id)
 
         # Make the RPC call to ModelCheck
         response = self.stub.ModelCheck(request)

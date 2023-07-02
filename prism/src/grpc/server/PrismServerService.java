@@ -434,7 +434,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         // delete object
         try{
             Object objectToDelete = prismObjectMap.get(objectId);
-            logger.info("Deleting object: " + objectToDelete.toString());
+            logger.info("Deleting object: " + objectToDelete.getClass().getSimpleName());
             prismObjectMap.remove(objectId);
             status = "Success";
         } catch (NullPointerException e) {

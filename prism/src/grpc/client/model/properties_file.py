@@ -3,7 +3,6 @@ from abc import ABC
 
 from model.property_object import PropertyObject
 from services import prismGrpc_pb2
-from services.prismpy import PrismPy
 from model.prismpy_model import PrismPyBaseModel
 
 
@@ -22,7 +21,7 @@ class PropertiesFile(PrismPyBaseModel):
 
         # create GetPropertyObjectRequest
         request = prismGrpc_pb2.GetPropertyObjectRequest(properties_file_object_id=self.object_id,
-                                                         property_object_id=property_object.property_object_id,
+                                                         property_object_id=property_object.object_id,
                                                          property_index=property_index)
 
         # Make the RPC call to GetPropertyObject
@@ -56,7 +55,7 @@ class PropertiesFile(PrismPyBaseModel):
         # create GetUndefinedConstantsUsedInPropertyRequest
         request = prismGrpc_pb2.GetUndefinedConstantsUsedInPropertyRequest(
             properties_file_object_id=self.object_id,
-            property_object_id=property_object.property_object_id)
+            property_object_id=property_object.object_id)
 
         # Make the RPC call to GetUndefinedConstantsUsedInProperty
         response = self.stub.GetUndefinedConstantsUsedInProperty(request)
@@ -70,7 +69,7 @@ class PropertiesFile(PrismPyBaseModel):
         # create SetSomeUndefinedConstantsRequest
         request = prismGrpc_pb2.SetSomeUndefinedConstantsRequest(
             properties_file_object_id=self.object_id,
-            values_object_id=values.values_object_id)
+            values_object_id=values.object_id)
 
         # Make the RPC call to SetSomeUndefinedConstants
         response = self.stub.SetSomeUndefinedConstants(request)

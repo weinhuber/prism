@@ -1,5 +1,5 @@
 from model.Values import Values
-from services.prism import Prism
+from model.prism import Prism
 from model.prism_dev_null_log import PrismDevNullLog
 from model.prism_file_log import PrismFileLog
 
@@ -52,4 +52,4 @@ result = prism.model_check(properties_file, properties_file.get_property_object(
 print(result.get_result())
 
 
-print(properties_file.__object_id_accessed)
+
