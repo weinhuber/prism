@@ -1,40 +1,37 @@
+from model.prism_log import PrismLog
 from model.undefined_constants import UndefinedConstants
 from model.values import Values
 from model.prism import Prism
-from model.prism_dev_null_log import PrismDevNullLog
-from model.prism_file_log import PrismFileLog
 
-# Create a log for PRISM output (hidden or stdout)
-main_log = PrismDevNullLog()
-# main_log2 = PrismFileLog("stdout")
-# main_log3 = PrismFileLog("hidden")
+main_log = PrismLog("devnull")
+main_log2 = PrismLog("stdout")
+main_log3 = PrismLog("hidden")
 
 # Initialise PRISM engine
 prism = Prism(main_log)
 prism.initialise()
 
-# prism2 = Prism(main_log2)
-# prism2.initialise()
+prism2 = Prism(main_log2)
+prism2.initialise()
 
-# prism3 = Prism(main_log3)
-# prism3.initialise()
+prism3 = Prism(main_log3)
+prism3.initialise()
 
 # Parse and load a PRISM model from a file
 modules_file = prism.parse_model_file("examples/dice.pm")
-print(modules_file.object_id)
+
 prism.load_prism_model(modules_file)
 
-# modules_file2 = prism2.parse_model_file("examples/dice.pm")
-# prism2.load_prism_model(modules_file2)
+modules_file2 = prism2.parse_model_file("examples/dice.pm")
+prism2.load_prism_model(modules_file2)
 
-# modules_file3 = prism3.parse_model_file("examples/dice.pm")
-# prism3.load_prism_model(modules_file3)
+modules_file3 = prism3.parse_model_file("examples/dice.pm")
+prism3.load_prism_model(modules_file3)
 
 # Parse and load a properties model for the model
 properties_file = prism.parse_properties_file(modules_file, "examples/dice.pctl")
-# properties_file2 = prism2.parse_properties_file(modules_file2, "examples/dice.pctl")
-# properties_file3 = prism3.parse_properties_file(modules_file3, "examples/dice.pctl")
 
+properties_file2 = prism2.parse_properties_file(modules_file2, "examples/dice.pctl")
 # Model check the first property from the file
 print(properties_file.get_property_object(0))
 # Changed model_check to only accept a properties file and a property index
@@ -61,10 +58,3 @@ undef_consts = UndefinedConstants(modules_file, properties_file, properties_file
 
 undef_consts.define_using_const_switch(const_name + "=0:2")
 n = undef_consts.get_number_property_iterations()
-
-# for i in range(n):
-#     vals_expt = undef_consts.get_pf_constant_values()
-    # think about how to handle the values object?
-    # where is it initialised...where should it be inisialised??
-    # we would need a general rule
-    # TODO: Write this rule down

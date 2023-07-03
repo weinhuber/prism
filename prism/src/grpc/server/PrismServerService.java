@@ -1,7 +1,6 @@
 package grpc.server;
 
 import com.google.protobuf.ByteString;
-import com.google.protobuf.Int32Value;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import grpc.server.services.PrismGrpc;
@@ -20,8 +19,6 @@ import parser.ast.PropertiesFile;
 import parser.ast.Property;
 import prism.*;
 
-import javax.swing.*;
-
 // implementation of all prism services
 class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase {
 
@@ -36,41 +33,20 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
     public void initialise(PrismGrpc.InitialiseRequest request, StreamObserver<PrismGrpc.InitialiseResponse> responseObserver) {
         logger.info("Received initialise request");
 
+        // get prism id from request
+        String prismId = request.getPrismObjectId();
+
         String status = "Error";
 
-        // get id from request
-        String id = request.getPrismObjectId();
-
-        // Get the requested log type from request
-        PrismGrpc.PrismLog log = request.getLog();
-        PrismLog mainLog;
-
+        // initialise prism
         try {
-            if (log.hasDevNullLog()) {
-                mainLog = new PrismDevNullLog();
-                logger.info("Successfully initialised prism with log type: " + mainLog.toString());
-            } else if (log.hasFileLog()) {
-                String outputType = log.getFileLog().getType();
-                mainLog = new PrismFileLog(outputType);
-                logger.info("Successfully initialised prism with log type: " + mainLog.toString() + " and output type: " + outputType);
-            } else {
-                throw new IllegalArgumentException("Invalid log type");
-            }
-
-            // Initialise PRISM engine
-            Prism prism = new Prism(mainLog);
+            Prism prism = new Prism(new PrismDevNullLog());
             prism.initialise();
-
-            // store prism object in dict for later use
-            prismObjectMap.put(id, prism);
+            prismObjectMap.put(prismId, prism);
             status = "Success";
-
-        }
-        catch (PrismException | IllegalArgumentException e) {
+        } catch (PrismException e) {
             logger.warning("Error initialising prism: " + e.getMessage());
-            status += " : " + e.getMessage();
         }
-
 
         // build response
         PrismGrpc.InitialiseResponse response = PrismGrpc.InitialiseResponse.newBuilder()
@@ -80,10 +56,9 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         // send response
         responseObserver.onNext(response);
 
-
         // complete call
         responseObserver.onCompleted();
-        logger.info("Initialise request completed with response: " + status);
+        logger.info("initialise request completed with status: " + status);
     }
 
     @Override
@@ -336,7 +311,6 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         logger.info("getUndefinedConstantsUsedInProperty request completed with status: " + status);
     }
 
-
     @Override
     public void addValue(PrismGrpc.AddValueRequest request, StreamObserver<PrismGrpc.AddValueResponse> responseObserver) {
         logger.info("Received addValue request");
@@ -423,51 +397,6 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
     }
 
     @Override
-    public void initUndefinedConstants(PrismGrpc.InitUndefinedConstantsRequest request, StreamObserver<PrismGrpc.InitUndefinedConstantsResponse> responseObserver) {
-        logger.info("Received initUndefinedConstants request");
-
-        // get modules file id from request
-        String modulesFileId = request.getModuleObjectId();
-
-        // get properties file object id from request
-        String propertiesFileId = request.getPropertiesFileObjectId();
-
-        // get property object id from request
-        String propertyId = request.getPropertyObjectId();
-
-        // get undefined constants object id from request
-        String undefinedConstantsId = request.getUndefinedConstantsObjectId();
-
-        String status = "Error";
-
-        // init undefined constants
-        try{
-            ModulesFile modulesFile = (ModulesFile) prismObjectMap.get(modulesFileId);
-            PropertiesFile propertiesFile = (PropertiesFile) prismObjectMap.get(propertiesFileId);
-            Property property = (Property) prismObjectMap.get(propertyId);
-            UndefinedConstants undefinedConstants = new UndefinedConstants(modulesFile, propertiesFile, property);
-            prismObjectMap.put(undefinedConstantsId, undefinedConstants);
-            status = "Success";
-
-        } catch (IllegalArgumentException e) {
-            logger.warning("Error loading prism properties: " + e.getMessage());
-            status += " : " + e.getMessage();
-        }
-
-        // build response
-        PrismGrpc.InitUndefinedConstantsResponse response = PrismGrpc.InitUndefinedConstantsResponse.newBuilder()
-                .setStatus(status)
-                .build();
-
-        // send response
-        responseObserver.onNext(response);
-
-        // complete call
-        responseObserver.onCompleted();
-        logger.info("initUndefinedConstants request completed with status: " + status);
-    }
-
-    @Override
     public void defineUsingConstSwitch(PrismGrpc.DefineUsingConstSwitchRequest request, StreamObserver<PrismGrpc.DefineUsingConstSwitchResponse> responseObserver) {
         logger.info("Received defineUsingConstSwitch request");
 
@@ -537,6 +466,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         responseObserver.onCompleted();
         logger.info("getNumberPropertyIterations request completed with status: " + status);
     }
+
 
     @Override
     public void deleteObject(PrismGrpc.DeleteObjectRequest request, StreamObserver<PrismGrpc.DeleteObjectResponse> responseObserver) {
@@ -629,4 +559,277 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         };
     }
 
+
+    // Initializers
+    // TODO: At later stage, this will be refactored but for now it makes grpc calls easier to debug
+
+    @Override
+    public void initPrismLog(PrismGrpc.InitPrismLogRequest request, StreamObserver<PrismGrpc.InitResponse> responseObserver) {
+        logger.info("[INIT] - Received initPrismLog request");
+
+        // get object id from request
+        String prismLogId = request.getPrismLogObjectId();
+
+        // get type from request
+        String type = request.getType();
+
+        String status = "Error";
+
+        // check if mainLog already exists
+        if (prismObjectMap.containsKey(prismLogId)) {
+            logger.warning("[INIT] - Error initializing prism log: object already exists");
+            status += " : object already exists";
+        } else {
+            // create object
+            PrismLog mainLog;
+
+            if (type.equals("hidden")) {
+                mainLog = new PrismFileLog("hidden");
+            } else if (type.equals("stdout")) {
+                mainLog = new PrismFileLog("stdout");
+            } else {
+                mainLog = new PrismDevNullLog();
+            }
+
+            // store prism object in dict for later use
+            prismObjectMap.put(prismLogId, mainLog);
+            status = "Success";
+        }
+
+        // build response
+        PrismGrpc.InitResponse response = PrismGrpc.InitResponse.newBuilder()
+                .setStatus(status)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+
+        logger.info("[INIT] - initPrismLog request completed with status: " + status);
+
+    }
+
+    @Override
+    public void initPrism(PrismGrpc.InitPrismRequest request, StreamObserver<PrismGrpc.InitResponse> responseObserver) {
+        logger.info("[INIT] - Received initPrism request");
+
+        // get object id from request
+        String prismId = request.getPrismObjectId();
+
+        // get main log id from request
+        String mainLogId = request.getMainLogObjectId();
+
+        String status = "Error";
+
+        // check if prism object already exists
+        if (prismObjectMap.containsKey(prismId)) {
+            logger.warning("[INIT] - Error initializing prism: object already exists");
+            status += " : object already exists";
+        } else {
+            // get main log object
+            PrismLog mainLog = (PrismLog) prismObjectMap.get(mainLogId);
+
+            // create prism object
+            Prism prism = new Prism(mainLog);
+
+            // store prism object in dict for later use
+            prismObjectMap.put(prismId, prism);
+            status = "Success";
+        }
+
+        // build response
+        PrismGrpc.InitResponse response = PrismGrpc.InitResponse.newBuilder()
+                .setStatus(status)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+
+        logger.info("[INIT] - initPrism request completed with status: " + status);
+    }
+
+    @Override
+    public void initModulesFile(PrismGrpc.InitModulesFileRequest request, StreamObserver<PrismGrpc.InitResponse> responseObserver) {
+        logger.info("[INIT] - Received initModulesFile request");
+
+        // get object id from request
+        String modulesFileId = request.getModulesFileObjectId();
+
+        String status = "Error";
+
+        // checking if object already exists
+        if (prismObjectMap.containsKey(modulesFileId)) {
+            logger.warning("[INIT] - Error initializing modules file: object already exists");
+            status += " : object already exists";
+        } else {
+            // create object
+            ModulesFile modulesFile = new ModulesFile();
+            String foo = modulesFile.toString();
+            prismObjectMap.put(modulesFileId, modulesFile);
+            status = "Success";
+        }
+
+        // build response
+        PrismGrpc.InitResponse response = PrismGrpc.InitResponse.newBuilder()
+                .setStatus(status)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+        logger.info("[INIT] -initModulesFile request completed with status: " + status);
+    }
+
+
+    @Override
+    public void initPropertiesFile(PrismGrpc.InitPropertiesFileRequest request, StreamObserver<PrismGrpc.InitResponse> responseObserver) {
+        notStandalone("initPropertiesFile", responseObserver);
+    }
+
+    @Override
+    public void initPropertyObject(PrismGrpc.InitPropertyObjectRequest request, StreamObserver<PrismGrpc.InitResponse> responseObserver) {
+        notStandalone("initPropertyObject", responseObserver);
+    }
+
+    @Override
+    public void initResult(PrismGrpc.InitResultRequest request, StreamObserver<PrismGrpc.InitResponse> responseObserver) {
+        logger.info("[INIT] - Received initResult request");
+
+        // get object id from request
+        String resultId = request.getResultObjectId();
+
+        String status = "Error";
+
+        // check if result object already exists
+        if (prismObjectMap.containsKey(resultId)) {
+            logger.warning("[INIT] - Error initializing result: object already exists");
+            status += " : object already exists";
+        } else {
+            // create result object
+            Result result = new Result();
+
+            // store result object in dict for later use
+            prismObjectMap.put(resultId, result);
+            status = "Success";
+        }
+
+        // build response
+        PrismGrpc.InitResponse response = PrismGrpc.InitResponse.newBuilder()
+                .setStatus(status)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+
+        logger.info("[INIT] - initResult request completed with status: " + status);
+    }
+
+    @Override
+    public void initUndefinedConstants(PrismGrpc.InitUndefinedConstantsRequest request, StreamObserver<PrismGrpc.InitResponse> responseObserver) {
+        logger.info("[INIT] - Received initUndefinedConstants request");
+
+        // get object id from request
+        String undefinedConstantsId = request.getUndefinedConstantsObjectId();
+
+        // get modules object id from request
+        String moduleObjectId = request.getModuleObjectId();
+
+        // get properties file object id from request
+        String propertiesFileObjectId = request.getPropertiesFileObjectId();
+
+        // get property object id from request
+        String propertyObjectId = request.getPropertyObjectId();
+
+        String status = "Error";
+
+        // check if undefined constants object already exists
+        if (prismObjectMap.containsKey(undefinedConstantsId)) {
+            logger.warning("[INIT] - Error initializing undefined constants: object already exists");
+            status += " : object already exists";
+        } else {
+            // get modules object
+            ModulesFile modules = (ModulesFile) prismObjectMap.get(moduleObjectId);
+
+            // get properties file object
+            PropertiesFile propertiesFile = (PropertiesFile) prismObjectMap.get(propertiesFileObjectId);
+
+            // get property object
+            Property property = (Property) prismObjectMap.get(propertyObjectId);
+
+            // create undefined constants object
+            UndefinedConstants undefinedConstants = new UndefinedConstants(modules, propertiesFile, property);
+
+            // store undefined constants object in dict for later use
+            prismObjectMap.put(undefinedConstantsId, undefinedConstants);
+            status = "Success";
+        }
+
+        // build response
+        PrismGrpc.InitResponse response = PrismGrpc.InitResponse.newBuilder()
+                .setStatus(status)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+
+        logger.info("[INIT] - initUndefinedConstants request completed with status: " + status);
+    }
+
+    @Override
+    public void initValues(PrismGrpc.InitValuesRequest request, StreamObserver<PrismGrpc.InitResponse> responseObserver) {
+        logger.info("[INIT] - Received initValues request");
+
+        // get object id from request
+        String valuesId = request.getValuesObjectId();
+
+        String status = "Error";
+
+        // check if values object already exists
+        if (prismObjectMap.containsKey(valuesId)) {
+            logger.warning("[INIT] - Error initializing values: object already exists");
+            status += " : object already exists";
+        } else {
+            // create values object
+            Values values = new Values();
+
+            // store values object in dict for later use
+            prismObjectMap.put(valuesId, values);
+            status = "Success";
+        }
+
+        // build response
+        PrismGrpc.InitResponse response = PrismGrpc.InitResponse.newBuilder()
+                .setStatus(status)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+
+        logger.info("[INIT] - initValues request completed with status: " + status);
+    }
+
+
+    // helper logging function for not implemented requests
+    private void notStandalone(String serviceName, StreamObserver<PrismGrpc.InitResponse> responseObserver) {
+        logger.info("[INIT] - Received " + serviceName + " request");
+        logger.info("[INIT] - Currently not implemented");
+        responseObserver.onNext(PrismGrpc.InitResponse.newBuilder().setStatus("Not implemented").build());
+        responseObserver.onCompleted();
+    }
 }

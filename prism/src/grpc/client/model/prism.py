@@ -1,4 +1,3 @@
-import uuid
 import grpc
 from model.modules_file import ModulesFile
 from model.prismpy_exceptions import PrismPyException
@@ -9,29 +8,20 @@ from model.prismpy_base_model import PrismPyBaseModel
 
 
 class Prism(PrismPyBaseModel):
-    __proto_main_log = None
+    main_log_object_id = None
 
     def __init__(self, main_log):
-        super().__init__()
-        self.__proto_main_log = main_log
+        self.main_log_object_id = main_log.object_id
+        super().__init__(standalone=True, main_log_object_id=main_log.object_id)
 
     def initialise(self):
-        if self.__proto_main_log is None:
+        if self.main_log_object_id is None:
             self.logger.error("No log file specified. Please specify a log file.")
             raise PrismPyException("No log file specified. Please specify a log file.")
         else:
-            self.logger.info(
-                "Initialising Prism Engine with output {}.".format(self.__proto_main_log.__class__.__name__))
-
-            # Initialise Prism Engine
-            # Can be either
-            # - Prism(PrismDevNullLog())
-            # - Prism(PrismFileLog("hidden"))
-            # - Prism(PrismFileLog("stdout"))
-
+            self.logger.info("Initialising Prism Engine.")
             # Create a request with PrismDevNullLog
-            request = prismGrpc_pb2.InitialiseRequest(prism_object_id=self.object_id,
-                                                      log=self.__proto_main_log.get_proto())
+            request = prismGrpc_pb2.InitialiseRequest(prism_object_id=self.object_id)
 
             try:
                 # Call the Initialise method
@@ -42,6 +32,7 @@ class Prism(PrismPyBaseModel):
                     "Could not establish connection to the gRPC server. Please make sure the Prism server is running.")
                 self.logger.error("gRPC error info: {}".format(e.details()))
                 exit(1)
+        return self
 
     def parse_model_file(self, model_file_path):
         # upload the model file to prism server
@@ -77,7 +68,7 @@ class Prism(PrismPyBaseModel):
 
         self.logger.info("Received message {}.".format(response.status))
 
-        return
+        return self
 
     def parse_properties_file(self, module_file, property_file_path):
         self.logger.info(

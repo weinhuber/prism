@@ -1,6 +1,3 @@
-import uuid
-from abc import ABC
-
 from model.property_object import PropertyObject
 from services import prismGrpc_pb2
 from model.prismpy_base_model import PrismPyBaseModel
@@ -10,7 +7,7 @@ class PropertiesFile(PrismPyBaseModel):
     property_file_path = None
 
     def __init__(self, property_file_path):
-        super().__init__()
+        super().__init__(standalone=False)
         # name of original property file
         self.property_file_path = property_file_path
 

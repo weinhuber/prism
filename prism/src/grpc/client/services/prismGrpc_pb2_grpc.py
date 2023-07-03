@@ -15,6 +15,56 @@ class PrismProtoServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.InitPrismLog = channel.unary_unary(
+                '/PrismProtoService/InitPrismLog',
+                request_serializer=prismGrpc__pb2.InitPrismLogRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.InitResponse.FromString,
+                )
+        self.InitModulesFile = channel.unary_unary(
+                '/PrismProtoService/InitModulesFile',
+                request_serializer=prismGrpc__pb2.InitModulesFileRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.InitResponse.FromString,
+                )
+        self.InitPrism = channel.unary_unary(
+                '/PrismProtoService/InitPrism',
+                request_serializer=prismGrpc__pb2.InitPrismRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.InitResponse.FromString,
+                )
+        self.InitPrismDevNullLog = channel.unary_unary(
+                '/PrismProtoService/InitPrismDevNullLog',
+                request_serializer=prismGrpc__pb2.InitPrismDevNullLogRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.InitResponse.FromString,
+                )
+        self.InitPrismFileLog = channel.unary_unary(
+                '/PrismProtoService/InitPrismFileLog',
+                request_serializer=prismGrpc__pb2.InitPrismFileLogRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.InitResponse.FromString,
+                )
+        self.InitPropertiesFile = channel.unary_unary(
+                '/PrismProtoService/InitPropertiesFile',
+                request_serializer=prismGrpc__pb2.InitPropertiesFileRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.InitResponse.FromString,
+                )
+        self.InitPropertyObject = channel.unary_unary(
+                '/PrismProtoService/InitPropertyObject',
+                request_serializer=prismGrpc__pb2.InitPropertyObjectRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.InitResponse.FromString,
+                )
+        self.InitResult = channel.unary_unary(
+                '/PrismProtoService/InitResult',
+                request_serializer=prismGrpc__pb2.InitResultRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.InitResponse.FromString,
+                )
+        self.InitUndefinedConstants = channel.unary_unary(
+                '/PrismProtoService/InitUndefinedConstants',
+                request_serializer=prismGrpc__pb2.InitUndefinedConstantsRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.InitResponse.FromString,
+                )
+        self.InitValues = channel.unary_unary(
+                '/PrismProtoService/InitValues',
+                request_serializer=prismGrpc__pb2.InitValuesRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.InitResponse.FromString,
+                )
         self.DeleteObject = channel.unary_unary(
                 '/PrismProtoService/DeleteObject',
                 request_serializer=prismGrpc__pb2.DeleteObjectRequest.SerializeToString,
@@ -70,11 +120,6 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.SetSomeUndefinedConstantsRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.SetSomeUndefinedConstantsResponse.FromString,
                 )
-        self.InitUndefinedConstants = channel.unary_unary(
-                '/PrismProtoService/InitUndefinedConstants',
-                request_serializer=prismGrpc__pb2.InitUndefinedConstantsRequest.SerializeToString,
-                response_deserializer=prismGrpc__pb2.InitUndefinedConstantsResponse.FromString,
-                )
         self.DefineUsingConstSwitch = channel.unary_unary(
                 '/PrismProtoService/DefineUsingConstSwitch',
                 request_serializer=prismGrpc__pb2.DefineUsingConstSwitchRequest.SerializeToString,
@@ -91,8 +136,80 @@ class PrismProtoServiceServicer(object):
     """Service Definitions
     """
 
+    def InitPrismLog(self, request, context):
+        """/////////////////////////////////////// Initializer /////////////////////////////////////////
+        Prism Log
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def InitModulesFile(self, request, context):
+        """ModulesFile
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def InitPrism(self, request, context):
+        """Prism
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def InitPrismDevNullLog(self, request, context):
+        """PrismDevNullFlog
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def InitPrismFileLog(self, request, context):
+        """PrismFileLog
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def InitPropertiesFile(self, request, context):
+        """PropertiesFile
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def InitPropertyObject(self, request, context):
+        """Property Object (called Property Object because "property" is a reserved word in Python)
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def InitResult(self, request, context):
+        """Result
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def InitUndefinedConstants(self, request, context):
+        """init undefined constants
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def InitValues(self, request, context):
+        """Values
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def DeleteObject(self, request, context):
-        """delete a PRISM object
+        """/////////////////////////////////////// Generic Functions /////////////////////////////////////////
+        delete a PRISM object
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -106,7 +223,8 @@ class PrismProtoServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def Initialise(self, request, context):
-        """Initialise the PRISM engine
+        """/////////////////////////////////////// Object specific functions /////////////////////////////////////////
+        Initialise the PRISM engine
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -168,13 +286,6 @@ class PrismProtoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def InitUndefinedConstants(self, request, context):
-        """init undefined constants
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
     def DefineUsingConstSwitch(self, request, context):
         """define using const switch for undefined constants
         """
@@ -192,6 +303,56 @@ class PrismProtoServiceServicer(object):
 
 def add_PrismProtoServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'InitPrismLog': grpc.unary_unary_rpc_method_handler(
+                    servicer.InitPrismLog,
+                    request_deserializer=prismGrpc__pb2.InitPrismLogRequest.FromString,
+                    response_serializer=prismGrpc__pb2.InitResponse.SerializeToString,
+            ),
+            'InitModulesFile': grpc.unary_unary_rpc_method_handler(
+                    servicer.InitModulesFile,
+                    request_deserializer=prismGrpc__pb2.InitModulesFileRequest.FromString,
+                    response_serializer=prismGrpc__pb2.InitResponse.SerializeToString,
+            ),
+            'InitPrism': grpc.unary_unary_rpc_method_handler(
+                    servicer.InitPrism,
+                    request_deserializer=prismGrpc__pb2.InitPrismRequest.FromString,
+                    response_serializer=prismGrpc__pb2.InitResponse.SerializeToString,
+            ),
+            'InitPrismDevNullLog': grpc.unary_unary_rpc_method_handler(
+                    servicer.InitPrismDevNullLog,
+                    request_deserializer=prismGrpc__pb2.InitPrismDevNullLogRequest.FromString,
+                    response_serializer=prismGrpc__pb2.InitResponse.SerializeToString,
+            ),
+            'InitPrismFileLog': grpc.unary_unary_rpc_method_handler(
+                    servicer.InitPrismFileLog,
+                    request_deserializer=prismGrpc__pb2.InitPrismFileLogRequest.FromString,
+                    response_serializer=prismGrpc__pb2.InitResponse.SerializeToString,
+            ),
+            'InitPropertiesFile': grpc.unary_unary_rpc_method_handler(
+                    servicer.InitPropertiesFile,
+                    request_deserializer=prismGrpc__pb2.InitPropertiesFileRequest.FromString,
+                    response_serializer=prismGrpc__pb2.InitResponse.SerializeToString,
+            ),
+            'InitPropertyObject': grpc.unary_unary_rpc_method_handler(
+                    servicer.InitPropertyObject,
+                    request_deserializer=prismGrpc__pb2.InitPropertyObjectRequest.FromString,
+                    response_serializer=prismGrpc__pb2.InitResponse.SerializeToString,
+            ),
+            'InitResult': grpc.unary_unary_rpc_method_handler(
+                    servicer.InitResult,
+                    request_deserializer=prismGrpc__pb2.InitResultRequest.FromString,
+                    response_serializer=prismGrpc__pb2.InitResponse.SerializeToString,
+            ),
+            'InitUndefinedConstants': grpc.unary_unary_rpc_method_handler(
+                    servicer.InitUndefinedConstants,
+                    request_deserializer=prismGrpc__pb2.InitUndefinedConstantsRequest.FromString,
+                    response_serializer=prismGrpc__pb2.InitResponse.SerializeToString,
+            ),
+            'InitValues': grpc.unary_unary_rpc_method_handler(
+                    servicer.InitValues,
+                    request_deserializer=prismGrpc__pb2.InitValuesRequest.FromString,
+                    response_serializer=prismGrpc__pb2.InitResponse.SerializeToString,
+            ),
             'DeleteObject': grpc.unary_unary_rpc_method_handler(
                     servicer.DeleteObject,
                     request_deserializer=prismGrpc__pb2.DeleteObjectRequest.FromString,
@@ -247,11 +408,6 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     request_deserializer=prismGrpc__pb2.SetSomeUndefinedConstantsRequest.FromString,
                     response_serializer=prismGrpc__pb2.SetSomeUndefinedConstantsResponse.SerializeToString,
             ),
-            'InitUndefinedConstants': grpc.unary_unary_rpc_method_handler(
-                    servicer.InitUndefinedConstants,
-                    request_deserializer=prismGrpc__pb2.InitUndefinedConstantsRequest.FromString,
-                    response_serializer=prismGrpc__pb2.InitUndefinedConstantsResponse.SerializeToString,
-            ),
             'DefineUsingConstSwitch': grpc.unary_unary_rpc_method_handler(
                     servicer.DefineUsingConstSwitch,
                     request_deserializer=prismGrpc__pb2.DefineUsingConstSwitchRequest.FromString,
@@ -272,6 +428,176 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
 class PrismProtoService(object):
     """Service Definitions
     """
+
+    @staticmethod
+    def InitPrismLog(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/InitPrismLog',
+            prismGrpc__pb2.InitPrismLogRequest.SerializeToString,
+            prismGrpc__pb2.InitResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def InitModulesFile(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/InitModulesFile',
+            prismGrpc__pb2.InitModulesFileRequest.SerializeToString,
+            prismGrpc__pb2.InitResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def InitPrism(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/InitPrism',
+            prismGrpc__pb2.InitPrismRequest.SerializeToString,
+            prismGrpc__pb2.InitResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def InitPrismDevNullLog(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/InitPrismDevNullLog',
+            prismGrpc__pb2.InitPrismDevNullLogRequest.SerializeToString,
+            prismGrpc__pb2.InitResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def InitPrismFileLog(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/InitPrismFileLog',
+            prismGrpc__pb2.InitPrismFileLogRequest.SerializeToString,
+            prismGrpc__pb2.InitResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def InitPropertiesFile(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/InitPropertiesFile',
+            prismGrpc__pb2.InitPropertiesFileRequest.SerializeToString,
+            prismGrpc__pb2.InitResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def InitPropertyObject(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/InitPropertyObject',
+            prismGrpc__pb2.InitPropertyObjectRequest.SerializeToString,
+            prismGrpc__pb2.InitResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def InitResult(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/InitResult',
+            prismGrpc__pb2.InitResultRequest.SerializeToString,
+            prismGrpc__pb2.InitResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def InitUndefinedConstants(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/InitUndefinedConstants',
+            prismGrpc__pb2.InitUndefinedConstantsRequest.SerializeToString,
+            prismGrpc__pb2.InitResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def InitValues(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/InitValues',
+            prismGrpc__pb2.InitValuesRequest.SerializeToString,
+            prismGrpc__pb2.InitResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def DeleteObject(request,
@@ -457,23 +783,6 @@ class PrismProtoService(object):
         return grpc.experimental.unary_unary(request, target, '/PrismProtoService/SetSomeUndefinedConstants',
             prismGrpc__pb2.SetSomeUndefinedConstantsRequest.SerializeToString,
             prismGrpc__pb2.SetSomeUndefinedConstantsResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def InitUndefinedConstants(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/InitUndefinedConstants',
-            prismGrpc__pb2.InitUndefinedConstantsRequest.SerializeToString,
-            prismGrpc__pb2.InitUndefinedConstantsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

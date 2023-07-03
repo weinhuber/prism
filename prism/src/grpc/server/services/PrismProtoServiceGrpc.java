@@ -17,6 +17,316 @@ public final class PrismProtoServiceGrpc {
   public static final String SERVICE_NAME = "PrismProtoService";
 
   // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitPrismLogRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitPrismLogMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "InitPrismLog",
+      requestType = grpc.server.services.PrismGrpc.InitPrismLogRequest.class,
+      responseType = grpc.server.services.PrismGrpc.InitResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitPrismLogRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitPrismLogMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitPrismLogRequest, grpc.server.services.PrismGrpc.InitResponse> getInitPrismLogMethod;
+    if ((getInitPrismLogMethod = PrismProtoServiceGrpc.getInitPrismLogMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getInitPrismLogMethod = PrismProtoServiceGrpc.getInitPrismLogMethod) == null) {
+          PrismProtoServiceGrpc.getInitPrismLogMethod = getInitPrismLogMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.InitPrismLogRequest, grpc.server.services.PrismGrpc.InitResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "InitPrismLog"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitPrismLogRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("InitPrismLog"))
+              .build();
+        }
+      }
+    }
+    return getInitPrismLogMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitModulesFileRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitModulesFileMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "InitModulesFile",
+      requestType = grpc.server.services.PrismGrpc.InitModulesFileRequest.class,
+      responseType = grpc.server.services.PrismGrpc.InitResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitModulesFileRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitModulesFileMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitModulesFileRequest, grpc.server.services.PrismGrpc.InitResponse> getInitModulesFileMethod;
+    if ((getInitModulesFileMethod = PrismProtoServiceGrpc.getInitModulesFileMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getInitModulesFileMethod = PrismProtoServiceGrpc.getInitModulesFileMethod) == null) {
+          PrismProtoServiceGrpc.getInitModulesFileMethod = getInitModulesFileMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.InitModulesFileRequest, grpc.server.services.PrismGrpc.InitResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "InitModulesFile"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitModulesFileRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("InitModulesFile"))
+              .build();
+        }
+      }
+    }
+    return getInitModulesFileMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitPrismRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitPrismMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "InitPrism",
+      requestType = grpc.server.services.PrismGrpc.InitPrismRequest.class,
+      responseType = grpc.server.services.PrismGrpc.InitResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitPrismRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitPrismMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitPrismRequest, grpc.server.services.PrismGrpc.InitResponse> getInitPrismMethod;
+    if ((getInitPrismMethod = PrismProtoServiceGrpc.getInitPrismMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getInitPrismMethod = PrismProtoServiceGrpc.getInitPrismMethod) == null) {
+          PrismProtoServiceGrpc.getInitPrismMethod = getInitPrismMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.InitPrismRequest, grpc.server.services.PrismGrpc.InitResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "InitPrism"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitPrismRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("InitPrism"))
+              .build();
+        }
+      }
+    }
+    return getInitPrismMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitPrismDevNullLogMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "InitPrismDevNullLog",
+      requestType = grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest.class,
+      responseType = grpc.server.services.PrismGrpc.InitResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitPrismDevNullLogMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest, grpc.server.services.PrismGrpc.InitResponse> getInitPrismDevNullLogMethod;
+    if ((getInitPrismDevNullLogMethod = PrismProtoServiceGrpc.getInitPrismDevNullLogMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getInitPrismDevNullLogMethod = PrismProtoServiceGrpc.getInitPrismDevNullLogMethod) == null) {
+          PrismProtoServiceGrpc.getInitPrismDevNullLogMethod = getInitPrismDevNullLogMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest, grpc.server.services.PrismGrpc.InitResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "InitPrismDevNullLog"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("InitPrismDevNullLog"))
+              .build();
+        }
+      }
+    }
+    return getInitPrismDevNullLogMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitPrismFileLogRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitPrismFileLogMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "InitPrismFileLog",
+      requestType = grpc.server.services.PrismGrpc.InitPrismFileLogRequest.class,
+      responseType = grpc.server.services.PrismGrpc.InitResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitPrismFileLogRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitPrismFileLogMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitPrismFileLogRequest, grpc.server.services.PrismGrpc.InitResponse> getInitPrismFileLogMethod;
+    if ((getInitPrismFileLogMethod = PrismProtoServiceGrpc.getInitPrismFileLogMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getInitPrismFileLogMethod = PrismProtoServiceGrpc.getInitPrismFileLogMethod) == null) {
+          PrismProtoServiceGrpc.getInitPrismFileLogMethod = getInitPrismFileLogMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.InitPrismFileLogRequest, grpc.server.services.PrismGrpc.InitResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "InitPrismFileLog"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitPrismFileLogRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("InitPrismFileLog"))
+              .build();
+        }
+      }
+    }
+    return getInitPrismFileLogMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitPropertiesFileRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitPropertiesFileMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "InitPropertiesFile",
+      requestType = grpc.server.services.PrismGrpc.InitPropertiesFileRequest.class,
+      responseType = grpc.server.services.PrismGrpc.InitResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitPropertiesFileRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitPropertiesFileMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitPropertiesFileRequest, grpc.server.services.PrismGrpc.InitResponse> getInitPropertiesFileMethod;
+    if ((getInitPropertiesFileMethod = PrismProtoServiceGrpc.getInitPropertiesFileMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getInitPropertiesFileMethod = PrismProtoServiceGrpc.getInitPropertiesFileMethod) == null) {
+          PrismProtoServiceGrpc.getInitPropertiesFileMethod = getInitPropertiesFileMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.InitPropertiesFileRequest, grpc.server.services.PrismGrpc.InitResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "InitPropertiesFile"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitPropertiesFileRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("InitPropertiesFile"))
+              .build();
+        }
+      }
+    }
+    return getInitPropertiesFileMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitPropertyObjectRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitPropertyObjectMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "InitPropertyObject",
+      requestType = grpc.server.services.PrismGrpc.InitPropertyObjectRequest.class,
+      responseType = grpc.server.services.PrismGrpc.InitResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitPropertyObjectRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitPropertyObjectMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitPropertyObjectRequest, grpc.server.services.PrismGrpc.InitResponse> getInitPropertyObjectMethod;
+    if ((getInitPropertyObjectMethod = PrismProtoServiceGrpc.getInitPropertyObjectMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getInitPropertyObjectMethod = PrismProtoServiceGrpc.getInitPropertyObjectMethod) == null) {
+          PrismProtoServiceGrpc.getInitPropertyObjectMethod = getInitPropertyObjectMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.InitPropertyObjectRequest, grpc.server.services.PrismGrpc.InitResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "InitPropertyObject"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitPropertyObjectRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("InitPropertyObject"))
+              .build();
+        }
+      }
+    }
+    return getInitPropertyObjectMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitResultRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitResultMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "InitResult",
+      requestType = grpc.server.services.PrismGrpc.InitResultRequest.class,
+      responseType = grpc.server.services.PrismGrpc.InitResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitResultRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitResultMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitResultRequest, grpc.server.services.PrismGrpc.InitResponse> getInitResultMethod;
+    if ((getInitResultMethod = PrismProtoServiceGrpc.getInitResultMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getInitResultMethod = PrismProtoServiceGrpc.getInitResultMethod) == null) {
+          PrismProtoServiceGrpc.getInitResultMethod = getInitResultMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.InitResultRequest, grpc.server.services.PrismGrpc.InitResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "InitResult"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitResultRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("InitResult"))
+              .build();
+        }
+      }
+    }
+    return getInitResultMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitUndefinedConstantsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "InitUndefinedConstants",
+      requestType = grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest.class,
+      responseType = grpc.server.services.PrismGrpc.InitResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitUndefinedConstantsMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest, grpc.server.services.PrismGrpc.InitResponse> getInitUndefinedConstantsMethod;
+    if ((getInitUndefinedConstantsMethod = PrismProtoServiceGrpc.getInitUndefinedConstantsMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getInitUndefinedConstantsMethod = PrismProtoServiceGrpc.getInitUndefinedConstantsMethod) == null) {
+          PrismProtoServiceGrpc.getInitUndefinedConstantsMethod = getInitUndefinedConstantsMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest, grpc.server.services.PrismGrpc.InitResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "InitUndefinedConstants"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("InitUndefinedConstants"))
+              .build();
+        }
+      }
+    }
+    return getInitUndefinedConstantsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitValuesRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitValuesMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "InitValues",
+      requestType = grpc.server.services.PrismGrpc.InitValuesRequest.class,
+      responseType = grpc.server.services.PrismGrpc.InitResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitValuesRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitValuesMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitValuesRequest, grpc.server.services.PrismGrpc.InitResponse> getInitValuesMethod;
+    if ((getInitValuesMethod = PrismProtoServiceGrpc.getInitValuesMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getInitValuesMethod = PrismProtoServiceGrpc.getInitValuesMethod) == null) {
+          PrismProtoServiceGrpc.getInitValuesMethod = getInitValuesMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.InitValuesRequest, grpc.server.services.PrismGrpc.InitResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "InitValues"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitValuesRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("InitValues"))
+              .build();
+        }
+      }
+    }
+    return getInitValuesMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DeleteObjectRequest,
       grpc.server.services.PrismGrpc.DeleteObjectResponse> getDeleteObjectMethod;
 
@@ -358,37 +668,6 @@ public final class PrismProtoServiceGrpc {
     return getSetSomeUndefinedConstantsMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest,
-      grpc.server.services.PrismGrpc.InitUndefinedConstantsResponse> getInitUndefinedConstantsMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "InitUndefinedConstants",
-      requestType = grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest.class,
-      responseType = grpc.server.services.PrismGrpc.InitUndefinedConstantsResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest,
-      grpc.server.services.PrismGrpc.InitUndefinedConstantsResponse> getInitUndefinedConstantsMethod() {
-    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest, grpc.server.services.PrismGrpc.InitUndefinedConstantsResponse> getInitUndefinedConstantsMethod;
-    if ((getInitUndefinedConstantsMethod = PrismProtoServiceGrpc.getInitUndefinedConstantsMethod) == null) {
-      synchronized (PrismProtoServiceGrpc.class) {
-        if ((getInitUndefinedConstantsMethod = PrismProtoServiceGrpc.getInitUndefinedConstantsMethod) == null) {
-          PrismProtoServiceGrpc.getInitUndefinedConstantsMethod = getInitUndefinedConstantsMethod =
-              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest, grpc.server.services.PrismGrpc.InitUndefinedConstantsResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "InitUndefinedConstants"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.server.services.PrismGrpc.InitUndefinedConstantsResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("InitUndefinedConstants"))
-              .build();
-        }
-      }
-    }
-    return getInitUndefinedConstantsMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DefineUsingConstSwitchRequest,
       grpc.server.services.PrismGrpc.DefineUsingConstSwitchResponse> getDefineUsingConstSwitchMethod;
 
@@ -504,6 +783,108 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     *&#47;////////////////////////////////////// Initializer /////////////////////////////////////////
+     * Prism Log
+     * </pre>
+     */
+    public void initPrismLog(grpc.server.services.PrismGrpc.InitPrismLogRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInitPrismLogMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * ModulesFile
+     * </pre>
+     */
+    public void initModulesFile(grpc.server.services.PrismGrpc.InitModulesFileRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInitModulesFileMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Prism
+     * </pre>
+     */
+    public void initPrism(grpc.server.services.PrismGrpc.InitPrismRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInitPrismMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * PrismDevNullFlog
+     * </pre>
+     */
+    public void initPrismDevNullLog(grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInitPrismDevNullLogMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * PrismFileLog
+     * </pre>
+     */
+    public void initPrismFileLog(grpc.server.services.PrismGrpc.InitPrismFileLogRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInitPrismFileLogMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * PropertiesFile
+     * </pre>
+     */
+    public void initPropertiesFile(grpc.server.services.PrismGrpc.InitPropertiesFileRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInitPropertiesFileMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Property Object (called Property Object because "property" is a reserved word in Python)
+     * </pre>
+     */
+    public void initPropertyObject(grpc.server.services.PrismGrpc.InitPropertyObjectRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInitPropertyObjectMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Result
+     * </pre>
+     */
+    public void initResult(grpc.server.services.PrismGrpc.InitResultRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInitResultMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * init undefined constants
+     * </pre>
+     */
+    public void initUndefinedConstants(grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInitUndefinedConstantsMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Values
+     * </pre>
+     */
+    public void initValues(grpc.server.services.PrismGrpc.InitValuesRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInitValuesMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     *&#47;////////////////////////////////////// Generic Functions /////////////////////////////////////////
      * delete a PRISM object
      * </pre>
      */
@@ -524,6 +905,7 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     *&#47;////////////////////////////////////// Object specific functions /////////////////////////////////////////
      * Initialise the PRISM engine
      * </pre>
      */
@@ -614,16 +996,6 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * init undefined constants
-     * </pre>
-     */
-    public void initUndefinedConstants(grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest request,
-        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitUndefinedConstantsResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInitUndefinedConstantsMethod(), responseObserver);
-    }
-
-    /**
-     * <pre>
      * define using const switch for undefined constants
      * </pre>
      */
@@ -644,6 +1016,76 @@ public final class PrismProtoServiceGrpc {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getInitPrismLogMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.InitPrismLogRequest,
+                grpc.server.services.PrismGrpc.InitResponse>(
+                  this, METHODID_INIT_PRISM_LOG)))
+          .addMethod(
+            getInitModulesFileMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.InitModulesFileRequest,
+                grpc.server.services.PrismGrpc.InitResponse>(
+                  this, METHODID_INIT_MODULES_FILE)))
+          .addMethod(
+            getInitPrismMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.InitPrismRequest,
+                grpc.server.services.PrismGrpc.InitResponse>(
+                  this, METHODID_INIT_PRISM)))
+          .addMethod(
+            getInitPrismDevNullLogMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest,
+                grpc.server.services.PrismGrpc.InitResponse>(
+                  this, METHODID_INIT_PRISM_DEV_NULL_LOG)))
+          .addMethod(
+            getInitPrismFileLogMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.InitPrismFileLogRequest,
+                grpc.server.services.PrismGrpc.InitResponse>(
+                  this, METHODID_INIT_PRISM_FILE_LOG)))
+          .addMethod(
+            getInitPropertiesFileMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.InitPropertiesFileRequest,
+                grpc.server.services.PrismGrpc.InitResponse>(
+                  this, METHODID_INIT_PROPERTIES_FILE)))
+          .addMethod(
+            getInitPropertyObjectMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.InitPropertyObjectRequest,
+                grpc.server.services.PrismGrpc.InitResponse>(
+                  this, METHODID_INIT_PROPERTY_OBJECT)))
+          .addMethod(
+            getInitResultMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.InitResultRequest,
+                grpc.server.services.PrismGrpc.InitResponse>(
+                  this, METHODID_INIT_RESULT)))
+          .addMethod(
+            getInitUndefinedConstantsMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest,
+                grpc.server.services.PrismGrpc.InitResponse>(
+                  this, METHODID_INIT_UNDEFINED_CONSTANTS)))
+          .addMethod(
+            getInitValuesMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.InitValuesRequest,
+                grpc.server.services.PrismGrpc.InitResponse>(
+                  this, METHODID_INIT_VALUES)))
           .addMethod(
             getDeleteObjectMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -722,13 +1164,6 @@ public final class PrismProtoServiceGrpc {
                 grpc.server.services.PrismGrpc.SetSomeUndefinedConstantsResponse>(
                   this, METHODID_SET_SOME_UNDEFINED_CONSTANTS)))
           .addMethod(
-            getInitUndefinedConstantsMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest,
-                grpc.server.services.PrismGrpc.InitUndefinedConstantsResponse>(
-                  this, METHODID_INIT_UNDEFINED_CONSTANTS)))
-          .addMethod(
             getDefineUsingConstSwitchMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
@@ -765,6 +1200,118 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     *&#47;////////////////////////////////////// Initializer /////////////////////////////////////////
+     * Prism Log
+     * </pre>
+     */
+    public void initPrismLog(grpc.server.services.PrismGrpc.InitPrismLogRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getInitPrismLogMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * ModulesFile
+     * </pre>
+     */
+    public void initModulesFile(grpc.server.services.PrismGrpc.InitModulesFileRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getInitModulesFileMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Prism
+     * </pre>
+     */
+    public void initPrism(grpc.server.services.PrismGrpc.InitPrismRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getInitPrismMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * PrismDevNullFlog
+     * </pre>
+     */
+    public void initPrismDevNullLog(grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getInitPrismDevNullLogMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * PrismFileLog
+     * </pre>
+     */
+    public void initPrismFileLog(grpc.server.services.PrismGrpc.InitPrismFileLogRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getInitPrismFileLogMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * PropertiesFile
+     * </pre>
+     */
+    public void initPropertiesFile(grpc.server.services.PrismGrpc.InitPropertiesFileRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getInitPropertiesFileMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Property Object (called Property Object because "property" is a reserved word in Python)
+     * </pre>
+     */
+    public void initPropertyObject(grpc.server.services.PrismGrpc.InitPropertyObjectRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getInitPropertyObjectMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Result
+     * </pre>
+     */
+    public void initResult(grpc.server.services.PrismGrpc.InitResultRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getInitResultMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * init undefined constants
+     * </pre>
+     */
+    public void initUndefinedConstants(grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getInitUndefinedConstantsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Values
+     * </pre>
+     */
+    public void initValues(grpc.server.services.PrismGrpc.InitValuesRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getInitValuesMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     *&#47;////////////////////////////////////// Generic Functions /////////////////////////////////////////
      * delete a PRISM object
      * </pre>
      */
@@ -787,6 +1334,7 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     *&#47;////////////////////////////////////// Object specific functions /////////////////////////////////////////
      * Initialise the PRISM engine
      * </pre>
      */
@@ -886,17 +1434,6 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * init undefined constants
-     * </pre>
-     */
-    public void initUndefinedConstants(grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest request,
-        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitUndefinedConstantsResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getInitUndefinedConstantsMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     * <pre>
      * define using const switch for undefined constants
      * </pre>
      */
@@ -937,6 +1474,108 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     *&#47;////////////////////////////////////// Initializer /////////////////////////////////////////
+     * Prism Log
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.InitResponse initPrismLog(grpc.server.services.PrismGrpc.InitPrismLogRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getInitPrismLogMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * ModulesFile
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.InitResponse initModulesFile(grpc.server.services.PrismGrpc.InitModulesFileRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getInitModulesFileMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Prism
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.InitResponse initPrism(grpc.server.services.PrismGrpc.InitPrismRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getInitPrismMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * PrismDevNullFlog
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.InitResponse initPrismDevNullLog(grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getInitPrismDevNullLogMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * PrismFileLog
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.InitResponse initPrismFileLog(grpc.server.services.PrismGrpc.InitPrismFileLogRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getInitPrismFileLogMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * PropertiesFile
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.InitResponse initPropertiesFile(grpc.server.services.PrismGrpc.InitPropertiesFileRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getInitPropertiesFileMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Property Object (called Property Object because "property" is a reserved word in Python)
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.InitResponse initPropertyObject(grpc.server.services.PrismGrpc.InitPropertyObjectRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getInitPropertyObjectMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Result
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.InitResponse initResult(grpc.server.services.PrismGrpc.InitResultRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getInitResultMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * init undefined constants
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.InitResponse initUndefinedConstants(grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getInitUndefinedConstantsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Values
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.InitResponse initValues(grpc.server.services.PrismGrpc.InitValuesRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getInitValuesMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     *&#47;////////////////////////////////////// Generic Functions /////////////////////////////////////////
      * delete a PRISM object
      * </pre>
      */
@@ -947,6 +1586,7 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     *&#47;////////////////////////////////////// Object specific functions /////////////////////////////////////////
      * Initialise the PRISM engine
      * </pre>
      */
@@ -1037,16 +1677,6 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * init undefined constants
-     * </pre>
-     */
-    public grpc.server.services.PrismGrpc.InitUndefinedConstantsResponse initUndefinedConstants(grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getInitUndefinedConstantsMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
      * define using const switch for undefined constants
      * </pre>
      */
@@ -1085,6 +1715,118 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     *&#47;////////////////////////////////////// Initializer /////////////////////////////////////////
+     * Prism Log
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.InitResponse> initPrismLog(
+        grpc.server.services.PrismGrpc.InitPrismLogRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getInitPrismLogMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * ModulesFile
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.InitResponse> initModulesFile(
+        grpc.server.services.PrismGrpc.InitModulesFileRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getInitModulesFileMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Prism
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.InitResponse> initPrism(
+        grpc.server.services.PrismGrpc.InitPrismRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getInitPrismMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * PrismDevNullFlog
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.InitResponse> initPrismDevNullLog(
+        grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getInitPrismDevNullLogMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * PrismFileLog
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.InitResponse> initPrismFileLog(
+        grpc.server.services.PrismGrpc.InitPrismFileLogRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getInitPrismFileLogMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * PropertiesFile
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.InitResponse> initPropertiesFile(
+        grpc.server.services.PrismGrpc.InitPropertiesFileRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getInitPropertiesFileMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Property Object (called Property Object because "property" is a reserved word in Python)
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.InitResponse> initPropertyObject(
+        grpc.server.services.PrismGrpc.InitPropertyObjectRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getInitPropertyObjectMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Result
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.InitResponse> initResult(
+        grpc.server.services.PrismGrpc.InitResultRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getInitResultMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * init undefined constants
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.InitResponse> initUndefinedConstants(
+        grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getInitUndefinedConstantsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Values
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.InitResponse> initValues(
+        grpc.server.services.PrismGrpc.InitValuesRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getInitValuesMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     *&#47;////////////////////////////////////// Generic Functions /////////////////////////////////////////
      * delete a PRISM object
      * </pre>
      */
@@ -1096,6 +1838,7 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     *&#47;////////////////////////////////////// Object specific functions /////////////////////////////////////////
      * Initialise the PRISM engine
      * </pre>
      */
@@ -1195,17 +1938,6 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * init undefined constants
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.InitUndefinedConstantsResponse> initUndefinedConstants(
-        grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getInitUndefinedConstantsMethod(), getCallOptions()), request);
-    }
-
-    /**
-     * <pre>
      * define using const switch for undefined constants
      * </pre>
      */
@@ -1227,20 +1959,29 @@ public final class PrismProtoServiceGrpc {
     }
   }
 
-  private static final int METHODID_DELETE_OBJECT = 0;
-  private static final int METHODID_INITIALISE = 1;
-  private static final int METHODID_PARSE_MODEL_FILE = 2;
-  private static final int METHODID_LOAD_PRISMMODEL = 3;
-  private static final int METHODID_PARSE_PROPERTIES_FILE = 4;
-  private static final int METHODID_GET_PROPERTY_OBJECT = 5;
-  private static final int METHODID_MODEL_CHECK = 6;
-  private static final int METHODID_GET_UNDEFINED_CONSTANTS_USED_IN_PROPERTY = 7;
-  private static final int METHODID_ADD_VALUE = 8;
-  private static final int METHODID_SET_SOME_UNDEFINED_CONSTANTS = 9;
-  private static final int METHODID_INIT_UNDEFINED_CONSTANTS = 10;
-  private static final int METHODID_DEFINE_USING_CONST_SWITCH = 11;
-  private static final int METHODID_GET_NUMBER_PROPERTY_ITERATIONS = 12;
-  private static final int METHODID_UPLOAD_FILE = 13;
+  private static final int METHODID_INIT_PRISM_LOG = 0;
+  private static final int METHODID_INIT_MODULES_FILE = 1;
+  private static final int METHODID_INIT_PRISM = 2;
+  private static final int METHODID_INIT_PRISM_DEV_NULL_LOG = 3;
+  private static final int METHODID_INIT_PRISM_FILE_LOG = 4;
+  private static final int METHODID_INIT_PROPERTIES_FILE = 5;
+  private static final int METHODID_INIT_PROPERTY_OBJECT = 6;
+  private static final int METHODID_INIT_RESULT = 7;
+  private static final int METHODID_INIT_UNDEFINED_CONSTANTS = 8;
+  private static final int METHODID_INIT_VALUES = 9;
+  private static final int METHODID_DELETE_OBJECT = 10;
+  private static final int METHODID_INITIALISE = 11;
+  private static final int METHODID_PARSE_MODEL_FILE = 12;
+  private static final int METHODID_LOAD_PRISMMODEL = 13;
+  private static final int METHODID_PARSE_PROPERTIES_FILE = 14;
+  private static final int METHODID_GET_PROPERTY_OBJECT = 15;
+  private static final int METHODID_MODEL_CHECK = 16;
+  private static final int METHODID_GET_UNDEFINED_CONSTANTS_USED_IN_PROPERTY = 17;
+  private static final int METHODID_ADD_VALUE = 18;
+  private static final int METHODID_SET_SOME_UNDEFINED_CONSTANTS = 19;
+  private static final int METHODID_DEFINE_USING_CONST_SWITCH = 20;
+  private static final int METHODID_GET_NUMBER_PROPERTY_ITERATIONS = 21;
+  private static final int METHODID_UPLOAD_FILE = 22;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1259,6 +2000,46 @@ public final class PrismProtoServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_INIT_PRISM_LOG:
+          serviceImpl.initPrismLog((grpc.server.services.PrismGrpc.InitPrismLogRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse>) responseObserver);
+          break;
+        case METHODID_INIT_MODULES_FILE:
+          serviceImpl.initModulesFile((grpc.server.services.PrismGrpc.InitModulesFileRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse>) responseObserver);
+          break;
+        case METHODID_INIT_PRISM:
+          serviceImpl.initPrism((grpc.server.services.PrismGrpc.InitPrismRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse>) responseObserver);
+          break;
+        case METHODID_INIT_PRISM_DEV_NULL_LOG:
+          serviceImpl.initPrismDevNullLog((grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse>) responseObserver);
+          break;
+        case METHODID_INIT_PRISM_FILE_LOG:
+          serviceImpl.initPrismFileLog((grpc.server.services.PrismGrpc.InitPrismFileLogRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse>) responseObserver);
+          break;
+        case METHODID_INIT_PROPERTIES_FILE:
+          serviceImpl.initPropertiesFile((grpc.server.services.PrismGrpc.InitPropertiesFileRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse>) responseObserver);
+          break;
+        case METHODID_INIT_PROPERTY_OBJECT:
+          serviceImpl.initPropertyObject((grpc.server.services.PrismGrpc.InitPropertyObjectRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse>) responseObserver);
+          break;
+        case METHODID_INIT_RESULT:
+          serviceImpl.initResult((grpc.server.services.PrismGrpc.InitResultRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse>) responseObserver);
+          break;
+        case METHODID_INIT_UNDEFINED_CONSTANTS:
+          serviceImpl.initUndefinedConstants((grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse>) responseObserver);
+          break;
+        case METHODID_INIT_VALUES:
+          serviceImpl.initValues((grpc.server.services.PrismGrpc.InitValuesRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse>) responseObserver);
+          break;
         case METHODID_DELETE_OBJECT:
           serviceImpl.deleteObject((grpc.server.services.PrismGrpc.DeleteObjectRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.DeleteObjectResponse>) responseObserver);
@@ -1298,10 +2079,6 @@ public final class PrismProtoServiceGrpc {
         case METHODID_SET_SOME_UNDEFINED_CONSTANTS:
           serviceImpl.setSomeUndefinedConstants((grpc.server.services.PrismGrpc.SetSomeUndefinedConstantsRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.SetSomeUndefinedConstantsResponse>) responseObserver);
-          break;
-        case METHODID_INIT_UNDEFINED_CONSTANTS:
-          serviceImpl.initUndefinedConstants((grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest) request,
-              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitUndefinedConstantsResponse>) responseObserver);
           break;
         case METHODID_DEFINE_USING_CONST_SWITCH:
           serviceImpl.defineUsingConstSwitch((grpc.server.services.PrismGrpc.DefineUsingConstSwitchRequest) request,
@@ -1375,6 +2152,16 @@ public final class PrismProtoServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new PrismProtoServiceFileDescriptorSupplier())
+              .addMethod(getInitPrismLogMethod())
+              .addMethod(getInitModulesFileMethod())
+              .addMethod(getInitPrismMethod())
+              .addMethod(getInitPrismDevNullLogMethod())
+              .addMethod(getInitPrismFileLogMethod())
+              .addMethod(getInitPropertiesFileMethod())
+              .addMethod(getInitPropertyObjectMethod())
+              .addMethod(getInitResultMethod())
+              .addMethod(getInitUndefinedConstantsMethod())
+              .addMethod(getInitValuesMethod())
               .addMethod(getDeleteObjectMethod())
               .addMethod(getUploadFileMethod())
               .addMethod(getInitialiseMethod())
@@ -1386,7 +2173,6 @@ public final class PrismProtoServiceGrpc {
               .addMethod(getGetUndefinedConstantsUsedInPropertyMethod())
               .addMethod(getAddValueMethod())
               .addMethod(getSetSomeUndefinedConstantsMethod())
-              .addMethod(getInitUndefinedConstantsMethod())
               .addMethod(getDefineUsingConstSwitchMethod())
               .addMethod(getGetNumberPropertyIterationsMethod())
               .build();

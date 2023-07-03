@@ -1,4 +1,3 @@
-import uuid
 from services import prismGrpc_pb2
 from model.prismpy_base_model import PrismPyBaseModel
 
@@ -7,7 +6,7 @@ class Values(PrismPyBaseModel):
     current_values = None
 
     def __init__(self):
-        super().__init__()
+        super().__init__(standalone=True)
 
     def add_value(self, const_name, value):
         self.logger.info("Add value {}.".format(value))

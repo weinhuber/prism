@@ -31,11 +31,9 @@ message PrismLog {
 
 message InitialiseRequest {
   string prism_object_id = 1;
-  PrismLog log = 2;
 }
 
 message InitialiseResponse {
-  string prism_object_id = 1;
   string status = 2;
 }
 
@@ -181,12 +179,6 @@ message DeleteObjectResponse {
   string status = 1;
 }
 
-message InitUndefinedConstantsRequest {
-  string module_object_id = 1;
-  string properties_file_object_id = 2;
-  string property_object_id = 3;
-  string undefined_constants_object_id = 4;
-}
 
 message InitUndefinedConstantsResponse {
   string status = 1;
@@ -210,20 +202,99 @@ message GetNumberPropertyIterationsResponse {
   int32 number_iterations = 2;
 }
 
-message InitValuesRequest {
-  string values_object_id = 1;
-}
 
 message InitValuesResponse {
   string status = 1;
 }
 
+///////////////////////////////////////// Initializer Messages /////////////////////////////////////////
+// Init response (for all initializers)
+message InitResponse {
+  string status = 1;
+}
+// Init arguments
+message InitPrismLogRequest {
+  string prism_log_object_id = 1;
+  string type = 2;
+}
+
+message InitPrismRequest {
+  string prism_object_id = 1;
+  string main_log_object_id = 2;
+}
+
+message InitModulesFileRequest {
+  string modules_file_object_id = 1;
+}
+
+
+
+message InitPrismDevNullLogRequest {
+  string main_log_object_id = 1;
+}
+
+message InitPrismFileLogRequest {
+  string main_log_object_id = 1;
+  string output_type = 2;
+}
+
+message InitPropertiesFileRequest {
+  string properties_file_object_id = 1;
+}
+
+message InitPropertyObjectRequest {
+  string property_object_object_id = 1;
+}
+
+message InitResultRequest {
+  string result_object_id = 1;
+}
+
+
+message InitUndefinedConstantsRequest {
+  string module_object_id = 1;
+  string properties_file_object_id = 2;
+  string property_object_id = 3;
+  string undefined_constants_object_id = 4;
+}
+
+message InitValuesRequest {
+  string values_object_id = 1;
+}
+
+
+
 // Service Definitions
 service PrismProtoService {
+  ///////////////////////////////////////// Initializer /////////////////////////////////////////
+  // Prism Log
+  rpc InitPrismLog(InitPrismLogRequest) returns (InitResponse) {}
+  // ModulesFile
+  rpc InitModulesFile(InitModulesFileRequest) returns (InitResponse) {}
+  // Prism
+  rpc InitPrism(InitPrismRequest) returns (InitResponse) {}
+  // PrismDevNullFlog
+  rpc InitPrismDevNullLog(InitPrismDevNullLogRequest) returns (InitResponse) {}
+  // PrismFileLog
+  rpc InitPrismFileLog(InitPrismFileLogRequest) returns (InitResponse) {}
+  // PropertiesFile
+  rpc InitPropertiesFile(InitPropertiesFileRequest) returns (InitResponse) {}
+  // Property Object (called Property Object because "property" is a reserved word in Python)
+  rpc InitPropertyObject(InitPropertyObjectRequest) returns (InitResponse) {}
+  // Result
+  rpc InitResult(InitResultRequest) returns (InitResponse) {}
+  // init undefined constants
+  rpc InitUndefinedConstants(InitUndefinedConstantsRequest) returns (InitResponse) {}
+  // Values
+  rpc InitValues(InitValuesRequest) returns (InitResponse) {}
+
+  ///////////////////////////////////////// Generic Functions /////////////////////////////////////////
   // delete a PRISM object
   rpc DeleteObject(DeleteObjectRequest) returns (DeleteObjectResponse) {}
   // Generic method to upload files
   rpc UploadFile (stream UploadRequest) returns (UploadReply) {}
+
+  ///////////////////////////////////////// Object specific functions /////////////////////////////////////////
   // Initialise the PRISM engine
   rpc Initialise(InitialiseRequest) returns (InitialiseResponse) {}
   // Parse model file
@@ -242,8 +313,6 @@ service PrismProtoService {
   rpc AddValue(AddValueRequest) returns (AddValueResponse) {}
   // set some undefined constants
   rpc SetSomeUndefinedConstants(SetSomeUndefinedConstantsRequest) returns (SetSomeUndefinedConstantsResponse) {}
-  // init undefined constants
-  rpc InitUndefinedConstants(InitUndefinedConstantsRequest) returns (InitUndefinedConstantsResponse) {}
   // define using const switch for undefined constants
   rpc DefineUsingConstSwitch(DefineUsingConstSwitchRequest) returns (DefineUsingConstSwitchResponse) {}
   // get number of property iterations for undefined constants

@@ -1,5 +1,6 @@
 import os
 import uuid
+import re
 from abc import ABC
 
 import grpc
@@ -16,22 +17,65 @@ class PrismPyBaseModel(ABC):
     # singleton logger
     logger = prismpy_logger.PrismPyLogger().get_logger()
 
+    # object_id of the object in the prism server
     __object_id = None
     __object_id_accessed = False
 
+    # gRPC channel and stub
     channel = None
     stub = None
 
-    def __init__(self):
+    def __init__(self, standalone, **kwargs):
         # id of the object in the prism server
         self.__object_id = str(uuid.uuid4())
         self.__create_channel()
 
+        # if an object is created as a standalone object, it will be created on the server side too
+        if standalone:
+            self.__init_grpc_object(**kwargs)
+
+    # private function to create a representation of this object on the server side
+    def __init_grpc_object(self, **kwargs):
+        class_name = self.__class__.__name__
+
+        # convert class_name to snake_case
+        s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', class_name)
+        snake_case_class_name = re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+
+        self.logger.info(f"Init gRPC object for class {class_name}.")
+
+        init_method_name = "Init" + class_name
+        attr_name = f"{snake_case_class_name}_object_id"
+
+        try:
+            # Try to fetch the method from the stub
+            init_method = getattr(self.stub, init_method_name)
+        except AttributeError:
+            self.logger.error(f"Method {init_method_name} not found in gRPC stub.")
+            raise
+
+        # Initialize request attributes with the object_id
+        request_attrs = {attr_name: self.object_id}
+
+        # Update request attributes with additional provided attributes
+        request_attrs.update(kwargs)
+
+        request = getattr(prismGrpc_pb2, f"{init_method_name}Request")(**request_attrs)
+        try:
+            response = init_method(request)
+            self.logger.info(f"Received message {response.status}.")
+        except _InactiveRpcError:
+            self.logger.error(f"gRPC service seems to be unavailable. Please make sure the service is running.")
+            exit(1)
+
+    # property to access the object_id of the object in the prism server
+    # defined as a property to enable garbage collection
     @property
     def object_id(self):
         self.__object_id_accessed = True
         return self.__object_id
 
+    # private function to create a channel to the gRPC service
     def __create_channel(self):
         # Open a gRPC channel
         self.channel = grpc.insecure_channel('localhost:50051')
@@ -46,7 +90,7 @@ class PrismPyBaseModel(ABC):
         self.stub = None
         self.channel = None
 
-    # private garbage collector which deletes the object on the server
+    # private garbage collector which deletes the object on the server, if it was not already deleted
     def __del__(self):
         # check if object was uploaded to the server
         if self.__object_id_accessed:
@@ -62,11 +106,11 @@ class PrismPyBaseModel(ABC):
             try:
                 self.stub.DeleteObject(request)
             except _InactiveRpcError:
-                self.logger.error(f"gRPC service seems to be unavailable. Please make sure the service is running.")
+                self.logger.error(f"[Garbage Collector] - gRPC service seems to be unavailable. Please make sure the "
+                                  f"service is running.")
             self.__close_channel()
 
-        # function to upload a file to the gRPC service
-
+    # function to upload a generic file to the prism server
     def upload_file(self, filename):
         self.logger.info(f"Uploading file {filename} to prism server.")
 
@@ -87,8 +131,8 @@ class PrismPyBaseModel(ABC):
         except Exception as e:
             self.logger.error(f"Unknown error.\n{str(e)}")
 
-        # private function to cut a file into chunks to be uploaded to the gRPC service
-
+    # private function to cut a file into chunks to be uploaded to the gRPC service
+    # this function should only be called via upload_file()
     def __get_file_chunks(self, filename):
         self.logger.info(f"Cutting file {filename} into chunks.")
 

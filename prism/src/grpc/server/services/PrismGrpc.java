@@ -3291,21 +3291,6 @@ public final class PrismGrpc {
      */
     com.google.protobuf.ByteString
         getPrismObjectIdBytes();
-
-    /**
-     * <code>.PrismLog log = 2;</code>
-     * @return Whether the log field is set.
-     */
-    boolean hasLog();
-    /**
-     * <code>.PrismLog log = 2;</code>
-     * @return The log.
-     */
-    grpc.server.services.PrismGrpc.PrismLog getLog();
-    /**
-     * <code>.PrismLog log = 2;</code>
-     */
-    grpc.server.services.PrismGrpc.PrismLogOrBuilder getLogOrBuilder();
   }
   /**
    * Protobuf type {@code InitialiseRequest}
@@ -3357,19 +3342,6 @@ public final class PrismGrpc {
               java.lang.String s = input.readStringRequireUtf8();
 
               prismObjectId_ = s;
-              break;
-            }
-            case 18: {
-              grpc.server.services.PrismGrpc.PrismLog.Builder subBuilder = null;
-              if (log_ != null) {
-                subBuilder = log_.toBuilder();
-              }
-              log_ = input.readMessage(grpc.server.services.PrismGrpc.PrismLog.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(log_);
-                log_ = subBuilder.buildPartial();
-              }
-
               break;
             }
             default: {
@@ -3442,32 +3414,6 @@ public final class PrismGrpc {
       }
     }
 
-    public static final int LOG_FIELD_NUMBER = 2;
-    private grpc.server.services.PrismGrpc.PrismLog log_;
-    /**
-     * <code>.PrismLog log = 2;</code>
-     * @return Whether the log field is set.
-     */
-    @java.lang.Override
-    public boolean hasLog() {
-      return log_ != null;
-    }
-    /**
-     * <code>.PrismLog log = 2;</code>
-     * @return The log.
-     */
-    @java.lang.Override
-    public grpc.server.services.PrismGrpc.PrismLog getLog() {
-      return log_ == null ? grpc.server.services.PrismGrpc.PrismLog.getDefaultInstance() : log_;
-    }
-    /**
-     * <code>.PrismLog log = 2;</code>
-     */
-    @java.lang.Override
-    public grpc.server.services.PrismGrpc.PrismLogOrBuilder getLogOrBuilder() {
-      return getLog();
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3485,9 +3431,6 @@ public final class PrismGrpc {
       if (!getPrismObjectIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, prismObjectId_);
       }
-      if (log_ != null) {
-        output.writeMessage(2, getLog());
-      }
       unknownFields.writeTo(output);
     }
 
@@ -3499,10 +3442,6 @@ public final class PrismGrpc {
       size = 0;
       if (!getPrismObjectIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, prismObjectId_);
-      }
-      if (log_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getLog());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3521,11 +3460,6 @@ public final class PrismGrpc {
 
       if (!getPrismObjectId()
           .equals(other.getPrismObjectId())) return false;
-      if (hasLog() != other.hasLog()) return false;
-      if (hasLog()) {
-        if (!getLog()
-            .equals(other.getLog())) return false;
-      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3539,10 +3473,6 @@ public final class PrismGrpc {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + PRISM_OBJECT_ID_FIELD_NUMBER;
       hash = (53 * hash) + getPrismObjectId().hashCode();
-      if (hasLog()) {
-        hash = (37 * hash) + LOG_FIELD_NUMBER;
-        hash = (53 * hash) + getLog().hashCode();
-      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3678,12 +3608,6 @@ public final class PrismGrpc {
         super.clear();
         prismObjectId_ = "";
 
-        if (logBuilder_ == null) {
-          log_ = null;
-        } else {
-          log_ = null;
-          logBuilder_ = null;
-        }
         return this;
       }
 
@@ -3711,11 +3635,6 @@ public final class PrismGrpc {
       public grpc.server.services.PrismGrpc.InitialiseRequest buildPartial() {
         grpc.server.services.PrismGrpc.InitialiseRequest result = new grpc.server.services.PrismGrpc.InitialiseRequest(this);
         result.prismObjectId_ = prismObjectId_;
-        if (logBuilder_ == null) {
-          result.log_ = log_;
-        } else {
-          result.log_ = logBuilder_.build();
-        }
         onBuilt();
         return result;
       }
@@ -3767,9 +3686,6 @@ public final class PrismGrpc {
         if (!other.getPrismObjectId().isEmpty()) {
           prismObjectId_ = other.prismObjectId_;
           onChanged();
-        }
-        if (other.hasLog()) {
-          mergeLog(other.getLog());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3875,125 +3791,6 @@ public final class PrismGrpc {
         onChanged();
         return this;
       }
-
-      private grpc.server.services.PrismGrpc.PrismLog log_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          grpc.server.services.PrismGrpc.PrismLog, grpc.server.services.PrismGrpc.PrismLog.Builder, grpc.server.services.PrismGrpc.PrismLogOrBuilder> logBuilder_;
-      /**
-       * <code>.PrismLog log = 2;</code>
-       * @return Whether the log field is set.
-       */
-      public boolean hasLog() {
-        return logBuilder_ != null || log_ != null;
-      }
-      /**
-       * <code>.PrismLog log = 2;</code>
-       * @return The log.
-       */
-      public grpc.server.services.PrismGrpc.PrismLog getLog() {
-        if (logBuilder_ == null) {
-          return log_ == null ? grpc.server.services.PrismGrpc.PrismLog.getDefaultInstance() : log_;
-        } else {
-          return logBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.PrismLog log = 2;</code>
-       */
-      public Builder setLog(grpc.server.services.PrismGrpc.PrismLog value) {
-        if (logBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          log_ = value;
-          onChanged();
-        } else {
-          logBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.PrismLog log = 2;</code>
-       */
-      public Builder setLog(
-          grpc.server.services.PrismGrpc.PrismLog.Builder builderForValue) {
-        if (logBuilder_ == null) {
-          log_ = builderForValue.build();
-          onChanged();
-        } else {
-          logBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.PrismLog log = 2;</code>
-       */
-      public Builder mergeLog(grpc.server.services.PrismGrpc.PrismLog value) {
-        if (logBuilder_ == null) {
-          if (log_ != null) {
-            log_ =
-              grpc.server.services.PrismGrpc.PrismLog.newBuilder(log_).mergeFrom(value).buildPartial();
-          } else {
-            log_ = value;
-          }
-          onChanged();
-        } else {
-          logBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.PrismLog log = 2;</code>
-       */
-      public Builder clearLog() {
-        if (logBuilder_ == null) {
-          log_ = null;
-          onChanged();
-        } else {
-          log_ = null;
-          logBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.PrismLog log = 2;</code>
-       */
-      public grpc.server.services.PrismGrpc.PrismLog.Builder getLogBuilder() {
-        
-        onChanged();
-        return getLogFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.PrismLog log = 2;</code>
-       */
-      public grpc.server.services.PrismGrpc.PrismLogOrBuilder getLogOrBuilder() {
-        if (logBuilder_ != null) {
-          return logBuilder_.getMessageOrBuilder();
-        } else {
-          return log_ == null ?
-              grpc.server.services.PrismGrpc.PrismLog.getDefaultInstance() : log_;
-        }
-      }
-      /**
-       * <code>.PrismLog log = 2;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          grpc.server.services.PrismGrpc.PrismLog, grpc.server.services.PrismGrpc.PrismLog.Builder, grpc.server.services.PrismGrpc.PrismLogOrBuilder> 
-          getLogFieldBuilder() {
-        if (logBuilder_ == null) {
-          logBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              grpc.server.services.PrismGrpc.PrismLog, grpc.server.services.PrismGrpc.PrismLog.Builder, grpc.server.services.PrismGrpc.PrismLogOrBuilder>(
-                  getLog(),
-                  getParentForChildren(),
-                  isClean());
-          log_ = null;
-        }
-        return logBuilder_;
-      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4052,18 +3849,6 @@ public final class PrismGrpc {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string prism_object_id = 1;</code>
-     * @return The prismObjectId.
-     */
-    java.lang.String getPrismObjectId();
-    /**
-     * <code>string prism_object_id = 1;</code>
-     * @return The bytes for prismObjectId.
-     */
-    com.google.protobuf.ByteString
-        getPrismObjectIdBytes();
-
-    /**
      * <code>string status = 2;</code>
      * @return The status.
      */
@@ -4088,7 +3873,6 @@ public final class PrismGrpc {
       super(builder);
     }
     private InitialiseResponse() {
-      prismObjectId_ = "";
       status_ = "";
     }
 
@@ -4122,12 +3906,6 @@ public final class PrismGrpc {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              prismObjectId_ = s;
-              break;
-            }
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
@@ -4164,44 +3942,6 @@ public final class PrismGrpc {
       return grpc.server.services.PrismGrpc.internal_static_InitialiseResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               grpc.server.services.PrismGrpc.InitialiseResponse.class, grpc.server.services.PrismGrpc.InitialiseResponse.Builder.class);
-    }
-
-    public static final int PRISM_OBJECT_ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object prismObjectId_;
-    /**
-     * <code>string prism_object_id = 1;</code>
-     * @return The prismObjectId.
-     */
-    @java.lang.Override
-    public java.lang.String getPrismObjectId() {
-      java.lang.Object ref = prismObjectId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        prismObjectId_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string prism_object_id = 1;</code>
-     * @return The bytes for prismObjectId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getPrismObjectIdBytes() {
-      java.lang.Object ref = prismObjectId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        prismObjectId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
     }
 
     public static final int STATUS_FIELD_NUMBER = 2;
@@ -4256,9 +3996,6 @@ public final class PrismGrpc {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getPrismObjectIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, prismObjectId_);
-      }
       if (!getStatusBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, status_);
       }
@@ -4271,9 +4008,6 @@ public final class PrismGrpc {
       if (size != -1) return size;
 
       size = 0;
-      if (!getPrismObjectIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, prismObjectId_);
-      }
       if (!getStatusBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, status_);
       }
@@ -4292,8 +4026,6 @@ public final class PrismGrpc {
       }
       grpc.server.services.PrismGrpc.InitialiseResponse other = (grpc.server.services.PrismGrpc.InitialiseResponse) obj;
 
-      if (!getPrismObjectId()
-          .equals(other.getPrismObjectId())) return false;
       if (!getStatus()
           .equals(other.getStatus())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -4307,8 +4039,6 @@ public final class PrismGrpc {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + PRISM_OBJECT_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getPrismObjectId().hashCode();
       hash = (37 * hash) + STATUS_FIELD_NUMBER;
       hash = (53 * hash) + getStatus().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -4444,8 +4174,6 @@ public final class PrismGrpc {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        prismObjectId_ = "";
-
         status_ = "";
 
         return this;
@@ -4474,7 +4202,6 @@ public final class PrismGrpc {
       @java.lang.Override
       public grpc.server.services.PrismGrpc.InitialiseResponse buildPartial() {
         grpc.server.services.PrismGrpc.InitialiseResponse result = new grpc.server.services.PrismGrpc.InitialiseResponse(this);
-        result.prismObjectId_ = prismObjectId_;
         result.status_ = status_;
         onBuilt();
         return result;
@@ -4524,10 +4251,6 @@ public final class PrismGrpc {
 
       public Builder mergeFrom(grpc.server.services.PrismGrpc.InitialiseResponse other) {
         if (other == grpc.server.services.PrismGrpc.InitialiseResponse.getDefaultInstance()) return this;
-        if (!other.getPrismObjectId().isEmpty()) {
-          prismObjectId_ = other.prismObjectId_;
-          onChanged();
-        }
         if (!other.getStatus().isEmpty()) {
           status_ = other.status_;
           onChanged();
@@ -4558,82 +4281,6 @@ public final class PrismGrpc {
             mergeFrom(parsedMessage);
           }
         }
-        return this;
-      }
-
-      private java.lang.Object prismObjectId_ = "";
-      /**
-       * <code>string prism_object_id = 1;</code>
-       * @return The prismObjectId.
-       */
-      public java.lang.String getPrismObjectId() {
-        java.lang.Object ref = prismObjectId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          prismObjectId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string prism_object_id = 1;</code>
-       * @return The bytes for prismObjectId.
-       */
-      public com.google.protobuf.ByteString
-          getPrismObjectIdBytes() {
-        java.lang.Object ref = prismObjectId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          prismObjectId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string prism_object_id = 1;</code>
-       * @param value The prismObjectId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPrismObjectId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        prismObjectId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string prism_object_id = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPrismObjectId() {
-        
-        prismObjectId_ = getDefaultInstance().getPrismObjectId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string prism_object_id = 1;</code>
-       * @param value The bytes for prismObjectId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPrismObjectIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        prismObjectId_ = value;
-        onChanged();
         return this;
       }
 
@@ -23407,1024 +23054,6 @@ public final class PrismGrpc {
 
   }
 
-  public interface InitUndefinedConstantsRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:InitUndefinedConstantsRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string module_object_id = 1;</code>
-     * @return The moduleObjectId.
-     */
-    java.lang.String getModuleObjectId();
-    /**
-     * <code>string module_object_id = 1;</code>
-     * @return The bytes for moduleObjectId.
-     */
-    com.google.protobuf.ByteString
-        getModuleObjectIdBytes();
-
-    /**
-     * <code>string properties_file_object_id = 2;</code>
-     * @return The propertiesFileObjectId.
-     */
-    java.lang.String getPropertiesFileObjectId();
-    /**
-     * <code>string properties_file_object_id = 2;</code>
-     * @return The bytes for propertiesFileObjectId.
-     */
-    com.google.protobuf.ByteString
-        getPropertiesFileObjectIdBytes();
-
-    /**
-     * <code>string property_object_id = 3;</code>
-     * @return The propertyObjectId.
-     */
-    java.lang.String getPropertyObjectId();
-    /**
-     * <code>string property_object_id = 3;</code>
-     * @return The bytes for propertyObjectId.
-     */
-    com.google.protobuf.ByteString
-        getPropertyObjectIdBytes();
-
-    /**
-     * <code>string undefined_constants_object_id = 4;</code>
-     * @return The undefinedConstantsObjectId.
-     */
-    java.lang.String getUndefinedConstantsObjectId();
-    /**
-     * <code>string undefined_constants_object_id = 4;</code>
-     * @return The bytes for undefinedConstantsObjectId.
-     */
-    com.google.protobuf.ByteString
-        getUndefinedConstantsObjectIdBytes();
-  }
-  /**
-   * Protobuf type {@code InitUndefinedConstantsRequest}
-   */
-  public static final class InitUndefinedConstantsRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:InitUndefinedConstantsRequest)
-      InitUndefinedConstantsRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use InitUndefinedConstantsRequest.newBuilder() to construct.
-    private InitUndefinedConstantsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private InitUndefinedConstantsRequest() {
-      moduleObjectId_ = "";
-      propertiesFileObjectId_ = "";
-      propertyObjectId_ = "";
-      undefinedConstantsObjectId_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new InitUndefinedConstantsRequest();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private InitUndefinedConstantsRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              moduleObjectId_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              propertiesFileObjectId_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              propertyObjectId_ = s;
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              undefinedConstantsObjectId_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return grpc.server.services.PrismGrpc.internal_static_InitUndefinedConstantsRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return grpc.server.services.PrismGrpc.internal_static_InitUndefinedConstantsRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest.class, grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest.Builder.class);
-    }
-
-    public static final int MODULE_OBJECT_ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object moduleObjectId_;
-    /**
-     * <code>string module_object_id = 1;</code>
-     * @return The moduleObjectId.
-     */
-    @java.lang.Override
-    public java.lang.String getModuleObjectId() {
-      java.lang.Object ref = moduleObjectId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        moduleObjectId_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string module_object_id = 1;</code>
-     * @return The bytes for moduleObjectId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getModuleObjectIdBytes() {
-      java.lang.Object ref = moduleObjectId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        moduleObjectId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PROPERTIES_FILE_OBJECT_ID_FIELD_NUMBER = 2;
-    private volatile java.lang.Object propertiesFileObjectId_;
-    /**
-     * <code>string properties_file_object_id = 2;</code>
-     * @return The propertiesFileObjectId.
-     */
-    @java.lang.Override
-    public java.lang.String getPropertiesFileObjectId() {
-      java.lang.Object ref = propertiesFileObjectId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        propertiesFileObjectId_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string properties_file_object_id = 2;</code>
-     * @return The bytes for propertiesFileObjectId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getPropertiesFileObjectIdBytes() {
-      java.lang.Object ref = propertiesFileObjectId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        propertiesFileObjectId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PROPERTY_OBJECT_ID_FIELD_NUMBER = 3;
-    private volatile java.lang.Object propertyObjectId_;
-    /**
-     * <code>string property_object_id = 3;</code>
-     * @return The propertyObjectId.
-     */
-    @java.lang.Override
-    public java.lang.String getPropertyObjectId() {
-      java.lang.Object ref = propertyObjectId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        propertyObjectId_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string property_object_id = 3;</code>
-     * @return The bytes for propertyObjectId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getPropertyObjectIdBytes() {
-      java.lang.Object ref = propertyObjectId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        propertyObjectId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int UNDEFINED_CONSTANTS_OBJECT_ID_FIELD_NUMBER = 4;
-    private volatile java.lang.Object undefinedConstantsObjectId_;
-    /**
-     * <code>string undefined_constants_object_id = 4;</code>
-     * @return The undefinedConstantsObjectId.
-     */
-    @java.lang.Override
-    public java.lang.String getUndefinedConstantsObjectId() {
-      java.lang.Object ref = undefinedConstantsObjectId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        undefinedConstantsObjectId_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string undefined_constants_object_id = 4;</code>
-     * @return The bytes for undefinedConstantsObjectId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getUndefinedConstantsObjectIdBytes() {
-      java.lang.Object ref = undefinedConstantsObjectId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        undefinedConstantsObjectId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getModuleObjectIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, moduleObjectId_);
-      }
-      if (!getPropertiesFileObjectIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, propertiesFileObjectId_);
-      }
-      if (!getPropertyObjectIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, propertyObjectId_);
-      }
-      if (!getUndefinedConstantsObjectIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, undefinedConstantsObjectId_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getModuleObjectIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, moduleObjectId_);
-      }
-      if (!getPropertiesFileObjectIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, propertiesFileObjectId_);
-      }
-      if (!getPropertyObjectIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, propertyObjectId_);
-      }
-      if (!getUndefinedConstantsObjectIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, undefinedConstantsObjectId_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest)) {
-        return super.equals(obj);
-      }
-      grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest other = (grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest) obj;
-
-      if (!getModuleObjectId()
-          .equals(other.getModuleObjectId())) return false;
-      if (!getPropertiesFileObjectId()
-          .equals(other.getPropertiesFileObjectId())) return false;
-      if (!getPropertyObjectId()
-          .equals(other.getPropertyObjectId())) return false;
-      if (!getUndefinedConstantsObjectId()
-          .equals(other.getUndefinedConstantsObjectId())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + MODULE_OBJECT_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getModuleObjectId().hashCode();
-      hash = (37 * hash) + PROPERTIES_FILE_OBJECT_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getPropertiesFileObjectId().hashCode();
-      hash = (37 * hash) + PROPERTY_OBJECT_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getPropertyObjectId().hashCode();
-      hash = (37 * hash) + UNDEFINED_CONSTANTS_OBJECT_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getUndefinedConstantsObjectId().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code InitUndefinedConstantsRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:InitUndefinedConstantsRequest)
-        grpc.server.services.PrismGrpc.InitUndefinedConstantsRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return grpc.server.services.PrismGrpc.internal_static_InitUndefinedConstantsRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return grpc.server.services.PrismGrpc.internal_static_InitUndefinedConstantsRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest.class, grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest.Builder.class);
-      }
-
-      // Construct using grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        moduleObjectId_ = "";
-
-        propertiesFileObjectId_ = "";
-
-        propertyObjectId_ = "";
-
-        undefinedConstantsObjectId_ = "";
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return grpc.server.services.PrismGrpc.internal_static_InitUndefinedConstantsRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest getDefaultInstanceForType() {
-        return grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest build() {
-        grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest buildPartial() {
-        grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest result = new grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest(this);
-        result.moduleObjectId_ = moduleObjectId_;
-        result.propertiesFileObjectId_ = propertiesFileObjectId_;
-        result.propertyObjectId_ = propertyObjectId_;
-        result.undefinedConstantsObjectId_ = undefinedConstantsObjectId_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest) {
-          return mergeFrom((grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest other) {
-        if (other == grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest.getDefaultInstance()) return this;
-        if (!other.getModuleObjectId().isEmpty()) {
-          moduleObjectId_ = other.moduleObjectId_;
-          onChanged();
-        }
-        if (!other.getPropertiesFileObjectId().isEmpty()) {
-          propertiesFileObjectId_ = other.propertiesFileObjectId_;
-          onChanged();
-        }
-        if (!other.getPropertyObjectId().isEmpty()) {
-          propertyObjectId_ = other.propertyObjectId_;
-          onChanged();
-        }
-        if (!other.getUndefinedConstantsObjectId().isEmpty()) {
-          undefinedConstantsObjectId_ = other.undefinedConstantsObjectId_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object moduleObjectId_ = "";
-      /**
-       * <code>string module_object_id = 1;</code>
-       * @return The moduleObjectId.
-       */
-      public java.lang.String getModuleObjectId() {
-        java.lang.Object ref = moduleObjectId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          moduleObjectId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string module_object_id = 1;</code>
-       * @return The bytes for moduleObjectId.
-       */
-      public com.google.protobuf.ByteString
-          getModuleObjectIdBytes() {
-        java.lang.Object ref = moduleObjectId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          moduleObjectId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string module_object_id = 1;</code>
-       * @param value The moduleObjectId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setModuleObjectId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        moduleObjectId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string module_object_id = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearModuleObjectId() {
-        
-        moduleObjectId_ = getDefaultInstance().getModuleObjectId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string module_object_id = 1;</code>
-       * @param value The bytes for moduleObjectId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setModuleObjectIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        moduleObjectId_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object propertiesFileObjectId_ = "";
-      /**
-       * <code>string properties_file_object_id = 2;</code>
-       * @return The propertiesFileObjectId.
-       */
-      public java.lang.String getPropertiesFileObjectId() {
-        java.lang.Object ref = propertiesFileObjectId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          propertiesFileObjectId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string properties_file_object_id = 2;</code>
-       * @return The bytes for propertiesFileObjectId.
-       */
-      public com.google.protobuf.ByteString
-          getPropertiesFileObjectIdBytes() {
-        java.lang.Object ref = propertiesFileObjectId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          propertiesFileObjectId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string properties_file_object_id = 2;</code>
-       * @param value The propertiesFileObjectId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPropertiesFileObjectId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        propertiesFileObjectId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string properties_file_object_id = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPropertiesFileObjectId() {
-        
-        propertiesFileObjectId_ = getDefaultInstance().getPropertiesFileObjectId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string properties_file_object_id = 2;</code>
-       * @param value The bytes for propertiesFileObjectId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPropertiesFileObjectIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        propertiesFileObjectId_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object propertyObjectId_ = "";
-      /**
-       * <code>string property_object_id = 3;</code>
-       * @return The propertyObjectId.
-       */
-      public java.lang.String getPropertyObjectId() {
-        java.lang.Object ref = propertyObjectId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          propertyObjectId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string property_object_id = 3;</code>
-       * @return The bytes for propertyObjectId.
-       */
-      public com.google.protobuf.ByteString
-          getPropertyObjectIdBytes() {
-        java.lang.Object ref = propertyObjectId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          propertyObjectId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string property_object_id = 3;</code>
-       * @param value The propertyObjectId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPropertyObjectId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        propertyObjectId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string property_object_id = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPropertyObjectId() {
-        
-        propertyObjectId_ = getDefaultInstance().getPropertyObjectId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string property_object_id = 3;</code>
-       * @param value The bytes for propertyObjectId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPropertyObjectIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        propertyObjectId_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object undefinedConstantsObjectId_ = "";
-      /**
-       * <code>string undefined_constants_object_id = 4;</code>
-       * @return The undefinedConstantsObjectId.
-       */
-      public java.lang.String getUndefinedConstantsObjectId() {
-        java.lang.Object ref = undefinedConstantsObjectId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          undefinedConstantsObjectId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string undefined_constants_object_id = 4;</code>
-       * @return The bytes for undefinedConstantsObjectId.
-       */
-      public com.google.protobuf.ByteString
-          getUndefinedConstantsObjectIdBytes() {
-        java.lang.Object ref = undefinedConstantsObjectId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          undefinedConstantsObjectId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string undefined_constants_object_id = 4;</code>
-       * @param value The undefinedConstantsObjectId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setUndefinedConstantsObjectId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        undefinedConstantsObjectId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string undefined_constants_object_id = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearUndefinedConstantsObjectId() {
-        
-        undefinedConstantsObjectId_ = getDefaultInstance().getUndefinedConstantsObjectId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string undefined_constants_object_id = 4;</code>
-       * @param value The bytes for undefinedConstantsObjectId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setUndefinedConstantsObjectIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        undefinedConstantsObjectId_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:InitUndefinedConstantsRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:InitUndefinedConstantsRequest)
-    private static final grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest();
-    }
-
-    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<InitUndefinedConstantsRequest>
-        PARSER = new com.google.protobuf.AbstractParser<InitUndefinedConstantsRequest>() {
-      @java.lang.Override
-      public InitUndefinedConstantsRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new InitUndefinedConstantsRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<InitUndefinedConstantsRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<InitUndefinedConstantsRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface InitUndefinedConstantsResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:InitUndefinedConstantsResponse)
       com.google.protobuf.MessageOrBuilder {
@@ -27485,574 +26114,6 @@ public final class PrismGrpc {
 
   }
 
-  public interface InitValuesRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:InitValuesRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string values_object_id = 1;</code>
-     * @return The valuesObjectId.
-     */
-    java.lang.String getValuesObjectId();
-    /**
-     * <code>string values_object_id = 1;</code>
-     * @return The bytes for valuesObjectId.
-     */
-    com.google.protobuf.ByteString
-        getValuesObjectIdBytes();
-  }
-  /**
-   * Protobuf type {@code InitValuesRequest}
-   */
-  public static final class InitValuesRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:InitValuesRequest)
-      InitValuesRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use InitValuesRequest.newBuilder() to construct.
-    private InitValuesRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private InitValuesRequest() {
-      valuesObjectId_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new InitValuesRequest();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private InitValuesRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              valuesObjectId_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return grpc.server.services.PrismGrpc.internal_static_InitValuesRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return grpc.server.services.PrismGrpc.internal_static_InitValuesRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              grpc.server.services.PrismGrpc.InitValuesRequest.class, grpc.server.services.PrismGrpc.InitValuesRequest.Builder.class);
-    }
-
-    public static final int VALUES_OBJECT_ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object valuesObjectId_;
-    /**
-     * <code>string values_object_id = 1;</code>
-     * @return The valuesObjectId.
-     */
-    @java.lang.Override
-    public java.lang.String getValuesObjectId() {
-      java.lang.Object ref = valuesObjectId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        valuesObjectId_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string values_object_id = 1;</code>
-     * @return The bytes for valuesObjectId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getValuesObjectIdBytes() {
-      java.lang.Object ref = valuesObjectId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        valuesObjectId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getValuesObjectIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, valuesObjectId_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getValuesObjectIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, valuesObjectId_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof grpc.server.services.PrismGrpc.InitValuesRequest)) {
-        return super.equals(obj);
-      }
-      grpc.server.services.PrismGrpc.InitValuesRequest other = (grpc.server.services.PrismGrpc.InitValuesRequest) obj;
-
-      if (!getValuesObjectId()
-          .equals(other.getValuesObjectId())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + VALUES_OBJECT_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getValuesObjectId().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.InitValuesRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static grpc.server.services.PrismGrpc.InitValuesRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(grpc.server.services.PrismGrpc.InitValuesRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code InitValuesRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:InitValuesRequest)
-        grpc.server.services.PrismGrpc.InitValuesRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return grpc.server.services.PrismGrpc.internal_static_InitValuesRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return grpc.server.services.PrismGrpc.internal_static_InitValuesRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                grpc.server.services.PrismGrpc.InitValuesRequest.class, grpc.server.services.PrismGrpc.InitValuesRequest.Builder.class);
-      }
-
-      // Construct using grpc.server.services.PrismGrpc.InitValuesRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        valuesObjectId_ = "";
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return grpc.server.services.PrismGrpc.internal_static_InitValuesRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public grpc.server.services.PrismGrpc.InitValuesRequest getDefaultInstanceForType() {
-        return grpc.server.services.PrismGrpc.InitValuesRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public grpc.server.services.PrismGrpc.InitValuesRequest build() {
-        grpc.server.services.PrismGrpc.InitValuesRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public grpc.server.services.PrismGrpc.InitValuesRequest buildPartial() {
-        grpc.server.services.PrismGrpc.InitValuesRequest result = new grpc.server.services.PrismGrpc.InitValuesRequest(this);
-        result.valuesObjectId_ = valuesObjectId_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof grpc.server.services.PrismGrpc.InitValuesRequest) {
-          return mergeFrom((grpc.server.services.PrismGrpc.InitValuesRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(grpc.server.services.PrismGrpc.InitValuesRequest other) {
-        if (other == grpc.server.services.PrismGrpc.InitValuesRequest.getDefaultInstance()) return this;
-        if (!other.getValuesObjectId().isEmpty()) {
-          valuesObjectId_ = other.valuesObjectId_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        grpc.server.services.PrismGrpc.InitValuesRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (grpc.server.services.PrismGrpc.InitValuesRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object valuesObjectId_ = "";
-      /**
-       * <code>string values_object_id = 1;</code>
-       * @return The valuesObjectId.
-       */
-      public java.lang.String getValuesObjectId() {
-        java.lang.Object ref = valuesObjectId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          valuesObjectId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string values_object_id = 1;</code>
-       * @return The bytes for valuesObjectId.
-       */
-      public com.google.protobuf.ByteString
-          getValuesObjectIdBytes() {
-        java.lang.Object ref = valuesObjectId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          valuesObjectId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string values_object_id = 1;</code>
-       * @param value The valuesObjectId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setValuesObjectId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        valuesObjectId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string values_object_id = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearValuesObjectId() {
-        
-        valuesObjectId_ = getDefaultInstance().getValuesObjectId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string values_object_id = 1;</code>
-       * @param value The bytes for valuesObjectId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setValuesObjectIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        valuesObjectId_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:InitValuesRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:InitValuesRequest)
-    private static final grpc.server.services.PrismGrpc.InitValuesRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.InitValuesRequest();
-    }
-
-    public static grpc.server.services.PrismGrpc.InitValuesRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<InitValuesRequest>
-        PARSER = new com.google.protobuf.AbstractParser<InitValuesRequest>() {
-      @java.lang.Override
-      public InitValuesRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new InitValuesRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<InitValuesRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<InitValuesRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public grpc.server.services.PrismGrpc.InitValuesRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface InitValuesResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:InitValuesResponse)
       com.google.protobuf.MessageOrBuilder {
@@ -28621,6 +26682,7172 @@ public final class PrismGrpc {
 
   }
 
+  public interface InitResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:InitResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string status = 1;</code>
+     * @return The status.
+     */
+    java.lang.String getStatus();
+    /**
+     * <code>string status = 1;</code>
+     * @return The bytes for status.
+     */
+    com.google.protobuf.ByteString
+        getStatusBytes();
+  }
+  /**
+   * <pre>
+   *&#47;////////////////////////////////////// Initializer Messages /////////////////////////////////////////
+   * Init response (for all initializers)
+   * </pre>
+   *
+   * Protobuf type {@code InitResponse}
+   */
+  public static final class InitResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:InitResponse)
+      InitResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use InitResponse.newBuilder() to construct.
+    private InitResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private InitResponse() {
+      status_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InitResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private InitResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              status_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.server.services.PrismGrpc.internal_static_InitResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.server.services.PrismGrpc.internal_static_InitResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.server.services.PrismGrpc.InitResponse.class, grpc.server.services.PrismGrpc.InitResponse.Builder.class);
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 1;
+    private volatile java.lang.Object status_;
+    /**
+     * <code>string status = 1;</code>
+     * @return The status.
+     */
+    @java.lang.Override
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        status_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string status = 1;</code>
+     * @return The bytes for status.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getStatusBytes() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        status_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getStatusBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, status_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getStatusBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, status_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.server.services.PrismGrpc.InitResponse)) {
+        return super.equals(obj);
+      }
+      grpc.server.services.PrismGrpc.InitResponse other = (grpc.server.services.PrismGrpc.InitResponse) obj;
+
+      if (!getStatus()
+          .equals(other.getStatus())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getStatus().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.server.services.PrismGrpc.InitResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.server.services.PrismGrpc.InitResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     *&#47;////////////////////////////////////// Initializer Messages /////////////////////////////////////////
+     * Init response (for all initializers)
+     * </pre>
+     *
+     * Protobuf type {@code InitResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:InitResponse)
+        grpc.server.services.PrismGrpc.InitResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.server.services.PrismGrpc.internal_static_InitResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.server.services.PrismGrpc.internal_static_InitResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.server.services.PrismGrpc.InitResponse.class, grpc.server.services.PrismGrpc.InitResponse.Builder.class);
+      }
+
+      // Construct using grpc.server.services.PrismGrpc.InitResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        status_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.server.services.PrismGrpc.internal_static_InitResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitResponse getDefaultInstanceForType() {
+        return grpc.server.services.PrismGrpc.InitResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitResponse build() {
+        grpc.server.services.PrismGrpc.InitResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitResponse buildPartial() {
+        grpc.server.services.PrismGrpc.InitResponse result = new grpc.server.services.PrismGrpc.InitResponse(this);
+        result.status_ = status_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.server.services.PrismGrpc.InitResponse) {
+          return mergeFrom((grpc.server.services.PrismGrpc.InitResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.server.services.PrismGrpc.InitResponse other) {
+        if (other == grpc.server.services.PrismGrpc.InitResponse.getDefaultInstance()) return this;
+        if (!other.getStatus().isEmpty()) {
+          status_ = other.status_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.server.services.PrismGrpc.InitResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.server.services.PrismGrpc.InitResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object status_ = "";
+      /**
+       * <code>string status = 1;</code>
+       * @return The status.
+       */
+      public java.lang.String getStatus() {
+        java.lang.Object ref = status_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          status_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string status = 1;</code>
+       * @return The bytes for status.
+       */
+      public com.google.protobuf.ByteString
+          getStatusBytes() {
+        java.lang.Object ref = status_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          status_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string status = 1;</code>
+       * @param value The status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatus(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string status = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStatus() {
+        
+        status_ = getDefaultInstance().getStatus();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string status = 1;</code>
+       * @param value The bytes for status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatusBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:InitResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:InitResponse)
+    private static final grpc.server.services.PrismGrpc.InitResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.InitResponse();
+    }
+
+    public static grpc.server.services.PrismGrpc.InitResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<InitResponse>
+        PARSER = new com.google.protobuf.AbstractParser<InitResponse>() {
+      @java.lang.Override
+      public InitResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InitResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<InitResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InitResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.server.services.PrismGrpc.InitResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface InitPrismLogRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:InitPrismLogRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string prism_log_object_id = 1;</code>
+     * @return The prismLogObjectId.
+     */
+    java.lang.String getPrismLogObjectId();
+    /**
+     * <code>string prism_log_object_id = 1;</code>
+     * @return The bytes for prismLogObjectId.
+     */
+    com.google.protobuf.ByteString
+        getPrismLogObjectIdBytes();
+
+    /**
+     * <code>string type = 2;</code>
+     * @return The type.
+     */
+    java.lang.String getType();
+    /**
+     * <code>string type = 2;</code>
+     * @return The bytes for type.
+     */
+    com.google.protobuf.ByteString
+        getTypeBytes();
+  }
+  /**
+   * <pre>
+   * Init arguments
+   * </pre>
+   *
+   * Protobuf type {@code InitPrismLogRequest}
+   */
+  public static final class InitPrismLogRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:InitPrismLogRequest)
+      InitPrismLogRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use InitPrismLogRequest.newBuilder() to construct.
+    private InitPrismLogRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private InitPrismLogRequest() {
+      prismLogObjectId_ = "";
+      type_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InitPrismLogRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private InitPrismLogRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              prismLogObjectId_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              type_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.server.services.PrismGrpc.internal_static_InitPrismLogRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.server.services.PrismGrpc.internal_static_InitPrismLogRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.server.services.PrismGrpc.InitPrismLogRequest.class, grpc.server.services.PrismGrpc.InitPrismLogRequest.Builder.class);
+    }
+
+    public static final int PRISM_LOG_OBJECT_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object prismLogObjectId_;
+    /**
+     * <code>string prism_log_object_id = 1;</code>
+     * @return The prismLogObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getPrismLogObjectId() {
+      java.lang.Object ref = prismLogObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        prismLogObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string prism_log_object_id = 1;</code>
+     * @return The bytes for prismLogObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPrismLogObjectIdBytes() {
+      java.lang.Object ref = prismLogObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        prismLogObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object type_;
+    /**
+     * <code>string type = 2;</code>
+     * @return The type.
+     */
+    @java.lang.Override
+    public java.lang.String getType() {
+      java.lang.Object ref = type_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        type_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string type = 2;</code>
+     * @return The bytes for type.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTypeBytes() {
+      java.lang.Object ref = type_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        type_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getPrismLogObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, prismLogObjectId_);
+      }
+      if (!getTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, type_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getPrismLogObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, prismLogObjectId_);
+      }
+      if (!getTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, type_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.server.services.PrismGrpc.InitPrismLogRequest)) {
+        return super.equals(obj);
+      }
+      grpc.server.services.PrismGrpc.InitPrismLogRequest other = (grpc.server.services.PrismGrpc.InitPrismLogRequest) obj;
+
+      if (!getPrismLogObjectId()
+          .equals(other.getPrismLogObjectId())) return false;
+      if (!getType()
+          .equals(other.getType())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PRISM_LOG_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getPrismLogObjectId().hashCode();
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.server.services.PrismGrpc.InitPrismLogRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismLogRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismLogRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismLogRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismLogRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismLogRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismLogRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismLogRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismLogRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismLogRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismLogRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismLogRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.server.services.PrismGrpc.InitPrismLogRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Init arguments
+     * </pre>
+     *
+     * Protobuf type {@code InitPrismLogRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:InitPrismLogRequest)
+        grpc.server.services.PrismGrpc.InitPrismLogRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.server.services.PrismGrpc.internal_static_InitPrismLogRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.server.services.PrismGrpc.internal_static_InitPrismLogRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.server.services.PrismGrpc.InitPrismLogRequest.class, grpc.server.services.PrismGrpc.InitPrismLogRequest.Builder.class);
+      }
+
+      // Construct using grpc.server.services.PrismGrpc.InitPrismLogRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        prismLogObjectId_ = "";
+
+        type_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.server.services.PrismGrpc.internal_static_InitPrismLogRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitPrismLogRequest getDefaultInstanceForType() {
+        return grpc.server.services.PrismGrpc.InitPrismLogRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitPrismLogRequest build() {
+        grpc.server.services.PrismGrpc.InitPrismLogRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitPrismLogRequest buildPartial() {
+        grpc.server.services.PrismGrpc.InitPrismLogRequest result = new grpc.server.services.PrismGrpc.InitPrismLogRequest(this);
+        result.prismLogObjectId_ = prismLogObjectId_;
+        result.type_ = type_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.server.services.PrismGrpc.InitPrismLogRequest) {
+          return mergeFrom((grpc.server.services.PrismGrpc.InitPrismLogRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.server.services.PrismGrpc.InitPrismLogRequest other) {
+        if (other == grpc.server.services.PrismGrpc.InitPrismLogRequest.getDefaultInstance()) return this;
+        if (!other.getPrismLogObjectId().isEmpty()) {
+          prismLogObjectId_ = other.prismLogObjectId_;
+          onChanged();
+        }
+        if (!other.getType().isEmpty()) {
+          type_ = other.type_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.server.services.PrismGrpc.InitPrismLogRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.server.services.PrismGrpc.InitPrismLogRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object prismLogObjectId_ = "";
+      /**
+       * <code>string prism_log_object_id = 1;</code>
+       * @return The prismLogObjectId.
+       */
+      public java.lang.String getPrismLogObjectId() {
+        java.lang.Object ref = prismLogObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          prismLogObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string prism_log_object_id = 1;</code>
+       * @return The bytes for prismLogObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getPrismLogObjectIdBytes() {
+        java.lang.Object ref = prismLogObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          prismLogObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string prism_log_object_id = 1;</code>
+       * @param value The prismLogObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPrismLogObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        prismLogObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string prism_log_object_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPrismLogObjectId() {
+        
+        prismLogObjectId_ = getDefaultInstance().getPrismLogObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string prism_log_object_id = 1;</code>
+       * @param value The bytes for prismLogObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPrismLogObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        prismLogObjectId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object type_ = "";
+      /**
+       * <code>string type = 2;</code>
+       * @return The type.
+       */
+      public java.lang.String getType() {
+        java.lang.Object ref = type_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          type_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string type = 2;</code>
+       * @return The bytes for type.
+       */
+      public com.google.protobuf.ByteString
+          getTypeBytes() {
+        java.lang.Object ref = type_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          type_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string type = 2;</code>
+       * @param value The type to set.
+       * @return This builder for chaining.
+       */
+      public Builder setType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string type = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearType() {
+        
+        type_ = getDefaultInstance().getType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string type = 2;</code>
+       * @param value The bytes for type to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:InitPrismLogRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:InitPrismLogRequest)
+    private static final grpc.server.services.PrismGrpc.InitPrismLogRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.InitPrismLogRequest();
+    }
+
+    public static grpc.server.services.PrismGrpc.InitPrismLogRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<InitPrismLogRequest>
+        PARSER = new com.google.protobuf.AbstractParser<InitPrismLogRequest>() {
+      @java.lang.Override
+      public InitPrismLogRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InitPrismLogRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<InitPrismLogRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InitPrismLogRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.server.services.PrismGrpc.InitPrismLogRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface InitPrismRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:InitPrismRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The prismObjectId.
+     */
+    java.lang.String getPrismObjectId();
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The bytes for prismObjectId.
+     */
+    com.google.protobuf.ByteString
+        getPrismObjectIdBytes();
+
+    /**
+     * <code>string main_log_object_id = 2;</code>
+     * @return The mainLogObjectId.
+     */
+    java.lang.String getMainLogObjectId();
+    /**
+     * <code>string main_log_object_id = 2;</code>
+     * @return The bytes for mainLogObjectId.
+     */
+    com.google.protobuf.ByteString
+        getMainLogObjectIdBytes();
+  }
+  /**
+   * Protobuf type {@code InitPrismRequest}
+   */
+  public static final class InitPrismRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:InitPrismRequest)
+      InitPrismRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use InitPrismRequest.newBuilder() to construct.
+    private InitPrismRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private InitPrismRequest() {
+      prismObjectId_ = "";
+      mainLogObjectId_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InitPrismRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private InitPrismRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              prismObjectId_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              mainLogObjectId_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.server.services.PrismGrpc.internal_static_InitPrismRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.server.services.PrismGrpc.internal_static_InitPrismRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.server.services.PrismGrpc.InitPrismRequest.class, grpc.server.services.PrismGrpc.InitPrismRequest.Builder.class);
+    }
+
+    public static final int PRISM_OBJECT_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object prismObjectId_;
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The prismObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getPrismObjectId() {
+      java.lang.Object ref = prismObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        prismObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string prism_object_id = 1;</code>
+     * @return The bytes for prismObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPrismObjectIdBytes() {
+      java.lang.Object ref = prismObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        prismObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MAIN_LOG_OBJECT_ID_FIELD_NUMBER = 2;
+    private volatile java.lang.Object mainLogObjectId_;
+    /**
+     * <code>string main_log_object_id = 2;</code>
+     * @return The mainLogObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getMainLogObjectId() {
+      java.lang.Object ref = mainLogObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        mainLogObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string main_log_object_id = 2;</code>
+     * @return The bytes for mainLogObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMainLogObjectIdBytes() {
+      java.lang.Object ref = mainLogObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        mainLogObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getPrismObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, prismObjectId_);
+      }
+      if (!getMainLogObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, mainLogObjectId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getPrismObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, prismObjectId_);
+      }
+      if (!getMainLogObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, mainLogObjectId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.server.services.PrismGrpc.InitPrismRequest)) {
+        return super.equals(obj);
+      }
+      grpc.server.services.PrismGrpc.InitPrismRequest other = (grpc.server.services.PrismGrpc.InitPrismRequest) obj;
+
+      if (!getPrismObjectId()
+          .equals(other.getPrismObjectId())) return false;
+      if (!getMainLogObjectId()
+          .equals(other.getMainLogObjectId())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PRISM_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getPrismObjectId().hashCode();
+      hash = (37 * hash) + MAIN_LOG_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getMainLogObjectId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.server.services.PrismGrpc.InitPrismRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.server.services.PrismGrpc.InitPrismRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code InitPrismRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:InitPrismRequest)
+        grpc.server.services.PrismGrpc.InitPrismRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.server.services.PrismGrpc.internal_static_InitPrismRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.server.services.PrismGrpc.internal_static_InitPrismRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.server.services.PrismGrpc.InitPrismRequest.class, grpc.server.services.PrismGrpc.InitPrismRequest.Builder.class);
+      }
+
+      // Construct using grpc.server.services.PrismGrpc.InitPrismRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        prismObjectId_ = "";
+
+        mainLogObjectId_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.server.services.PrismGrpc.internal_static_InitPrismRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitPrismRequest getDefaultInstanceForType() {
+        return grpc.server.services.PrismGrpc.InitPrismRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitPrismRequest build() {
+        grpc.server.services.PrismGrpc.InitPrismRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitPrismRequest buildPartial() {
+        grpc.server.services.PrismGrpc.InitPrismRequest result = new grpc.server.services.PrismGrpc.InitPrismRequest(this);
+        result.prismObjectId_ = prismObjectId_;
+        result.mainLogObjectId_ = mainLogObjectId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.server.services.PrismGrpc.InitPrismRequest) {
+          return mergeFrom((grpc.server.services.PrismGrpc.InitPrismRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.server.services.PrismGrpc.InitPrismRequest other) {
+        if (other == grpc.server.services.PrismGrpc.InitPrismRequest.getDefaultInstance()) return this;
+        if (!other.getPrismObjectId().isEmpty()) {
+          prismObjectId_ = other.prismObjectId_;
+          onChanged();
+        }
+        if (!other.getMainLogObjectId().isEmpty()) {
+          mainLogObjectId_ = other.mainLogObjectId_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.server.services.PrismGrpc.InitPrismRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.server.services.PrismGrpc.InitPrismRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object prismObjectId_ = "";
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @return The prismObjectId.
+       */
+      public java.lang.String getPrismObjectId() {
+        java.lang.Object ref = prismObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          prismObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @return The bytes for prismObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getPrismObjectIdBytes() {
+        java.lang.Object ref = prismObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          prismObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @param value The prismObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPrismObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        prismObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPrismObjectId() {
+        
+        prismObjectId_ = getDefaultInstance().getPrismObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string prism_object_id = 1;</code>
+       * @param value The bytes for prismObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPrismObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        prismObjectId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object mainLogObjectId_ = "";
+      /**
+       * <code>string main_log_object_id = 2;</code>
+       * @return The mainLogObjectId.
+       */
+      public java.lang.String getMainLogObjectId() {
+        java.lang.Object ref = mainLogObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          mainLogObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string main_log_object_id = 2;</code>
+       * @return The bytes for mainLogObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getMainLogObjectIdBytes() {
+        java.lang.Object ref = mainLogObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          mainLogObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string main_log_object_id = 2;</code>
+       * @param value The mainLogObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMainLogObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        mainLogObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string main_log_object_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMainLogObjectId() {
+        
+        mainLogObjectId_ = getDefaultInstance().getMainLogObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string main_log_object_id = 2;</code>
+       * @param value The bytes for mainLogObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMainLogObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        mainLogObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:InitPrismRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:InitPrismRequest)
+    private static final grpc.server.services.PrismGrpc.InitPrismRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.InitPrismRequest();
+    }
+
+    public static grpc.server.services.PrismGrpc.InitPrismRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<InitPrismRequest>
+        PARSER = new com.google.protobuf.AbstractParser<InitPrismRequest>() {
+      @java.lang.Override
+      public InitPrismRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InitPrismRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<InitPrismRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InitPrismRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.server.services.PrismGrpc.InitPrismRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface InitModulesFileRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:InitModulesFileRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string modules_file_object_id = 1;</code>
+     * @return The modulesFileObjectId.
+     */
+    java.lang.String getModulesFileObjectId();
+    /**
+     * <code>string modules_file_object_id = 1;</code>
+     * @return The bytes for modulesFileObjectId.
+     */
+    com.google.protobuf.ByteString
+        getModulesFileObjectIdBytes();
+  }
+  /**
+   * Protobuf type {@code InitModulesFileRequest}
+   */
+  public static final class InitModulesFileRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:InitModulesFileRequest)
+      InitModulesFileRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use InitModulesFileRequest.newBuilder() to construct.
+    private InitModulesFileRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private InitModulesFileRequest() {
+      modulesFileObjectId_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InitModulesFileRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private InitModulesFileRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              modulesFileObjectId_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.server.services.PrismGrpc.internal_static_InitModulesFileRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.server.services.PrismGrpc.internal_static_InitModulesFileRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.server.services.PrismGrpc.InitModulesFileRequest.class, grpc.server.services.PrismGrpc.InitModulesFileRequest.Builder.class);
+    }
+
+    public static final int MODULES_FILE_OBJECT_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object modulesFileObjectId_;
+    /**
+     * <code>string modules_file_object_id = 1;</code>
+     * @return The modulesFileObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getModulesFileObjectId() {
+      java.lang.Object ref = modulesFileObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        modulesFileObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string modules_file_object_id = 1;</code>
+     * @return The bytes for modulesFileObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getModulesFileObjectIdBytes() {
+      java.lang.Object ref = modulesFileObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        modulesFileObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getModulesFileObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, modulesFileObjectId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getModulesFileObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, modulesFileObjectId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.server.services.PrismGrpc.InitModulesFileRequest)) {
+        return super.equals(obj);
+      }
+      grpc.server.services.PrismGrpc.InitModulesFileRequest other = (grpc.server.services.PrismGrpc.InitModulesFileRequest) obj;
+
+      if (!getModulesFileObjectId()
+          .equals(other.getModulesFileObjectId())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + MODULES_FILE_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getModulesFileObjectId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.server.services.PrismGrpc.InitModulesFileRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitModulesFileRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitModulesFileRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitModulesFileRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitModulesFileRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitModulesFileRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitModulesFileRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitModulesFileRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitModulesFileRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitModulesFileRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitModulesFileRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitModulesFileRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.server.services.PrismGrpc.InitModulesFileRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code InitModulesFileRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:InitModulesFileRequest)
+        grpc.server.services.PrismGrpc.InitModulesFileRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.server.services.PrismGrpc.internal_static_InitModulesFileRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.server.services.PrismGrpc.internal_static_InitModulesFileRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.server.services.PrismGrpc.InitModulesFileRequest.class, grpc.server.services.PrismGrpc.InitModulesFileRequest.Builder.class);
+      }
+
+      // Construct using grpc.server.services.PrismGrpc.InitModulesFileRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        modulesFileObjectId_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.server.services.PrismGrpc.internal_static_InitModulesFileRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitModulesFileRequest getDefaultInstanceForType() {
+        return grpc.server.services.PrismGrpc.InitModulesFileRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitModulesFileRequest build() {
+        grpc.server.services.PrismGrpc.InitModulesFileRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitModulesFileRequest buildPartial() {
+        grpc.server.services.PrismGrpc.InitModulesFileRequest result = new grpc.server.services.PrismGrpc.InitModulesFileRequest(this);
+        result.modulesFileObjectId_ = modulesFileObjectId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.server.services.PrismGrpc.InitModulesFileRequest) {
+          return mergeFrom((grpc.server.services.PrismGrpc.InitModulesFileRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.server.services.PrismGrpc.InitModulesFileRequest other) {
+        if (other == grpc.server.services.PrismGrpc.InitModulesFileRequest.getDefaultInstance()) return this;
+        if (!other.getModulesFileObjectId().isEmpty()) {
+          modulesFileObjectId_ = other.modulesFileObjectId_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.server.services.PrismGrpc.InitModulesFileRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.server.services.PrismGrpc.InitModulesFileRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object modulesFileObjectId_ = "";
+      /**
+       * <code>string modules_file_object_id = 1;</code>
+       * @return The modulesFileObjectId.
+       */
+      public java.lang.String getModulesFileObjectId() {
+        java.lang.Object ref = modulesFileObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          modulesFileObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string modules_file_object_id = 1;</code>
+       * @return The bytes for modulesFileObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getModulesFileObjectIdBytes() {
+        java.lang.Object ref = modulesFileObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          modulesFileObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string modules_file_object_id = 1;</code>
+       * @param value The modulesFileObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModulesFileObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        modulesFileObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string modules_file_object_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearModulesFileObjectId() {
+        
+        modulesFileObjectId_ = getDefaultInstance().getModulesFileObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string modules_file_object_id = 1;</code>
+       * @param value The bytes for modulesFileObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModulesFileObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        modulesFileObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:InitModulesFileRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:InitModulesFileRequest)
+    private static final grpc.server.services.PrismGrpc.InitModulesFileRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.InitModulesFileRequest();
+    }
+
+    public static grpc.server.services.PrismGrpc.InitModulesFileRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<InitModulesFileRequest>
+        PARSER = new com.google.protobuf.AbstractParser<InitModulesFileRequest>() {
+      @java.lang.Override
+      public InitModulesFileRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InitModulesFileRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<InitModulesFileRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InitModulesFileRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.server.services.PrismGrpc.InitModulesFileRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface InitPrismDevNullLogRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:InitPrismDevNullLogRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string main_log_object_id = 1;</code>
+     * @return The mainLogObjectId.
+     */
+    java.lang.String getMainLogObjectId();
+    /**
+     * <code>string main_log_object_id = 1;</code>
+     * @return The bytes for mainLogObjectId.
+     */
+    com.google.protobuf.ByteString
+        getMainLogObjectIdBytes();
+  }
+  /**
+   * Protobuf type {@code InitPrismDevNullLogRequest}
+   */
+  public static final class InitPrismDevNullLogRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:InitPrismDevNullLogRequest)
+      InitPrismDevNullLogRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use InitPrismDevNullLogRequest.newBuilder() to construct.
+    private InitPrismDevNullLogRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private InitPrismDevNullLogRequest() {
+      mainLogObjectId_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InitPrismDevNullLogRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private InitPrismDevNullLogRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              mainLogObjectId_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.server.services.PrismGrpc.internal_static_InitPrismDevNullLogRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.server.services.PrismGrpc.internal_static_InitPrismDevNullLogRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest.class, grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest.Builder.class);
+    }
+
+    public static final int MAIN_LOG_OBJECT_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object mainLogObjectId_;
+    /**
+     * <code>string main_log_object_id = 1;</code>
+     * @return The mainLogObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getMainLogObjectId() {
+      java.lang.Object ref = mainLogObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        mainLogObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string main_log_object_id = 1;</code>
+     * @return The bytes for mainLogObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMainLogObjectIdBytes() {
+      java.lang.Object ref = mainLogObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        mainLogObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getMainLogObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, mainLogObjectId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getMainLogObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, mainLogObjectId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest)) {
+        return super.equals(obj);
+      }
+      grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest other = (grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest) obj;
+
+      if (!getMainLogObjectId()
+          .equals(other.getMainLogObjectId())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + MAIN_LOG_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getMainLogObjectId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code InitPrismDevNullLogRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:InitPrismDevNullLogRequest)
+        grpc.server.services.PrismGrpc.InitPrismDevNullLogRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.server.services.PrismGrpc.internal_static_InitPrismDevNullLogRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.server.services.PrismGrpc.internal_static_InitPrismDevNullLogRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest.class, grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest.Builder.class);
+      }
+
+      // Construct using grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        mainLogObjectId_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.server.services.PrismGrpc.internal_static_InitPrismDevNullLogRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest getDefaultInstanceForType() {
+        return grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest build() {
+        grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest buildPartial() {
+        grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest result = new grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest(this);
+        result.mainLogObjectId_ = mainLogObjectId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest) {
+          return mergeFrom((grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest other) {
+        if (other == grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest.getDefaultInstance()) return this;
+        if (!other.getMainLogObjectId().isEmpty()) {
+          mainLogObjectId_ = other.mainLogObjectId_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object mainLogObjectId_ = "";
+      /**
+       * <code>string main_log_object_id = 1;</code>
+       * @return The mainLogObjectId.
+       */
+      public java.lang.String getMainLogObjectId() {
+        java.lang.Object ref = mainLogObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          mainLogObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string main_log_object_id = 1;</code>
+       * @return The bytes for mainLogObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getMainLogObjectIdBytes() {
+        java.lang.Object ref = mainLogObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          mainLogObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string main_log_object_id = 1;</code>
+       * @param value The mainLogObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMainLogObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        mainLogObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string main_log_object_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMainLogObjectId() {
+        
+        mainLogObjectId_ = getDefaultInstance().getMainLogObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string main_log_object_id = 1;</code>
+       * @param value The bytes for mainLogObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMainLogObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        mainLogObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:InitPrismDevNullLogRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:InitPrismDevNullLogRequest)
+    private static final grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest();
+    }
+
+    public static grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<InitPrismDevNullLogRequest>
+        PARSER = new com.google.protobuf.AbstractParser<InitPrismDevNullLogRequest>() {
+      @java.lang.Override
+      public InitPrismDevNullLogRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InitPrismDevNullLogRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<InitPrismDevNullLogRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InitPrismDevNullLogRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.server.services.PrismGrpc.InitPrismDevNullLogRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface InitPrismFileLogRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:InitPrismFileLogRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string main_log_object_id = 1;</code>
+     * @return The mainLogObjectId.
+     */
+    java.lang.String getMainLogObjectId();
+    /**
+     * <code>string main_log_object_id = 1;</code>
+     * @return The bytes for mainLogObjectId.
+     */
+    com.google.protobuf.ByteString
+        getMainLogObjectIdBytes();
+
+    /**
+     * <code>string output_type = 2;</code>
+     * @return The outputType.
+     */
+    java.lang.String getOutputType();
+    /**
+     * <code>string output_type = 2;</code>
+     * @return The bytes for outputType.
+     */
+    com.google.protobuf.ByteString
+        getOutputTypeBytes();
+  }
+  /**
+   * Protobuf type {@code InitPrismFileLogRequest}
+   */
+  public static final class InitPrismFileLogRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:InitPrismFileLogRequest)
+      InitPrismFileLogRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use InitPrismFileLogRequest.newBuilder() to construct.
+    private InitPrismFileLogRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private InitPrismFileLogRequest() {
+      mainLogObjectId_ = "";
+      outputType_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InitPrismFileLogRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private InitPrismFileLogRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              mainLogObjectId_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              outputType_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.server.services.PrismGrpc.internal_static_InitPrismFileLogRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.server.services.PrismGrpc.internal_static_InitPrismFileLogRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.server.services.PrismGrpc.InitPrismFileLogRequest.class, grpc.server.services.PrismGrpc.InitPrismFileLogRequest.Builder.class);
+    }
+
+    public static final int MAIN_LOG_OBJECT_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object mainLogObjectId_;
+    /**
+     * <code>string main_log_object_id = 1;</code>
+     * @return The mainLogObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getMainLogObjectId() {
+      java.lang.Object ref = mainLogObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        mainLogObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string main_log_object_id = 1;</code>
+     * @return The bytes for mainLogObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMainLogObjectIdBytes() {
+      java.lang.Object ref = mainLogObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        mainLogObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int OUTPUT_TYPE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object outputType_;
+    /**
+     * <code>string output_type = 2;</code>
+     * @return The outputType.
+     */
+    @java.lang.Override
+    public java.lang.String getOutputType() {
+      java.lang.Object ref = outputType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        outputType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string output_type = 2;</code>
+     * @return The bytes for outputType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getOutputTypeBytes() {
+      java.lang.Object ref = outputType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        outputType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getMainLogObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, mainLogObjectId_);
+      }
+      if (!getOutputTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, outputType_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getMainLogObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, mainLogObjectId_);
+      }
+      if (!getOutputTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, outputType_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.server.services.PrismGrpc.InitPrismFileLogRequest)) {
+        return super.equals(obj);
+      }
+      grpc.server.services.PrismGrpc.InitPrismFileLogRequest other = (grpc.server.services.PrismGrpc.InitPrismFileLogRequest) obj;
+
+      if (!getMainLogObjectId()
+          .equals(other.getMainLogObjectId())) return false;
+      if (!getOutputType()
+          .equals(other.getOutputType())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + MAIN_LOG_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getMainLogObjectId().hashCode();
+      hash = (37 * hash) + OUTPUT_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getOutputType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.server.services.PrismGrpc.InitPrismFileLogRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismFileLogRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismFileLogRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismFileLogRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismFileLogRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismFileLogRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismFileLogRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismFileLogRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismFileLogRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismFileLogRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismFileLogRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitPrismFileLogRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.server.services.PrismGrpc.InitPrismFileLogRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code InitPrismFileLogRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:InitPrismFileLogRequest)
+        grpc.server.services.PrismGrpc.InitPrismFileLogRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.server.services.PrismGrpc.internal_static_InitPrismFileLogRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.server.services.PrismGrpc.internal_static_InitPrismFileLogRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.server.services.PrismGrpc.InitPrismFileLogRequest.class, grpc.server.services.PrismGrpc.InitPrismFileLogRequest.Builder.class);
+      }
+
+      // Construct using grpc.server.services.PrismGrpc.InitPrismFileLogRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        mainLogObjectId_ = "";
+
+        outputType_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.server.services.PrismGrpc.internal_static_InitPrismFileLogRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitPrismFileLogRequest getDefaultInstanceForType() {
+        return grpc.server.services.PrismGrpc.InitPrismFileLogRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitPrismFileLogRequest build() {
+        grpc.server.services.PrismGrpc.InitPrismFileLogRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitPrismFileLogRequest buildPartial() {
+        grpc.server.services.PrismGrpc.InitPrismFileLogRequest result = new grpc.server.services.PrismGrpc.InitPrismFileLogRequest(this);
+        result.mainLogObjectId_ = mainLogObjectId_;
+        result.outputType_ = outputType_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.server.services.PrismGrpc.InitPrismFileLogRequest) {
+          return mergeFrom((grpc.server.services.PrismGrpc.InitPrismFileLogRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.server.services.PrismGrpc.InitPrismFileLogRequest other) {
+        if (other == grpc.server.services.PrismGrpc.InitPrismFileLogRequest.getDefaultInstance()) return this;
+        if (!other.getMainLogObjectId().isEmpty()) {
+          mainLogObjectId_ = other.mainLogObjectId_;
+          onChanged();
+        }
+        if (!other.getOutputType().isEmpty()) {
+          outputType_ = other.outputType_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.server.services.PrismGrpc.InitPrismFileLogRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.server.services.PrismGrpc.InitPrismFileLogRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object mainLogObjectId_ = "";
+      /**
+       * <code>string main_log_object_id = 1;</code>
+       * @return The mainLogObjectId.
+       */
+      public java.lang.String getMainLogObjectId() {
+        java.lang.Object ref = mainLogObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          mainLogObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string main_log_object_id = 1;</code>
+       * @return The bytes for mainLogObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getMainLogObjectIdBytes() {
+        java.lang.Object ref = mainLogObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          mainLogObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string main_log_object_id = 1;</code>
+       * @param value The mainLogObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMainLogObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        mainLogObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string main_log_object_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMainLogObjectId() {
+        
+        mainLogObjectId_ = getDefaultInstance().getMainLogObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string main_log_object_id = 1;</code>
+       * @param value The bytes for mainLogObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMainLogObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        mainLogObjectId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object outputType_ = "";
+      /**
+       * <code>string output_type = 2;</code>
+       * @return The outputType.
+       */
+      public java.lang.String getOutputType() {
+        java.lang.Object ref = outputType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          outputType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string output_type = 2;</code>
+       * @return The bytes for outputType.
+       */
+      public com.google.protobuf.ByteString
+          getOutputTypeBytes() {
+        java.lang.Object ref = outputType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          outputType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string output_type = 2;</code>
+       * @param value The outputType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOutputType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        outputType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string output_type = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOutputType() {
+        
+        outputType_ = getDefaultInstance().getOutputType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string output_type = 2;</code>
+       * @param value The bytes for outputType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOutputTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        outputType_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:InitPrismFileLogRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:InitPrismFileLogRequest)
+    private static final grpc.server.services.PrismGrpc.InitPrismFileLogRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.InitPrismFileLogRequest();
+    }
+
+    public static grpc.server.services.PrismGrpc.InitPrismFileLogRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<InitPrismFileLogRequest>
+        PARSER = new com.google.protobuf.AbstractParser<InitPrismFileLogRequest>() {
+      @java.lang.Override
+      public InitPrismFileLogRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InitPrismFileLogRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<InitPrismFileLogRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InitPrismFileLogRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.server.services.PrismGrpc.InitPrismFileLogRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface InitPropertiesFileRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:InitPropertiesFileRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string properties_file_object_id = 1;</code>
+     * @return The propertiesFileObjectId.
+     */
+    java.lang.String getPropertiesFileObjectId();
+    /**
+     * <code>string properties_file_object_id = 1;</code>
+     * @return The bytes for propertiesFileObjectId.
+     */
+    com.google.protobuf.ByteString
+        getPropertiesFileObjectIdBytes();
+  }
+  /**
+   * Protobuf type {@code InitPropertiesFileRequest}
+   */
+  public static final class InitPropertiesFileRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:InitPropertiesFileRequest)
+      InitPropertiesFileRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use InitPropertiesFileRequest.newBuilder() to construct.
+    private InitPropertiesFileRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private InitPropertiesFileRequest() {
+      propertiesFileObjectId_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InitPropertiesFileRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private InitPropertiesFileRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              propertiesFileObjectId_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.server.services.PrismGrpc.internal_static_InitPropertiesFileRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.server.services.PrismGrpc.internal_static_InitPropertiesFileRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.server.services.PrismGrpc.InitPropertiesFileRequest.class, grpc.server.services.PrismGrpc.InitPropertiesFileRequest.Builder.class);
+    }
+
+    public static final int PROPERTIES_FILE_OBJECT_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object propertiesFileObjectId_;
+    /**
+     * <code>string properties_file_object_id = 1;</code>
+     * @return The propertiesFileObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getPropertiesFileObjectId() {
+      java.lang.Object ref = propertiesFileObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        propertiesFileObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string properties_file_object_id = 1;</code>
+     * @return The bytes for propertiesFileObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPropertiesFileObjectIdBytes() {
+      java.lang.Object ref = propertiesFileObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        propertiesFileObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getPropertiesFileObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, propertiesFileObjectId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getPropertiesFileObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, propertiesFileObjectId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.server.services.PrismGrpc.InitPropertiesFileRequest)) {
+        return super.equals(obj);
+      }
+      grpc.server.services.PrismGrpc.InitPropertiesFileRequest other = (grpc.server.services.PrismGrpc.InitPropertiesFileRequest) obj;
+
+      if (!getPropertiesFileObjectId()
+          .equals(other.getPropertiesFileObjectId())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PROPERTIES_FILE_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getPropertiesFileObjectId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.server.services.PrismGrpc.InitPropertiesFileRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertiesFileRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertiesFileRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertiesFileRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertiesFileRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertiesFileRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertiesFileRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertiesFileRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertiesFileRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertiesFileRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertiesFileRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertiesFileRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.server.services.PrismGrpc.InitPropertiesFileRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code InitPropertiesFileRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:InitPropertiesFileRequest)
+        grpc.server.services.PrismGrpc.InitPropertiesFileRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.server.services.PrismGrpc.internal_static_InitPropertiesFileRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.server.services.PrismGrpc.internal_static_InitPropertiesFileRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.server.services.PrismGrpc.InitPropertiesFileRequest.class, grpc.server.services.PrismGrpc.InitPropertiesFileRequest.Builder.class);
+      }
+
+      // Construct using grpc.server.services.PrismGrpc.InitPropertiesFileRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        propertiesFileObjectId_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.server.services.PrismGrpc.internal_static_InitPropertiesFileRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitPropertiesFileRequest getDefaultInstanceForType() {
+        return grpc.server.services.PrismGrpc.InitPropertiesFileRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitPropertiesFileRequest build() {
+        grpc.server.services.PrismGrpc.InitPropertiesFileRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitPropertiesFileRequest buildPartial() {
+        grpc.server.services.PrismGrpc.InitPropertiesFileRequest result = new grpc.server.services.PrismGrpc.InitPropertiesFileRequest(this);
+        result.propertiesFileObjectId_ = propertiesFileObjectId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.server.services.PrismGrpc.InitPropertiesFileRequest) {
+          return mergeFrom((grpc.server.services.PrismGrpc.InitPropertiesFileRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.server.services.PrismGrpc.InitPropertiesFileRequest other) {
+        if (other == grpc.server.services.PrismGrpc.InitPropertiesFileRequest.getDefaultInstance()) return this;
+        if (!other.getPropertiesFileObjectId().isEmpty()) {
+          propertiesFileObjectId_ = other.propertiesFileObjectId_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.server.services.PrismGrpc.InitPropertiesFileRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.server.services.PrismGrpc.InitPropertiesFileRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object propertiesFileObjectId_ = "";
+      /**
+       * <code>string properties_file_object_id = 1;</code>
+       * @return The propertiesFileObjectId.
+       */
+      public java.lang.String getPropertiesFileObjectId() {
+        java.lang.Object ref = propertiesFileObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          propertiesFileObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string properties_file_object_id = 1;</code>
+       * @return The bytes for propertiesFileObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getPropertiesFileObjectIdBytes() {
+        java.lang.Object ref = propertiesFileObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          propertiesFileObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string properties_file_object_id = 1;</code>
+       * @param value The propertiesFileObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPropertiesFileObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        propertiesFileObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string properties_file_object_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPropertiesFileObjectId() {
+        
+        propertiesFileObjectId_ = getDefaultInstance().getPropertiesFileObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string properties_file_object_id = 1;</code>
+       * @param value The bytes for propertiesFileObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPropertiesFileObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        propertiesFileObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:InitPropertiesFileRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:InitPropertiesFileRequest)
+    private static final grpc.server.services.PrismGrpc.InitPropertiesFileRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.InitPropertiesFileRequest();
+    }
+
+    public static grpc.server.services.PrismGrpc.InitPropertiesFileRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<InitPropertiesFileRequest>
+        PARSER = new com.google.protobuf.AbstractParser<InitPropertiesFileRequest>() {
+      @java.lang.Override
+      public InitPropertiesFileRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InitPropertiesFileRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<InitPropertiesFileRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InitPropertiesFileRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.server.services.PrismGrpc.InitPropertiesFileRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface InitPropertyObjectRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:InitPropertyObjectRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string property_object_object_id = 1;</code>
+     * @return The propertyObjectObjectId.
+     */
+    java.lang.String getPropertyObjectObjectId();
+    /**
+     * <code>string property_object_object_id = 1;</code>
+     * @return The bytes for propertyObjectObjectId.
+     */
+    com.google.protobuf.ByteString
+        getPropertyObjectObjectIdBytes();
+  }
+  /**
+   * Protobuf type {@code InitPropertyObjectRequest}
+   */
+  public static final class InitPropertyObjectRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:InitPropertyObjectRequest)
+      InitPropertyObjectRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use InitPropertyObjectRequest.newBuilder() to construct.
+    private InitPropertyObjectRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private InitPropertyObjectRequest() {
+      propertyObjectObjectId_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InitPropertyObjectRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private InitPropertyObjectRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              propertyObjectObjectId_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.server.services.PrismGrpc.internal_static_InitPropertyObjectRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.server.services.PrismGrpc.internal_static_InitPropertyObjectRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.server.services.PrismGrpc.InitPropertyObjectRequest.class, grpc.server.services.PrismGrpc.InitPropertyObjectRequest.Builder.class);
+    }
+
+    public static final int PROPERTY_OBJECT_OBJECT_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object propertyObjectObjectId_;
+    /**
+     * <code>string property_object_object_id = 1;</code>
+     * @return The propertyObjectObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getPropertyObjectObjectId() {
+      java.lang.Object ref = propertyObjectObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        propertyObjectObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string property_object_object_id = 1;</code>
+     * @return The bytes for propertyObjectObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPropertyObjectObjectIdBytes() {
+      java.lang.Object ref = propertyObjectObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        propertyObjectObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getPropertyObjectObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, propertyObjectObjectId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getPropertyObjectObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, propertyObjectObjectId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.server.services.PrismGrpc.InitPropertyObjectRequest)) {
+        return super.equals(obj);
+      }
+      grpc.server.services.PrismGrpc.InitPropertyObjectRequest other = (grpc.server.services.PrismGrpc.InitPropertyObjectRequest) obj;
+
+      if (!getPropertyObjectObjectId()
+          .equals(other.getPropertyObjectObjectId())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PROPERTY_OBJECT_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getPropertyObjectObjectId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.server.services.PrismGrpc.InitPropertyObjectRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertyObjectRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertyObjectRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertyObjectRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertyObjectRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertyObjectRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertyObjectRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertyObjectRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertyObjectRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertyObjectRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertyObjectRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitPropertyObjectRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.server.services.PrismGrpc.InitPropertyObjectRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code InitPropertyObjectRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:InitPropertyObjectRequest)
+        grpc.server.services.PrismGrpc.InitPropertyObjectRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.server.services.PrismGrpc.internal_static_InitPropertyObjectRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.server.services.PrismGrpc.internal_static_InitPropertyObjectRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.server.services.PrismGrpc.InitPropertyObjectRequest.class, grpc.server.services.PrismGrpc.InitPropertyObjectRequest.Builder.class);
+      }
+
+      // Construct using grpc.server.services.PrismGrpc.InitPropertyObjectRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        propertyObjectObjectId_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.server.services.PrismGrpc.internal_static_InitPropertyObjectRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitPropertyObjectRequest getDefaultInstanceForType() {
+        return grpc.server.services.PrismGrpc.InitPropertyObjectRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitPropertyObjectRequest build() {
+        grpc.server.services.PrismGrpc.InitPropertyObjectRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitPropertyObjectRequest buildPartial() {
+        grpc.server.services.PrismGrpc.InitPropertyObjectRequest result = new grpc.server.services.PrismGrpc.InitPropertyObjectRequest(this);
+        result.propertyObjectObjectId_ = propertyObjectObjectId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.server.services.PrismGrpc.InitPropertyObjectRequest) {
+          return mergeFrom((grpc.server.services.PrismGrpc.InitPropertyObjectRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.server.services.PrismGrpc.InitPropertyObjectRequest other) {
+        if (other == grpc.server.services.PrismGrpc.InitPropertyObjectRequest.getDefaultInstance()) return this;
+        if (!other.getPropertyObjectObjectId().isEmpty()) {
+          propertyObjectObjectId_ = other.propertyObjectObjectId_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.server.services.PrismGrpc.InitPropertyObjectRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.server.services.PrismGrpc.InitPropertyObjectRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object propertyObjectObjectId_ = "";
+      /**
+       * <code>string property_object_object_id = 1;</code>
+       * @return The propertyObjectObjectId.
+       */
+      public java.lang.String getPropertyObjectObjectId() {
+        java.lang.Object ref = propertyObjectObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          propertyObjectObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string property_object_object_id = 1;</code>
+       * @return The bytes for propertyObjectObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getPropertyObjectObjectIdBytes() {
+        java.lang.Object ref = propertyObjectObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          propertyObjectObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string property_object_object_id = 1;</code>
+       * @param value The propertyObjectObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPropertyObjectObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        propertyObjectObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string property_object_object_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPropertyObjectObjectId() {
+        
+        propertyObjectObjectId_ = getDefaultInstance().getPropertyObjectObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string property_object_object_id = 1;</code>
+       * @param value The bytes for propertyObjectObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPropertyObjectObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        propertyObjectObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:InitPropertyObjectRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:InitPropertyObjectRequest)
+    private static final grpc.server.services.PrismGrpc.InitPropertyObjectRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.InitPropertyObjectRequest();
+    }
+
+    public static grpc.server.services.PrismGrpc.InitPropertyObjectRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<InitPropertyObjectRequest>
+        PARSER = new com.google.protobuf.AbstractParser<InitPropertyObjectRequest>() {
+      @java.lang.Override
+      public InitPropertyObjectRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InitPropertyObjectRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<InitPropertyObjectRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InitPropertyObjectRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.server.services.PrismGrpc.InitPropertyObjectRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface InitResultRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:InitResultRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string result_object_id = 1;</code>
+     * @return The resultObjectId.
+     */
+    java.lang.String getResultObjectId();
+    /**
+     * <code>string result_object_id = 1;</code>
+     * @return The bytes for resultObjectId.
+     */
+    com.google.protobuf.ByteString
+        getResultObjectIdBytes();
+  }
+  /**
+   * Protobuf type {@code InitResultRequest}
+   */
+  public static final class InitResultRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:InitResultRequest)
+      InitResultRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use InitResultRequest.newBuilder() to construct.
+    private InitResultRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private InitResultRequest() {
+      resultObjectId_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InitResultRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private InitResultRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              resultObjectId_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.server.services.PrismGrpc.internal_static_InitResultRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.server.services.PrismGrpc.internal_static_InitResultRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.server.services.PrismGrpc.InitResultRequest.class, grpc.server.services.PrismGrpc.InitResultRequest.Builder.class);
+    }
+
+    public static final int RESULT_OBJECT_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object resultObjectId_;
+    /**
+     * <code>string result_object_id = 1;</code>
+     * @return The resultObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getResultObjectId() {
+      java.lang.Object ref = resultObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        resultObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string result_object_id = 1;</code>
+     * @return The bytes for resultObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getResultObjectIdBytes() {
+      java.lang.Object ref = resultObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        resultObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getResultObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, resultObjectId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getResultObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, resultObjectId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.server.services.PrismGrpc.InitResultRequest)) {
+        return super.equals(obj);
+      }
+      grpc.server.services.PrismGrpc.InitResultRequest other = (grpc.server.services.PrismGrpc.InitResultRequest) obj;
+
+      if (!getResultObjectId()
+          .equals(other.getResultObjectId())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + RESULT_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getResultObjectId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.server.services.PrismGrpc.InitResultRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitResultRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitResultRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitResultRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitResultRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitResultRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitResultRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitResultRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitResultRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitResultRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitResultRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitResultRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.server.services.PrismGrpc.InitResultRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code InitResultRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:InitResultRequest)
+        grpc.server.services.PrismGrpc.InitResultRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.server.services.PrismGrpc.internal_static_InitResultRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.server.services.PrismGrpc.internal_static_InitResultRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.server.services.PrismGrpc.InitResultRequest.class, grpc.server.services.PrismGrpc.InitResultRequest.Builder.class);
+      }
+
+      // Construct using grpc.server.services.PrismGrpc.InitResultRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        resultObjectId_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.server.services.PrismGrpc.internal_static_InitResultRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitResultRequest getDefaultInstanceForType() {
+        return grpc.server.services.PrismGrpc.InitResultRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitResultRequest build() {
+        grpc.server.services.PrismGrpc.InitResultRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitResultRequest buildPartial() {
+        grpc.server.services.PrismGrpc.InitResultRequest result = new grpc.server.services.PrismGrpc.InitResultRequest(this);
+        result.resultObjectId_ = resultObjectId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.server.services.PrismGrpc.InitResultRequest) {
+          return mergeFrom((grpc.server.services.PrismGrpc.InitResultRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.server.services.PrismGrpc.InitResultRequest other) {
+        if (other == grpc.server.services.PrismGrpc.InitResultRequest.getDefaultInstance()) return this;
+        if (!other.getResultObjectId().isEmpty()) {
+          resultObjectId_ = other.resultObjectId_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.server.services.PrismGrpc.InitResultRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.server.services.PrismGrpc.InitResultRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object resultObjectId_ = "";
+      /**
+       * <code>string result_object_id = 1;</code>
+       * @return The resultObjectId.
+       */
+      public java.lang.String getResultObjectId() {
+        java.lang.Object ref = resultObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          resultObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string result_object_id = 1;</code>
+       * @return The bytes for resultObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getResultObjectIdBytes() {
+        java.lang.Object ref = resultObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          resultObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string result_object_id = 1;</code>
+       * @param value The resultObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setResultObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        resultObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string result_object_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearResultObjectId() {
+        
+        resultObjectId_ = getDefaultInstance().getResultObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string result_object_id = 1;</code>
+       * @param value The bytes for resultObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setResultObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        resultObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:InitResultRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:InitResultRequest)
+    private static final grpc.server.services.PrismGrpc.InitResultRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.InitResultRequest();
+    }
+
+    public static grpc.server.services.PrismGrpc.InitResultRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<InitResultRequest>
+        PARSER = new com.google.protobuf.AbstractParser<InitResultRequest>() {
+      @java.lang.Override
+      public InitResultRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InitResultRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<InitResultRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InitResultRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.server.services.PrismGrpc.InitResultRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface InitUndefinedConstantsRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:InitUndefinedConstantsRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string module_object_id = 1;</code>
+     * @return The moduleObjectId.
+     */
+    java.lang.String getModuleObjectId();
+    /**
+     * <code>string module_object_id = 1;</code>
+     * @return The bytes for moduleObjectId.
+     */
+    com.google.protobuf.ByteString
+        getModuleObjectIdBytes();
+
+    /**
+     * <code>string properties_file_object_id = 2;</code>
+     * @return The propertiesFileObjectId.
+     */
+    java.lang.String getPropertiesFileObjectId();
+    /**
+     * <code>string properties_file_object_id = 2;</code>
+     * @return The bytes for propertiesFileObjectId.
+     */
+    com.google.protobuf.ByteString
+        getPropertiesFileObjectIdBytes();
+
+    /**
+     * <code>string property_object_id = 3;</code>
+     * @return The propertyObjectId.
+     */
+    java.lang.String getPropertyObjectId();
+    /**
+     * <code>string property_object_id = 3;</code>
+     * @return The bytes for propertyObjectId.
+     */
+    com.google.protobuf.ByteString
+        getPropertyObjectIdBytes();
+
+    /**
+     * <code>string undefined_constants_object_id = 4;</code>
+     * @return The undefinedConstantsObjectId.
+     */
+    java.lang.String getUndefinedConstantsObjectId();
+    /**
+     * <code>string undefined_constants_object_id = 4;</code>
+     * @return The bytes for undefinedConstantsObjectId.
+     */
+    com.google.protobuf.ByteString
+        getUndefinedConstantsObjectIdBytes();
+  }
+  /**
+   * Protobuf type {@code InitUndefinedConstantsRequest}
+   */
+  public static final class InitUndefinedConstantsRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:InitUndefinedConstantsRequest)
+      InitUndefinedConstantsRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use InitUndefinedConstantsRequest.newBuilder() to construct.
+    private InitUndefinedConstantsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private InitUndefinedConstantsRequest() {
+      moduleObjectId_ = "";
+      propertiesFileObjectId_ = "";
+      propertyObjectId_ = "";
+      undefinedConstantsObjectId_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InitUndefinedConstantsRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private InitUndefinedConstantsRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              moduleObjectId_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              propertiesFileObjectId_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              propertyObjectId_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              undefinedConstantsObjectId_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.server.services.PrismGrpc.internal_static_InitUndefinedConstantsRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.server.services.PrismGrpc.internal_static_InitUndefinedConstantsRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest.class, grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest.Builder.class);
+    }
+
+    public static final int MODULE_OBJECT_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object moduleObjectId_;
+    /**
+     * <code>string module_object_id = 1;</code>
+     * @return The moduleObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getModuleObjectId() {
+      java.lang.Object ref = moduleObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        moduleObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string module_object_id = 1;</code>
+     * @return The bytes for moduleObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getModuleObjectIdBytes() {
+      java.lang.Object ref = moduleObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        moduleObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PROPERTIES_FILE_OBJECT_ID_FIELD_NUMBER = 2;
+    private volatile java.lang.Object propertiesFileObjectId_;
+    /**
+     * <code>string properties_file_object_id = 2;</code>
+     * @return The propertiesFileObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getPropertiesFileObjectId() {
+      java.lang.Object ref = propertiesFileObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        propertiesFileObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string properties_file_object_id = 2;</code>
+     * @return The bytes for propertiesFileObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPropertiesFileObjectIdBytes() {
+      java.lang.Object ref = propertiesFileObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        propertiesFileObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PROPERTY_OBJECT_ID_FIELD_NUMBER = 3;
+    private volatile java.lang.Object propertyObjectId_;
+    /**
+     * <code>string property_object_id = 3;</code>
+     * @return The propertyObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getPropertyObjectId() {
+      java.lang.Object ref = propertyObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        propertyObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string property_object_id = 3;</code>
+     * @return The bytes for propertyObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPropertyObjectIdBytes() {
+      java.lang.Object ref = propertyObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        propertyObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int UNDEFINED_CONSTANTS_OBJECT_ID_FIELD_NUMBER = 4;
+    private volatile java.lang.Object undefinedConstantsObjectId_;
+    /**
+     * <code>string undefined_constants_object_id = 4;</code>
+     * @return The undefinedConstantsObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getUndefinedConstantsObjectId() {
+      java.lang.Object ref = undefinedConstantsObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        undefinedConstantsObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string undefined_constants_object_id = 4;</code>
+     * @return The bytes for undefinedConstantsObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getUndefinedConstantsObjectIdBytes() {
+      java.lang.Object ref = undefinedConstantsObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        undefinedConstantsObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getModuleObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, moduleObjectId_);
+      }
+      if (!getPropertiesFileObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, propertiesFileObjectId_);
+      }
+      if (!getPropertyObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, propertyObjectId_);
+      }
+      if (!getUndefinedConstantsObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, undefinedConstantsObjectId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getModuleObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, moduleObjectId_);
+      }
+      if (!getPropertiesFileObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, propertiesFileObjectId_);
+      }
+      if (!getPropertyObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, propertyObjectId_);
+      }
+      if (!getUndefinedConstantsObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, undefinedConstantsObjectId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest)) {
+        return super.equals(obj);
+      }
+      grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest other = (grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest) obj;
+
+      if (!getModuleObjectId()
+          .equals(other.getModuleObjectId())) return false;
+      if (!getPropertiesFileObjectId()
+          .equals(other.getPropertiesFileObjectId())) return false;
+      if (!getPropertyObjectId()
+          .equals(other.getPropertyObjectId())) return false;
+      if (!getUndefinedConstantsObjectId()
+          .equals(other.getUndefinedConstantsObjectId())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + MODULE_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getModuleObjectId().hashCode();
+      hash = (37 * hash) + PROPERTIES_FILE_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getPropertiesFileObjectId().hashCode();
+      hash = (37 * hash) + PROPERTY_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getPropertyObjectId().hashCode();
+      hash = (37 * hash) + UNDEFINED_CONSTANTS_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getUndefinedConstantsObjectId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code InitUndefinedConstantsRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:InitUndefinedConstantsRequest)
+        grpc.server.services.PrismGrpc.InitUndefinedConstantsRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.server.services.PrismGrpc.internal_static_InitUndefinedConstantsRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.server.services.PrismGrpc.internal_static_InitUndefinedConstantsRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest.class, grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest.Builder.class);
+      }
+
+      // Construct using grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        moduleObjectId_ = "";
+
+        propertiesFileObjectId_ = "";
+
+        propertyObjectId_ = "";
+
+        undefinedConstantsObjectId_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.server.services.PrismGrpc.internal_static_InitUndefinedConstantsRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest getDefaultInstanceForType() {
+        return grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest build() {
+        grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest buildPartial() {
+        grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest result = new grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest(this);
+        result.moduleObjectId_ = moduleObjectId_;
+        result.propertiesFileObjectId_ = propertiesFileObjectId_;
+        result.propertyObjectId_ = propertyObjectId_;
+        result.undefinedConstantsObjectId_ = undefinedConstantsObjectId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest) {
+          return mergeFrom((grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest other) {
+        if (other == grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest.getDefaultInstance()) return this;
+        if (!other.getModuleObjectId().isEmpty()) {
+          moduleObjectId_ = other.moduleObjectId_;
+          onChanged();
+        }
+        if (!other.getPropertiesFileObjectId().isEmpty()) {
+          propertiesFileObjectId_ = other.propertiesFileObjectId_;
+          onChanged();
+        }
+        if (!other.getPropertyObjectId().isEmpty()) {
+          propertyObjectId_ = other.propertyObjectId_;
+          onChanged();
+        }
+        if (!other.getUndefinedConstantsObjectId().isEmpty()) {
+          undefinedConstantsObjectId_ = other.undefinedConstantsObjectId_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object moduleObjectId_ = "";
+      /**
+       * <code>string module_object_id = 1;</code>
+       * @return The moduleObjectId.
+       */
+      public java.lang.String getModuleObjectId() {
+        java.lang.Object ref = moduleObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          moduleObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string module_object_id = 1;</code>
+       * @return The bytes for moduleObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getModuleObjectIdBytes() {
+        java.lang.Object ref = moduleObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          moduleObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string module_object_id = 1;</code>
+       * @param value The moduleObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModuleObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        moduleObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string module_object_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearModuleObjectId() {
+        
+        moduleObjectId_ = getDefaultInstance().getModuleObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string module_object_id = 1;</code>
+       * @param value The bytes for moduleObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModuleObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        moduleObjectId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object propertiesFileObjectId_ = "";
+      /**
+       * <code>string properties_file_object_id = 2;</code>
+       * @return The propertiesFileObjectId.
+       */
+      public java.lang.String getPropertiesFileObjectId() {
+        java.lang.Object ref = propertiesFileObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          propertiesFileObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string properties_file_object_id = 2;</code>
+       * @return The bytes for propertiesFileObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getPropertiesFileObjectIdBytes() {
+        java.lang.Object ref = propertiesFileObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          propertiesFileObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string properties_file_object_id = 2;</code>
+       * @param value The propertiesFileObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPropertiesFileObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        propertiesFileObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string properties_file_object_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPropertiesFileObjectId() {
+        
+        propertiesFileObjectId_ = getDefaultInstance().getPropertiesFileObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string properties_file_object_id = 2;</code>
+       * @param value The bytes for propertiesFileObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPropertiesFileObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        propertiesFileObjectId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object propertyObjectId_ = "";
+      /**
+       * <code>string property_object_id = 3;</code>
+       * @return The propertyObjectId.
+       */
+      public java.lang.String getPropertyObjectId() {
+        java.lang.Object ref = propertyObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          propertyObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string property_object_id = 3;</code>
+       * @return The bytes for propertyObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getPropertyObjectIdBytes() {
+        java.lang.Object ref = propertyObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          propertyObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string property_object_id = 3;</code>
+       * @param value The propertyObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPropertyObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        propertyObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string property_object_id = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPropertyObjectId() {
+        
+        propertyObjectId_ = getDefaultInstance().getPropertyObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string property_object_id = 3;</code>
+       * @param value The bytes for propertyObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPropertyObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        propertyObjectId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object undefinedConstantsObjectId_ = "";
+      /**
+       * <code>string undefined_constants_object_id = 4;</code>
+       * @return The undefinedConstantsObjectId.
+       */
+      public java.lang.String getUndefinedConstantsObjectId() {
+        java.lang.Object ref = undefinedConstantsObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          undefinedConstantsObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string undefined_constants_object_id = 4;</code>
+       * @return The bytes for undefinedConstantsObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getUndefinedConstantsObjectIdBytes() {
+        java.lang.Object ref = undefinedConstantsObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          undefinedConstantsObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string undefined_constants_object_id = 4;</code>
+       * @param value The undefinedConstantsObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUndefinedConstantsObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        undefinedConstantsObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string undefined_constants_object_id = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUndefinedConstantsObjectId() {
+        
+        undefinedConstantsObjectId_ = getDefaultInstance().getUndefinedConstantsObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string undefined_constants_object_id = 4;</code>
+       * @param value The bytes for undefinedConstantsObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUndefinedConstantsObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        undefinedConstantsObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:InitUndefinedConstantsRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:InitUndefinedConstantsRequest)
+    private static final grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest();
+    }
+
+    public static grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<InitUndefinedConstantsRequest>
+        PARSER = new com.google.protobuf.AbstractParser<InitUndefinedConstantsRequest>() {
+      @java.lang.Override
+      public InitUndefinedConstantsRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InitUndefinedConstantsRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<InitUndefinedConstantsRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InitUndefinedConstantsRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.server.services.PrismGrpc.InitUndefinedConstantsRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface InitValuesRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:InitValuesRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string values_object_id = 1;</code>
+     * @return The valuesObjectId.
+     */
+    java.lang.String getValuesObjectId();
+    /**
+     * <code>string values_object_id = 1;</code>
+     * @return The bytes for valuesObjectId.
+     */
+    com.google.protobuf.ByteString
+        getValuesObjectIdBytes();
+  }
+  /**
+   * Protobuf type {@code InitValuesRequest}
+   */
+  public static final class InitValuesRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:InitValuesRequest)
+      InitValuesRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use InitValuesRequest.newBuilder() to construct.
+    private InitValuesRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private InitValuesRequest() {
+      valuesObjectId_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InitValuesRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private InitValuesRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              valuesObjectId_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.server.services.PrismGrpc.internal_static_InitValuesRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.server.services.PrismGrpc.internal_static_InitValuesRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.server.services.PrismGrpc.InitValuesRequest.class, grpc.server.services.PrismGrpc.InitValuesRequest.Builder.class);
+    }
+
+    public static final int VALUES_OBJECT_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object valuesObjectId_;
+    /**
+     * <code>string values_object_id = 1;</code>
+     * @return The valuesObjectId.
+     */
+    @java.lang.Override
+    public java.lang.String getValuesObjectId() {
+      java.lang.Object ref = valuesObjectId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        valuesObjectId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string values_object_id = 1;</code>
+     * @return The bytes for valuesObjectId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getValuesObjectIdBytes() {
+      java.lang.Object ref = valuesObjectId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        valuesObjectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getValuesObjectIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, valuesObjectId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getValuesObjectIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, valuesObjectId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.server.services.PrismGrpc.InitValuesRequest)) {
+        return super.equals(obj);
+      }
+      grpc.server.services.PrismGrpc.InitValuesRequest other = (grpc.server.services.PrismGrpc.InitValuesRequest) obj;
+
+      if (!getValuesObjectId()
+          .equals(other.getValuesObjectId())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + VALUES_OBJECT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getValuesObjectId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitValuesRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitValuesRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.InitValuesRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.server.services.PrismGrpc.InitValuesRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code InitValuesRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:InitValuesRequest)
+        grpc.server.services.PrismGrpc.InitValuesRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.server.services.PrismGrpc.internal_static_InitValuesRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.server.services.PrismGrpc.internal_static_InitValuesRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.server.services.PrismGrpc.InitValuesRequest.class, grpc.server.services.PrismGrpc.InitValuesRequest.Builder.class);
+      }
+
+      // Construct using grpc.server.services.PrismGrpc.InitValuesRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        valuesObjectId_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.server.services.PrismGrpc.internal_static_InitValuesRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitValuesRequest getDefaultInstanceForType() {
+        return grpc.server.services.PrismGrpc.InitValuesRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitValuesRequest build() {
+        grpc.server.services.PrismGrpc.InitValuesRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.InitValuesRequest buildPartial() {
+        grpc.server.services.PrismGrpc.InitValuesRequest result = new grpc.server.services.PrismGrpc.InitValuesRequest(this);
+        result.valuesObjectId_ = valuesObjectId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.server.services.PrismGrpc.InitValuesRequest) {
+          return mergeFrom((grpc.server.services.PrismGrpc.InitValuesRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.server.services.PrismGrpc.InitValuesRequest other) {
+        if (other == grpc.server.services.PrismGrpc.InitValuesRequest.getDefaultInstance()) return this;
+        if (!other.getValuesObjectId().isEmpty()) {
+          valuesObjectId_ = other.valuesObjectId_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.server.services.PrismGrpc.InitValuesRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.server.services.PrismGrpc.InitValuesRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object valuesObjectId_ = "";
+      /**
+       * <code>string values_object_id = 1;</code>
+       * @return The valuesObjectId.
+       */
+      public java.lang.String getValuesObjectId() {
+        java.lang.Object ref = valuesObjectId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          valuesObjectId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string values_object_id = 1;</code>
+       * @return The bytes for valuesObjectId.
+       */
+      public com.google.protobuf.ByteString
+          getValuesObjectIdBytes() {
+        java.lang.Object ref = valuesObjectId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          valuesObjectId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string values_object_id = 1;</code>
+       * @param value The valuesObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValuesObjectId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        valuesObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string values_object_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearValuesObjectId() {
+        
+        valuesObjectId_ = getDefaultInstance().getValuesObjectId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string values_object_id = 1;</code>
+       * @param value The bytes for valuesObjectId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValuesObjectIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        valuesObjectId_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:InitValuesRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:InitValuesRequest)
+    private static final grpc.server.services.PrismGrpc.InitValuesRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.InitValuesRequest();
+    }
+
+    public static grpc.server.services.PrismGrpc.InitValuesRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<InitValuesRequest>
+        PARSER = new com.google.protobuf.AbstractParser<InitValuesRequest>() {
+      @java.lang.Override
+      public InitValuesRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InitValuesRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<InitValuesRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InitValuesRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.server.services.PrismGrpc.InitValuesRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_UploadRequest_descriptor;
   private static final 
@@ -28777,11 +34004,6 @@ public final class PrismGrpc {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_DeleteObjectResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_InitUndefinedConstantsRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_InitUndefinedConstantsRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_InitUndefinedConstantsResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -28807,15 +34029,65 @@ public final class PrismGrpc {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_GetNumberPropertyIterationsResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_InitValuesRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_InitValuesRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_InitValuesResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_InitValuesResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_InitResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_InitResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_InitPrismLogRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_InitPrismLogRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_InitPrismRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_InitPrismRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_InitModulesFileRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_InitModulesFileRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_InitPrismDevNullLogRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_InitPrismDevNullLogRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_InitPrismFileLogRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_InitPrismFileLogRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_InitPropertiesFileRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_InitPropertiesFileRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_InitPropertyObjectRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_InitPropertyObjectRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_InitResultRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_InitResultRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_InitUndefinedConstantsRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_InitUndefinedConstantsRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_InitValuesRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_InitValuesRequest_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -28831,106 +34103,131 @@ public final class PrismGrpc {
       "\017PrismDevNullLog\"\034\n\014PrismFileLog\022\014\n\004type" +
       "\030\001 \001(\t\"c\n\010PrismLog\022(\n\014dev_null_log\030\001 \001(\013" +
       "2\020.PrismDevNullLogH\000\022!\n\010file_log\030\002 \001(\0132\r" +
-      ".PrismFileLogH\000B\n\n\010log_type\"D\n\021Initialis" +
-      "eRequest\022\027\n\017prism_object_id\030\001 \001(\t\022\026\n\003log" +
-      "\030\002 \001(\0132\t.PrismLog\"=\n\022InitialiseResponse\022" +
-      "\027\n\017prism_object_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t" +
-      "\"J\n\025LoadPRISMModelRequest\022\027\n\017prism_objec" +
-      "t_id\030\001 \001(\t\022\030\n\020module_object_id\030\002 \001(\t\"[\n\026" +
-      "LoadPRISMModelResponse\022\027\n\017prism_object_i" +
-      "d\030\001 \001(\t\022\030\n\020module_object_id\030\002 \001(\t\022\016\n\006sta" +
-      "tus\030\003 \001(\t\"\220\001\n\032ParsePropertiesFileRequest" +
-      "\022\027\n\017prism_object_id\030\001 \001(\t\022\030\n\020module_obje" +
-      "ct_id\030\002 \001(\t\022!\n\031properties_file_object_id" +
-      "\030\003 \001(\t\022\034\n\024properties_file_name\030\004 \001(\t\"Z\n\033" +
-      "ParsePropertiesFileResponse\022\027\n\017prism_obj" +
-      "ect_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\022\n\nproperti" +
-      "es\030\003 \001(\t\"\205\001\n\021ModelCheckRequest\022\027\n\017prism_" +
-      "object_id\030\001 \001(\t\022!\n\031properties_file_objec" +
-      "t_id\030\002 \001(\t\022\032\n\022property_object_id\030\003 \001(\t\022\030" +
-      "\n\020result_object_id\030\004 \001(\t\"4\n\022ModelCheckRe" +
-      "sponse\022\016\n\006result\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"L" +
-      "\n\030ParseAndLoadModelRequest\022\027\n\017prism_obje" +
-      "ct_id\030\001 \001(\t\022\027\n\017model_file_name\030\002 \001(\t\"A\n\026" +
-      "ParseAndLoadModelReply\022\027\n\017prism_object_i" +
-      "d\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\",\n\021ClosePrismReq" +
-      "uest\022\027\n\017prism_object_id\030\001 \001(\t\"=\n\022ClosePr" +
-      "ismResponse\022\027\n\017prism_object_id\030\001 \001(\t\022\016\n\006" +
-      "status\030\002 \001(\t\"c\n\025ParseModelFileRequest\022\027\n" +
-      "\017prism_object_id\030\001 \001(\t\022\030\n\020module_object_" +
-      "id\030\002 \001(\t\022\027\n\017model_file_name\030\003 \001(\t\"[\n\026Par" +
-      "seModelFileResponse\022\027\n\017prism_object_id\030\001" +
-      " \001(\t\022\030\n\020module_object_id\030\002 \001(\t\022\016\n\006status" +
-      "\030\003 \001(\t\"q\n\030GetPropertyObjectRequest\022!\n\031pr" +
-      "operties_file_object_id\030\001 \001(\t\022\032\n\022propert" +
-      "y_object_id\030\002 \001(\t\022\026\n\016property_index\030\003 \001(" +
-      "\005\"`\n\031GetPropertyObjectResponse\022!\n\031proper" +
-      "ties_file_object_id\030\001 \001(\t\022\016\n\006status\030\002 \001(" +
-      "\t\022\020\n\010property\030\003 \001(\t\"y\n&PropertiesFileFor" +
-      "wardMethodCallRequest\022!\n\031properties_file" +
-      "_object_id\030\001 \001(\t\022\016\n\006method\030\002 \001(\t\022\014\n\004args" +
-      "\030\003 \001(\t\022\016\n\006kwargs\030\004 \001(\t\"l\n\'PropertiesFile" +
-      "ForwardMethodCallResponse\022!\n\031properties_" +
-      "file_object_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\016\n\006" +
-      "result\030\003 \001(\t\"k\n*GetUndefinedConstantsUse" +
-      "dInPropertyRequest\022!\n\031properties_file_ob" +
-      "ject_id\030\001 \001(\t\022\032\n\022property_object_id\030\002 \001(" +
-      "\t\"P\n+GetUndefinedConstantsUsedInProperty" +
-      "Response\022\016\n\006status\030\001 \001(\t\022\021\n\tconstants\030\002 " +
-      "\003(\t\"N\n\017AddValueRequest\022\030\n\020values_object_" +
-      "id\030\001 \001(\t\022\022\n\nconst_name\030\002 \001(\t\022\r\n\005value\030\003 " +
-      "\001(\005\"2\n\020AddValueResponse\022\016\n\006result\030\001 \001(\t\022" +
-      "\016\n\006status\030\002 \001(\t\"_\n SetSomeUndefinedConst" +
-      "antsRequest\022!\n\031properties_file_object_id" +
-      "\030\001 \001(\t\022\030\n\020values_object_id\030\002 \001(\t\"3\n!SetS" +
-      "omeUndefinedConstantsResponse\022\016\n\006status\030" +
-      "\001 \001(\t\"(\n\023DeleteObjectRequest\022\021\n\tobject_i" +
-      "d\030\001 \001(\t\"&\n\024DeleteObjectResponse\022\016\n\006statu" +
-      "s\030\001 \001(\t\"\237\001\n\035InitUndefinedConstantsReques" +
-      "t\022\030\n\020module_object_id\030\001 \001(\t\022!\n\031propertie" +
-      "s_file_object_id\030\002 \001(\t\022\032\n\022property_objec" +
-      "t_id\030\003 \001(\t\022%\n\035undefined_constants_object" +
-      "_id\030\004 \001(\t\"0\n\036InitUndefinedConstantsRespo" +
-      "nse\022\016\n\006status\030\001 \001(\t\"X\n\035DefineUsingConstS" +
-      "witchRequest\022%\n\035undefined_constants_obje" +
-      "ct_id\030\001 \001(\t\022\020\n\010constant\030\002 \001(\t\"0\n\036DefineU" +
-      "singConstSwitchResponse\022\016\n\006status\030\001 \001(\t\"" +
-      "K\n\"GetNumberPropertyIterationsRequest\022%\n" +
-      "\035undefined_constants_object_id\030\001 \001(\t\"P\n#" +
-      "GetNumberPropertyIterationsResponse\022\016\n\006s" +
-      "tatus\030\001 \001(\t\022\031\n\021number_iterations\030\002 \001(\005\"-" +
-      "\n\021InitValuesRequest\022\030\n\020values_object_id\030" +
-      "\001 \001(\t\"$\n\022InitValuesResponse\022\016\n\006status\030\001 " +
-      "\001(\t2\344\010\n\021PrismProtoService\022=\n\014DeleteObjec" +
-      "t\022\024.DeleteObjectRequest\032\025.DeleteObjectRe" +
-      "sponse\"\000\022.\n\nUploadFile\022\016.UploadRequest\032\014" +
-      ".UploadReply\"\000(\001\0227\n\nInitialise\022\022.Initial" +
-      "iseRequest\032\023.InitialiseResponse\"\000\022C\n\016Par" +
-      "seModelFile\022\026.ParseModelFileRequest\032\027.Pa" +
-      "rseModelFileResponse\"\000\022C\n\016LoadPRISMModel" +
-      "\022\026.LoadPRISMModelRequest\032\027.LoadPRISMMode" +
-      "lResponse\"\000\022R\n\023ParsePropertiesFile\022\033.Par" +
-      "sePropertiesFileRequest\032\034.ParsePropertie" +
-      "sFileResponse\"\000\022L\n\021GetPropertyObject\022\031.G" +
-      "etPropertyObjectRequest\032\032.GetPropertyObj" +
-      "ectResponse\"\000\0227\n\nModelCheck\022\022.ModelCheck" +
-      "Request\032\023.ModelCheckResponse\"\000\022\202\001\n#GetUn" +
-      "definedConstantsUsedInProperty\022+.GetUnde" +
-      "finedConstantsUsedInPropertyRequest\032,.Ge" +
-      "tUndefinedConstantsUsedInPropertyRespons" +
-      "e\"\000\0221\n\010AddValue\022\020.AddValueRequest\032\021.AddV" +
-      "alueResponse\"\000\022d\n\031SetSomeUndefinedConsta" +
-      "nts\022!.SetSomeUndefinedConstantsRequest\032\"" +
-      ".SetSomeUndefinedConstantsResponse\"\000\022[\n\026" +
+      ".PrismFileLogH\000B\n\n\010log_type\",\n\021Initialis" +
+      "eRequest\022\027\n\017prism_object_id\030\001 \001(\t\"$\n\022Ini" +
+      "tialiseResponse\022\016\n\006status\030\002 \001(\t\"J\n\025LoadP" +
+      "RISMModelRequest\022\027\n\017prism_object_id\030\001 \001(" +
+      "\t\022\030\n\020module_object_id\030\002 \001(\t\"[\n\026LoadPRISM" +
+      "ModelResponse\022\027\n\017prism_object_id\030\001 \001(\t\022\030" +
+      "\n\020module_object_id\030\002 \001(\t\022\016\n\006status\030\003 \001(\t" +
+      "\"\220\001\n\032ParsePropertiesFileRequest\022\027\n\017prism" +
+      "_object_id\030\001 \001(\t\022\030\n\020module_object_id\030\002 \001" +
+      "(\t\022!\n\031properties_file_object_id\030\003 \001(\t\022\034\n" +
+      "\024properties_file_name\030\004 \001(\t\"Z\n\033ParseProp" +
+      "ertiesFileResponse\022\027\n\017prism_object_id\030\001 " +
+      "\001(\t\022\016\n\006status\030\002 \001(\t\022\022\n\nproperties\030\003 \001(\t\"" +
+      "\205\001\n\021ModelCheckRequest\022\027\n\017prism_object_id" +
+      "\030\001 \001(\t\022!\n\031properties_file_object_id\030\002 \001(" +
+      "\t\022\032\n\022property_object_id\030\003 \001(\t\022\030\n\020result_" +
+      "object_id\030\004 \001(\t\"4\n\022ModelCheckResponse\022\016\n" +
+      "\006result\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"L\n\030ParseAn" +
+      "dLoadModelRequest\022\027\n\017prism_object_id\030\001 \001" +
+      "(\t\022\027\n\017model_file_name\030\002 \001(\t\"A\n\026ParseAndL" +
+      "oadModelReply\022\027\n\017prism_object_id\030\001 \001(\t\022\016" +
+      "\n\006status\030\002 \001(\t\",\n\021ClosePrismRequest\022\027\n\017p" +
+      "rism_object_id\030\001 \001(\t\"=\n\022ClosePrismRespon" +
+      "se\022\027\n\017prism_object_id\030\001 \001(\t\022\016\n\006status\030\002 " +
+      "\001(\t\"c\n\025ParseModelFileRequest\022\027\n\017prism_ob" +
+      "ject_id\030\001 \001(\t\022\030\n\020module_object_id\030\002 \001(\t\022" +
+      "\027\n\017model_file_name\030\003 \001(\t\"[\n\026ParseModelFi" +
+      "leResponse\022\027\n\017prism_object_id\030\001 \001(\t\022\030\n\020m" +
+      "odule_object_id\030\002 \001(\t\022\016\n\006status\030\003 \001(\t\"q\n" +
+      "\030GetPropertyObjectRequest\022!\n\031properties_" +
+      "file_object_id\030\001 \001(\t\022\032\n\022property_object_" +
+      "id\030\002 \001(\t\022\026\n\016property_index\030\003 \001(\005\"`\n\031GetP" +
+      "ropertyObjectResponse\022!\n\031properties_file" +
+      "_object_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\020\n\010prop" +
+      "erty\030\003 \001(\t\"y\n&PropertiesFileForwardMetho" +
+      "dCallRequest\022!\n\031properties_file_object_i" +
+      "d\030\001 \001(\t\022\016\n\006method\030\002 \001(\t\022\014\n\004args\030\003 \001(\t\022\016\n" +
+      "\006kwargs\030\004 \001(\t\"l\n\'PropertiesFileForwardMe" +
+      "thodCallResponse\022!\n\031properties_file_obje" +
+      "ct_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\016\n\006result\030\003 " +
+      "\001(\t\"k\n*GetUndefinedConstantsUsedInProper" +
+      "tyRequest\022!\n\031properties_file_object_id\030\001" +
+      " \001(\t\022\032\n\022property_object_id\030\002 \001(\t\"P\n+GetU" +
+      "ndefinedConstantsUsedInPropertyResponse\022" +
+      "\016\n\006status\030\001 \001(\t\022\021\n\tconstants\030\002 \003(\t\"N\n\017Ad" +
+      "dValueRequest\022\030\n\020values_object_id\030\001 \001(\t\022" +
+      "\022\n\nconst_name\030\002 \001(\t\022\r\n\005value\030\003 \001(\005\"2\n\020Ad" +
+      "dValueResponse\022\016\n\006result\030\001 \001(\t\022\016\n\006status" +
+      "\030\002 \001(\t\"_\n SetSomeUndefinedConstantsReque" +
+      "st\022!\n\031properties_file_object_id\030\001 \001(\t\022\030\n" +
+      "\020values_object_id\030\002 \001(\t\"3\n!SetSomeUndefi" +
+      "nedConstantsResponse\022\016\n\006status\030\001 \001(\t\"(\n\023" +
+      "DeleteObjectRequest\022\021\n\tobject_id\030\001 \001(\t\"&" +
+      "\n\024DeleteObjectResponse\022\016\n\006status\030\001 \001(\t\"0" +
+      "\n\036InitUndefinedConstantsResponse\022\016\n\006stat" +
+      "us\030\001 \001(\t\"X\n\035DefineUsingConstSwitchReques" +
+      "t\022%\n\035undefined_constants_object_id\030\001 \001(\t" +
+      "\022\020\n\010constant\030\002 \001(\t\"0\n\036DefineUsingConstSw" +
+      "itchResponse\022\016\n\006status\030\001 \001(\t\"K\n\"GetNumbe" +
+      "rPropertyIterationsRequest\022%\n\035undefined_" +
+      "constants_object_id\030\001 \001(\t\"P\n#GetNumberPr" +
+      "opertyIterationsResponse\022\016\n\006status\030\001 \001(\t" +
+      "\022\031\n\021number_iterations\030\002 \001(\005\"$\n\022InitValue" +
+      "sResponse\022\016\n\006status\030\001 \001(\t\"\036\n\014InitRespons" +
+      "e\022\016\n\006status\030\001 \001(\t\"@\n\023InitPrismLogRequest" +
+      "\022\033\n\023prism_log_object_id\030\001 \001(\t\022\014\n\004type\030\002 " +
+      "\001(\t\"G\n\020InitPrismRequest\022\027\n\017prism_object_" +
+      "id\030\001 \001(\t\022\032\n\022main_log_object_id\030\002 \001(\t\"8\n\026" +
+      "InitModulesFileRequest\022\036\n\026modules_file_o" +
+      "bject_id\030\001 \001(\t\"8\n\032InitPrismDevNullLogReq" +
+      "uest\022\032\n\022main_log_object_id\030\001 \001(\t\"J\n\027Init" +
+      "PrismFileLogRequest\022\032\n\022main_log_object_i" +
+      "d\030\001 \001(\t\022\023\n\013output_type\030\002 \001(\t\">\n\031InitProp" +
+      "ertiesFileRequest\022!\n\031properties_file_obj" +
+      "ect_id\030\001 \001(\t\">\n\031InitPropertyObjectReques" +
+      "t\022!\n\031property_object_object_id\030\001 \001(\t\"-\n\021" +
+      "InitResultRequest\022\030\n\020result_object_id\030\001 " +
+      "\001(\t\"\237\001\n\035InitUndefinedConstantsRequest\022\030\n" +
+      "\020module_object_id\030\001 \001(\t\022!\n\031properties_fi" +
+      "le_object_id\030\002 \001(\t\022\032\n\022property_object_id" +
+      "\030\003 \001(\t\022%\n\035undefined_constants_object_id\030" +
+      "\004 \001(\t\"-\n\021InitValuesRequest\022\030\n\020values_obj" +
+      "ect_id\030\001 \001(\t2\347\014\n\021PrismProtoService\0225\n\014In" +
+      "itPrismLog\022\024.InitPrismLogRequest\032\r.InitR" +
+      "esponse\"\000\022;\n\017InitModulesFile\022\027.InitModul" +
+      "esFileRequest\032\r.InitResponse\"\000\022/\n\tInitPr" +
+      "ism\022\021.InitPrismRequest\032\r.InitResponse\"\000\022" +
+      "C\n\023InitPrismDevNullLog\022\033.InitPrismDevNul" +
+      "lLogRequest\032\r.InitResponse\"\000\022=\n\020InitPris" +
+      "mFileLog\022\030.InitPrismFileLogRequest\032\r.Ini" +
+      "tResponse\"\000\022A\n\022InitPropertiesFile\022\032.Init" +
+      "PropertiesFileRequest\032\r.InitResponse\"\000\022A" +
+      "\n\022InitPropertyObject\022\032.InitPropertyObjec" +
+      "tRequest\032\r.InitResponse\"\000\0221\n\nInitResult\022" +
+      "\022.InitResultRequest\032\r.InitResponse\"\000\022I\n\026" +
       "InitUndefinedConstants\022\036.InitUndefinedCo" +
-      "nstantsRequest\032\037.InitUndefinedConstantsR" +
-      "esponse\"\000\022[\n\026DefineUsingConstSwitch\022\036.De" +
-      "fineUsingConstSwitchRequest\032\037.DefineUsin" +
-      "gConstSwitchResponse\"\000\022j\n\033GetNumberPrope" +
-      "rtyIterations\022#.GetNumberPropertyIterati" +
-      "onsRequest\032$.GetNumberPropertyIterations" +
-      "Response\"\000B\026\n\024grpc.server.servicesb\006prot" +
-      "o3"
+      "nstantsRequest\032\r.InitResponse\"\000\0221\n\nInitV" +
+      "alues\022\022.InitValuesRequest\032\r.InitResponse" +
+      "\"\000\022=\n\014DeleteObject\022\024.DeleteObjectRequest" +
+      "\032\025.DeleteObjectResponse\"\000\022.\n\nUploadFile\022" +
+      "\016.UploadRequest\032\014.UploadReply\"\000(\001\0227\n\nIni" +
+      "tialise\022\022.InitialiseRequest\032\023.Initialise" +
+      "Response\"\000\022C\n\016ParseModelFile\022\026.ParseMode" +
+      "lFileRequest\032\027.ParseModelFileResponse\"\000\022" +
+      "C\n\016LoadPRISMModel\022\026.LoadPRISMModelReques" +
+      "t\032\027.LoadPRISMModelResponse\"\000\022R\n\023ParsePro" +
+      "pertiesFile\022\033.ParsePropertiesFileRequest" +
+      "\032\034.ParsePropertiesFileResponse\"\000\022L\n\021GetP" +
+      "ropertyObject\022\031.GetPropertyObjectRequest" +
+      "\032\032.GetPropertyObjectResponse\"\000\0227\n\nModelC" +
+      "heck\022\022.ModelCheckRequest\032\023.ModelCheckRes" +
+      "ponse\"\000\022\202\001\n#GetUndefinedConstantsUsedInP" +
+      "roperty\022+.GetUndefinedConstantsUsedInPro" +
+      "pertyRequest\032,.GetUndefinedConstantsUsed" +
+      "InPropertyResponse\"\000\0221\n\010AddValue\022\020.AddVa" +
+      "lueRequest\032\021.AddValueResponse\"\000\022d\n\031SetSo" +
+      "meUndefinedConstants\022!.SetSomeUndefinedC" +
+      "onstantsRequest\032\".SetSomeUndefinedConsta" +
+      "ntsResponse\"\000\022[\n\026DefineUsingConstSwitch\022" +
+      "\036.DefineUsingConstSwitchRequest\032\037.Define" +
+      "UsingConstSwitchResponse\"\000\022j\n\033GetNumberP" +
+      "ropertyIterations\022#.GetNumberPropertyIte" +
+      "rationsRequest\032$.GetNumberPropertyIterat" +
+      "ionsResponse\"\000B\026\n\024grpc.server.servicesb\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -28971,13 +34268,13 @@ public final class PrismGrpc {
     internal_static_InitialiseRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitialiseRequest_descriptor,
-        new java.lang.String[] { "PrismObjectId", "Log", });
+        new java.lang.String[] { "PrismObjectId", });
     internal_static_InitialiseResponse_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_InitialiseResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitialiseResponse_descriptor,
-        new java.lang.String[] { "PrismObjectId", "Status", });
+        new java.lang.String[] { "Status", });
     internal_static_LoadPRISMModelRequest_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_LoadPRISMModelRequest_fieldAccessorTable = new
@@ -29122,54 +34419,108 @@ public final class PrismGrpc {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DeleteObjectResponse_descriptor,
         new java.lang.String[] { "Status", });
-    internal_static_InitUndefinedConstantsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(31);
-    internal_static_InitUndefinedConstantsRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_InitUndefinedConstantsRequest_descriptor,
-        new java.lang.String[] { "ModuleObjectId", "PropertiesFileObjectId", "PropertyObjectId", "UndefinedConstantsObjectId", });
     internal_static_InitUndefinedConstantsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(32);
+      getDescriptor().getMessageTypes().get(31);
     internal_static_InitUndefinedConstantsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitUndefinedConstantsResponse_descriptor,
         new java.lang.String[] { "Status", });
     internal_static_DefineUsingConstSwitchRequest_descriptor =
-      getDescriptor().getMessageTypes().get(33);
+      getDescriptor().getMessageTypes().get(32);
     internal_static_DefineUsingConstSwitchRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DefineUsingConstSwitchRequest_descriptor,
         new java.lang.String[] { "UndefinedConstantsObjectId", "Constant", });
     internal_static_DefineUsingConstSwitchResponse_descriptor =
-      getDescriptor().getMessageTypes().get(34);
+      getDescriptor().getMessageTypes().get(33);
     internal_static_DefineUsingConstSwitchResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DefineUsingConstSwitchResponse_descriptor,
         new java.lang.String[] { "Status", });
     internal_static_GetNumberPropertyIterationsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(35);
+      getDescriptor().getMessageTypes().get(34);
     internal_static_GetNumberPropertyIterationsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetNumberPropertyIterationsRequest_descriptor,
         new java.lang.String[] { "UndefinedConstantsObjectId", });
     internal_static_GetNumberPropertyIterationsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(36);
+      getDescriptor().getMessageTypes().get(35);
     internal_static_GetNumberPropertyIterationsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetNumberPropertyIterationsResponse_descriptor,
         new java.lang.String[] { "Status", "NumberIterations", });
-    internal_static_InitValuesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(37);
-    internal_static_InitValuesRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_InitValuesRequest_descriptor,
-        new java.lang.String[] { "ValuesObjectId", });
     internal_static_InitValuesResponse_descriptor =
-      getDescriptor().getMessageTypes().get(38);
+      getDescriptor().getMessageTypes().get(36);
     internal_static_InitValuesResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitValuesResponse_descriptor,
         new java.lang.String[] { "Status", });
+    internal_static_InitResponse_descriptor =
+      getDescriptor().getMessageTypes().get(37);
+    internal_static_InitResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_InitResponse_descriptor,
+        new java.lang.String[] { "Status", });
+    internal_static_InitPrismLogRequest_descriptor =
+      getDescriptor().getMessageTypes().get(38);
+    internal_static_InitPrismLogRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_InitPrismLogRequest_descriptor,
+        new java.lang.String[] { "PrismLogObjectId", "Type", });
+    internal_static_InitPrismRequest_descriptor =
+      getDescriptor().getMessageTypes().get(39);
+    internal_static_InitPrismRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_InitPrismRequest_descriptor,
+        new java.lang.String[] { "PrismObjectId", "MainLogObjectId", });
+    internal_static_InitModulesFileRequest_descriptor =
+      getDescriptor().getMessageTypes().get(40);
+    internal_static_InitModulesFileRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_InitModulesFileRequest_descriptor,
+        new java.lang.String[] { "ModulesFileObjectId", });
+    internal_static_InitPrismDevNullLogRequest_descriptor =
+      getDescriptor().getMessageTypes().get(41);
+    internal_static_InitPrismDevNullLogRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_InitPrismDevNullLogRequest_descriptor,
+        new java.lang.String[] { "MainLogObjectId", });
+    internal_static_InitPrismFileLogRequest_descriptor =
+      getDescriptor().getMessageTypes().get(42);
+    internal_static_InitPrismFileLogRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_InitPrismFileLogRequest_descriptor,
+        new java.lang.String[] { "MainLogObjectId", "OutputType", });
+    internal_static_InitPropertiesFileRequest_descriptor =
+      getDescriptor().getMessageTypes().get(43);
+    internal_static_InitPropertiesFileRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_InitPropertiesFileRequest_descriptor,
+        new java.lang.String[] { "PropertiesFileObjectId", });
+    internal_static_InitPropertyObjectRequest_descriptor =
+      getDescriptor().getMessageTypes().get(44);
+    internal_static_InitPropertyObjectRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_InitPropertyObjectRequest_descriptor,
+        new java.lang.String[] { "PropertyObjectObjectId", });
+    internal_static_InitResultRequest_descriptor =
+      getDescriptor().getMessageTypes().get(45);
+    internal_static_InitResultRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_InitResultRequest_descriptor,
+        new java.lang.String[] { "ResultObjectId", });
+    internal_static_InitUndefinedConstantsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(46);
+    internal_static_InitUndefinedConstantsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_InitUndefinedConstantsRequest_descriptor,
+        new java.lang.String[] { "ModuleObjectId", "PropertiesFileObjectId", "PropertyObjectId", "UndefinedConstantsObjectId", });
+    internal_static_InitValuesRequest_descriptor =
+      getDescriptor().getMessageTypes().get(47);
+    internal_static_InitValuesRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_InitValuesRequest_descriptor,
+        new java.lang.String[] { "ValuesObjectId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
