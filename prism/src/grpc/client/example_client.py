@@ -68,5 +68,11 @@ for i in range(n):
 
 # Model check a property specified as a string
 properties_file = prism.parse_properties_string(modules_file, "P=?[F<=5 s=7]")
+print(properties_file.get_property_object(0))
+result = prism.model_check(properties_file, properties_file.get_property_object(0))
+print(result.get_result())
 
-
+# Model check an additional property specified as a string
+additional_property = "R=?[F s=7]"
+result = prism.model_check(additional_property)
+print(result.get_result())

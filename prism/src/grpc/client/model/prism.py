@@ -93,21 +93,53 @@ class Prism(PrismPyBaseModel):
 
         return properties_file
 
-    def model_check(self, properties_file, property_object):
+    def model_check(self, *args):
+        # hack to allow for overloading
+        if len(args) == 1:
+            return self.__model_check_properties_string(args[0])
+        elif len(args) == 2:
+            return self.__model_check_prop_file_prop_obj(args[0], args[1])
+        else:
+            self.logger.error("Invalid number of arguments passed to model_check method.")
+            raise PrismPyException("Invalid number of arguments passed to model_check method.")
+
+    def __model_check_prop_file_prop_obj(self, properties_file, property_object):
         self.logger.info("Model checking property")
 
         # Create ResultFile object to populate and return
         result = Result()
 
         # Create a ModelCheckRequest
-        request = prismGrpc_pb2.ModelCheckRequest(
+        request = prismGrpc_pb2.ModelCheckPropFilePropObjRequest(
             prism_object_id=self.object_id,
             properties_file_object_id=properties_file.object_id,
             property_object_id=property_object.object_id,
             result_object_id=result.object_id)
 
         # Make the RPC call to ModelCheck
-        response = self.stub.ModelCheck(request)
+        response = self.stub.ModelCheckPropFilePropObj(request)
+
+        # Populate the result object
+        result.result = response.result
+
+        self.logger.info("Received message {}.".format(response.status))
+
+        return result
+
+    def __model_check_properties_string(self, properties_string):
+        self.logger.info("Model checking property")
+
+        # Create ResultFile object to populate and return
+        result = Result()
+
+        # Create a ModelCheckRequest
+        request = prismGrpc_pb2.ModelCheckPropStringRequest(
+            prism_object_id=self.object_id,
+            properties_string=properties_string,
+            result_object_id=result.object_id)
+
+        # Make the RPC call to ModelCheck
+        response = self.stub.ModelCheckPropString(request)
 
         # Populate the result object
         result.result = response.result

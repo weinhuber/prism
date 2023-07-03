@@ -217,7 +217,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
 
 
     @Override
-    public void modelCheck(PrismGrpc.ModelCheckRequest request, StreamObserver<PrismGrpc.ModelCheckResponse> responseObserver) {
+    public void modelCheckPropFilePropObj(PrismGrpc.ModelCheckPropFilePropObjRequest request, StreamObserver<PrismGrpc.ModelCheckPropFilePropObjResponse> responseObserver) {
         logger.info("Received modelCheck request");
 
         // get prism object id from request
@@ -258,7 +258,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         }
 
         // build response
-        PrismGrpc.ModelCheckResponse response = PrismGrpc.ModelCheckResponse.newBuilder()
+        PrismGrpc.ModelCheckPropFilePropObjResponse response = PrismGrpc.ModelCheckPropFilePropObjResponse.newBuilder()
                 .setStatus(status)
                 .setResult(result)
                 .build();
@@ -271,6 +271,57 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         logger.info("modelCheck request completed with status: " + status);
 
 
+    }
+
+
+    @Override
+    public void modelCheckPropString(PrismGrpc.ModelCheckPropStringRequest request, StreamObserver<PrismGrpc.ModelCheckPropStringResponse> responseObserver) {
+        logger.info("Received modelCheckPropString request");
+
+        // get prism object id from request
+        String prismObjectId = request.getPrismObjectId();
+
+        // get properties string
+        String propertiesString = request.getPropertiesString();
+
+        // get result object id from request
+        String resultId = request.getResultObjectId();
+
+        String status = "Error";
+        String result = "";
+
+        // model check
+        try{
+            // check if result object already exists
+            if(!prismObjectMap.containsKey(resultId)){
+                prismObjectMap.put(resultId, new Result());
+            }
+            // retrieve prism objects
+            Prism prism = (Prism) prismObjectMap.get(prismObjectId);
+            Result modelCheckResult = (Result) prismObjectMap.get(resultId);
+
+            modelCheckResult = prism.modelCheck(propertiesString);
+            result = modelCheckResult.getResultString();
+            prismObjectMap.put(resultId, modelCheckResult);
+            status = "Success";
+        } catch (PrismException | IllegalArgumentException e) {
+            logger.warning("Error loading prism properties: " + e.getMessage());
+            status += " : " + e.getMessage();
+        }
+
+        // build response
+        PrismGrpc.ModelCheckPropStringResponse response = PrismGrpc.ModelCheckPropStringResponse.newBuilder()
+                .setStatus(status)
+                .setResult(result)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+
+        logger.info("modelCheckPropString request completed with status: " + status);
     }
 
     @Override

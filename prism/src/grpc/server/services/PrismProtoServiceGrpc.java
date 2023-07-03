@@ -482,35 +482,35 @@ public final class PrismProtoServiceGrpc {
     return getGetPropertyObjectMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ModelCheckRequest,
-      grpc.server.services.PrismGrpc.ModelCheckResponse> getModelCheckMethod;
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjRequest,
+      grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjResponse> getModelCheckPropFilePropObjMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "ModelCheck",
-      requestType = grpc.server.services.PrismGrpc.ModelCheckRequest.class,
-      responseType = grpc.server.services.PrismGrpc.ModelCheckResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "ModelCheckPropFilePropObj",
+      requestType = grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjRequest.class,
+      responseType = grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ModelCheckRequest,
-      grpc.server.services.PrismGrpc.ModelCheckResponse> getModelCheckMethod() {
-    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ModelCheckRequest, grpc.server.services.PrismGrpc.ModelCheckResponse> getModelCheckMethod;
-    if ((getModelCheckMethod = PrismProtoServiceGrpc.getModelCheckMethod) == null) {
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjRequest,
+      grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjResponse> getModelCheckPropFilePropObjMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjRequest, grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjResponse> getModelCheckPropFilePropObjMethod;
+    if ((getModelCheckPropFilePropObjMethod = PrismProtoServiceGrpc.getModelCheckPropFilePropObjMethod) == null) {
       synchronized (PrismProtoServiceGrpc.class) {
-        if ((getModelCheckMethod = PrismProtoServiceGrpc.getModelCheckMethod) == null) {
-          PrismProtoServiceGrpc.getModelCheckMethod = getModelCheckMethod =
-              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.ModelCheckRequest, grpc.server.services.PrismGrpc.ModelCheckResponse>newBuilder()
+        if ((getModelCheckPropFilePropObjMethod = PrismProtoServiceGrpc.getModelCheckPropFilePropObjMethod) == null) {
+          PrismProtoServiceGrpc.getModelCheckPropFilePropObjMethod = getModelCheckPropFilePropObjMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjRequest, grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ModelCheck"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ModelCheckPropFilePropObj"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.server.services.PrismGrpc.ModelCheckRequest.getDefaultInstance()))
+                  grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.server.services.PrismGrpc.ModelCheckResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("ModelCheck"))
+                  grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("ModelCheckPropFilePropObj"))
               .build();
         }
       }
     }
-    return getModelCheckMethod;
+    return getModelCheckPropFilePropObjMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.GetUndefinedConstantsUsedInPropertyRequest,
@@ -761,6 +761,37 @@ public final class PrismProtoServiceGrpc {
     return getParsePropertiesStringMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ModelCheckPropStringRequest,
+      grpc.server.services.PrismGrpc.ModelCheckPropStringResponse> getModelCheckPropStringMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ModelCheckPropString",
+      requestType = grpc.server.services.PrismGrpc.ModelCheckPropStringRequest.class,
+      responseType = grpc.server.services.PrismGrpc.ModelCheckPropStringResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ModelCheckPropStringRequest,
+      grpc.server.services.PrismGrpc.ModelCheckPropStringResponse> getModelCheckPropStringMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ModelCheckPropStringRequest, grpc.server.services.PrismGrpc.ModelCheckPropStringResponse> getModelCheckPropStringMethod;
+    if ((getModelCheckPropStringMethod = PrismProtoServiceGrpc.getModelCheckPropStringMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getModelCheckPropStringMethod = PrismProtoServiceGrpc.getModelCheckPropStringMethod) == null) {
+          PrismProtoServiceGrpc.getModelCheckPropStringMethod = getModelCheckPropStringMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.ModelCheckPropStringRequest, grpc.server.services.PrismGrpc.ModelCheckPropStringResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ModelCheckPropString"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.ModelCheckPropStringRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.ModelCheckPropStringResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("ModelCheckPropString"))
+              .build();
+        }
+      }
+    }
+    return getModelCheckPropStringMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -957,7 +988,7 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * Get propety object from properties file
+     * Get property object from properties file
      * </pre>
      */
     public void getPropertyObject(grpc.server.services.PrismGrpc.GetPropertyObjectRequest request,
@@ -967,12 +998,12 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * Model check
+     * Model check properties file using property object
      * </pre>
      */
-    public void modelCheck(grpc.server.services.PrismGrpc.ModelCheckRequest request,
-        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ModelCheckResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getModelCheckMethod(), responseObserver);
+    public void modelCheckPropFilePropObj(grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getModelCheckPropFilePropObjMethod(), responseObserver);
     }
 
     /**
@@ -1053,6 +1084,16 @@ public final class PrismProtoServiceGrpc {
     public void parsePropertiesString(grpc.server.services.PrismGrpc.ParsePropertiesStringRequest request,
         io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ParsePropertiesStringResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getParsePropertiesStringMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * model check properties string
+     * </pre>
+     */
+    public void modelCheckPropString(grpc.server.services.PrismGrpc.ModelCheckPropStringRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ModelCheckPropStringResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getModelCheckPropStringMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -1163,12 +1204,12 @@ public final class PrismProtoServiceGrpc {
                 grpc.server.services.PrismGrpc.GetPropertyObjectResponse>(
                   this, METHODID_GET_PROPERTY_OBJECT)))
           .addMethod(
-            getModelCheckMethod(),
+            getModelCheckPropFilePropObjMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                grpc.server.services.PrismGrpc.ModelCheckRequest,
-                grpc.server.services.PrismGrpc.ModelCheckResponse>(
-                  this, METHODID_MODEL_CHECK)))
+                grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjRequest,
+                grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjResponse>(
+                  this, METHODID_MODEL_CHECK_PROP_FILE_PROP_OBJ)))
           .addMethod(
             getGetUndefinedConstantsUsedInPropertyMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -1225,6 +1266,13 @@ public final class PrismProtoServiceGrpc {
                 grpc.server.services.PrismGrpc.ParsePropertiesStringRequest,
                 grpc.server.services.PrismGrpc.ParsePropertiesStringResponse>(
                   this, METHODID_PARSE_PROPERTIES_STRING)))
+          .addMethod(
+            getModelCheckPropStringMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.ModelCheckPropStringRequest,
+                grpc.server.services.PrismGrpc.ModelCheckPropStringResponse>(
+                  this, METHODID_MODEL_CHECK_PROP_STRING)))
           .build();
     }
   }
@@ -1405,7 +1453,7 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * Get propety object from properties file
+     * Get property object from properties file
      * </pre>
      */
     public void getPropertyObject(grpc.server.services.PrismGrpc.GetPropertyObjectRequest request,
@@ -1416,13 +1464,13 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * Model check
+     * Model check properties file using property object
      * </pre>
      */
-    public void modelCheck(grpc.server.services.PrismGrpc.ModelCheckRequest request,
-        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ModelCheckResponse> responseObserver) {
+    public void modelCheckPropFilePropObj(grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getModelCheckMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getModelCheckPropFilePropObjMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -1511,6 +1559,17 @@ public final class PrismProtoServiceGrpc {
         io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ParsePropertiesStringResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getParsePropertiesStringMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * model check properties string
+     * </pre>
+     */
+    public void modelCheckPropString(grpc.server.services.PrismGrpc.ModelCheckPropStringRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ModelCheckPropStringResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getModelCheckPropStringMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -1666,7 +1725,7 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * Get propety object from properties file
+     * Get property object from properties file
      * </pre>
      */
     public grpc.server.services.PrismGrpc.GetPropertyObjectResponse getPropertyObject(grpc.server.services.PrismGrpc.GetPropertyObjectRequest request) {
@@ -1676,12 +1735,12 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * Model check
+     * Model check properties file using property object
      * </pre>
      */
-    public grpc.server.services.PrismGrpc.ModelCheckResponse modelCheck(grpc.server.services.PrismGrpc.ModelCheckRequest request) {
+    public grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjResponse modelCheckPropFilePropObj(grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getModelCheckMethod(), getCallOptions(), request);
+          getChannel(), getModelCheckPropFilePropObjMethod(), getCallOptions(), request);
     }
 
     /**
@@ -1762,6 +1821,16 @@ public final class PrismProtoServiceGrpc {
     public grpc.server.services.PrismGrpc.ParsePropertiesStringResponse parsePropertiesString(grpc.server.services.PrismGrpc.ParsePropertiesStringRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getParsePropertiesStringMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * model check properties string
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.ModelCheckPropStringResponse modelCheckPropString(grpc.server.services.PrismGrpc.ModelCheckPropStringRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getModelCheckPropStringMethod(), getCallOptions(), request);
     }
   }
 
@@ -1930,7 +1999,7 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * Get propety object from properties file
+     * Get property object from properties file
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.GetPropertyObjectResponse> getPropertyObject(
@@ -1941,13 +2010,13 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * Model check
+     * Model check properties file using property object
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.ModelCheckResponse> modelCheck(
-        grpc.server.services.PrismGrpc.ModelCheckRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjResponse> modelCheckPropFilePropObj(
+        grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getModelCheckMethod(), getCallOptions()), request);
+          getChannel().newCall(getModelCheckPropFilePropObjMethod(), getCallOptions()), request);
     }
 
     /**
@@ -2037,6 +2106,17 @@ public final class PrismProtoServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getParsePropertiesStringMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * model check properties string
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.ModelCheckPropStringResponse> modelCheckPropString(
+        grpc.server.services.PrismGrpc.ModelCheckPropStringRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getModelCheckPropStringMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_INIT_PRISM_LOG = 0;
@@ -2053,7 +2133,7 @@ public final class PrismProtoServiceGrpc {
   private static final int METHODID_LOAD_PRISMMODEL = 11;
   private static final int METHODID_PARSE_PROPERTIES_FILE = 12;
   private static final int METHODID_GET_PROPERTY_OBJECT = 13;
-  private static final int METHODID_MODEL_CHECK = 14;
+  private static final int METHODID_MODEL_CHECK_PROP_FILE_PROP_OBJ = 14;
   private static final int METHODID_GET_UNDEFINED_CONSTANTS_USED_IN_PROPERTY = 15;
   private static final int METHODID_ADD_VALUE = 16;
   private static final int METHODID_SET_SOME_UNDEFINED_CONSTANTS = 17;
@@ -2062,7 +2142,8 @@ public final class PrismProtoServiceGrpc {
   private static final int METHODID_GET_PFCONSTANT_VALUES = 20;
   private static final int METHODID_ITERATE_PROPERTY = 21;
   private static final int METHODID_PARSE_PROPERTIES_STRING = 22;
-  private static final int METHODID_UPLOAD_FILE = 23;
+  private static final int METHODID_MODEL_CHECK_PROP_STRING = 23;
+  private static final int METHODID_UPLOAD_FILE = 24;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -2137,9 +2218,9 @@ public final class PrismProtoServiceGrpc {
           serviceImpl.getPropertyObject((grpc.server.services.PrismGrpc.GetPropertyObjectRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.GetPropertyObjectResponse>) responseObserver);
           break;
-        case METHODID_MODEL_CHECK:
-          serviceImpl.modelCheck((grpc.server.services.PrismGrpc.ModelCheckRequest) request,
-              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ModelCheckResponse>) responseObserver);
+        case METHODID_MODEL_CHECK_PROP_FILE_PROP_OBJ:
+          serviceImpl.modelCheckPropFilePropObj((grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ModelCheckPropFilePropObjResponse>) responseObserver);
           break;
         case METHODID_GET_UNDEFINED_CONSTANTS_USED_IN_PROPERTY:
           serviceImpl.getUndefinedConstantsUsedInProperty((grpc.server.services.PrismGrpc.GetUndefinedConstantsUsedInPropertyRequest) request,
@@ -2172,6 +2253,10 @@ public final class PrismProtoServiceGrpc {
         case METHODID_PARSE_PROPERTIES_STRING:
           serviceImpl.parsePropertiesString((grpc.server.services.PrismGrpc.ParsePropertiesStringRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ParsePropertiesStringResponse>) responseObserver);
+          break;
+        case METHODID_MODEL_CHECK_PROP_STRING:
+          serviceImpl.modelCheckPropString((grpc.server.services.PrismGrpc.ModelCheckPropStringRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ModelCheckPropStringResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -2252,7 +2337,7 @@ public final class PrismProtoServiceGrpc {
               .addMethod(getLoadPRISMModelMethod())
               .addMethod(getParsePropertiesFileMethod())
               .addMethod(getGetPropertyObjectMethod())
-              .addMethod(getModelCheckMethod())
+              .addMethod(getModelCheckPropFilePropObjMethod())
               .addMethod(getGetUndefinedConstantsUsedInPropertyMethod())
               .addMethod(getAddValueMethod())
               .addMethod(getSetSomeUndefinedConstantsMethod())
@@ -2261,6 +2346,7 @@ public final class PrismProtoServiceGrpc {
               .addMethod(getGetPFConstantValuesMethod())
               .addMethod(getIteratePropertyMethod())
               .addMethod(getParsePropertiesStringMethod())
+              .addMethod(getModelCheckPropStringMethod())
               .build();
         }
       }

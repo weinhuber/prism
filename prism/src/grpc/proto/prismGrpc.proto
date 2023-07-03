@@ -65,26 +65,17 @@ message ParsePropertiesFileResponse {
 
 
 
-message ModelCheckRequest {
+message ModelCheckPropFilePropObjRequest {
   string prism_object_id = 1;
   string properties_file_object_id = 2;
   string property_object_id = 3;
   string result_object_id = 4;
 }
 
-message ModelCheckResponse {
+message ModelCheckPropFilePropObjResponse {
   string result = 1;
   string status = 2;
 }
-
-
-
-
-
-
-
-
-
 
 message ParseAndLoadModelRequest {
   string prism_object_id = 1;
@@ -291,6 +282,17 @@ message ParsePropertiesStringResponse {
   string status = 1;
 }
 
+message ModelCheckPropStringRequest {
+  string prism_object_id = 1;
+  string properties_string = 2;
+  string result_object_id = 3;
+}
+
+message ModelCheckPropStringResponse {
+  string status = 1;
+  string result = 2;
+}
+
 
 // Service Definitions
 service PrismProtoService {
@@ -327,10 +329,10 @@ service PrismProtoService {
   rpc LoadPRISMModel(LoadPRISMModelRequest) returns (LoadPRISMModelResponse) {}
   // Parse a properties file
   rpc ParsePropertiesFile(ParsePropertiesFileRequest) returns (ParsePropertiesFileResponse) {}
-  // Get propety object from properties file
+  // Get property object from properties file
   rpc GetPropertyObject(GetPropertyObjectRequest) returns (GetPropertyObjectResponse) {}
-  // Model check
-  rpc ModelCheck(ModelCheckRequest) returns (ModelCheckResponse) {}
+  // Model check properties file using property object
+  rpc ModelCheckPropFilePropObj(ModelCheckPropFilePropObjRequest) returns (ModelCheckPropFilePropObjResponse) {}
   // Get undefined constants used in property
   rpc GetUndefinedConstantsUsedInProperty(GetUndefinedConstantsUsedInPropertyRequest) returns (GetUndefinedConstantsUsedInPropertyResponse) {}
   // add values
@@ -347,4 +349,6 @@ service PrismProtoService {
   rpc IterateProperty(IteratePropertyRequest) returns (IteratePropertyResponse) {}
   // parse properties string
   rpc ParsePropertiesString(ParsePropertiesStringRequest) returns (ParsePropertiesStringResponse) {}
+  // model check properties string
+  rpc ModelCheckPropString(ModelCheckPropStringRequest) returns (ModelCheckPropStringResponse) {}
 }
