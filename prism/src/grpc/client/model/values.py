@@ -10,6 +10,7 @@ class Values(PrismPyBaseModel):
         super().__init__()
 
     def add_value(self, const_name, value):
+        self.logger.info("Add value {}.".format(value))
         request = prismGrpc_pb2.AddValueRequest(values_object_id=self.object_id,
                                                 const_name=const_name,
                                                 value=value)

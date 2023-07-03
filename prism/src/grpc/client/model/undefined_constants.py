@@ -32,3 +32,16 @@ class UndefinedConstants(PrismPyBaseModel):
         # Make the RPC call to DefineUsingConstSwitch
         response = self.stub.DefineUsingConstSwitch(request)
         self.logger.info("Received message {}.".format(response.status))
+
+    def get_number_property_iterations(self):
+        self.logger.info("Get number of property iterations.")
+
+        # create request
+        request = prismGrpc_pb2.GetNumberPropertyIterationsRequest(undefined_constants_object_id=self.object_id)
+
+        # Make the RPC call to GetNumberPropertyIterations
+        response = self.stub.GetNumberPropertyIterations(request)
+
+        self.logger.info("Received message {}.".format(response.status))
+
+        return response.number_iterations

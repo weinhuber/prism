@@ -48,37 +48,6 @@ public final class PrismProtoServiceGrpc {
     return getDeleteObjectMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest,
-      grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse> getPropertiesFileForwardMethodCallMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "PropertiesFileForwardMethodCall",
-      requestType = grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest.class,
-      responseType = grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest,
-      grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse> getPropertiesFileForwardMethodCallMethod() {
-    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest, grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse> getPropertiesFileForwardMethodCallMethod;
-    if ((getPropertiesFileForwardMethodCallMethod = PrismProtoServiceGrpc.getPropertiesFileForwardMethodCallMethod) == null) {
-      synchronized (PrismProtoServiceGrpc.class) {
-        if ((getPropertiesFileForwardMethodCallMethod = PrismProtoServiceGrpc.getPropertiesFileForwardMethodCallMethod) == null) {
-          PrismProtoServiceGrpc.getPropertiesFileForwardMethodCallMethod = getPropertiesFileForwardMethodCallMethod =
-              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest, grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "PropertiesFileForwardMethodCall"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("PropertiesFileForwardMethodCall"))
-              .build();
-        }
-      }
-    }
-    return getPropertiesFileForwardMethodCallMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.UploadRequest,
       grpc.server.services.PrismGrpc.UploadReply> getUploadFileMethod;
 
@@ -451,35 +420,35 @@ public final class PrismProtoServiceGrpc {
     return getDefineUsingConstSwitchMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ClosePrismRequest,
-      grpc.server.services.PrismGrpc.ClosePrismResponse> getClosePrismMethod;
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.GetNumberPropertyIterationsRequest,
+      grpc.server.services.PrismGrpc.GetNumberPropertyIterationsResponse> getGetNumberPropertyIterationsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "ClosePrism",
-      requestType = grpc.server.services.PrismGrpc.ClosePrismRequest.class,
-      responseType = grpc.server.services.PrismGrpc.ClosePrismResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "GetNumberPropertyIterations",
+      requestType = grpc.server.services.PrismGrpc.GetNumberPropertyIterationsRequest.class,
+      responseType = grpc.server.services.PrismGrpc.GetNumberPropertyIterationsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ClosePrismRequest,
-      grpc.server.services.PrismGrpc.ClosePrismResponse> getClosePrismMethod() {
-    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ClosePrismRequest, grpc.server.services.PrismGrpc.ClosePrismResponse> getClosePrismMethod;
-    if ((getClosePrismMethod = PrismProtoServiceGrpc.getClosePrismMethod) == null) {
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.GetNumberPropertyIterationsRequest,
+      grpc.server.services.PrismGrpc.GetNumberPropertyIterationsResponse> getGetNumberPropertyIterationsMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.GetNumberPropertyIterationsRequest, grpc.server.services.PrismGrpc.GetNumberPropertyIterationsResponse> getGetNumberPropertyIterationsMethod;
+    if ((getGetNumberPropertyIterationsMethod = PrismProtoServiceGrpc.getGetNumberPropertyIterationsMethod) == null) {
       synchronized (PrismProtoServiceGrpc.class) {
-        if ((getClosePrismMethod = PrismProtoServiceGrpc.getClosePrismMethod) == null) {
-          PrismProtoServiceGrpc.getClosePrismMethod = getClosePrismMethod =
-              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.ClosePrismRequest, grpc.server.services.PrismGrpc.ClosePrismResponse>newBuilder()
+        if ((getGetNumberPropertyIterationsMethod = PrismProtoServiceGrpc.getGetNumberPropertyIterationsMethod) == null) {
+          PrismProtoServiceGrpc.getGetNumberPropertyIterationsMethod = getGetNumberPropertyIterationsMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.GetNumberPropertyIterationsRequest, grpc.server.services.PrismGrpc.GetNumberPropertyIterationsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ClosePrism"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetNumberPropertyIterations"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.server.services.PrismGrpc.ClosePrismRequest.getDefaultInstance()))
+                  grpc.server.services.PrismGrpc.GetNumberPropertyIterationsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.server.services.PrismGrpc.ClosePrismResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("ClosePrism"))
+                  grpc.server.services.PrismGrpc.GetNumberPropertyIterationsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("GetNumberPropertyIterations"))
               .build();
         }
       }
     }
-    return getClosePrismMethod;
+    return getGetNumberPropertyIterationsMethod;
   }
 
   /**
@@ -541,16 +510,6 @@ public final class PrismProtoServiceGrpc {
     public void deleteObject(grpc.server.services.PrismGrpc.DeleteObjectRequest request,
         io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.DeleteObjectResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteObjectMethod(), responseObserver);
-    }
-
-    /**
-     * <pre>
-     * generic forwarding of method call
-     * </pre>
-     */
-    public void propertiesFileForwardMethodCall(grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest request,
-        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getPropertiesFileForwardMethodCallMethod(), responseObserver);
     }
 
     /**
@@ -675,12 +634,12 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * Close down PRISM
+     * get number of property iterations for undefined constants
      * </pre>
      */
-    public void closePrism(grpc.server.services.PrismGrpc.ClosePrismRequest request,
-        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ClosePrismResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getClosePrismMethod(), responseObserver);
+    public void getNumberPropertyIterations(grpc.server.services.PrismGrpc.GetNumberPropertyIterationsRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.GetNumberPropertyIterationsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetNumberPropertyIterationsMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -692,13 +651,6 @@ public final class PrismProtoServiceGrpc {
                 grpc.server.services.PrismGrpc.DeleteObjectRequest,
                 grpc.server.services.PrismGrpc.DeleteObjectResponse>(
                   this, METHODID_DELETE_OBJECT)))
-          .addMethod(
-            getPropertiesFileForwardMethodCallMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest,
-                grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse>(
-                  this, METHODID_PROPERTIES_FILE_FORWARD_METHOD_CALL)))
           .addMethod(
             getUploadFileMethod(),
             io.grpc.stub.ServerCalls.asyncClientStreamingCall(
@@ -784,12 +736,12 @@ public final class PrismProtoServiceGrpc {
                 grpc.server.services.PrismGrpc.DefineUsingConstSwitchResponse>(
                   this, METHODID_DEFINE_USING_CONST_SWITCH)))
           .addMethod(
-            getClosePrismMethod(),
+            getGetNumberPropertyIterationsMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                grpc.server.services.PrismGrpc.ClosePrismRequest,
-                grpc.server.services.PrismGrpc.ClosePrismResponse>(
-                  this, METHODID_CLOSE_PRISM)))
+                grpc.server.services.PrismGrpc.GetNumberPropertyIterationsRequest,
+                grpc.server.services.PrismGrpc.GetNumberPropertyIterationsResponse>(
+                  this, METHODID_GET_NUMBER_PROPERTY_ITERATIONS)))
           .build();
     }
   }
@@ -820,17 +772,6 @@ public final class PrismProtoServiceGrpc {
         io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.DeleteObjectResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getDeleteObjectMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     * <pre>
-     * generic forwarding of method call
-     * </pre>
-     */
-    public void propertiesFileForwardMethodCall(grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest request,
-        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getPropertiesFileForwardMethodCallMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -967,13 +908,13 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * Close down PRISM
+     * get number of property iterations for undefined constants
      * </pre>
      */
-    public void closePrism(grpc.server.services.PrismGrpc.ClosePrismRequest request,
-        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ClosePrismResponse> responseObserver) {
+    public void getNumberPropertyIterations(grpc.server.services.PrismGrpc.GetNumberPropertyIterationsRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.GetNumberPropertyIterationsResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getClosePrismMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetNumberPropertyIterationsMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -1002,16 +943,6 @@ public final class PrismProtoServiceGrpc {
     public grpc.server.services.PrismGrpc.DeleteObjectResponse deleteObject(grpc.server.services.PrismGrpc.DeleteObjectRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getDeleteObjectMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * generic forwarding of method call
-     * </pre>
-     */
-    public grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse propertiesFileForwardMethodCall(grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getPropertiesFileForwardMethodCallMethod(), getCallOptions(), request);
     }
 
     /**
@@ -1126,12 +1057,12 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * Close down PRISM
+     * get number of property iterations for undefined constants
      * </pre>
      */
-    public grpc.server.services.PrismGrpc.ClosePrismResponse closePrism(grpc.server.services.PrismGrpc.ClosePrismRequest request) {
+    public grpc.server.services.PrismGrpc.GetNumberPropertyIterationsResponse getNumberPropertyIterations(grpc.server.services.PrismGrpc.GetNumberPropertyIterationsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getClosePrismMethod(), getCallOptions(), request);
+          getChannel(), getGetNumberPropertyIterationsMethod(), getCallOptions(), request);
     }
   }
 
@@ -1161,17 +1092,6 @@ public final class PrismProtoServiceGrpc {
         grpc.server.services.PrismGrpc.DeleteObjectRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getDeleteObjectMethod(), getCallOptions()), request);
-    }
-
-    /**
-     * <pre>
-     * generic forwarding of method call
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse> propertiesFileForwardMethodCall(
-        grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getPropertiesFileForwardMethodCallMethod(), getCallOptions()), request);
     }
 
     /**
@@ -1297,31 +1217,30 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
-     * Close down PRISM
+     * get number of property iterations for undefined constants
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.ClosePrismResponse> closePrism(
-        grpc.server.services.PrismGrpc.ClosePrismRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.GetNumberPropertyIterationsResponse> getNumberPropertyIterations(
+        grpc.server.services.PrismGrpc.GetNumberPropertyIterationsRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getClosePrismMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetNumberPropertyIterationsMethod(), getCallOptions()), request);
     }
   }
 
   private static final int METHODID_DELETE_OBJECT = 0;
-  private static final int METHODID_PROPERTIES_FILE_FORWARD_METHOD_CALL = 1;
-  private static final int METHODID_INITIALISE = 2;
-  private static final int METHODID_PARSE_MODEL_FILE = 3;
-  private static final int METHODID_LOAD_PRISMMODEL = 4;
-  private static final int METHODID_PARSE_PROPERTIES_FILE = 5;
-  private static final int METHODID_GET_PROPERTY_OBJECT = 6;
-  private static final int METHODID_MODEL_CHECK = 7;
-  private static final int METHODID_GET_UNDEFINED_CONSTANTS_USED_IN_PROPERTY = 8;
-  private static final int METHODID_ADD_VALUE = 9;
-  private static final int METHODID_SET_SOME_UNDEFINED_CONSTANTS = 10;
-  private static final int METHODID_INIT_UNDEFINED_CONSTANTS = 11;
-  private static final int METHODID_DEFINE_USING_CONST_SWITCH = 12;
-  private static final int METHODID_CLOSE_PRISM = 13;
-  private static final int METHODID_UPLOAD_FILE = 14;
+  private static final int METHODID_INITIALISE = 1;
+  private static final int METHODID_PARSE_MODEL_FILE = 2;
+  private static final int METHODID_LOAD_PRISMMODEL = 3;
+  private static final int METHODID_PARSE_PROPERTIES_FILE = 4;
+  private static final int METHODID_GET_PROPERTY_OBJECT = 5;
+  private static final int METHODID_MODEL_CHECK = 6;
+  private static final int METHODID_GET_UNDEFINED_CONSTANTS_USED_IN_PROPERTY = 7;
+  private static final int METHODID_ADD_VALUE = 8;
+  private static final int METHODID_SET_SOME_UNDEFINED_CONSTANTS = 9;
+  private static final int METHODID_INIT_UNDEFINED_CONSTANTS = 10;
+  private static final int METHODID_DEFINE_USING_CONST_SWITCH = 11;
+  private static final int METHODID_GET_NUMBER_PROPERTY_ITERATIONS = 12;
+  private static final int METHODID_UPLOAD_FILE = 13;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1343,10 +1262,6 @@ public final class PrismProtoServiceGrpc {
         case METHODID_DELETE_OBJECT:
           serviceImpl.deleteObject((grpc.server.services.PrismGrpc.DeleteObjectRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.DeleteObjectResponse>) responseObserver);
-          break;
-        case METHODID_PROPERTIES_FILE_FORWARD_METHOD_CALL:
-          serviceImpl.propertiesFileForwardMethodCall((grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallRequest) request,
-              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.PropertiesFileForwardMethodCallResponse>) responseObserver);
           break;
         case METHODID_INITIALISE:
           serviceImpl.initialise((grpc.server.services.PrismGrpc.InitialiseRequest) request,
@@ -1392,9 +1307,9 @@ public final class PrismProtoServiceGrpc {
           serviceImpl.defineUsingConstSwitch((grpc.server.services.PrismGrpc.DefineUsingConstSwitchRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.DefineUsingConstSwitchResponse>) responseObserver);
           break;
-        case METHODID_CLOSE_PRISM:
-          serviceImpl.closePrism((grpc.server.services.PrismGrpc.ClosePrismRequest) request,
-              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ClosePrismResponse>) responseObserver);
+        case METHODID_GET_NUMBER_PROPERTY_ITERATIONS:
+          serviceImpl.getNumberPropertyIterations((grpc.server.services.PrismGrpc.GetNumberPropertyIterationsRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.GetNumberPropertyIterationsResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -1461,7 +1376,6 @@ public final class PrismProtoServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new PrismProtoServiceFileDescriptorSupplier())
               .addMethod(getDeleteObjectMethod())
-              .addMethod(getPropertiesFileForwardMethodCallMethod())
               .addMethod(getUploadFileMethod())
               .addMethod(getInitialiseMethod())
               .addMethod(getParseModelFileMethod())
@@ -1474,7 +1388,7 @@ public final class PrismProtoServiceGrpc {
               .addMethod(getSetSomeUndefinedConstantsMethod())
               .addMethod(getInitUndefinedConstantsMethod())
               .addMethod(getDefineUsingConstSwitchMethod())
-              .addMethod(getClosePrismMethod())
+              .addMethod(getGetNumberPropertyIterationsMethod())
               .build();
         }
       }

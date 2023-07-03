@@ -1,6 +1,7 @@
 package grpc.server;
 
 import com.google.protobuf.ByteString;
+import com.google.protobuf.Int32Value;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import grpc.server.services.PrismGrpc;
@@ -500,6 +501,41 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         responseObserver.onCompleted();
         logger.info("defineUsingConstSwitch request completed with status: " + status);
 
+    }
+
+
+    @Override
+    public void getNumberPropertyIterations(PrismGrpc.GetNumberPropertyIterationsRequest request, StreamObserver<PrismGrpc.GetNumberPropertyIterationsResponse> responseObserver) {
+        logger.info("Received getNumberPropertyIterations request");
+
+        // get undefined constants object id from request
+        String undefinedConstantsId = request.getUndefinedConstantsObjectId();
+
+        String status = "Error";
+        int result = -1;
+
+        // get number property iterations
+        try {
+            UndefinedConstants undefinedConstants = (UndefinedConstants) prismObjectMap.get(undefinedConstantsId);
+            result = undefinedConstants.getNumPropertyIterations();
+            status = "Success";
+        } catch (IllegalArgumentException e) {
+            logger.warning("Error getting number property iterations: " + e.getMessage());
+            status += " : " + e.getMessage();
+        }
+
+        // build response
+        PrismGrpc.GetNumberPropertyIterationsResponse response = PrismGrpc.GetNumberPropertyIterationsResponse.newBuilder()
+                .setStatus(status)
+                .setNumberIterations(result)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+        logger.info("getNumberPropertyIterations request completed with status: " + status);
     }
 
     @Override

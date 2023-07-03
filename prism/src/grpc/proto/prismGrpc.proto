@@ -201,12 +201,27 @@ message DefineUsingConstSwitchResponse{
   string status = 1;
 }
 
+message GetNumberPropertyIterationsRequest {
+  string undefined_constants_object_id = 1;
+}
+
+message GetNumberPropertyIterationsResponse {
+  string status = 1;
+  int32 number_iterations = 2;
+}
+
+message InitValuesRequest {
+  string values_object_id = 1;
+}
+
+message InitValuesResponse {
+  string status = 1;
+}
+
 // Service Definitions
 service PrismProtoService {
   // delete a PRISM object
   rpc DeleteObject(DeleteObjectRequest) returns (DeleteObjectResponse) {}
-  // generic forwarding of method call
-  rpc PropertiesFileForwardMethodCall(PropertiesFileForwardMethodCallRequest) returns (PropertiesFileForwardMethodCallResponse) {}
   // Generic method to upload files
   rpc UploadFile (stream UploadRequest) returns (UploadReply) {}
   // Initialise the PRISM engine
@@ -231,6 +246,6 @@ service PrismProtoService {
   rpc InitUndefinedConstants(InitUndefinedConstantsRequest) returns (InitUndefinedConstantsResponse) {}
   // define using const switch for undefined constants
   rpc DefineUsingConstSwitch(DefineUsingConstSwitchRequest) returns (DefineUsingConstSwitchResponse) {}
-  // Close down PRISM
-  rpc ClosePrism(ClosePrismRequest) returns (ClosePrismResponse) {}
+  // get number of property iterations for undefined constants
+  rpc GetNumberPropertyIterations(GetNumberPropertyIterationsRequest) returns (GetNumberPropertyIterationsResponse) {}
 }

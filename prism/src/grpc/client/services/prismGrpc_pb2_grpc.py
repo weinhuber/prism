@@ -20,11 +20,6 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.DeleteObjectRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.DeleteObjectResponse.FromString,
                 )
-        self.PropertiesFileForwardMethodCall = channel.unary_unary(
-                '/PrismProtoService/PropertiesFileForwardMethodCall',
-                request_serializer=prismGrpc__pb2.PropertiesFileForwardMethodCallRequest.SerializeToString,
-                response_deserializer=prismGrpc__pb2.PropertiesFileForwardMethodCallResponse.FromString,
-                )
         self.UploadFile = channel.stream_unary(
                 '/PrismProtoService/UploadFile',
                 request_serializer=prismGrpc__pb2.UploadRequest.SerializeToString,
@@ -85,10 +80,10 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.DefineUsingConstSwitchRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.DefineUsingConstSwitchResponse.FromString,
                 )
-        self.ClosePrism = channel.unary_unary(
-                '/PrismProtoService/ClosePrism',
-                request_serializer=prismGrpc__pb2.ClosePrismRequest.SerializeToString,
-                response_deserializer=prismGrpc__pb2.ClosePrismResponse.FromString,
+        self.GetNumberPropertyIterations = channel.unary_unary(
+                '/PrismProtoService/GetNumberPropertyIterations',
+                request_serializer=prismGrpc__pb2.GetNumberPropertyIterationsRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.GetNumberPropertyIterationsResponse.FromString,
                 )
 
 
@@ -98,13 +93,6 @@ class PrismProtoServiceServicer(object):
 
     def DeleteObject(self, request, context):
         """delete a PRISM object
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def PropertiesFileForwardMethodCall(self, request, context):
-        """generic forwarding of method call
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -194,8 +182,8 @@ class PrismProtoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def ClosePrism(self, request, context):
-        """Close down PRISM
+    def GetNumberPropertyIterations(self, request, context):
+        """get number of property iterations for undefined constants
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -208,11 +196,6 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     servicer.DeleteObject,
                     request_deserializer=prismGrpc__pb2.DeleteObjectRequest.FromString,
                     response_serializer=prismGrpc__pb2.DeleteObjectResponse.SerializeToString,
-            ),
-            'PropertiesFileForwardMethodCall': grpc.unary_unary_rpc_method_handler(
-                    servicer.PropertiesFileForwardMethodCall,
-                    request_deserializer=prismGrpc__pb2.PropertiesFileForwardMethodCallRequest.FromString,
-                    response_serializer=prismGrpc__pb2.PropertiesFileForwardMethodCallResponse.SerializeToString,
             ),
             'UploadFile': grpc.stream_unary_rpc_method_handler(
                     servicer.UploadFile,
@@ -274,10 +257,10 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     request_deserializer=prismGrpc__pb2.DefineUsingConstSwitchRequest.FromString,
                     response_serializer=prismGrpc__pb2.DefineUsingConstSwitchResponse.SerializeToString,
             ),
-            'ClosePrism': grpc.unary_unary_rpc_method_handler(
-                    servicer.ClosePrism,
-                    request_deserializer=prismGrpc__pb2.ClosePrismRequest.FromString,
-                    response_serializer=prismGrpc__pb2.ClosePrismResponse.SerializeToString,
+            'GetNumberPropertyIterations': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetNumberPropertyIterations,
+                    request_deserializer=prismGrpc__pb2.GetNumberPropertyIterationsRequest.FromString,
+                    response_serializer=prismGrpc__pb2.GetNumberPropertyIterationsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -304,23 +287,6 @@ class PrismProtoService(object):
         return grpc.experimental.unary_unary(request, target, '/PrismProtoService/DeleteObject',
             prismGrpc__pb2.DeleteObjectRequest.SerializeToString,
             prismGrpc__pb2.DeleteObjectResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def PropertiesFileForwardMethodCall(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/PropertiesFileForwardMethodCall',
-            prismGrpc__pb2.PropertiesFileForwardMethodCallRequest.SerializeToString,
-            prismGrpc__pb2.PropertiesFileForwardMethodCallResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -529,7 +495,7 @@ class PrismProtoService(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def ClosePrism(request,
+    def GetNumberPropertyIterations(request,
             target,
             options=(),
             channel_credentials=None,
@@ -539,8 +505,8 @@ class PrismProtoService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/ClosePrism',
-            prismGrpc__pb2.ClosePrismRequest.SerializeToString,
-            prismGrpc__pb2.ClosePrismResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/GetNumberPropertyIterations',
+            prismGrpc__pb2.GetNumberPropertyIterationsRequest.SerializeToString,
+            prismGrpc__pb2.GetNumberPropertyIterationsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
