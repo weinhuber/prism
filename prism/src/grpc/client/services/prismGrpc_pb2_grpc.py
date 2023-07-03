@@ -125,6 +125,11 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.GetPFConstantValuesRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.GetPFConstantValuesResponse.FromString,
                 )
+        self.IterateProperty = channel.unary_unary(
+                '/PrismProtoService/IterateProperty',
+                request_serializer=prismGrpc__pb2.IteratePropertyRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.IteratePropertyResponse.FromString,
+                )
 
 
 class PrismProtoServiceServicer(object):
@@ -288,6 +293,13 @@ class PrismProtoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def IterateProperty(self, request, context):
+        """iterate property
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_PrismProtoServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -400,6 +412,11 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     servicer.GetPFConstantValues,
                     request_deserializer=prismGrpc__pb2.GetPFConstantValuesRequest.FromString,
                     response_serializer=prismGrpc__pb2.GetPFConstantValuesResponse.SerializeToString,
+            ),
+            'IterateProperty': grpc.unary_unary_rpc_method_handler(
+                    servicer.IterateProperty,
+                    request_deserializer=prismGrpc__pb2.IteratePropertyRequest.FromString,
+                    response_serializer=prismGrpc__pb2.IteratePropertyResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -783,5 +800,22 @@ class PrismProtoService(object):
         return grpc.experimental.unary_unary(request, target, '/PrismProtoService/GetPFConstantValues',
             prismGrpc__pb2.GetPFConstantValuesRequest.SerializeToString,
             prismGrpc__pb2.GetPFConstantValuesResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def IterateProperty(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/IterateProperty',
+            prismGrpc__pb2.IteratePropertyRequest.SerializeToString,
+            prismGrpc__pb2.IteratePropertyResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

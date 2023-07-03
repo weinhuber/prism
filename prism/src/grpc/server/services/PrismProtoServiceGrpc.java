@@ -699,6 +699,37 @@ public final class PrismProtoServiceGrpc {
     return getGetPFConstantValuesMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.IteratePropertyRequest,
+      grpc.server.services.PrismGrpc.IteratePropertyResponse> getIteratePropertyMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "IterateProperty",
+      requestType = grpc.server.services.PrismGrpc.IteratePropertyRequest.class,
+      responseType = grpc.server.services.PrismGrpc.IteratePropertyResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.IteratePropertyRequest,
+      grpc.server.services.PrismGrpc.IteratePropertyResponse> getIteratePropertyMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.IteratePropertyRequest, grpc.server.services.PrismGrpc.IteratePropertyResponse> getIteratePropertyMethod;
+    if ((getIteratePropertyMethod = PrismProtoServiceGrpc.getIteratePropertyMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getIteratePropertyMethod = PrismProtoServiceGrpc.getIteratePropertyMethod) == null) {
+          PrismProtoServiceGrpc.getIteratePropertyMethod = getIteratePropertyMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.IteratePropertyRequest, grpc.server.services.PrismGrpc.IteratePropertyResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "IterateProperty"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.IteratePropertyRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.IteratePropertyResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("IterateProperty"))
+              .build();
+        }
+      }
+    }
+    return getIteratePropertyMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -973,6 +1004,16 @@ public final class PrismProtoServiceGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetPFConstantValuesMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     * iterate property
+     * </pre>
+     */
+    public void iterateProperty(grpc.server.services.PrismGrpc.IteratePropertyRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.IteratePropertyResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getIteratePropertyMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -1129,6 +1170,13 @@ public final class PrismProtoServiceGrpc {
                 grpc.server.services.PrismGrpc.GetPFConstantValuesRequest,
                 grpc.server.services.PrismGrpc.GetPFConstantValuesResponse>(
                   this, METHODID_GET_PFCONSTANT_VALUES)))
+          .addMethod(
+            getIteratePropertyMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.IteratePropertyRequest,
+                grpc.server.services.PrismGrpc.IteratePropertyResponse>(
+                  this, METHODID_ITERATE_PROPERTY)))
           .build();
     }
   }
@@ -1394,6 +1442,17 @@ public final class PrismProtoServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetPFConstantValuesMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * iterate property
+     * </pre>
+     */
+    public void iterateProperty(grpc.server.services.PrismGrpc.IteratePropertyRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.IteratePropertyResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getIteratePropertyMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -1624,6 +1683,16 @@ public final class PrismProtoServiceGrpc {
     public grpc.server.services.PrismGrpc.GetPFConstantValuesResponse getPFConstantValues(grpc.server.services.PrismGrpc.GetPFConstantValuesRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetPFConstantValuesMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * iterate property
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.IteratePropertyResponse iterateProperty(grpc.server.services.PrismGrpc.IteratePropertyRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getIteratePropertyMethod(), getCallOptions(), request);
     }
   }
 
@@ -1877,6 +1946,17 @@ public final class PrismProtoServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetPFConstantValuesMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * iterate property
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.IteratePropertyResponse> iterateProperty(
+        grpc.server.services.PrismGrpc.IteratePropertyRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getIteratePropertyMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_INIT_PRISM_LOG = 0;
@@ -1900,7 +1980,8 @@ public final class PrismProtoServiceGrpc {
   private static final int METHODID_DEFINE_USING_CONST_SWITCH = 18;
   private static final int METHODID_GET_NUMBER_PROPERTY_ITERATIONS = 19;
   private static final int METHODID_GET_PFCONSTANT_VALUES = 20;
-  private static final int METHODID_UPLOAD_FILE = 21;
+  private static final int METHODID_ITERATE_PROPERTY = 21;
+  private static final int METHODID_UPLOAD_FILE = 22;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -2003,6 +2084,10 @@ public final class PrismProtoServiceGrpc {
           serviceImpl.getPFConstantValues((grpc.server.services.PrismGrpc.GetPFConstantValuesRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.GetPFConstantValuesResponse>) responseObserver);
           break;
+        case METHODID_ITERATE_PROPERTY:
+          serviceImpl.iterateProperty((grpc.server.services.PrismGrpc.IteratePropertyRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.IteratePropertyResponse>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -2089,6 +2174,7 @@ public final class PrismProtoServiceGrpc {
               .addMethod(getDefineUsingConstSwitchMethod())
               .addMethod(getGetNumberPropertyIterationsMethod())
               .addMethod(getGetPFConstantValuesMethod())
+              .addMethod(getIteratePropertyMethod())
               .build();
         }
       }

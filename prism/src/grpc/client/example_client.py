@@ -54,7 +54,6 @@ print(result.get_result())
 # Model check the second property from the file
 # (which has an undefined constant, which we check over a range 0,1,2)
 undef_consts = UndefinedConstants(modules_file, properties_file, properties_file.get_property_object(1))
-# here we synchronise with server after undefined constants object is created
 
 undef_consts.define_using_const_switch(const_name + "=0:2")
 n = undef_consts.get_number_property_iterations()
@@ -65,3 +64,4 @@ for i in range(n):
     print(properties_file.get_property_object(1), " for ", vals_expt)
     result = prism.model_check(properties_file, properties_file.get_property_object(1))
     print(result.get_result())
+    undef_consts.iterate_property()

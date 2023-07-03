@@ -272,6 +272,14 @@ message InitValuesRequest {
   string values_object_id = 1;
 }
 
+message IteratePropertyRequest {
+  string undefined_constants_object_id = 1;
+}
+
+message IteratePropertyResponse {
+  string status = 1;
+}
+
 
 
 // Service Definitions
@@ -325,5 +333,6 @@ service PrismProtoService {
   rpc GetNumberPropertyIterations(GetNumberPropertyIterationsRequest) returns (GetNumberPropertyIterationsResponse) {}
   // get properties file constant values
   rpc GetPFConstantValues(GetPFConstantValuesRequest) returns (GetPFConstantValuesResponse) {}
-
+  // iterate property
+  rpc IterateProperty(IteratePropertyRequest) returns (IteratePropertyResponse) {}
 }

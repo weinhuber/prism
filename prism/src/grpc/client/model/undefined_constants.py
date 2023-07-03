@@ -51,3 +51,13 @@ class UndefinedConstants(PrismPyBaseModel):
         self.logger.info("Received messageee {}.".format(response.status))
 
         return values
+
+    def iterate_property(self):
+        self.logger.info("Iterate property.")
+
+        # create request
+        request = prismGrpc_pb2.IteratePropertyRequest(undefined_constants_object_id=self.object_id)
+
+        # Make the RPC call to IteratePolicy
+        response = self.stub.IterateProperty(request)
+        self.logger.info("Received message {}.".format(response.status))

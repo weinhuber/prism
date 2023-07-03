@@ -522,6 +522,39 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
     }
 
     @Override
+    public void iterateProperty(PrismGrpc.IteratePropertyRequest request, StreamObserver<PrismGrpc.IteratePropertyResponse> responseObserver) {
+        logger.info("Received iterateProperty request");
+
+        // get undefined constants object id from request
+        String undefinedConstantsId = request.getUndefinedConstantsObjectId();
+
+        String status = "Error";
+
+        // iterate property
+        try {
+            UndefinedConstants undefinedConstants = (UndefinedConstants) prismObjectMap.get(undefinedConstantsId);
+            undefinedConstants.iterateProperty();
+            status = "Success";
+        } catch (IllegalArgumentException e) {
+            logger.warning("Error iterating property: " + e.getMessage());
+            status += " : " + e.getMessage();
+        }
+
+        // build response
+        PrismGrpc.IteratePropertyResponse response = PrismGrpc.IteratePropertyResponse.newBuilder()
+                .setStatus(status)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+
+        logger.info("iterateProperty request completed with status: " + status);
+    }
+
+    @Override
     public void deleteObject(PrismGrpc.DeleteObjectRequest request, StreamObserver<PrismGrpc.DeleteObjectResponse> responseObserver) {
         logger.info("[Garbage Collector] - Received deleteObject request");
 
