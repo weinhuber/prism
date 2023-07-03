@@ -467,6 +467,47 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         logger.info("getNumberPropertyIterations request completed with status: " + status);
     }
 
+    @Override
+    public void getPFConstantValues(PrismGrpc.GetPFConstantValuesRequest request, StreamObserver<PrismGrpc.GetPFConstantValuesResponse> responseObserver) {
+        logger.info("Received getPFConstantValues request");
+
+        // get undefined constants object id from request
+        String undefinedConstantsId = request.getUndefinedConstantsObjectId();
+
+        // get values object id from request
+        String valuesObjectId = request.getValuesObjectId();
+
+        String status = "Error";
+
+        // get properties constant values
+        try {
+            // check if values object already exists
+            if(!prismObjectMap.containsKey(valuesObjectId)){
+                // create new values object
+                prismObjectMap.put(valuesObjectId, new Values());
+            }
+
+            UndefinedConstants undefinedConstants = (UndefinedConstants) prismObjectMap.get(undefinedConstantsId);
+            Values values = (Values) prismObjectMap.get(valuesObjectId);
+            values = undefinedConstants.getPFConstantValues();
+            status = "Success";
+        } catch (IllegalArgumentException e) {
+            logger.warning("Error getting properties constant values: " + e.getMessage());
+            status += " : " + e.getMessage();
+        }
+
+        // build response
+        PrismGrpc.GetPFConstantValuesResponse response = PrismGrpc.GetPFConstantValuesResponse.newBuilder()
+                .setStatus(status)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+        logger.info("getPFConstantValues request completed with status: " + status);
+    }
 
     @Override
     public void deleteObject(PrismGrpc.DeleteObjectRequest request, StreamObserver<PrismGrpc.DeleteObjectResponse> responseObserver) {

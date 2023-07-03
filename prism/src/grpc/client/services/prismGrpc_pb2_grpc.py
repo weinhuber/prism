@@ -30,16 +30,6 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.InitPrismRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.InitResponse.FromString,
                 )
-        self.InitPrismDevNullLog = channel.unary_unary(
-                '/PrismProtoService/InitPrismDevNullLog',
-                request_serializer=prismGrpc__pb2.InitPrismDevNullLogRequest.SerializeToString,
-                response_deserializer=prismGrpc__pb2.InitResponse.FromString,
-                )
-        self.InitPrismFileLog = channel.unary_unary(
-                '/PrismProtoService/InitPrismFileLog',
-                request_serializer=prismGrpc__pb2.InitPrismFileLogRequest.SerializeToString,
-                response_deserializer=prismGrpc__pb2.InitResponse.FromString,
-                )
         self.InitPropertiesFile = channel.unary_unary(
                 '/PrismProtoService/InitPropertiesFile',
                 request_serializer=prismGrpc__pb2.InitPropertiesFileRequest.SerializeToString,
@@ -130,6 +120,11 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.GetNumberPropertyIterationsRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.GetNumberPropertyIterationsResponse.FromString,
                 )
+        self.GetPFConstantValues = channel.unary_unary(
+                '/PrismProtoService/GetPFConstantValues',
+                request_serializer=prismGrpc__pb2.GetPFConstantValuesRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.GetPFConstantValuesResponse.FromString,
+                )
 
 
 class PrismProtoServiceServicer(object):
@@ -153,20 +148,6 @@ class PrismProtoServiceServicer(object):
 
     def InitPrism(self, request, context):
         """Prism
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def InitPrismDevNullLog(self, request, context):
-        """PrismDevNullFlog
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def InitPrismFileLog(self, request, context):
-        """PrismFileLog
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -300,6 +281,13 @@ class PrismProtoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetPFConstantValues(self, request, context):
+        """get properties file constant values
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_PrismProtoServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -316,16 +304,6 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
             'InitPrism': grpc.unary_unary_rpc_method_handler(
                     servicer.InitPrism,
                     request_deserializer=prismGrpc__pb2.InitPrismRequest.FromString,
-                    response_serializer=prismGrpc__pb2.InitResponse.SerializeToString,
-            ),
-            'InitPrismDevNullLog': grpc.unary_unary_rpc_method_handler(
-                    servicer.InitPrismDevNullLog,
-                    request_deserializer=prismGrpc__pb2.InitPrismDevNullLogRequest.FromString,
-                    response_serializer=prismGrpc__pb2.InitResponse.SerializeToString,
-            ),
-            'InitPrismFileLog': grpc.unary_unary_rpc_method_handler(
-                    servicer.InitPrismFileLog,
-                    request_deserializer=prismGrpc__pb2.InitPrismFileLogRequest.FromString,
                     response_serializer=prismGrpc__pb2.InitResponse.SerializeToString,
             ),
             'InitPropertiesFile': grpc.unary_unary_rpc_method_handler(
@@ -418,6 +396,11 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     request_deserializer=prismGrpc__pb2.GetNumberPropertyIterationsRequest.FromString,
                     response_serializer=prismGrpc__pb2.GetNumberPropertyIterationsResponse.SerializeToString,
             ),
+            'GetPFConstantValues': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetPFConstantValues,
+                    request_deserializer=prismGrpc__pb2.GetPFConstantValuesRequest.FromString,
+                    response_serializer=prismGrpc__pb2.GetPFConstantValuesResponse.SerializeToString,
+            ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
             'PrismProtoService', rpc_method_handlers)
@@ -476,40 +459,6 @@ class PrismProtoService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/PrismProtoService/InitPrism',
             prismGrpc__pb2.InitPrismRequest.SerializeToString,
-            prismGrpc__pb2.InitResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def InitPrismDevNullLog(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/InitPrismDevNullLog',
-            prismGrpc__pb2.InitPrismDevNullLogRequest.SerializeToString,
-            prismGrpc__pb2.InitResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def InitPrismFileLog(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/InitPrismFileLog',
-            prismGrpc__pb2.InitPrismFileLogRequest.SerializeToString,
             prismGrpc__pb2.InitResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -817,5 +766,22 @@ class PrismProtoService(object):
         return grpc.experimental.unary_unary(request, target, '/PrismProtoService/GetNumberPropertyIterations',
             prismGrpc__pb2.GetNumberPropertyIterationsRequest.SerializeToString,
             prismGrpc__pb2.GetNumberPropertyIterationsResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetPFConstantValues(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/GetPFConstantValues',
+            prismGrpc__pb2.GetPFConstantValuesRequest.SerializeToString,
+            prismGrpc__pb2.GetPFConstantValuesResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

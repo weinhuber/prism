@@ -42,7 +42,7 @@ class PrismPyBaseModel(ABC):
         s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', class_name)
         snake_case_class_name = re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
 
-        self.logger.info(f"Init gRPC object for class {class_name}.")
+        # self.logger.info(f"Init gRPC object for class {class_name}.")
 
         init_method_name = "Init" + class_name
         attr_name = f"{snake_case_class_name}_object_id"
@@ -63,7 +63,7 @@ class PrismPyBaseModel(ABC):
         request = getattr(prismGrpc_pb2, f"{init_method_name}Request")(**request_attrs)
         try:
             response = init_method(request)
-            self.logger.info(f"Received message {response.status}.")
+            # self.logger.info(f"Received message {response.status}.")
         except _InactiveRpcError:
             self.logger.error(f"gRPC service seems to be unavailable. Please make sure the service is running.")
             exit(1)

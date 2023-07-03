@@ -58,3 +58,6 @@ undef_consts = UndefinedConstants(modules_file, properties_file, properties_file
 
 undef_consts.define_using_const_switch(const_name + "=0:2")
 n = undef_consts.get_number_property_iterations()
+
+for i in range(n):
+    vals_expt = undef_consts.get_pf_constant_values()

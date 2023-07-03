@@ -1,4 +1,5 @@
 from model.prismpy_base_model import PrismPyBaseModel
+from model.values import Values
 from services import prismGrpc_pb2
 
 
@@ -33,3 +34,20 @@ class UndefinedConstants(PrismPyBaseModel):
         self.logger.info("Received message {}.".format(response.status))
 
         return response.number_iterations
+
+    def get_pf_constant_values(self):
+        self.logger.info("Get properties file constant values.")
+
+        # object to hold result
+        values = Values()
+
+        # create request
+        request = prismGrpc_pb2.GetPFConstantValuesRequest(undefined_constants_object_id=self.object_id,
+                                                           values_object_id=values.object_id)
+
+        # Make the RPC call to GetPFConstantValues
+        response = self.stub.GetPFConstantValues(request)
+
+        self.logger.info("Received messageee {}.".format(response.status))
+
+        return values

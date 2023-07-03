@@ -207,6 +207,15 @@ message InitValuesResponse {
   string status = 1;
 }
 
+message GetPFConstantValuesRequest {
+  string undefined_constants_object_id = 1;
+  string values_object_id = 2;
+}
+
+message GetPFConstantValuesResponse {
+  string status = 1;
+}
+
 ///////////////////////////////////////// Initializer Messages /////////////////////////////////////////
 // Init response (for all initializers)
 message InitResponse {
@@ -273,10 +282,6 @@ service PrismProtoService {
   rpc InitModulesFile(InitModulesFileRequest) returns (InitResponse) {}
   // Prism
   rpc InitPrism(InitPrismRequest) returns (InitResponse) {}
-  // PrismDevNullFlog
-  rpc InitPrismDevNullLog(InitPrismDevNullLogRequest) returns (InitResponse) {}
-  // PrismFileLog
-  rpc InitPrismFileLog(InitPrismFileLogRequest) returns (InitResponse) {}
   // PropertiesFile
   rpc InitPropertiesFile(InitPropertiesFileRequest) returns (InitResponse) {}
   // Property Object (called Property Object because "property" is a reserved word in Python)
@@ -317,4 +322,7 @@ service PrismProtoService {
   rpc DefineUsingConstSwitch(DefineUsingConstSwitchRequest) returns (DefineUsingConstSwitchResponse) {}
   // get number of property iterations for undefined constants
   rpc GetNumberPropertyIterations(GetNumberPropertyIterationsRequest) returns (GetNumberPropertyIterationsResponse) {}
+  // get properties file constant values
+  rpc GetPFConstantValues(GetPFConstantValuesRequest) returns (GetPFConstantValuesResponse) {}
+
 }
