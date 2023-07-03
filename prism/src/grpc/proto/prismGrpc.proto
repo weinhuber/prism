@@ -280,6 +280,16 @@ message IteratePropertyResponse {
   string status = 1;
 }
 
+message ParsePropertiesStringRequest {
+  string prism_object_id = 1;
+  string module_object_id = 2;
+  string properties_string = 3;
+  string properties_file_object_id = 4;
+}
+
+message ParsePropertiesStringResponse {
+  string status = 1;
+}
 
 
 // Service Definitions
@@ -335,4 +345,6 @@ service PrismProtoService {
   rpc GetPFConstantValues(GetPFConstantValuesRequest) returns (GetPFConstantValuesResponse) {}
   // iterate property
   rpc IterateProperty(IteratePropertyRequest) returns (IteratePropertyResponse) {}
+  // parse properties string
+  rpc ParsePropertiesString(ParsePropertiesStringRequest) returns (ParsePropertiesStringResponse) {}
 }

@@ -555,6 +555,51 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
     }
 
     @Override
+    public void parsePropertiesString(PrismGrpc.ParsePropertiesStringRequest request, StreamObserver<PrismGrpc.ParsePropertiesStringResponse> responseObserver) {
+        logger.info("Received parsePropertiesString request");
+
+        // get prism object id from request
+        String prismObjectId = request.getPrismObjectId();
+
+        // get module object id from request
+        String modulesFileObjectId = request.getModuleObjectId();
+
+        // get properties string from request
+        String propertiesString = request.getPropertiesString();
+
+        // get properties object id from request
+        String propertiesFileObjectId = request.getPropertiesFileObjectId();
+
+        String status = "Error";
+
+        // parse properties string
+        try {
+            ModulesFile modulesFile = (ModulesFile) prismObjectMap.get(modulesFileObjectId);
+            Prism prism = (Prism) prismObjectMap.get(prismObjectId);
+            PropertiesFile propertiesFile = prism.parsePropertiesString(modulesFile, "P=?[F<=5 s=7]");
+
+            prismObjectMap.put(propertiesFileObjectId, propertiesFile);
+            status = "Success";
+        } catch (PrismLangException| IllegalArgumentException e) {
+            logger.warning("Error parsing properties string: " + e.getMessage());
+            status += " : " + e.getMessage();
+        }
+
+        // build response
+        PrismGrpc.ParsePropertiesStringResponse response = PrismGrpc.ParsePropertiesStringResponse.newBuilder()
+                .setStatus(status)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+
+        logger.info("parsePropertiesString request completed with status: " + status);
+    }
+
+    @Override
     public void deleteObject(PrismGrpc.DeleteObjectRequest request, StreamObserver<PrismGrpc.DeleteObjectResponse> responseObserver) {
         logger.info("[Garbage Collector] - Received deleteObject request");
 

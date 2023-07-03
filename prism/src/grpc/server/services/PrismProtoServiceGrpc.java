@@ -730,6 +730,37 @@ public final class PrismProtoServiceGrpc {
     return getIteratePropertyMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ParsePropertiesStringRequest,
+      grpc.server.services.PrismGrpc.ParsePropertiesStringResponse> getParsePropertiesStringMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ParsePropertiesString",
+      requestType = grpc.server.services.PrismGrpc.ParsePropertiesStringRequest.class,
+      responseType = grpc.server.services.PrismGrpc.ParsePropertiesStringResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ParsePropertiesStringRequest,
+      grpc.server.services.PrismGrpc.ParsePropertiesStringResponse> getParsePropertiesStringMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ParsePropertiesStringRequest, grpc.server.services.PrismGrpc.ParsePropertiesStringResponse> getParsePropertiesStringMethod;
+    if ((getParsePropertiesStringMethod = PrismProtoServiceGrpc.getParsePropertiesStringMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getParsePropertiesStringMethod = PrismProtoServiceGrpc.getParsePropertiesStringMethod) == null) {
+          PrismProtoServiceGrpc.getParsePropertiesStringMethod = getParsePropertiesStringMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.ParsePropertiesStringRequest, grpc.server.services.PrismGrpc.ParsePropertiesStringResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ParsePropertiesString"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.ParsePropertiesStringRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.ParsePropertiesStringResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("ParsePropertiesString"))
+              .build();
+        }
+      }
+    }
+    return getParsePropertiesStringMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -1014,6 +1045,16 @@ public final class PrismProtoServiceGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getIteratePropertyMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     * parse properties string
+     * </pre>
+     */
+    public void parsePropertiesString(grpc.server.services.PrismGrpc.ParsePropertiesStringRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ParsePropertiesStringResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getParsePropertiesStringMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -1177,6 +1218,13 @@ public final class PrismProtoServiceGrpc {
                 grpc.server.services.PrismGrpc.IteratePropertyRequest,
                 grpc.server.services.PrismGrpc.IteratePropertyResponse>(
                   this, METHODID_ITERATE_PROPERTY)))
+          .addMethod(
+            getParsePropertiesStringMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.ParsePropertiesStringRequest,
+                grpc.server.services.PrismGrpc.ParsePropertiesStringResponse>(
+                  this, METHODID_PARSE_PROPERTIES_STRING)))
           .build();
     }
   }
@@ -1453,6 +1501,17 @@ public final class PrismProtoServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getIteratePropertyMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * parse properties string
+     * </pre>
+     */
+    public void parsePropertiesString(grpc.server.services.PrismGrpc.ParsePropertiesStringRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ParsePropertiesStringResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getParsePropertiesStringMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -1693,6 +1752,16 @@ public final class PrismProtoServiceGrpc {
     public grpc.server.services.PrismGrpc.IteratePropertyResponse iterateProperty(grpc.server.services.PrismGrpc.IteratePropertyRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getIteratePropertyMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * parse properties string
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.ParsePropertiesStringResponse parsePropertiesString(grpc.server.services.PrismGrpc.ParsePropertiesStringRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getParsePropertiesStringMethod(), getCallOptions(), request);
     }
   }
 
@@ -1957,6 +2026,17 @@ public final class PrismProtoServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getIteratePropertyMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * parse properties string
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.ParsePropertiesStringResponse> parsePropertiesString(
+        grpc.server.services.PrismGrpc.ParsePropertiesStringRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getParsePropertiesStringMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_INIT_PRISM_LOG = 0;
@@ -1981,7 +2061,8 @@ public final class PrismProtoServiceGrpc {
   private static final int METHODID_GET_NUMBER_PROPERTY_ITERATIONS = 19;
   private static final int METHODID_GET_PFCONSTANT_VALUES = 20;
   private static final int METHODID_ITERATE_PROPERTY = 21;
-  private static final int METHODID_UPLOAD_FILE = 22;
+  private static final int METHODID_PARSE_PROPERTIES_STRING = 22;
+  private static final int METHODID_UPLOAD_FILE = 23;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -2088,6 +2169,10 @@ public final class PrismProtoServiceGrpc {
           serviceImpl.iterateProperty((grpc.server.services.PrismGrpc.IteratePropertyRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.IteratePropertyResponse>) responseObserver);
           break;
+        case METHODID_PARSE_PROPERTIES_STRING:
+          serviceImpl.parsePropertiesString((grpc.server.services.PrismGrpc.ParsePropertiesStringRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ParsePropertiesStringResponse>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -2175,6 +2260,7 @@ public final class PrismProtoServiceGrpc {
               .addMethod(getGetNumberPropertyIterationsMethod())
               .addMethod(getGetPFConstantValuesMethod())
               .addMethod(getIteratePropertyMethod())
+              .addMethod(getParsePropertiesStringMethod())
               .build();
         }
       }

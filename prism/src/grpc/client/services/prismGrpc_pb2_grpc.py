@@ -130,6 +130,11 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.IteratePropertyRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.IteratePropertyResponse.FromString,
                 )
+        self.ParsePropertiesString = channel.unary_unary(
+                '/PrismProtoService/ParsePropertiesString',
+                request_serializer=prismGrpc__pb2.ParsePropertiesStringRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.ParsePropertiesStringResponse.FromString,
+                )
 
 
 class PrismProtoServiceServicer(object):
@@ -300,6 +305,13 @@ class PrismProtoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ParsePropertiesString(self, request, context):
+        """parse properties string
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_PrismProtoServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -417,6 +429,11 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     servicer.IterateProperty,
                     request_deserializer=prismGrpc__pb2.IteratePropertyRequest.FromString,
                     response_serializer=prismGrpc__pb2.IteratePropertyResponse.SerializeToString,
+            ),
+            'ParsePropertiesString': grpc.unary_unary_rpc_method_handler(
+                    servicer.ParsePropertiesString,
+                    request_deserializer=prismGrpc__pb2.ParsePropertiesStringRequest.FromString,
+                    response_serializer=prismGrpc__pb2.ParsePropertiesStringResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -817,5 +834,22 @@ class PrismProtoService(object):
         return grpc.experimental.unary_unary(request, target, '/PrismProtoService/IterateProperty',
             prismGrpc__pb2.IteratePropertyRequest.SerializeToString,
             prismGrpc__pb2.IteratePropertyResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ParsePropertiesString(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/ParsePropertiesString',
+            prismGrpc__pb2.ParsePropertiesStringRequest.SerializeToString,
+            prismGrpc__pb2.ParsePropertiesStringResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

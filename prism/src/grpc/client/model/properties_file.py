@@ -4,12 +4,15 @@ from model.prismpy_base_model import PrismPyBaseModel
 
 
 class PropertiesFile(PrismPyBaseModel):
-    property_file_path = None
+    # storing this for future use; so far never used
+    properties_file_path = None
+    properties_string = None
 
-    def __init__(self, property_file_path):
+    def __init__(self, properties_file_path=None, properties_string=None):
         super().__init__(standalone=False)
-        # name of original property file
-        self.property_file_path = property_file_path
+
+        self.properties_file_path = properties_file_path
+        self.properties_string = properties_string
 
     def get_property_object(self, property_index):
         self.logger.info("Get property object {}.".format(property_index))

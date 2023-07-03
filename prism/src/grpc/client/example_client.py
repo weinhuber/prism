@@ -65,3 +65,8 @@ for i in range(n):
     result = prism.model_check(properties_file, properties_file.get_property_object(1))
     print(result.get_result())
     undef_consts.iterate_property()
+
+# Model check a property specified as a string
+properties_file = prism.parse_properties_string(modules_file, "P=?[F<=5 s=7]")
+
+

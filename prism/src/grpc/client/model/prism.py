@@ -70,15 +70,15 @@ class Prism(PrismPyBaseModel):
 
         return self
 
-    def parse_properties_file(self, module_file, property_file_path):
+    def parse_properties_file(self, module_file, properties_file_path):
         self.logger.info(
-            "Parse property file " + property_file_path)
+            "Parse property file " + properties_file_path)
 
         # upload the model file to prism server
-        upload_response = self.upload_file(property_file_path)
+        upload_response = self.upload_file(properties_file_path)
 
         # create PropertiesFile object to populate and return
-        properties_file = PropertiesFile(property_file_path)
+        properties_file = PropertiesFile(properties_file_path=properties_file_path)
 
         # create ParsePropertiesFileRequest
         request = prismGrpc_pb2.ParsePropertiesFileRequest(prism_object_id=self.object_id,
@@ -94,7 +94,7 @@ class Prism(PrismPyBaseModel):
         return properties_file
 
     def model_check(self, properties_file, property_object):
-        self.logger.info("Model checking property {}.".format(properties_file.property_file_path))
+        self.logger.info("Model checking property")
 
         # Create ResultFile object to populate and return
         result = Result()
@@ -115,3 +115,22 @@ class Prism(PrismPyBaseModel):
         self.logger.info("Received message {}.".format(response.status))
 
         return result
+
+    def parse_properties_string(self, modules_file, properties_string):
+        self.logger.info("Parse property string " + properties_string)
+
+        # create PropertiesFile object to populate and return
+        properties_file = PropertiesFile(properties_string=properties_string)
+
+        # create ParsePropertiesFileRequest
+        request = prismGrpc_pb2.ParsePropertiesStringRequest(prism_object_id=self.object_id,
+                                                             module_object_id=modules_file.object_id,
+                                                             properties_string=properties_string,
+                                                             properties_file_object_id=properties_file.object_id)
+
+        # Make the RPC call to ParsePropertiesFile
+        response = self.stub.ParsePropertiesString(request)
+
+        self.logger.info("Received message {}.".format(response.status))
+
+        return properties_file
