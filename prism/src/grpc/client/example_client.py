@@ -61,3 +61,7 @@ n = undef_consts.get_number_property_iterations()
 
 for i in range(n):
     vals_expt = undef_consts.get_pf_constant_values()
+    properties_file.set_some_undefined_constants(vals_expt)
+    print(properties_file.get_property_object(1), " for ", vals_expt)
+    result = prism.model_check(properties_file, properties_file.get_property_object(1))
+    print(result.get_result())

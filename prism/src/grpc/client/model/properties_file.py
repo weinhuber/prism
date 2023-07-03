@@ -61,7 +61,7 @@ class PropertiesFile(PrismPyBaseModel):
         return response.constants
 
     def set_some_undefined_constants(self, values):
-        self.logger.info("Set some undefined constants {}.".format(values))
+        self.logger.info("Set some undefined constants")
 
         # create SetSomeUndefinedConstantsRequest
         request = prismGrpc_pb2.SetSomeUndefinedConstantsRequest(

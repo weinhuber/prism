@@ -47,7 +47,7 @@ class UndefinedConstants(PrismPyBaseModel):
 
         # Make the RPC call to GetPFConstantValues
         response = self.stub.GetPFConstantValues(request)
-
+        values.current_values = response.values
         self.logger.info("Received messageee {}.".format(response.status))
 
         return values

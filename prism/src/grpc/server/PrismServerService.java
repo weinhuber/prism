@@ -238,10 +238,17 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
 
         // model check
         try{
+            // check if result object already exists
+            if(!prismObjectMap.containsKey(resultId)){
+                prismObjectMap.put(resultId, new Result());
+            }
+            // retrieve prism objects
             Prism prism = (Prism) prismObjectMap.get(prismObjectId);
             PropertiesFile propertiesFile = (PropertiesFile) prismObjectMap.get(propertiesFileObjectId);
             Property propertyObject = (Property) prismObjectMap.get(propertyObjectId);
-            Result modelCheckResult = prism.modelCheck(propertiesFile, propertyObject);
+            Result modelCheckResult = (Result) prismObjectMap.get(resultId);
+
+            modelCheckResult = prism.modelCheck(propertiesFile, propertyObject);
             result = modelCheckResult.getResultString();
             prismObjectMap.put(resultId, modelCheckResult);
             status = "Success";
@@ -478,6 +485,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         String valuesObjectId = request.getValuesObjectId();
 
         String status = "Error";
+        String valuesResult = "";
 
         // get properties constant values
         try {
@@ -490,6 +498,9 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
             UndefinedConstants undefinedConstants = (UndefinedConstants) prismObjectMap.get(undefinedConstantsId);
             Values values = (Values) prismObjectMap.get(valuesObjectId);
             values = undefinedConstants.getPFConstantValues();
+            valuesResult = values.toString();
+            prismObjectMap.put(valuesObjectId, values);
+            prismObjectMap.put(undefinedConstantsId, undefinedConstants);
             status = "Success";
         } catch (IllegalArgumentException e) {
             logger.warning("Error getting properties constant values: " + e.getMessage());
@@ -499,6 +510,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         // build response
         PrismGrpc.GetPFConstantValuesResponse response = PrismGrpc.GetPFConstantValuesResponse.newBuilder()
                 .setStatus(status)
+                .setValues(valuesResult)
                 .build();
 
         // send response

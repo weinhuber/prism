@@ -214,6 +214,7 @@ message GetPFConstantValuesRequest {
 
 message GetPFConstantValuesResponse {
   string status = 1;
+  string values = 2;
 }
 
 ///////////////////////////////////////// Initializer Messages /////////////////////////////////////////
