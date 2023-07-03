@@ -140,6 +140,11 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.ModelCheckPropStringRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.ModelCheckPropStringResponse.FromString,
                 )
+        self.CloseDown = channel.unary_unary(
+                '/PrismProtoService/CloseDown',
+                request_serializer=prismGrpc__pb2.CloseDownRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.CloseDownResponse.FromString,
+                )
 
 
 class PrismProtoServiceServicer(object):
@@ -324,6 +329,13 @@ class PrismProtoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def CloseDown(self, request, context):
+        """close down PRISM
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_PrismProtoServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -451,6 +463,11 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     servicer.ModelCheckPropString,
                     request_deserializer=prismGrpc__pb2.ModelCheckPropStringRequest.FromString,
                     response_serializer=prismGrpc__pb2.ModelCheckPropStringResponse.SerializeToString,
+            ),
+            'CloseDown': grpc.unary_unary_rpc_method_handler(
+                    servicer.CloseDown,
+                    request_deserializer=prismGrpc__pb2.CloseDownRequest.FromString,
+                    response_serializer=prismGrpc__pb2.CloseDownResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -885,5 +902,22 @@ class PrismProtoService(object):
         return grpc.experimental.unary_unary(request, target, '/PrismProtoService/ModelCheckPropString',
             prismGrpc__pb2.ModelCheckPropStringRequest.SerializeToString,
             prismGrpc__pb2.ModelCheckPropStringResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CloseDown(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/CloseDown',
+            prismGrpc__pb2.CloseDownRequest.SerializeToString,
+            prismGrpc__pb2.CloseDownResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -166,3 +166,16 @@ class Prism(PrismPyBaseModel):
         self.logger.info("Received message {}.".format(response.status))
 
         return properties_file
+
+    def close_down(self):
+        self.logger.info("Closing down Prism Engine.")
+
+        # Create a CloseDownRequest
+        request = prismGrpc_pb2.CloseDownRequest(prism_object_id=self.object_id)
+
+        # Make the RPC call to CloseDown
+        response = self.stub.CloseDown(request)
+
+        self.logger.info("Received message {}.".format(response.status))
+
+        return self

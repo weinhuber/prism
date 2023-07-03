@@ -76,3 +76,6 @@ print(result.get_result())
 additional_property = "R=?[F s=7]"
 result = prism.model_check(additional_property)
 print(result.get_result())
+
+# Close down PRISM
+prism.close_down()

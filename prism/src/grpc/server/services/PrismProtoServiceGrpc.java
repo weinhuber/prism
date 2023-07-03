@@ -792,6 +792,37 @@ public final class PrismProtoServiceGrpc {
     return getModelCheckPropStringMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.CloseDownRequest,
+      grpc.server.services.PrismGrpc.CloseDownResponse> getCloseDownMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "CloseDown",
+      requestType = grpc.server.services.PrismGrpc.CloseDownRequest.class,
+      responseType = grpc.server.services.PrismGrpc.CloseDownResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.CloseDownRequest,
+      grpc.server.services.PrismGrpc.CloseDownResponse> getCloseDownMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.CloseDownRequest, grpc.server.services.PrismGrpc.CloseDownResponse> getCloseDownMethod;
+    if ((getCloseDownMethod = PrismProtoServiceGrpc.getCloseDownMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getCloseDownMethod = PrismProtoServiceGrpc.getCloseDownMethod) == null) {
+          PrismProtoServiceGrpc.getCloseDownMethod = getCloseDownMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.CloseDownRequest, grpc.server.services.PrismGrpc.CloseDownResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CloseDown"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.CloseDownRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.CloseDownResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("CloseDown"))
+              .build();
+        }
+      }
+    }
+    return getCloseDownMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -1096,6 +1127,16 @@ public final class PrismProtoServiceGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getModelCheckPropStringMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     * close down PRISM
+     * </pre>
+     */
+    public void closeDown(grpc.server.services.PrismGrpc.CloseDownRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.CloseDownResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCloseDownMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -1273,6 +1314,13 @@ public final class PrismProtoServiceGrpc {
                 grpc.server.services.PrismGrpc.ModelCheckPropStringRequest,
                 grpc.server.services.PrismGrpc.ModelCheckPropStringResponse>(
                   this, METHODID_MODEL_CHECK_PROP_STRING)))
+          .addMethod(
+            getCloseDownMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.CloseDownRequest,
+                grpc.server.services.PrismGrpc.CloseDownResponse>(
+                  this, METHODID_CLOSE_DOWN)))
           .build();
     }
   }
@@ -1571,6 +1619,17 @@ public final class PrismProtoServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getModelCheckPropStringMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * close down PRISM
+     * </pre>
+     */
+    public void closeDown(grpc.server.services.PrismGrpc.CloseDownRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.CloseDownResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCloseDownMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -1831,6 +1890,16 @@ public final class PrismProtoServiceGrpc {
     public grpc.server.services.PrismGrpc.ModelCheckPropStringResponse modelCheckPropString(grpc.server.services.PrismGrpc.ModelCheckPropStringRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getModelCheckPropStringMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * close down PRISM
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.CloseDownResponse closeDown(grpc.server.services.PrismGrpc.CloseDownRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCloseDownMethod(), getCallOptions(), request);
     }
   }
 
@@ -2117,6 +2186,17 @@ public final class PrismProtoServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getModelCheckPropStringMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * close down PRISM
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.CloseDownResponse> closeDown(
+        grpc.server.services.PrismGrpc.CloseDownRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCloseDownMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_INIT_PRISM_LOG = 0;
@@ -2143,7 +2223,8 @@ public final class PrismProtoServiceGrpc {
   private static final int METHODID_ITERATE_PROPERTY = 21;
   private static final int METHODID_PARSE_PROPERTIES_STRING = 22;
   private static final int METHODID_MODEL_CHECK_PROP_STRING = 23;
-  private static final int METHODID_UPLOAD_FILE = 24;
+  private static final int METHODID_CLOSE_DOWN = 24;
+  private static final int METHODID_UPLOAD_FILE = 25;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -2258,6 +2339,10 @@ public final class PrismProtoServiceGrpc {
           serviceImpl.modelCheckPropString((grpc.server.services.PrismGrpc.ModelCheckPropStringRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ModelCheckPropStringResponse>) responseObserver);
           break;
+        case METHODID_CLOSE_DOWN:
+          serviceImpl.closeDown((grpc.server.services.PrismGrpc.CloseDownRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.CloseDownResponse>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -2347,6 +2432,7 @@ public final class PrismProtoServiceGrpc {
               .addMethod(getIteratePropertyMethod())
               .addMethod(getParsePropertiesStringMethod())
               .addMethod(getModelCheckPropStringMethod())
+              .addMethod(getCloseDownMethod())
               .build();
         }
       }

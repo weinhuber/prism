@@ -651,6 +651,39 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
     }
 
     @Override
+    public void closeDown(PrismGrpc.CloseDownRequest request, StreamObserver<PrismGrpc.CloseDownResponse> responseObserver) {
+        logger.info("Received closeDown request");
+
+        // get prism object id from request
+        String prismObjectId = request.getPrismObjectId();
+
+        String status = "Error";
+
+        // close down prism
+        try {
+            Prism prism = (Prism) prismObjectMap.get(prismObjectId);
+            prism.closeDown();
+            status = "Success";
+        } catch (IllegalArgumentException e) {
+            logger.warning("Error closing down prism: " + e.getMessage());
+            status += " : " + e.getMessage();
+        }
+
+        // build response
+        PrismGrpc.CloseDownResponse response = PrismGrpc.CloseDownResponse.newBuilder()
+                .setStatus(status)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+
+        logger.info("closeDown request completed with status: " + status);
+    }
+
+    @Override
     public void deleteObject(PrismGrpc.DeleteObjectRequest request, StreamObserver<PrismGrpc.DeleteObjectResponse> responseObserver) {
         logger.info("[Garbage Collector] - Received deleteObject request");
 

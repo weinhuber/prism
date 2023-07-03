@@ -293,6 +293,14 @@ message ModelCheckPropStringResponse {
   string result = 2;
 }
 
+message CloseDownRequest {
+  string prism_object_id = 1;
+}
+
+message CloseDownResponse {
+  string status = 1;
+}
+
 
 // Service Definitions
 service PrismProtoService {
@@ -351,4 +359,6 @@ service PrismProtoService {
   rpc ParsePropertiesString(ParsePropertiesStringRequest) returns (ParsePropertiesStringResponse) {}
   // model check properties string
   rpc ModelCheckPropString(ModelCheckPropStringRequest) returns (ModelCheckPropStringResponse) {}
+  // close down PRISM
+  rpc CloseDown(CloseDownRequest) returns (CloseDownResponse) {}
 }
