@@ -17,7 +17,7 @@ class PrismPyConnectionException(PrismPyException):
 
 
 class PrismPyModelException(PrismPyException):
-    """Raised when there are issues with the model checker."""
+    """Raised when there are issues with the stub_classes checker."""
 
     def __init__(self, message="Model error occurred"):
         super().__init__(message)

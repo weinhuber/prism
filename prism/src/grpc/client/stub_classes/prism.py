@@ -1,10 +1,10 @@
 import grpc
-from model.modules_file import ModulesFile
-from model.prismpy_exceptions import PrismPyException
-from model.properties_file import PropertiesFile
-from model.result import Result
+from stub_classes.modules_file import ModulesFile
+from stub_classes.prismpy_exceptions import PrismPyException
+from stub_classes.properties_file import PropertiesFile
+from stub_classes.result import Result
 from services import prismGrpc_pb2
-from model.prismpy_base_model import PrismPyBaseModel
+from stub_classes.prismpy_base_model import PrismPyBaseModel
 
 
 class Prism(PrismPyBaseModel):
@@ -35,7 +35,7 @@ class Prism(PrismPyBaseModel):
         return self
 
     def parse_model_file(self, model_file_path):
-        # upload the model file to prism server
+        # upload the stub_classes file to prism server
         upload_response = self.upload_file(model_file_path)
 
         # create ModuleFile object to populate and return
@@ -57,7 +57,7 @@ class Prism(PrismPyBaseModel):
         return modules_file
 
     def load_prism_model(self, module_file):
-        self.logger.info("Loading prism model with module file" + module_file.model_file_name)
+        self.logger.info("Loading prism stub_classes with module file" + module_file.model_file_name)
 
         # Create a LoadPRISMModelRequest
         request = prismGrpc_pb2.LoadPRISMModelRequest(prism_object_id=self.object_id,
@@ -74,7 +74,7 @@ class Prism(PrismPyBaseModel):
         self.logger.info(
             "Parse property file " + properties_file_path)
 
-        # upload the model file to prism server
+        # upload the stub_classes file to prism server
         upload_response = self.upload_file(properties_file_path)
 
         # create PropertiesFile object to populate and return

@@ -1,4 +1,4 @@
-from model.prismpy_base_model import PrismPyBaseModel
+from stub_classes.prismpy_base_model import PrismPyBaseModel
 
 
 class PrismLog(PrismPyBaseModel):

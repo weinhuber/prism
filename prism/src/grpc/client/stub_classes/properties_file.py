@@ -1,6 +1,6 @@
-from model.property_object import PropertyObject
+from stub_classes.property_object import PropertyObject
 from services import prismGrpc_pb2
-from model.prismpy_base_model import PrismPyBaseModel
+from stub_classes.prismpy_base_model import PrismPyBaseModel
 
 
 class PropertiesFile(PrismPyBaseModel):

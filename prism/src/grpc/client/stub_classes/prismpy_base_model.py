@@ -6,7 +6,7 @@ from abc import ABC
 import grpc
 from grpc._channel import _InactiveRpcError
 
-from model.prismpy_exceptions import PrismPyException
+from stub_classes.prismpy_exceptions import PrismPyException
 from services import prismGrpc_pb2_grpc, prismGrpc_pb2, prismpy_logger
 
 

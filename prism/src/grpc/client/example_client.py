@@ -1,7 +1,7 @@
-from model.prism_log import PrismLog
-from model.undefined_constants import UndefinedConstants
-from model.values import Values
-from model.prism import Prism
+from stub_classes.prism_log import PrismLog
+from stub_classes.undefined_constants import UndefinedConstants
+from stub_classes.values import Values
+from stub_classes.prism import Prism
 
 main_log = PrismLog("devnull")
 main_log2 = PrismLog("stdout")
@@ -17,7 +17,7 @@ prism2.initialise()
 prism3 = Prism(main_log3)
 prism3.initialise()
 
-# Parse and load a PRISM model from a file
+# Parse and load a PRISM stub_classes from a file
 modules_file = prism.parse_model_file("examples/dice.pm")
 
 prism.load_prism_model(modules_file)
@@ -28,7 +28,7 @@ prism2.load_prism_model(modules_file2)
 modules_file3 = prism3.parse_model_file("examples/dice.pm")
 prism3.load_prism_model(modules_file3)
 
-# Parse and load a properties model for the model
+# Parse and load a properties stub_classes for the stub_classes
 properties_file = prism.parse_properties_file(modules_file, "examples/dice.pctl")
 
 properties_file2 = prism2.parse_properties_file(modules_file2, "examples/dice.pctl")

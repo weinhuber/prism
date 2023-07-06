@@ -232,14 +232,14 @@ class PrismProtoServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def ParseModelFile(self, request, context):
-        """Parse model file
+        """Parse stub_classes file
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def LoadPRISMModel(self, request, context):
-        """Load a PRISM model
+        """Load a PRISM stub_classes
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -323,7 +323,7 @@ class PrismProtoServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def ModelCheckPropString(self, request, context):
-        """model check properties string
+        """stub_classes check properties string
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')

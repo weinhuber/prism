@@ -1,5 +1,5 @@
-from model.prismpy_base_model import PrismPyBaseModel
-from model.values import Values
+from stub_classes.prismpy_base_model import PrismPyBaseModel
+from stub_classes.values import Values
 from services import prismGrpc_pb2
 
 
