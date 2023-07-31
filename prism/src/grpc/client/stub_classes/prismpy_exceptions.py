@@ -35,3 +35,10 @@ class PrismPyServerException(PrismPyException):
 
     def __init__(self, message="Server error occurred"):
         super().__init__(message)
+
+
+class PrismClientServiceNotImplementedException(PrismPyException):
+    """Raised when a service is not implemented."""
+
+    def __init__(self, message="Service not implemented"):
+        super().__init__(message)
