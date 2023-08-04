@@ -1,5 +1,6 @@
 syntax = "proto3";
 option java_package = "grpc.server.services";
+import "google/protobuf/wrappers.proto";
 
 
 /*  file transfer */
@@ -301,6 +302,178 @@ message CloseDownResponse {
   string status = 1;
 }
 
+///////////////////////////////////////// Client Service Definitions /////////////////////////////////////////
+// Generic Responses
+message StatusResponse {
+  string status = 1;
+}
+
+message InitialiseClientModelGeneratorResponse {
+  string model_generator_object_id = 1;
+}
+
+message IntRequest {
+  google.protobuf.Int32Value value = 1;
+}
+
+message ArrayResponse {
+  repeated google.protobuf.Int32Value values = 1;
+}
+
+message IntResponse {
+  google.protobuf.Int32Value value = 1;
+}
+
+message DoubleResponse {
+  google.protobuf.DoubleValue value = 1;
+}
+
+message StringResponse {
+  google.protobuf.StringValue value = 1;
+}
+
+message BoolResponse {
+  google.protobuf.BoolValue value = 1;
+}
+
+message StringArrayResponse {
+  repeated google.protobuf.StringValue values = 1;
+}
+
+// Requests
+message ArrayRequest {
+  repeated int32 values = 1;
+}
+
+message ModelTypeRequest {
+  // Empty message as get_model_type doesn't require parameters
+}
+
+message VarNamesRequest {
+  // Empty message as get_var_names doesn't require parameters
+}
+
+message VarTypesRequest {
+  // Empty message as get_var_types doesn't require parameters
+}
+
+message VarDeclarationTypeRequest {
+  int32 index = 1;
+}
+
+message LabelNamesRequest {
+  // Empty message as get_label_names doesn't require parameters
+}
+
+message InitialStateRequest {
+  // Empty message as get_initial_state doesn't require parameters
+}
+
+message ExploreStateRequest {
+  ArrayRequest state = 1;
+}
+
+message NumChoicesRequest {
+  // Empty message as get_num_choices doesn't require parameters
+}
+
+message NumTransitionsRequest {
+  int32 index = 1;
+}
+
+message TransitionActionRequest {
+  int32 index = 1;
+  int32 offset = 2;
+}
+
+message TransitionProbabilityRequest {
+  int32 index = 1;
+  int32 offset = 2;
+}
+
+message TransitionTargetRequest {
+  int32 index = 1;
+  int32 offset = 2;
+}
+
+message LabelTrueRequest {
+  int32 index = 1;
+}
+
+message RewardStructNamesRequest {
+  // Empty message as get_reward_struct_names doesn't require parameters
+}
+
+message StateRewardRequest {
+  string rewardStruct = 1;
+  ArrayRequest state = 2;
+}
+
+message StateActionRewardRequest {
+  string rewardStruct = 1;
+  ArrayRequest state = 2;
+  int32 action = 3;
+}
+
+message CloseClientModelGeneratorRequest {
+  // Empty message
+}
+
+message ClientModelGeneratorRequestWrapper {
+  oneof request {
+    ModelTypeRequest modelTypeRequest = 1;
+    VarNamesRequest varNamesRequest = 2;
+    VarTypesRequest varTypesRequest = 3;
+    VarDeclarationTypeRequest varDeclarationTypeRequest = 4;
+    LabelNamesRequest labelNamesRequest = 5;
+    InitialStateRequest initialStateRequest = 6;
+    ExploreStateRequest exploreStateRequest = 7;
+    NumChoicesRequest numChoicesRequest = 8;
+    NumTransitionsRequest numTransitionsRequest = 9;
+    TransitionActionRequest transitionActionRequest = 10;
+    TransitionProbabilityRequest transitionProbabilityRequest = 11;
+    TransitionTargetRequest transitionTargetRequest = 12;
+    LabelTrueRequest labelTrueRequest = 13;
+    RewardStructNamesRequest rewardStructNamesRequest = 14;
+    StateRewardRequest stateRewardRequest = 15;
+    StateActionRewardRequest stateActionRewardRequest = 16;
+    CloseClientModelGeneratorRequest closeClientModelGeneratorRequest = 17;
+  }
+}
+
+message ClientModelGeneratorResponseWrapper {
+  oneof response {
+    StringResponse modelTypeResponse = 1;
+    StringArrayResponse varNamesResponse = 2;
+    StringArrayResponse varTypesResponse = 3;
+    ArrayResponse varDeclarationTypeResponse = 4;
+    StringArrayResponse labelNamesResponse = 5;
+    ArrayResponse initialStateResponse = 6;
+    StatusResponse exploreStateResponse = 7;
+    IntResponse numChoicesResponse = 8;
+    IntResponse numTransitionsResponse = 9;
+    IntResponse transitionActionResponse = 10;
+    DoubleResponse transitionProbabilityResponse = 11;
+    ArrayResponse transitionTargetResponse = 12;
+    BoolResponse labelTrueResponse = 13;
+    StringArrayResponse rewardStructNamesResponse = 14;
+    DoubleResponse stateRewardResponse = 15;
+    DoubleResponse stateActionRewardResponse = 16;
+    InitialiseClientModelGeneratorResponse initialiseClientModelGeneratorResponse = 17;
+  }
+}
+
+
+message HelloRequest {
+  string greeting = 1;
+}
+
+message HelloReply {
+  string reply = 1;
+}
+
+
+
 
 // Service Definitions
 service PrismProtoService {
@@ -361,4 +534,9 @@ service PrismProtoService {
   rpc ModelCheckPropString(ModelCheckPropStringRequest) returns (ModelCheckPropStringResponse) {}
   // close down PRISM
   rpc CloseDown(CloseDownRequest) returns (CloseDownResponse) {}
+
+  ///////////////////////////////////////// Client Service Definitions /////////////////////////////////////////
+  rpc ClientModelGenerator(stream ClientModelGeneratorResponseWrapper) returns (stream ClientModelGeneratorRequestWrapper) {}
+
+  rpc BidirectionalHello(stream HelloRequest) returns (stream HelloReply) {}
 }

@@ -145,6 +145,16 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.CloseDownRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.CloseDownResponse.FromString,
                 )
+        self.ClientModelGenerator = channel.stream_stream(
+                '/PrismProtoService/ClientModelGenerator',
+                request_serializer=prismGrpc__pb2.ClientModelGeneratorResponseWrapper.SerializeToString,
+                response_deserializer=prismGrpc__pb2.ClientModelGeneratorRequestWrapper.FromString,
+                )
+        self.BidirectionalHello = channel.stream_stream(
+                '/PrismProtoService/BidirectionalHello',
+                request_serializer=prismGrpc__pb2.HelloRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.HelloReply.FromString,
+                )
 
 
 class PrismProtoServiceServicer(object):
@@ -232,14 +242,14 @@ class PrismProtoServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def ParseModelFile(self, request, context):
-        """Parse stub_classes file
+        """Parse model file
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def LoadPRISMModel(self, request, context):
-        """Load a PRISM stub_classes
+        """Load a PRISM model
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -323,7 +333,7 @@ class PrismProtoServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def ModelCheckPropString(self, request, context):
-        """stub_classes check properties string
+        """model check properties string
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -332,6 +342,19 @@ class PrismProtoServiceServicer(object):
     def CloseDown(self, request, context):
         """close down PRISM
         """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ClientModelGenerator(self, request_iterator, context):
+        """/////////////////////////////////////// Client Service Definitions /////////////////////////////////////////
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def BidirectionalHello(self, request_iterator, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -468,6 +491,16 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     servicer.CloseDown,
                     request_deserializer=prismGrpc__pb2.CloseDownRequest.FromString,
                     response_serializer=prismGrpc__pb2.CloseDownResponse.SerializeToString,
+            ),
+            'ClientModelGenerator': grpc.stream_stream_rpc_method_handler(
+                    servicer.ClientModelGenerator,
+                    request_deserializer=prismGrpc__pb2.ClientModelGeneratorResponseWrapper.FromString,
+                    response_serializer=prismGrpc__pb2.ClientModelGeneratorRequestWrapper.SerializeToString,
+            ),
+            'BidirectionalHello': grpc.stream_stream_rpc_method_handler(
+                    servicer.BidirectionalHello,
+                    request_deserializer=prismGrpc__pb2.HelloRequest.FromString,
+                    response_serializer=prismGrpc__pb2.HelloReply.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -919,5 +952,39 @@ class PrismProtoService(object):
         return grpc.experimental.unary_unary(request, target, '/PrismProtoService/CloseDown',
             prismGrpc__pb2.CloseDownRequest.SerializeToString,
             prismGrpc__pb2.CloseDownResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ClientModelGenerator(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_stream(request_iterator, target, '/PrismProtoService/ClientModelGenerator',
+            prismGrpc__pb2.ClientModelGeneratorResponseWrapper.SerializeToString,
+            prismGrpc__pb2.ClientModelGeneratorRequestWrapper.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def BidirectionalHello(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_stream(request_iterator, target, '/PrismProtoService/BidirectionalHello',
+            prismGrpc__pb2.HelloRequest.SerializeToString,
+            prismGrpc__pb2.HelloReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

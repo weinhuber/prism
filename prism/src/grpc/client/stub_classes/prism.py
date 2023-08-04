@@ -179,3 +179,19 @@ class Prism(PrismPyBaseModel):
         self.logger.info("Received message {}.".format(response.status))
 
         return self
+
+    def load_model_generator(self, model_gen):
+        self.logger.info("Loading model generator")
+
+        # Create a LoadModelGeneratorRequest
+        request = prismGrpc_pb2.LoadModelGeneratorRequest(prism_object_id=self.object_id,
+                                                          model_generator_object_id=model_gen.object_id)
+
+        # Make the RPC call to LoadModelGenerator
+        response = self.stub.LoadModelGenerator(request)
+
+        self.logger.info("Received message {}.".format(response.status))
+
+        return self
+
+
