@@ -32,6 +32,51 @@ import prism.PrismLangException;
 public abstract class Type 
 {
 	/**
+	 * Returns the type corresponding to the given string.
+	 * @throws PrismLangException if the string does not correspond to a type.
+	 */
+	public static Type valueOf(String value) throws PrismLangException {
+		value = value.trim().toLowerCase();
+
+		switch (value) {
+			case "bool":
+				return TypeBool.getInstance();
+			case "clock":
+				return TypeClock.getInstance();
+			case "double":
+				return TypeDouble.getInstance();
+			case "int":
+				return TypeInt.getInstance();
+			case "void":
+				return TypeVoid.getInstance();
+			case "path-bool":
+				return TypePathBool.getInstance();
+			case "path-int":
+				return TypePathInt.getInstance();
+			case "path-double":
+				return TypePathDouble.getInstance();
+			default:
+				// here we're using the representation of getTypeString() for each type
+
+				// Handling array types
+				if(value.startsWith("array of ")) {
+					String subTypeString = value.substring(9); // remove "array of " prefix
+					Type subType = valueOf(subTypeString); // recursive call
+					return TypeArray.getInstance(subType);
+				}
+				// Handling interval types
+				else if (value.startsWith("interval of ")) {
+					String subTypeStr = value.substring(12); // remove "interval of " prefix
+					return TypeInterval.getInstance(valueOf(subTypeStr));
+				}
+				else {
+					throw new PrismLangException("Unknown type '" + value + "'");
+				}
+		}
+	}
+
+
+	/**
 	 * Returns the string denoting this type, e.g. "int", "bool".
 	 */
 	public abstract String getTypeString();
