@@ -9,25 +9,27 @@ from stub_classes.prismpy_exceptions import PrismPyException
 
 
 class ServiceProviderBase(PrismPyBaseModel, ABC):
-    def __init__(self, ServiceProviderClass):
+    def __init__(self, ServiceProviderClass, prism_object_id):
+        self.prism_object_id = prism_object_id
         super().__init__(standalone=False)
         self.ServiceProviderClass = ServiceProviderClass
         self.init_client_service_provider_stream()
 
+
     def __del__(self):
         self.logger.info("Closing stream to prism server.")
 
-    def test_stream(self):
-        # Create a single request
-        while True:
-            request = prismGrpc_pb2.HelloRequest(greeting='hello')
-            responses = self.stub.BidirectionalHello(iter([request]))
-
-            for response in responses:
-                print("Received: " + response.reply)
-
-                if response.reply == "done":
-                    return
+    # def test_stream(self):
+    #     # Create a single request
+    #     while True:
+    #         request = prismGrpc_pb2.HelloRequest(greeting='hello')
+    #         responses = self.stub.BidirectionalHello(iter([request]))
+    #
+    #         for response in responses:
+    #             print("Received: " + response.reply)
+    #
+    #             if response.reply == "done":
+    #                 return
 
     def handle_requests(self, requests):
 
@@ -362,8 +364,10 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
         self.handle_requests(handle_requests_response)
 
     def init_client_service_provider_stream(self):
+        print(self.prism_object_id)
         # Instantiate the InitialiseClientModelGeneratorRequest object
         initialise_client_model_generator_response = prismGrpc_pb2.InitialiseClientModelGeneratorResponse(
+            prism_object_id=self.prism_object_id,
             model_generator_object_id=self.object_id
         )
         client_model_generator_response_wrapper = prismGrpc_pb2.ClientModelGeneratorResponseWrapper(
