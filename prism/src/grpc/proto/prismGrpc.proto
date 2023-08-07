@@ -264,6 +264,29 @@ message InitValuesRequest {
   string values_object_id = 1;
 }
 
+// can be either state with a number or a list of state objects
+message InitStateRequest {
+  string state_object_id = 1;
+
+  oneof arg {
+    ArgStateObjectIDs arg_state_object_ids = 2;
+    int32 state_number = 3;
+  }
+
+  message ArgStateObjectIDs {
+    repeated string state_object_id = 1;
+  }
+}
+
+message StateVarValuesRequest {
+  string state_object_id = 1;
+}
+
+message StateVarValuesResponse {
+  string status = 1;
+  repeated int32 values = 2;
+}
+
 message IteratePropertyRequest {
   string undefined_constants_object_id = 1;
 }
@@ -294,6 +317,15 @@ message ModelCheckPropStringResponse {
   string result = 2;
 }
 
+//message LoadModelGeneratorRequest {
+//  string prism_object_id = 1;
+//  string model_generator_object_id = 2;
+//}
+
+//message LoadModelGeneratorResponse {
+//  string status = 1;
+//}
+
 message CloseDownRequest {
   string prism_object_id = 1;
 }
@@ -309,7 +341,8 @@ message StatusResponse {
 }
 
 message InitialiseClientModelGeneratorResponse {
-  string model_generator_object_id = 1;
+  string prism_object_id = 1;
+  string model_generator_object_id = 2;
 }
 
 message IntRequest {
@@ -405,18 +438,22 @@ message RewardStructNamesRequest {
 }
 
 message StateRewardRequest {
-  string rewardStruct = 1;
-  ArrayRequest state = 2;
+  int32 reward = 1;
+  State state = 2;
 }
 
 message StateActionRewardRequest {
-  string rewardStruct = 1;
-  ArrayRequest state = 2;
-  int32 action = 3;
+  int32 reward = 1;
+  State state = 2;
+  google.protobuf.Int32Value action = 3;
 }
 
 message CloseClientModelGeneratorRequest {
   // Empty message
+}
+
+message State {
+  string state_object_id = 1;
 }
 
 message ClientModelGeneratorRequestWrapper {
@@ -427,7 +464,7 @@ message ClientModelGeneratorRequestWrapper {
     VarDeclarationTypeRequest varDeclarationTypeRequest = 4;
     LabelNamesRequest labelNamesRequest = 5;
     InitialStateRequest initialStateRequest = 6;
-    ExploreStateRequest exploreStateRequest = 7;
+    State exploreStateRequest = 7;
     NumChoicesRequest numChoicesRequest = 8;
     NumTransitionsRequest numTransitionsRequest = 9;
     TransitionActionRequest transitionActionRequest = 10;
@@ -438,6 +475,8 @@ message ClientModelGeneratorRequestWrapper {
     StateRewardRequest stateRewardRequest = 15;
     StateActionRewardRequest stateActionRewardRequest = 16;
     CloseClientModelGeneratorRequest closeClientModelGeneratorRequest = 17;
+    StatusResponse exportTransToFileResponse = 18;
+    ModelCheckPropStringResponse modelCheckPropStringResponse = 19;
   }
 }
 
@@ -448,30 +487,43 @@ message ClientModelGeneratorResponseWrapper {
     StringArrayResponse varTypesResponse = 3;
     ArrayResponse varDeclarationTypeResponse = 4;
     StringArrayResponse labelNamesResponse = 5;
-    ArrayResponse initialStateResponse = 6;
+    State initialStateResponse = 6;
     StatusResponse exploreStateResponse = 7;
     IntResponse numChoicesResponse = 8;
     IntResponse numTransitionsResponse = 9;
     IntResponse transitionActionResponse = 10;
     DoubleResponse transitionProbabilityResponse = 11;
-    ArrayResponse transitionTargetResponse = 12;
+    State transitionTargetResponse = 12;
     BoolResponse labelTrueResponse = 13;
     StringArrayResponse rewardStructNamesResponse = 14;
     DoubleResponse stateRewardResponse = 15;
     DoubleResponse stateActionRewardResponse = 16;
     InitialiseClientModelGeneratorResponse initialiseClientModelGeneratorResponse = 17;
+    ExportTransToFileRequest exportTransToFileRequest = 18;
+    ModelCheckPropStringRequest modelCheckPropStringRequest = 19;
   }
 }
 
-
-message HelloRequest {
-  string greeting = 1;
+message SetStateValueRequest {
+  string state_object_id = 1;
+  int32 index = 2;
+  int32 value = 3;
 }
 
-message HelloReply {
-  string reply = 1;
+message SetStateValueResponse {
+  string status = 1;
 }
 
+message ExportTransToFileRequest {
+  string prism_object_id = 1;
+  bool ordered = 2;
+  int32 export_type = 3;
+  string file_name = 4;
+}
+
+message ExportTransToFileResponse {
+  string status = 1;
+}
 
 
 
@@ -494,6 +546,12 @@ service PrismProtoService {
   rpc InitUndefinedConstants(InitUndefinedConstantsRequest) returns (InitResponse) {}
   // Values
   rpc InitValues(InitValuesRequest) returns (InitResponse) {}
+
+  // State
+  rpc InitState(InitStateRequest) returns (InitResponse) {}
+
+  // State var values
+  rpc StateVarValues(StateVarValuesRequest) returns (StateVarValuesResponse) {}
 
   ///////////////////////////////////////// Generic Functions /////////////////////////////////////////
   // delete a PRISM object
@@ -536,7 +594,11 @@ service PrismProtoService {
   rpc CloseDown(CloseDownRequest) returns (CloseDownResponse) {}
 
   ///////////////////////////////////////// Client Service Definitions /////////////////////////////////////////
-  rpc ClientModelGenerator(stream ClientModelGeneratorResponseWrapper) returns (stream ClientModelGeneratorRequestWrapper) {}
+//  rpc LoadModelGenerator(LoadModelGeneratorRequest) returns (LoadModelGeneratorResponse) {}
 
-  rpc BidirectionalHello(stream HelloRequest) returns (stream HelloReply) {}
+  rpc SetStateValue(SetStateValueRequest) returns (SetStateValueResponse) {}
+
+  rpc ExportTransToFile(ExportTransToFileRequest) returns (ExportTransToFileResponse) {}
+
+  rpc ClientModelGenerator(stream ClientModelGeneratorResponseWrapper) returns (stream ClientModelGeneratorRequestWrapper) {}
 }
