@@ -55,6 +55,16 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.InitValuesRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.InitResponse.FromString,
                 )
+        self.InitState = channel.unary_unary(
+                '/PrismProtoService/InitState',
+                request_serializer=prismGrpc__pb2.InitStateRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.InitResponse.FromString,
+                )
+        self.StateVarValues = channel.unary_unary(
+                '/PrismProtoService/StateVarValues',
+                request_serializer=prismGrpc__pb2.StateVarValuesRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.StateVarValuesResponse.FromString,
+                )
         self.DeleteObject = channel.unary_unary(
                 '/PrismProtoService/DeleteObject',
                 request_serializer=prismGrpc__pb2.DeleteObjectRequest.SerializeToString,
@@ -145,10 +155,15 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.CloseDownRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.CloseDownResponse.FromString,
                 )
-        self.LoadModelGenerator = channel.unary_unary(
-                '/PrismProtoService/LoadModelGenerator',
-                request_serializer=prismGrpc__pb2.LoadModelGeneratorRequest.SerializeToString,
-                response_deserializer=prismGrpc__pb2.LoadModelGeneratorResponse.FromString,
+        self.SetStateValue = channel.unary_unary(
+                '/PrismProtoService/SetStateValue',
+                request_serializer=prismGrpc__pb2.SetStateValueRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.SetStateValueResponse.FromString,
+                )
+        self.ExportTransToFile = channel.unary_unary(
+                '/PrismProtoService/ExportTransToFile',
+                request_serializer=prismGrpc__pb2.ExportTransToFileRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.ExportTransToFileResponse.FromString,
                 )
         self.ClientModelGenerator = channel.stream_stream(
                 '/PrismProtoService/ClientModelGenerator',
@@ -213,6 +228,20 @@ class PrismProtoServiceServicer(object):
 
     def InitValues(self, request, context):
         """Values
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def InitState(self, request, context):
+        """State
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def StateVarValues(self, request, context):
+        """State var values
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -346,9 +375,17 @@ class PrismProtoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def LoadModelGenerator(self, request, context):
+    def SetStateValue(self, request, context):
         """/////////////////////////////////////// Client Service Definitions /////////////////////////////////////////
+        rpc LoadModelGenerator(LoadModelGeneratorRequest) returns (LoadModelGeneratorResponse) {}
+
         """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ExportTransToFile(self, request, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -401,6 +438,16 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     servicer.InitValues,
                     request_deserializer=prismGrpc__pb2.InitValuesRequest.FromString,
                     response_serializer=prismGrpc__pb2.InitResponse.SerializeToString,
+            ),
+            'InitState': grpc.unary_unary_rpc_method_handler(
+                    servicer.InitState,
+                    request_deserializer=prismGrpc__pb2.InitStateRequest.FromString,
+                    response_serializer=prismGrpc__pb2.InitResponse.SerializeToString,
+            ),
+            'StateVarValues': grpc.unary_unary_rpc_method_handler(
+                    servicer.StateVarValues,
+                    request_deserializer=prismGrpc__pb2.StateVarValuesRequest.FromString,
+                    response_serializer=prismGrpc__pb2.StateVarValuesResponse.SerializeToString,
             ),
             'DeleteObject': grpc.unary_unary_rpc_method_handler(
                     servicer.DeleteObject,
@@ -492,10 +539,15 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     request_deserializer=prismGrpc__pb2.CloseDownRequest.FromString,
                     response_serializer=prismGrpc__pb2.CloseDownResponse.SerializeToString,
             ),
-            'LoadModelGenerator': grpc.unary_unary_rpc_method_handler(
-                    servicer.LoadModelGenerator,
-                    request_deserializer=prismGrpc__pb2.LoadModelGeneratorRequest.FromString,
-                    response_serializer=prismGrpc__pb2.LoadModelGeneratorResponse.SerializeToString,
+            'SetStateValue': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetStateValue,
+                    request_deserializer=prismGrpc__pb2.SetStateValueRequest.FromString,
+                    response_serializer=prismGrpc__pb2.SetStateValueResponse.SerializeToString,
+            ),
+            'ExportTransToFile': grpc.unary_unary_rpc_method_handler(
+                    servicer.ExportTransToFile,
+                    request_deserializer=prismGrpc__pb2.ExportTransToFileRequest.FromString,
+                    response_serializer=prismGrpc__pb2.ExportTransToFileResponse.SerializeToString,
             ),
             'ClientModelGenerator': grpc.stream_stream_rpc_method_handler(
                     servicer.ClientModelGenerator,
@@ -646,6 +698,40 @@ class PrismProtoService(object):
         return grpc.experimental.unary_unary(request, target, '/PrismProtoService/InitValues',
             prismGrpc__pb2.InitValuesRequest.SerializeToString,
             prismGrpc__pb2.InitResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def InitState(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/InitState',
+            prismGrpc__pb2.InitStateRequest.SerializeToString,
+            prismGrpc__pb2.InitResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def StateVarValues(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/StateVarValues',
+            prismGrpc__pb2.StateVarValuesRequest.SerializeToString,
+            prismGrpc__pb2.StateVarValuesResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -956,7 +1042,7 @@ class PrismProtoService(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def LoadModelGenerator(request,
+    def SetStateValue(request,
             target,
             options=(),
             channel_credentials=None,
@@ -966,9 +1052,26 @@ class PrismProtoService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/LoadModelGenerator',
-            prismGrpc__pb2.LoadModelGeneratorRequest.SerializeToString,
-            prismGrpc__pb2.LoadModelGeneratorResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/SetStateValue',
+            prismGrpc__pb2.SetStateValueRequest.SerializeToString,
+            prismGrpc__pb2.SetStateValueResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ExportTransToFile(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/PrismProtoService/ExportTransToFile',
+            prismGrpc__pb2.ExportTransToFileRequest.SerializeToString,
+            prismGrpc__pb2.ExportTransToFileResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

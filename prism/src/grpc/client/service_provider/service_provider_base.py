@@ -1,41 +1,33 @@
 import os
+import threading
 from abc import ABC
+from threading import Thread
+
 
 from google.protobuf import wrappers_pb2
 from grpc._channel import _InactiveRpcError
 from services import prismGrpc_pb2
 from stub_classes.prismpy_base_model import PrismPyBaseModel
 from stub_classes.prismpy_exceptions import PrismPyException
+from stub_classes.result import Result
 
 
 class ServiceProviderBase(PrismPyBaseModel, ABC):
     def __init__(self, ServiceProviderClass, prism_object_id):
+        self.__result = None
         self.prism_object_id = prism_object_id
         super().__init__(standalone=False)
         self.ServiceProviderClass = ServiceProviderClass
-        self.init_client_service_provider_stream()
 
+        self.load_model_gen_thread = threading.Thread(target=self.init_client_service_provider_stream)
+        self.load_model_gen_thread.start()
 
     def __del__(self):
         self.logger.info("Closing stream to prism server.")
 
-    # def test_stream(self):
-    #     # Create a single request
-    #     while True:
-    #         request = prismGrpc_pb2.HelloRequest(greeting='hello')
-    #         responses = self.stub.BidirectionalHello(iter([request]))
-    #
-    #         for response in responses:
-    #             print("Received: " + response.reply)
-    #
-    #             if response.reply == "done":
-    #                 return
-
     def handle_requests(self, requests):
-
         # Iterate over the stream of ClientModelGeneratorResponseWrapper objects
         # waits till the server sends a response
-
         for request_wrapper in requests:
             request_type = request_wrapper.WhichOneof('request')
 
@@ -131,8 +123,8 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
                 initial_state = self.ServiceProviderClass.get_initial_state()
 
                 # create response
-                initial_state_response = prismGrpc_pb2.ArrayResponse(
-                    values=[wrappers_pb2.Int32Value(value=i) for i in initial_state] if initial_state else None
+                initial_state_response = prismGrpc_pb2.State(
+                    state_object_id=initial_state.object_id
                 )
 
                 # wrap response
@@ -143,13 +135,14 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
                 # send response
                 self.send_response(client_model_generator_response_wrapper)
             elif request_type == "exploreStateRequest":
-                # get arguments from request
-                state_list = request_wrapper.exploreStateRequest.state.values
+                # get object id from request
+                state_object_id = request_wrapper.exploreStateRequest.state_object_id
 
                 status = "success"
                 try:
                     # perform action
-                    self.ServiceProviderClass.explore_state(state_list)
+                    state = self.prism_object_map.get(state_object_id)
+                    self.ServiceProviderClass.explore_state(state)
 
                 except Exception as e:
                     status = "error"
@@ -248,17 +241,12 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
                 index = request_wrapper.transitionTargetRequest.index
                 offset = request_wrapper.transitionTargetRequest.offset
 
-                transition_target = None
-
-                try:
-                    # perform action
-                    transition_target = self.ServiceProviderClass.compute_transition_target(index, offset)
-                except Exception as e:
-                    self.logger.error("Error in transitionTargetRequest: {}".format(e))
+                # perform action
+                transition_target = self.ServiceProviderClass.compute_transition_target(index, offset)
 
                 # create response
-                transition_target_response = prismGrpc_pb2.ArrayResponse(
-                    values=[wrappers_pb2.Int32Value(value=i) for i in transition_target] if transition_target else None
+                transition_target_response = prismGrpc_pb2.State(
+                    state_object_id=transition_target.object_id
                 )
 
                 # wrap response
@@ -307,11 +295,14 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
                 self.send_response(client_model_generator_response_wrapper)
             elif request_type == "stateRewardRequest":
                 # get arguments from request
-                reward_struct = request_wrapper.stateRewardRequest.rewardStruct
-                state = request_wrapper.stateRewardRequest.state
+                reward = request_wrapper.stateActionRewardRequest.reward
+                state_object_id = request_wrapper.stateActionRewardRequest.state.state_object_id
+
+                # get state
+                state = self.prism_object_map.get(state_object_id)
 
                 # perform action
-                state_reward = self.ServiceProviderClass.get_state_reward(reward_struct, state)
+                state_reward = self.ServiceProviderClass.get_state_reward(reward, state)
 
                 # create response
                 state_reward_response = prismGrpc_pb2.DoubleResponse(
@@ -327,9 +318,13 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
                 self.send_response(client_model_generator_response_wrapper)
             elif request_type == "stateActionRewardRequest":
                 # get arguments from request
-                reward_struct = request_wrapper.stateActionRewardRequest.rewardStruct
-                state = request_wrapper.stateActionRewardRequest.state
-                action = request_wrapper.stateActionRewardRequest.action
+                reward_struct = request_wrapper.stateActionRewardRequest.reward
+                state_object_id = request_wrapper.stateActionRewardRequest.state.state_object_id
+                action = None if not request_wrapper.stateActionRewardRequest.HasField("action") \
+                    else request_wrapper.stateActionRewardRequest.action.value
+
+                # get state
+                state = self.prism_object_map.get(state_object_id)
 
                 # perform action
                 state_action_reward = self.ServiceProviderClass.get_state_action_reward(reward_struct, state, action)
@@ -349,8 +344,15 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
             elif request_type == "closeClientModelGeneratorRequest":
                 self.logger.info(f"[STREAM] - Closing stream")
                 return
+            elif request_type == "exportTransToFileResponse":
+                self.logger.info(f"[STREAM] - received exportTransToFileResponse {request_wrapper.exportTransToFileResponse.status}")
+                return
+            elif request_type == "modelCheckPropStringResponse":
+                self.__result.result = request_wrapper.modelCheckPropStringResponse.result
+                return
             else:
                 self.logger.error(f"[STREAM] - Unknown request type {request_type}")
+                return request_wrapper
 
     def send_response(self, response):
         # check whether 'response' is actually of type ClientModelGeneratorResponseWrapper
@@ -364,7 +366,6 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
         self.handle_requests(handle_requests_response)
 
     def init_client_service_provider_stream(self):
-        print(self.prism_object_id)
         # Instantiate the InitialiseClientModelGeneratorRequest object
         initialise_client_model_generator_response = prismGrpc_pb2.InitialiseClientModelGeneratorResponse(
             prism_object_id=self.prism_object_id,
@@ -375,6 +376,49 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
         )
 
         # sending the request
+        requests = self.stub.ClientModelGenerator(iter([client_model_generator_response_wrapper]))
+        self.logger.info(f"[STREAM] - sending " + str(client_model_generator_response_wrapper).replace("\n", ""))
+
+        # handle the response
+        self.handle_requests(requests)
+
+    # model check while in service provision mode
+    def model_check(self, prop):
+        self.logger.info("Model checking property in client service provision mode.")
+
+        self.__result = Result()
+        # create request
+        model_check_prop_string_request = prismGrpc_pb2.ModelCheckPropStringRequest(
+            prism_object_id=self.prism_object_id,
+            properties_string=prop,
+            result_object_id=self.__result.object_id)
+
+        client_model_generator_response_wrapper = prismGrpc_pb2.ClientModelGeneratorResponseWrapper(
+            modelCheckPropStringRequest=model_check_prop_string_request
+        )
+
+        # send request
+        requests = self.stub.ClientModelGenerator(iter([client_model_generator_response_wrapper]))
+        self.logger.info(f"[STREAM] - sending " + str(client_model_generator_response_wrapper).replace("\n", ""))
+
+        # handle the response
+        self.handle_requests(requests)
+
+        return self.__result
+
+    def export_trans_to_file(self, ordered, export_type, filename):
+        # create request
+        export_trans_to_file_request = prismGrpc_pb2.ExportTransToFileRequest(
+            prism_object_id=self.prism_object_id,
+            ordered=ordered,
+            export_type=export_type,
+            file_name=filename
+        )
+        client_model_generator_response_wrapper = prismGrpc_pb2.ClientModelGeneratorResponseWrapper(
+            exportTransToFileRequest = export_trans_to_file_request
+        )
+
+        # send request
         requests = self.stub.ClientModelGenerator(iter([client_model_generator_response_wrapper]))
         self.logger.info(f"[STREAM] - sending " + str(client_model_generator_response_wrapper).replace("\n", ""))
 

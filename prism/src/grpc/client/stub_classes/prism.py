@@ -1,5 +1,6 @@
+from time import sleep
+
 import grpc
-import threading
 
 from service_provider.service_provider_base import ServiceProviderBase
 from stub_classes.modules_file import ModulesFile
@@ -11,11 +12,23 @@ from stub_classes.prismpy_base_model import PrismPyBaseModel
 
 
 class Prism(PrismPyBaseModel):
+
+    # list of export types
+    EXPORT_PLAIN = 1
+    EXPORT_MATLAB = 2
+    EXPORT_DOT = 3
+    EXPORT_MRMC = 4
+    EXPORT_ROWS = 5
+    EXPORT_DOT_STATES = 6
+
     main_log_object_id = None
 
     def __init__(self, main_log):
+        self.service_provider = None
         self.main_log_object_id = main_log.object_id
         super().__init__(standalone=True, main_log_object_id=main_log.object_id)
+
+        self.__client_service_provision = False
 
     def initialise(self):
         if self.main_log_object_id is None:
@@ -97,8 +110,13 @@ class Prism(PrismPyBaseModel):
         return properties_file
 
     def model_check(self, *args):
+        # checking if we're in a client service provision mode
+        if self.__client_service_provision:
+            # currently only supports property string
+            return self.service_provider.model_check(args[0])
+        # not in client service provision mode
         # hack to allow for overloading
-        if len(args) == 1:
+        elif len(args) == 1:
             return self.__model_check_properties_string(args[0])
         elif len(args) == 2:
             return self.__model_check_prop_file_prop_obj(args[0], args[1])
@@ -171,6 +189,7 @@ class Prism(PrismPyBaseModel):
         return properties_file
 
     def close_down(self):
+        self.service_provider.load_model_gen_thread.join()
         self.logger.info("Closing down Prism Engine.")
 
         # Create a CloseDownRequest
@@ -186,7 +205,16 @@ class Prism(PrismPyBaseModel):
     def load_model_generator(self, model_gen):
         self.logger.info("Loading model generator")
 
+        self.__client_service_provision = True
+
         # start the model generator stream
-        ServiceProviderBase(model_gen, self.object_id)
+        self.service_provider = ServiceProviderBase(model_gen, self.object_id)
+
+    def export_trans_to_file(self, ordered, export_type, filename):
+        self.service_provider.load_model_gen_thread.join()
+        self.logger.info("Exporting transitions to file")
+
+        self.service_provider.export_trans_to_file(ordered, export_type, filename)
+
 
 

@@ -11,6 +11,8 @@ from services import prismGrpc_pb2_grpc, prismGrpc_pb2, prismpy_logger
 
 
 class PrismPyBaseModel(ABC):
+    prism_object_map = {}
+
     # specify the size of chunks to read from the file
     __CHUNK_SIZE = 1024 * 1024  # 1MB
 
@@ -33,6 +35,9 @@ class PrismPyBaseModel(ABC):
         # if an object is created as a standalone object, it will be created on the server side too
         if standalone:
             self.__init_grpc_object(**kwargs)
+
+        # add this object to the object map
+        PrismPyBaseModel.prism_object_map[self.object_id] = self
 
     # private function to create a representation of this object on the server side
     def __init_grpc_object(self, **kwargs):
