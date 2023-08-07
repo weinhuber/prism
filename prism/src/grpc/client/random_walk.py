@@ -1,6 +1,7 @@
 from service_provider.model_generator import ModelGenerator
 from service_provider.model_type import ModelType
 from service_provider.reward_generator import RewardGenerator
+from stub_classes.state import State
 
 
 class RandomWalk(ModelGenerator, RewardGenerator):
@@ -30,13 +31,11 @@ class RandomWalk(ModelGenerator, RewardGenerator):
         return ["end", "left", "right"]
 
     def get_initial_state(self):
-        self._explore_state = [0]  # Using a list as equivalent to Java's State class
-        self.x = 0
-        return self._explore_state
+        return State(1).set_value(0,0)
 
     def explore_state(self, explore_state):
         self._explore_state = explore_state
-        self.x = explore_state[0]
+        self.x = explore_state.var_values[0]
 
     def get_num_choices(self):
         return 1
@@ -53,12 +52,12 @@ class RandomWalk(ModelGenerator, RewardGenerator):
         return 1.0 if self.x == -self.n or self.x == self.n else (1 - self.p if offset == 0 else self.p)
 
     def compute_transition_target(self, i, offset):
+        target = State(self._explore_state)
+
         if self.x == -self.n or self.x == self.n:
-            return list(self._explore_state)
-        else:
-            target = list(self._explore_state)
-            target[0] = self.x - 1 if offset == 0 else self.x + 1
             return target
+        else:
+            return target.set_value(0, self.x - 1 if offset == 0 else self.x + 1)
 
     def is_label_true(self, i):
         if i == 0:
