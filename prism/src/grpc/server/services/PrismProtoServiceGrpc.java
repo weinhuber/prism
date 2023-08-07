@@ -265,6 +265,68 @@ public final class PrismProtoServiceGrpc {
     return getInitValuesMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitStateRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitStateMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "InitState",
+      requestType = grpc.server.services.PrismGrpc.InitStateRequest.class,
+      responseType = grpc.server.services.PrismGrpc.InitResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitStateRequest,
+      grpc.server.services.PrismGrpc.InitResponse> getInitStateMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitStateRequest, grpc.server.services.PrismGrpc.InitResponse> getInitStateMethod;
+    if ((getInitStateMethod = PrismProtoServiceGrpc.getInitStateMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getInitStateMethod = PrismProtoServiceGrpc.getInitStateMethod) == null) {
+          PrismProtoServiceGrpc.getInitStateMethod = getInitStateMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.InitStateRequest, grpc.server.services.PrismGrpc.InitResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "InitState"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitStateRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.InitResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("InitState"))
+              .build();
+        }
+      }
+    }
+    return getInitStateMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.StateVarValuesRequest,
+      grpc.server.services.PrismGrpc.StateVarValuesResponse> getStateVarValuesMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "StateVarValues",
+      requestType = grpc.server.services.PrismGrpc.StateVarValuesRequest.class,
+      responseType = grpc.server.services.PrismGrpc.StateVarValuesResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.StateVarValuesRequest,
+      grpc.server.services.PrismGrpc.StateVarValuesResponse> getStateVarValuesMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.StateVarValuesRequest, grpc.server.services.PrismGrpc.StateVarValuesResponse> getStateVarValuesMethod;
+    if ((getStateVarValuesMethod = PrismProtoServiceGrpc.getStateVarValuesMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getStateVarValuesMethod = PrismProtoServiceGrpc.getStateVarValuesMethod) == null) {
+          PrismProtoServiceGrpc.getStateVarValuesMethod = getStateVarValuesMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.StateVarValuesRequest, grpc.server.services.PrismGrpc.StateVarValuesResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "StateVarValues"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.StateVarValuesRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.StateVarValuesResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("StateVarValues"))
+              .build();
+        }
+      }
+    }
+    return getStateVarValuesMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DeleteObjectRequest,
       grpc.server.services.PrismGrpc.DeleteObjectResponse> getDeleteObjectMethod;
 
@@ -823,6 +885,99 @@ public final class PrismProtoServiceGrpc {
     return getCloseDownMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.SetStateValueRequest,
+      grpc.server.services.PrismGrpc.SetStateValueResponse> getSetStateValueMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "SetStateValue",
+      requestType = grpc.server.services.PrismGrpc.SetStateValueRequest.class,
+      responseType = grpc.server.services.PrismGrpc.SetStateValueResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.SetStateValueRequest,
+      grpc.server.services.PrismGrpc.SetStateValueResponse> getSetStateValueMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.SetStateValueRequest, grpc.server.services.PrismGrpc.SetStateValueResponse> getSetStateValueMethod;
+    if ((getSetStateValueMethod = PrismProtoServiceGrpc.getSetStateValueMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getSetStateValueMethod = PrismProtoServiceGrpc.getSetStateValueMethod) == null) {
+          PrismProtoServiceGrpc.getSetStateValueMethod = getSetStateValueMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.SetStateValueRequest, grpc.server.services.PrismGrpc.SetStateValueResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SetStateValue"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.SetStateValueRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.SetStateValueResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("SetStateValue"))
+              .build();
+        }
+      }
+    }
+    return getSetStateValueMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ExportTransToFileRequest,
+      grpc.server.services.PrismGrpc.ExportTransToFileResponse> getExportTransToFileMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ExportTransToFile",
+      requestType = grpc.server.services.PrismGrpc.ExportTransToFileRequest.class,
+      responseType = grpc.server.services.PrismGrpc.ExportTransToFileResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ExportTransToFileRequest,
+      grpc.server.services.PrismGrpc.ExportTransToFileResponse> getExportTransToFileMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ExportTransToFileRequest, grpc.server.services.PrismGrpc.ExportTransToFileResponse> getExportTransToFileMethod;
+    if ((getExportTransToFileMethod = PrismProtoServiceGrpc.getExportTransToFileMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getExportTransToFileMethod = PrismProtoServiceGrpc.getExportTransToFileMethod) == null) {
+          PrismProtoServiceGrpc.getExportTransToFileMethod = getExportTransToFileMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.ExportTransToFileRequest, grpc.server.services.PrismGrpc.ExportTransToFileResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ExportTransToFile"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.ExportTransToFileRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.ExportTransToFileResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("ExportTransToFile"))
+              .build();
+        }
+      }
+    }
+    return getExportTransToFileMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ClientModelGeneratorResponseWrapper,
+      grpc.server.services.PrismGrpc.ClientModelGeneratorRequestWrapper> getClientModelGeneratorMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ClientModelGenerator",
+      requestType = grpc.server.services.PrismGrpc.ClientModelGeneratorResponseWrapper.class,
+      responseType = grpc.server.services.PrismGrpc.ClientModelGeneratorRequestWrapper.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ClientModelGeneratorResponseWrapper,
+      grpc.server.services.PrismGrpc.ClientModelGeneratorRequestWrapper> getClientModelGeneratorMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.ClientModelGeneratorResponseWrapper, grpc.server.services.PrismGrpc.ClientModelGeneratorRequestWrapper> getClientModelGeneratorMethod;
+    if ((getClientModelGeneratorMethod = PrismProtoServiceGrpc.getClientModelGeneratorMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getClientModelGeneratorMethod = PrismProtoServiceGrpc.getClientModelGeneratorMethod) == null) {
+          PrismProtoServiceGrpc.getClientModelGeneratorMethod = getClientModelGeneratorMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.ClientModelGeneratorResponseWrapper, grpc.server.services.PrismGrpc.ClientModelGeneratorRequestWrapper>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ClientModelGenerator"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.ClientModelGeneratorResponseWrapper.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.ClientModelGeneratorRequestWrapper.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("ClientModelGenerator"))
+              .build();
+        }
+      }
+    }
+    return getClientModelGeneratorMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -953,6 +1108,26 @@ public final class PrismProtoServiceGrpc {
     public void initValues(grpc.server.services.PrismGrpc.InitValuesRequest request,
         io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInitValuesMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * State
+     * </pre>
+     */
+    public void initState(grpc.server.services.PrismGrpc.InitStateRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInitStateMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * State var values
+     * </pre>
+     */
+    public void stateVarValues(grpc.server.services.PrismGrpc.StateVarValuesRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.StateVarValuesResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getStateVarValuesMethod(), responseObserver);
     }
 
     /**
@@ -1137,6 +1312,27 @@ public final class PrismProtoServiceGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCloseDownMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void setStateValue(grpc.server.services.PrismGrpc.SetStateValueRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.SetStateValueResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSetStateValueMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void exportTransToFile(grpc.server.services.PrismGrpc.ExportTransToFileRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ExportTransToFileResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getExportTransToFileMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ClientModelGeneratorResponseWrapper> clientModelGenerator(
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ClientModelGeneratorRequestWrapper> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getClientModelGeneratorMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -1195,6 +1391,20 @@ public final class PrismProtoServiceGrpc {
                 grpc.server.services.PrismGrpc.InitValuesRequest,
                 grpc.server.services.PrismGrpc.InitResponse>(
                   this, METHODID_INIT_VALUES)))
+          .addMethod(
+            getInitStateMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.InitStateRequest,
+                grpc.server.services.PrismGrpc.InitResponse>(
+                  this, METHODID_INIT_STATE)))
+          .addMethod(
+            getStateVarValuesMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.StateVarValuesRequest,
+                grpc.server.services.PrismGrpc.StateVarValuesResponse>(
+                  this, METHODID_STATE_VAR_VALUES)))
           .addMethod(
             getDeleteObjectMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -1321,6 +1531,27 @@ public final class PrismProtoServiceGrpc {
                 grpc.server.services.PrismGrpc.CloseDownRequest,
                 grpc.server.services.PrismGrpc.CloseDownResponse>(
                   this, METHODID_CLOSE_DOWN)))
+          .addMethod(
+            getSetStateValueMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.SetStateValueRequest,
+                grpc.server.services.PrismGrpc.SetStateValueResponse>(
+                  this, METHODID_SET_STATE_VALUE)))
+          .addMethod(
+            getExportTransToFileMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.ExportTransToFileRequest,
+                grpc.server.services.PrismGrpc.ExportTransToFileResponse>(
+                  this, METHODID_EXPORT_TRANS_TO_FILE)))
+          .addMethod(
+            getClientModelGeneratorMethod(),
+            io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.ClientModelGeneratorResponseWrapper,
+                grpc.server.services.PrismGrpc.ClientModelGeneratorRequestWrapper>(
+                  this, METHODID_CLIENT_MODEL_GENERATOR)))
           .build();
     }
   }
@@ -1429,6 +1660,28 @@ public final class PrismProtoServiceGrpc {
         io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getInitValuesMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * State
+     * </pre>
+     */
+    public void initState(grpc.server.services.PrismGrpc.InitStateRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getInitStateMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * State var values
+     * </pre>
+     */
+    public void stateVarValues(grpc.server.services.PrismGrpc.StateVarValuesRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.StateVarValuesResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getStateVarValuesMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -1630,6 +1883,30 @@ public final class PrismProtoServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCloseDownMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void setStateValue(grpc.server.services.PrismGrpc.SetStateValueRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.SetStateValueResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getSetStateValueMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void exportTransToFile(grpc.server.services.PrismGrpc.ExportTransToFileRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ExportTransToFileResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getExportTransToFileMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ClientModelGeneratorResponseWrapper> clientModelGenerator(
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ClientModelGeneratorRequestWrapper> responseObserver) {
+      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
+          getChannel().newCall(getClientModelGeneratorMethod(), getCallOptions()), responseObserver);
+    }
   }
 
   /**
@@ -1728,6 +2005,26 @@ public final class PrismProtoServiceGrpc {
     public grpc.server.services.PrismGrpc.InitResponse initValues(grpc.server.services.PrismGrpc.InitValuesRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getInitValuesMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * State
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.InitResponse initState(grpc.server.services.PrismGrpc.InitStateRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getInitStateMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * State var values
+     * </pre>
+     */
+    public grpc.server.services.PrismGrpc.StateVarValuesResponse stateVarValues(grpc.server.services.PrismGrpc.StateVarValuesRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getStateVarValuesMethod(), getCallOptions(), request);
     }
 
     /**
@@ -1901,6 +2198,20 @@ public final class PrismProtoServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCloseDownMethod(), getCallOptions(), request);
     }
+
+    /**
+     */
+    public grpc.server.services.PrismGrpc.SetStateValueResponse setStateValue(grpc.server.services.PrismGrpc.SetStateValueRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getSetStateValueMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public grpc.server.services.PrismGrpc.ExportTransToFileResponse exportTransToFile(grpc.server.services.PrismGrpc.ExportTransToFileRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getExportTransToFileMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -2007,6 +2318,28 @@ public final class PrismProtoServiceGrpc {
         grpc.server.services.PrismGrpc.InitValuesRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getInitValuesMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * State
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.InitResponse> initState(
+        grpc.server.services.PrismGrpc.InitStateRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getInitStateMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * State var values
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.StateVarValuesResponse> stateVarValues(
+        grpc.server.services.PrismGrpc.StateVarValuesRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getStateVarValuesMethod(), getCallOptions()), request);
     }
 
     /**
@@ -2197,6 +2530,22 @@ public final class PrismProtoServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCloseDownMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.SetStateValueResponse> setStateValue(
+        grpc.server.services.PrismGrpc.SetStateValueRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getSetStateValueMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.server.services.PrismGrpc.ExportTransToFileResponse> exportTransToFile(
+        grpc.server.services.PrismGrpc.ExportTransToFileRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getExportTransToFileMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_INIT_PRISM_LOG = 0;
@@ -2207,24 +2556,29 @@ public final class PrismProtoServiceGrpc {
   private static final int METHODID_INIT_RESULT = 5;
   private static final int METHODID_INIT_UNDEFINED_CONSTANTS = 6;
   private static final int METHODID_INIT_VALUES = 7;
-  private static final int METHODID_DELETE_OBJECT = 8;
-  private static final int METHODID_INITIALISE = 9;
-  private static final int METHODID_PARSE_MODEL_FILE = 10;
-  private static final int METHODID_LOAD_PRISMMODEL = 11;
-  private static final int METHODID_PARSE_PROPERTIES_FILE = 12;
-  private static final int METHODID_GET_PROPERTY_OBJECT = 13;
-  private static final int METHODID_MODEL_CHECK_PROP_FILE_PROP_OBJ = 14;
-  private static final int METHODID_GET_UNDEFINED_CONSTANTS_USED_IN_PROPERTY = 15;
-  private static final int METHODID_ADD_VALUE = 16;
-  private static final int METHODID_SET_SOME_UNDEFINED_CONSTANTS = 17;
-  private static final int METHODID_DEFINE_USING_CONST_SWITCH = 18;
-  private static final int METHODID_GET_NUMBER_PROPERTY_ITERATIONS = 19;
-  private static final int METHODID_GET_PFCONSTANT_VALUES = 20;
-  private static final int METHODID_ITERATE_PROPERTY = 21;
-  private static final int METHODID_PARSE_PROPERTIES_STRING = 22;
-  private static final int METHODID_MODEL_CHECK_PROP_STRING = 23;
-  private static final int METHODID_CLOSE_DOWN = 24;
-  private static final int METHODID_UPLOAD_FILE = 25;
+  private static final int METHODID_INIT_STATE = 8;
+  private static final int METHODID_STATE_VAR_VALUES = 9;
+  private static final int METHODID_DELETE_OBJECT = 10;
+  private static final int METHODID_INITIALISE = 11;
+  private static final int METHODID_PARSE_MODEL_FILE = 12;
+  private static final int METHODID_LOAD_PRISMMODEL = 13;
+  private static final int METHODID_PARSE_PROPERTIES_FILE = 14;
+  private static final int METHODID_GET_PROPERTY_OBJECT = 15;
+  private static final int METHODID_MODEL_CHECK_PROP_FILE_PROP_OBJ = 16;
+  private static final int METHODID_GET_UNDEFINED_CONSTANTS_USED_IN_PROPERTY = 17;
+  private static final int METHODID_ADD_VALUE = 18;
+  private static final int METHODID_SET_SOME_UNDEFINED_CONSTANTS = 19;
+  private static final int METHODID_DEFINE_USING_CONST_SWITCH = 20;
+  private static final int METHODID_GET_NUMBER_PROPERTY_ITERATIONS = 21;
+  private static final int METHODID_GET_PFCONSTANT_VALUES = 22;
+  private static final int METHODID_ITERATE_PROPERTY = 23;
+  private static final int METHODID_PARSE_PROPERTIES_STRING = 24;
+  private static final int METHODID_MODEL_CHECK_PROP_STRING = 25;
+  private static final int METHODID_CLOSE_DOWN = 26;
+  private static final int METHODID_SET_STATE_VALUE = 27;
+  private static final int METHODID_EXPORT_TRANS_TO_FILE = 28;
+  private static final int METHODID_UPLOAD_FILE = 29;
+  private static final int METHODID_CLIENT_MODEL_GENERATOR = 30;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -2274,6 +2628,14 @@ public final class PrismProtoServiceGrpc {
         case METHODID_INIT_VALUES:
           serviceImpl.initValues((grpc.server.services.PrismGrpc.InitValuesRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse>) responseObserver);
+          break;
+        case METHODID_INIT_STATE:
+          serviceImpl.initState((grpc.server.services.PrismGrpc.InitStateRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.InitResponse>) responseObserver);
+          break;
+        case METHODID_STATE_VAR_VALUES:
+          serviceImpl.stateVarValues((grpc.server.services.PrismGrpc.StateVarValuesRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.StateVarValuesResponse>) responseObserver);
           break;
         case METHODID_DELETE_OBJECT:
           serviceImpl.deleteObject((grpc.server.services.PrismGrpc.DeleteObjectRequest) request,
@@ -2343,6 +2705,14 @@ public final class PrismProtoServiceGrpc {
           serviceImpl.closeDown((grpc.server.services.PrismGrpc.CloseDownRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.CloseDownResponse>) responseObserver);
           break;
+        case METHODID_SET_STATE_VALUE:
+          serviceImpl.setStateValue((grpc.server.services.PrismGrpc.SetStateValueRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.SetStateValueResponse>) responseObserver);
+          break;
+        case METHODID_EXPORT_TRANS_TO_FILE:
+          serviceImpl.exportTransToFile((grpc.server.services.PrismGrpc.ExportTransToFileRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ExportTransToFileResponse>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -2356,6 +2726,9 @@ public final class PrismProtoServiceGrpc {
         case METHODID_UPLOAD_FILE:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.uploadFile(
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.UploadReply>) responseObserver);
+        case METHODID_CLIENT_MODEL_GENERATOR:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.clientModelGenerator(
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.ClientModelGeneratorRequestWrapper>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -2415,6 +2788,8 @@ public final class PrismProtoServiceGrpc {
               .addMethod(getInitResultMethod())
               .addMethod(getInitUndefinedConstantsMethod())
               .addMethod(getInitValuesMethod())
+              .addMethod(getInitStateMethod())
+              .addMethod(getStateVarValuesMethod())
               .addMethod(getDeleteObjectMethod())
               .addMethod(getUploadFileMethod())
               .addMethod(getInitialiseMethod())
@@ -2433,6 +2808,9 @@ public final class PrismProtoServiceGrpc {
               .addMethod(getParsePropertiesStringMethod())
               .addMethod(getModelCheckPropStringMethod())
               .addMethod(getCloseDownMethod())
+              .addMethod(getSetStateValueMethod())
+              .addMethod(getExportTransToFileMethod())
+              .addMethod(getClientModelGeneratorMethod())
               .build();
         }
       }

@@ -1,18 +1,20 @@
 package grpc.server;
 
 import com.google.protobuf.ByteString;
+import grpc.server.services.*;
+import grpc.server.services.client.ClientServiceWrapper;
+import grpc.server.services.client.PrismEvent;
+import grpc.server.services.client.PrismEventBus;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
-import grpc.server.services.PrismGrpc;
-import grpc.server.services.PrismProtoServiceGrpc;
-import grpc.server.services.FileStore;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
-import grpc.server.services.PrismGrpcLogger;
+import parser.State;
 import parser.Values;
 import parser.ast.ModulesFile;
 import parser.ast.PropertiesFile;
@@ -28,6 +30,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
     // dict storing all prism instances
     private Map<String, Object> prismObjectMap = new HashMap<>();
 
+    private PrismEventBus prismEventBus = PrismEventBus.getInstance();
 
     @Override
     public void initialise(PrismGrpc.InitialiseRequest request, StreamObserver<PrismGrpc.InitialiseResponse> responseObserver) {
@@ -650,6 +653,572 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         logger.info("parsePropertiesString request completed with status: " + status);
     }
 
+
+//    @Override
+//    public StreamObserver<PrismGrpc.ClientModelGeneratorResponseWrapper> clientModelGenerator(StreamObserver<PrismGrpc.ClientModelGeneratorRequestWrapper> responseObserver) {
+//        return new StreamObserver<PrismGrpc.ClientModelGeneratorResponseWrapper>() {
+//            @Override
+//            public void onNext(PrismGrpc.ClientModelGeneratorResponseWrapper response) {
+//
+//                PrismGrpc.ClientModelGeneratorResponseWrapper.ResponseCase responseCase = response.getResponseCase();
+//                logger.info("[ClientModelGeneratorStream] - received response: " + responseCase);
+//
+//
+//                // handle responses
+//                switch (response.getResponseCase()) {
+//                    case INITIALISECLIENTMODELGENERATORRESPONSE:
+//                        // get model generator object id from request
+//                        modelGeneratorObjectId = response.getInitialiseClientModelGeneratorResponse().getModelGeneratorObjectId();
+//
+//                        String status = "Error";
+//
+//                        try {
+//                            ClientServiceWrapper clientServiceWrapper = new ClientServiceWrapper(modelGeneratorObjectId);
+//                            prismObjectMap.put(modelGeneratorObjectId, clientServiceWrapper);
+//                            status = "Success";
+//                        } catch (IllegalArgumentException e) {
+//                            logger.warning("[ClientModelGeneratorStream] - Error initialising client model generator: " + e.getMessage());
+//                            status += " : " + e.getMessage();
+//                        }
+//
+//                        break;
+//                    case MODELTYPERESPONSE:
+//                    case VARNAMESRESPONSE:
+//                    case VARTYPESRESPONSE:
+//                    case VARDECLARATIONTYPERESPONSE:
+//                    case LABELNAMESRESPONSE:
+//                    case INITIALSTATERESPONSE:
+//                    case EXPLORESTATERESPONSE:
+//                    case NUMCHOICESRESPONSE:
+//                    case NUMTRANSITIONSRESPONSE:
+//                    case TRANSITIONACTIONRESPONSE:
+//                    case TRANSITIONPROBABILITYRESPONSE:
+//                    case TRANSITIONTARGETRESPONSE:
+//                    case LABELTRUERESPONSE:
+//                    case REWARDSTRUCTNAMESRESPONSE:
+//                    case STATEREWARDRESPONSE:
+//                    case STATEACTIONREWARDRESPONSE:
+//                        ClientServiceWrapper clientServiceWrapper = (ClientServiceWrapper) prismObjectMap.get(modelGeneratorObjectId);
+//                        clientServiceWrapper.ClientModelGeneratorResponseQueue.add(response);
+//                        break;
+//                    case RESPONSE_NOT_SET:
+//                        logger.warning("[ClientModelGeneratorStream] - Error: received unexpected response type: " + responseCase);
+//                        break;
+//
+//                }
+//
+//                // sending new requests to client
+//                try {
+//                    ClientServiceWrapper clientServiceWrapper = (ClientServiceWrapper) prismObjectMap.get(modelGeneratorObjectId);
+//
+//                    // Blocks if the queue is empty
+//                    PrismGrpc.ClientModelGeneratorRequestWrapper request = clientServiceWrapper.ClientModelGeneratorRequestQueue.take();
+//                    responseObserver.onNext(request);
+//                    logger.info("[ClientModelGeneratorStream] - sent request: " + request.toString().replace("\n", ""));
+//
+//                } catch (InterruptedException e) {
+//                    Thread.currentThread().interrupt();
+//                    throw new RuntimeException("Interrupted", e);
+//                }
+//            }
+//
+//            @Override
+//            public void onError(Throwable t) {
+//                // If an error occurred, this method will be called
+//                // Close the connection with the client, log the error, etc.
+//            }
+//
+//            @Override
+//            public void onCompleted() {
+//                // When the client ends the stream, this method will be called
+//                // Close the connection with the client
+//                responseObserver.onCompleted();
+//            }
+//        };
+//    }
+
+
+    @Override
+    public void stateVarValues(PrismGrpc.StateVarValuesRequest request, StreamObserver<PrismGrpc.StateVarValuesResponse> responseObserver) {
+        // get state object id from request
+        String stateObjectId = request.getStateObjectId();
+        
+        // get state object
+        State state = (State) prismObjectMap.get(stateObjectId);
+        
+        // get var values
+        Object[] varValues = state.varValues;
+
+        Integer[] intValues = new Integer[varValues.length];
+
+        for (int i = 0; i < varValues.length; i++) {
+            intValues[i] = (Integer) varValues[i];
+        }
+        // build response
+        PrismGrpc.StateVarValuesResponse response = PrismGrpc.StateVarValuesResponse.newBuilder()
+                .addAllValues(Arrays.asList(intValues))
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public StreamObserver<PrismGrpc.ClientModelGeneratorResponseWrapper> clientModelGenerator(StreamObserver<PrismGrpc.ClientModelGeneratorRequestWrapper> responseObserver) {
+        return new StreamObserver<PrismGrpc.ClientModelGeneratorResponseWrapper>() {
+            @Override
+            public void onNext(PrismGrpc.ClientModelGeneratorResponseWrapper value) {
+                logger.info("[ClientModelGeneratorStream] - received response: " + value.getResponseCase());
+
+                // special treatment for initialisation
+                if (value.getResponseCase() == PrismGrpc.ClientModelGeneratorResponseWrapper.ResponseCase.EXPORTTRANSTOFILEREQUEST) {
+
+                    // get prism object id
+                    String prismId = value.getExportTransToFileRequest().getPrismObjectId();
+
+                    // get prism object
+                    Prism prism = (Prism) prismObjectMap.get(prismId);
+
+                    // get ordered
+                    Boolean ordered = value.getExportTransToFileRequest().getOrdered();
+
+                    // get file name
+                    String fileName = value.getExportTransToFileRequest().getFileName();
+
+                    // get export_type
+                    int exportType = value.getExportTransToFileRequest().getExportType();
+
+                    String status = "Success";
+
+                    // Thread 1
+                    new Thread(() -> {
+                        try {
+                            prism.exportTransToFile(ordered, exportType, new File(fileName));
+                        } catch (PrismException | FileNotFoundException e) {
+                            logger.warning("[ClientModelGeneratorStream] - Error within exportTransToFile: " + e.getMessage());
+                        }
+
+                    }).start();
+
+
+                    // build response
+                    PrismGrpc.StatusResponse response = PrismGrpc.StatusResponse.newBuilder()
+                            .setStatus(status)
+                            .build();
+
+                    // send response
+                    responseObserver.onNext(PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+                            .setExportTransToFileResponse(response)
+                            .build());
+
+                }
+                else if (value.getResponseCase() == PrismGrpc.ClientModelGeneratorResponseWrapper.ResponseCase.MODELCHECKPROPSTRINGREQUEST) {
+
+                    // Thread 1
+                    new Thread(() -> {
+                        // get prism object id
+                        String prismObjectId = value.getModelCheckPropStringRequest().getPrismObjectId();
+
+                        // get prop string
+                        String propertiesString = value.getModelCheckPropStringRequest().getPropertiesString();
+
+                        // get result object id
+                        String resultId = value.getModelCheckPropStringRequest().getResultObjectId();
+
+                        String status = "Error";
+                        String result = "";
+
+                        try {
+                            // check if result object already exists
+                            if(!prismObjectMap.containsKey(resultId)){
+                                prismObjectMap.put(resultId, new Result());
+                            }
+                            // retrieve prism objects
+                            Prism prism = (Prism) prismObjectMap.get(prismObjectId);
+                            Result modelCheckResult = (Result) prismObjectMap.get(resultId);
+
+                            modelCheckResult = prism.modelCheck(propertiesString);
+                            result = modelCheckResult.getResultString();
+                            prismObjectMap.put(resultId, modelCheckResult);
+                            status = "Success";
+
+                            logger.info("modelCheckPropString request completed with status: " + status);
+                        } catch (PrismException e) {
+                            logger.warning("[ClientModelGeneratorStream] - Error handling model check: " + e.getMessage());
+                        }
+
+                        // build response
+                        PrismGrpc.ModelCheckPropStringResponse response = PrismGrpc.ModelCheckPropStringResponse.newBuilder()
+                                .setStatus(status)
+                                .setResult(result)
+                                .build();
+
+                        // wrap response
+                        PrismGrpc.ClientModelGeneratorRequestWrapper responseWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+                                .setModelCheckPropStringResponse(response)
+                                .build();
+                        PrismEvent event = new PrismEvent(responseWrapper, null);
+                        prismEventBus.postEvent(event);
+
+                    }).start();
+                }
+                else if (value.getResponseCase() == PrismGrpc.ClientModelGeneratorResponseWrapper.ResponseCase.INITIALISECLIENTMODELGENERATORRESPONSE) {
+                    // initialise client model generator
+                    logger.info("[ClientModelGeneratorStream] - Initialise client model generator");
+                    // get model generator object id from request
+                    String modelGeneratorObjectId = value.getInitialiseClientModelGeneratorResponse().getModelGeneratorObjectId();
+
+                    // get prism object id from request
+                    String prismId = value.getInitialiseClientModelGeneratorResponse().getPrismObjectId();
+                    ClientServiceWrapper clientServiceWrapper = new ClientServiceWrapper(modelGeneratorObjectId, responseObserver, prismObjectMap);
+                    prismObjectMap.put(modelGeneratorObjectId, clientServiceWrapper);
+
+                    // get prism object
+                    Prism prism = (Prism) prismObjectMap.get(prismId);
+
+
+                    // Thread 1
+                    new Thread(() -> {
+                        try {
+                            prism.loadModelGenerator(clientServiceWrapper);
+                        } catch (PrismException e) {
+                            logger.warning("[ClientModelGeneratorStream] - Error within load model generator: " + e.getMessage());
+                        }
+
+                    }).start();
+                }
+                else {
+                    // handle responses
+                    prismEventBus.postResponse(value);
+                }
+
+//                if (value.getResponseCase() != PrismGrpc.ClientModelGeneratorResponseWrapper.ResponseCase.INITIALISECLIENTMODELGENERATORRESPONSE) {
+//                    // handle responses
+//                    logger.info("[ClientModelGeneratorStream] - received response: " + value.getResponseCase());
+//                    prismEventBus.postResponse(value);
+//                } else {
+//                    // initialise client model generator
+//                    logger.info("[ClientModelGeneratorStream] - Initialise client model generator");
+//                    // get model generator object id from request
+//                    String modelGeneratorObjectId = value.getInitialiseClientModelGeneratorResponse().getModelGeneratorObjectId();
+//
+//                    // get prism object id from request
+//                    String prismId = value.getInitialiseClientModelGeneratorResponse().getPrismObjectId();
+//                    ClientServiceWrapper clientServiceWrapper = new ClientServiceWrapper(modelGeneratorObjectId, responseObserver, prismObjectMap);
+//                    prismObjectMap.put(modelGeneratorObjectId, clientServiceWrapper);
+//
+//                    // get prism object
+//                    Prism prism = (Prism) prismObjectMap.get(prismId);
+//
+//
+//                    // Thread 1
+//                        new Thread(() -> {
+//                            try {
+//                                prism.loadModelGenerator(clientServiceWrapper);
+//                            } catch (PrismException e) {
+//                                logger.warning("[ClientModelGeneratorStream] - Error initialising client model generator: " + e.getMessage());
+//                            }
+//
+//                        }).start();
+//                }
+
+
+                // Wait for next event to send
+                logger.info("[ClientModelGeneratorStream] - Waiting for next event to send");
+                try {
+                    PrismEvent nextEvent = PrismEventBus.getInstance().getNextEvent();
+
+                    // sending new requests to client
+                    responseObserver.onNext(nextEvent.getRequest());
+                } catch (InterruptedException e) {
+                    logger.warning("[ClientModelGeneratorStream] - Error getting/sending next event");
+                }
+
+//                // open console and wait for user input of number between 1 and 4
+//                Scanner scanner = new Scanner(System.in);
+//                System.out.println("Enter a number between 1 and 17: ");
+//                int number = scanner.nextInt();
+//
+//                switch (number) {
+//                    case 1:
+//                        // send model type request (empty)
+//                        PrismGrpc.ModelTypeRequest modelTypeRequest = PrismGrpc.ModelTypeRequest.newBuilder().build();
+//                        PrismGrpc.ClientModelGeneratorRequestWrapper modelTypeRequestWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+//                                .setModelTypeRequest(modelTypeRequest)
+//                                .build();
+//                        responseObserver.onNext(modelTypeRequestWrapper);
+//                        break;
+//                    case 2:
+//                        // send var names request (empty)
+//                        PrismGrpc.VarNamesRequest varNamesRequest = PrismGrpc.VarNamesRequest.newBuilder().build();
+//                        PrismGrpc.ClientModelGeneratorRequestWrapper varNamesRequestWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+//                                .setVarNamesRequest(varNamesRequest)
+//                                .build();
+//                        responseObserver.onNext(varNamesRequestWrapper);
+//                        break;
+//                    case 3:
+//                        // send var types request (empty)
+//                        PrismGrpc.VarTypesRequest varTypesRequest = PrismGrpc.VarTypesRequest.newBuilder().build();
+//                        PrismGrpc.ClientModelGeneratorRequestWrapper varTypesRequestWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+//                                .setVarTypesRequest(varTypesRequest)
+//                                .build();
+//                        responseObserver.onNext(varTypesRequestWrapper);
+//                        break;
+//                    case 4:
+//                        // send var declaration type request (index)
+//                        PrismGrpc.VarDeclarationTypeRequest varDeclarationTypeRequest = PrismGrpc.VarDeclarationTypeRequest
+//                                .newBuilder()
+//                                .setIndex(1)
+//                                .build();
+//                        PrismGrpc.ClientModelGeneratorRequestWrapper varDeclarationTypeRequestWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+//                                .setVarDeclarationTypeRequest(varDeclarationTypeRequest)
+//                                .build();
+//                        responseObserver.onNext(varDeclarationTypeRequestWrapper);
+//                        break;
+//                    case 5:
+//                        // send labels names request (empty)
+//                        PrismGrpc.LabelNamesRequest labelNamesRequest = PrismGrpc.LabelNamesRequest.newBuilder().build();
+//                        PrismGrpc.ClientModelGeneratorRequestWrapper labelNamesRequestWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+//                                .setLabelNamesRequest(labelNamesRequest)
+//                                .build();
+//                        responseObserver.onNext(labelNamesRequestWrapper);
+//                        break;
+//                    case 6:
+//                        // set initial state request (empty)
+//                        PrismGrpc.InitialStateRequest initialStateRequest = PrismGrpc.InitialStateRequest.newBuilder().build();
+//                        PrismGrpc.ClientModelGeneratorRequestWrapper initialStateRequestWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+//                                .setInitialStateRequest(initialStateRequest)
+//                                .build();
+//                        responseObserver.onNext(initialStateRequestWrapper);
+//                        break;
+//                    case 7:
+//                        // explore state request (List of states)
+//                        PrismGrpc.ArrayRequest stateArrayRequest = PrismGrpc.ArrayRequest.newBuilder()
+//                                .addValues(1)
+//                                .addValues(2)
+//                                .addValues(3)
+//                                .build();
+//                        PrismGrpc.ExploreStateRequest exploreStateRequest = PrismGrpc.ExploreStateRequest.newBuilder()
+//                                .setState(stateArrayRequest)
+//                                .build();
+//                        PrismGrpc.ClientModelGeneratorRequestWrapper exploreStateRequestWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+//                                .setExploreStateRequest(exploreStateRequest)
+//                                .build();
+//                        responseObserver.onNext(exploreStateRequestWrapper);
+//                        break;
+//                    case 8:
+//                        // send num choice request (empty)
+//                        PrismGrpc.NumChoicesRequest numChoicesRequest = PrismGrpc.NumChoicesRequest.newBuilder().build();
+//
+//                        PrismGrpc.ClientModelGeneratorRequestWrapper numChoicesRequestWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+//                                .setNumChoicesRequest(numChoicesRequest)
+//                                .build();
+//                        responseObserver.onNext(numChoicesRequestWrapper);
+//                        break;
+//                    case 9:
+//                        // send num transitions request (choice)
+//                        PrismGrpc.NumTransitionsRequest numTransitionsRequest = PrismGrpc.NumTransitionsRequest.newBuilder()
+//                                .setIndex(1)
+//                                .build();
+//                        PrismGrpc.ClientModelGeneratorRequestWrapper numTransitionsRequestWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+//                                .setNumTransitionsRequest(numTransitionsRequest)
+//                                .build();
+//                        responseObserver.onNext(numTransitionsRequestWrapper);
+//                        break;
+//                    case 10:
+//                        // send transitionActionRequest (choice, offset)
+//                        PrismGrpc.TransitionActionRequest transitionActionRequest = PrismGrpc.TransitionActionRequest.newBuilder()
+//                                .setIndex(1)
+//                                .setOffset(1)
+//                                .build();
+//                        PrismGrpc.ClientModelGeneratorRequestWrapper transitionActionRequestWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+//                                .setTransitionActionRequest(transitionActionRequest)
+//                                .build();
+//                        responseObserver.onNext(transitionActionRequestWrapper);
+//                        break;
+//                    case 11:
+//                        // send transitionProbabilityRequest (choice, offset)
+//                        PrismGrpc.TransitionProbabilityRequest transitionProbabilityRequest = PrismGrpc.TransitionProbabilityRequest.newBuilder()
+//                                .setIndex(1)
+//                                .setOffset(1)
+//                                .build();
+//                        PrismGrpc.ClientModelGeneratorRequestWrapper transitionProbabilityRequestWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+//                                .setTransitionProbabilityRequest(transitionProbabilityRequest)
+//                                .build();
+//                        responseObserver.onNext(transitionProbabilityRequestWrapper);
+//                        break;
+//                    case 12:
+//                        // send transitionTargetRequest (choice, offset)
+//                        PrismGrpc.TransitionTargetRequest transitionTargetRequest = PrismGrpc.TransitionTargetRequest.newBuilder()
+//                                .setIndex(1)
+//                                .setOffset(1)
+//                                .build();
+//                        PrismGrpc.ClientModelGeneratorRequestWrapper transitionTargetRequestWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+//                                .setTransitionTargetRequest(transitionTargetRequest)
+//                                .build();
+//                        responseObserver.onNext(transitionTargetRequestWrapper);
+//                        break;
+//                    case 13:
+//                        // send labelTrueRequest (index)
+//                        PrismGrpc.LabelTrueRequest labelTrueRequest = PrismGrpc.LabelTrueRequest.newBuilder()
+//                                .setIndex(1)
+//                                .build();
+//                        PrismGrpc.ClientModelGeneratorRequestWrapper labelTrueRequestWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+//                                .setLabelTrueRequest(labelTrueRequest)
+//                                .build();
+//                        responseObserver.onNext(labelTrueRequestWrapper);
+//                        break;
+//                    case 14:
+//                        // send rewardStructNamesRequest (empty)
+//                        PrismGrpc.RewardStructNamesRequest rewardStructNamesRequest = PrismGrpc.RewardStructNamesRequest.newBuilder().build();
+//                        PrismGrpc.ClientModelGeneratorRequestWrapper rewardStructNamesRequestWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+//                                .setRewardStructNamesRequest(rewardStructNamesRequest)
+//                                .build();
+//                        responseObserver.onNext(rewardStructNamesRequestWrapper);
+//                        break;
+//                    case 15:
+//                        // send stateRewardRequest (string: reward struct, stateRewardArrayRequest: state)
+//                        // construct array request
+//                        PrismGrpc.ArrayRequest stateRewardArrayRequest = PrismGrpc.ArrayRequest.newBuilder()
+//                                .addValues(1)
+//                                .addValues(2)
+//                                .addValues(3)
+//                                .build();
+//
+//                        PrismGrpc.StateRewardRequest stateRewardRequest = PrismGrpc.StateRewardRequest.newBuilder()
+//                                .setRewardStruct("reward")
+//                                .setState(stateRewardArrayRequest)
+//                                .build();
+//
+//                        PrismGrpc.ClientModelGeneratorRequestWrapper stateRewardRequestWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+//                                .setStateRewardRequest(stateRewardRequest)
+//                                .build();
+//                        responseObserver.onNext(stateRewardRequestWrapper);
+//                        break;
+//                    case 16:
+//                        // send stateActionRewardRequest (string: reward struct, stateActionRewardArrayRequest: state, int: action)
+//                        // construct array request
+//                        PrismGrpc.ArrayRequest stateActionRewardArrayRequest = PrismGrpc.ArrayRequest.newBuilder()
+//                                .addValues(1)
+//                                .addValues(2)
+//                                .addValues(3)
+//                                .build();
+//
+//                        PrismGrpc.StateActionRewardRequest stateActionRewardRequest = PrismGrpc.StateActionRewardRequest.newBuilder()
+//                                .setRewardStruct("reward")
+//                                .setState(stateActionRewardArrayRequest)
+//                                .setAction(1)
+//                                .build();
+//
+//                        PrismGrpc.ClientModelGeneratorRequestWrapper stateActionRewardRequestWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+//                                .setStateActionRewardRequest(stateActionRewardRequest)
+//                                .build();
+//                        responseObserver.onNext(stateActionRewardRequestWrapper);
+//                        break;
+//                    case 17:
+//                        // send closeClientModelGeneratorRequest (empty)
+//                        PrismGrpc.CloseClientModelGeneratorRequest closeClientModelGeneratorRequest = PrismGrpc.CloseClientModelGeneratorRequest.newBuilder().build();
+//                        PrismGrpc.ClientModelGeneratorRequestWrapper closeClientModelGeneratorRequestWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+//                                .setCloseClientModelGeneratorRequest(closeClientModelGeneratorRequest)
+//                                .build();
+//                        responseObserver.onNext(closeClientModelGeneratorRequestWrapper);
+//                        break;
+//
+//                    default:
+//                        System.out.println("Invalid number");
+//                        break;
+//                }
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                t.printStackTrace();
+            }
+
+            @Override
+            public void onCompleted() {
+                responseObserver.onCompleted();
+            }
+        };
+    }
+
+//    @Override
+//    public void loadModelGenerator(PrismGrpc.LoadModelGeneratorRequest request, StreamObserver<PrismGrpc.LoadModelGeneratorResponse> responseObserver) {
+//        logger.info("Received loadModelGenerator request");
+//
+//        // get prism object id from request
+//        String prismObjectId = request.getPrismObjectId();
+//
+//        // get model_generator_object_id from request
+//        String modelGeneratorObjectId = request.getModelGeneratorObjectId();
+//
+//        String status = "Error";
+//
+//        // load model generator
+//        try {
+//            Prism prism = (Prism) prismObjectMap.get(prismObjectId);
+//            ClientServiceWrapper clientServiceWrapper = (ClientServiceWrapper) prismObjectMap.get(modelGeneratorObjectId);
+//            prism.loadModelGenerator(clientServiceWrapper);
+//            status = "Success";
+//        } catch (PrismException | IllegalArgumentException e) {
+//            logger.warning("Error loading model generator: " + e.getMessage());
+//            status += " : " + e.getMessage();
+//        }
+//
+//        // build response
+//        PrismGrpc.LoadModelGeneratorResponse response = PrismGrpc.LoadModelGeneratorResponse.newBuilder()
+//                .setStatus(status)
+//                .build();
+//
+//        // send response
+//        responseObserver.onNext(response);
+//
+//        // complete call
+//        responseObserver.onCompleted();
+//    }
+
+
+    @Override
+    public void exportTransToFile(PrismGrpc.ExportTransToFileRequest request, StreamObserver<PrismGrpc.ExportTransToFileResponse> responseObserver) {
+        logger.info("Received exportTransToFile request");
+
+        // get prism object id from request
+        String prismObjectId = request.getPrismObjectId();
+
+        // get file name from request
+        String fileName = request.getFileName();
+
+        // get ordered from request
+        boolean ordered = request.getOrdered();
+
+        // get export type from request
+        int exportType = request.getExportType();
+
+        // get prism object
+        Prism prism = (Prism) prismObjectMap.get(prismObjectId);
+
+        String status = "Success";
+        try {
+            prism.exportTransToFile(ordered, exportType, new File(fileName));
+        } catch (PrismException | FileNotFoundException e) {
+            status = "Error : " + e.getMessage();
+        }
+
+        // build response
+        PrismGrpc.ExportTransToFileResponse response = PrismGrpc.ExportTransToFileResponse.newBuilder()
+                .setStatus(status)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+    }
+
     @Override
     public void closeDown(PrismGrpc.CloseDownRequest request, StreamObserver<PrismGrpc.CloseDownResponse> responseObserver) {
         logger.info("Received closeDown request");
@@ -1039,6 +1608,107 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         logger.info("[INIT] - initValues request completed with status: " + status);
     }
 
+    @Override
+    public void setStateValue(PrismGrpc.SetStateValueRequest request, StreamObserver<PrismGrpc.SetStateValueResponse> responseObserver) {
+        logger.info("Received setStateValue request");
+
+        // get state object id from request
+        String stateObjectId = request.getStateObjectId();
+
+        // get index
+        int index = request.getIndex();
+
+        // get value
+        int value = request.getValue();
+
+        // get state object
+        State state = (State) prismObjectMap.get(stateObjectId);
+
+        // set value
+        state.setValue(index, value);
+
+        // build response
+        PrismGrpc.SetStateValueResponse response = PrismGrpc.SetStateValueResponse.newBuilder()
+                .setStatus("Success")
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+
+        // complete call
+        responseObserver.onCompleted();
+
+        logger.info("setStateValue request completed");
+    }
+
+    @Override
+    public void initState(PrismGrpc.InitStateRequest request, StreamObserver<PrismGrpc.InitResponse> responseObserver) {
+        logger.info("[INIT] - Received initState request");
+
+        // get object id from request
+        String newStateId = request.getStateObjectId();
+
+        String status = "Success";
+
+        // check which type of state object should be created
+
+        switch (request.getArgCase()) {
+            case ARG_STATE_OBJECT_IDS:
+                PrismGrpc.InitStateRequest.ArgStateObjectIDs argIds = request.getArgStateObjectIds();
+                // Access the repeated string field
+                if (argIds.getStateObjectIdList().size() == 1) {
+                    logger.info("[INIT] - Initializing state with one state as argument");
+                    // construct state with state as argument
+
+                    // get state object id from request
+                    String stateObjectId = argIds.getStateObjectId(0);
+                    State argState = (State) prismObjectMap.get(stateObjectId);
+
+                    // creating new state and storing it
+                    State state = new State(argState);
+                    prismObjectMap.put(newStateId, state);
+                } else if (argIds.getStateObjectIdList().size() == 2) {
+                    logger.info("[INIT] - Initializing state with two states as arguments");
+                    // construct state with two states as argument
+
+                    // get state object id from request
+                    String stateObjectId1 = argIds.getStateObjectId(0);
+                    State argState1 = (State) prismObjectMap.get(stateObjectId1);
+                    String stateObjectId2 = argIds.getStateObjectId(1);
+                    State argState2 = (State) prismObjectMap.get(stateObjectId2);
+
+                    // creating new state and storing it
+                    State state = new State(argState1, argState2);
+                    prismObjectMap.put(newStateId, state);
+                } else {
+                    logger.warning("[INIT] - Error initializing state: wrong number of arguments");
+                    status += " : wrong number of arguments";
+                }
+                break;
+
+            case STATE_NUMBER:
+                logger.info("[INIT] - Initializing state with state number as argument");
+                int stateNumber = request.getStateNumber();
+                // creating new state and storing it
+                State state = new State(stateNumber);
+                prismObjectMap.put(newStateId, state);
+                break;
+
+            case ARG_NOT_SET:
+                logger.warning("[INIT] - Error initializing state: no arguments");
+                break;
+        }
+
+
+        // build response
+        PrismGrpc.InitResponse response = PrismGrpc.InitResponse.newBuilder()
+                .setStatus(status)
+                .build();
+
+        // send response
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+    }
 
     // helper logging function for not implemented requests
     private void notStandalone(String serviceName, StreamObserver<PrismGrpc.InitResponse> responseObserver) {
