@@ -1,8 +1,5 @@
 import os
-import threading
 from abc import ABC
-from threading import Thread
-
 
 from google.protobuf import wrappers_pb2
 from grpc._channel import _InactiveRpcError
@@ -18,10 +15,6 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
         self.prism_object_id = prism_object_id
         super().__init__(standalone=False)
         self.ServiceProviderClass = ServiceProviderClass
-
-        self.load_model_gen_thread = threading.Thread(target=self.init_client_service_provider_stream)
-        self.load_model_gen_thread.start()
-
 
     def handle_requests(self, requests):
         # Iterate over the stream of ClientModelGeneratorResponseWrapper objects
@@ -363,7 +356,7 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
         self.logger.info(f"[STREAM] - sending " + str(response).replace("\n", ""))
         self.handle_requests(handle_requests_response)
 
-    def init_client_service_provider_stream(self):
+    def load_model_generator(self):
         # Instantiate the InitialiseClientModelGeneratorRequest object
         initialise_client_model_generator_response = prismGrpc_pb2.InitialiseClientModelGeneratorResponse(
             prism_object_id=self.prism_object_id,

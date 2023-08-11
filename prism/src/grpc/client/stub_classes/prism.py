@@ -107,13 +107,13 @@ class Prism(PrismPyBaseModel):
 
         return properties_file
 
+    # since overloading is not possible in python, we utilise this small hack
     def model_check(self, *args):
         # checking if we're in a client service provision mode
         if self.__client_service_provision:
             # currently only supports property string
             return self.service_provider.model_check(args[0])
         # not in client service provision mode
-        # hack to allow for overloading
         elif len(args) == 1:
             return self.__model_check_properties_string(args[0])
         elif len(args) == 2:
@@ -206,11 +206,11 @@ class Prism(PrismPyBaseModel):
 
         self.__client_service_provision = True
 
-        # start the model generator stream
         self.service_provider = ServiceProviderBase(model_gen, self.object_id)
 
+        self.service_provider.load_model_generator()
+
     def export_trans_to_file(self, ordered, export_type, filename):
-        self.service_provider.load_model_gen_thread.join()
         self.logger.info("Exporting transitions to file")
 
         self.service_provider.export_trans_to_file(ordered, export_type, filename)
