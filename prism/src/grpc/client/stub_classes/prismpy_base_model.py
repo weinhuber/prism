@@ -96,24 +96,24 @@ class PrismPyBaseModel(ABC):
         self.channel = None
 
     # private garbage collector which deletes the object on the server, if it was not already deleted
-    def __del__(self):
-        # check if object was uploaded to the server
-        if self.__object_id_accessed:
-
-            # opening channel if not already open
-            if self.stub is None:
-                self.__create_channel()
-
-            # create a delete object request
-            request = prismGrpc_pb2.DeleteObjectRequest(object_id=self.__object_id)
-
-            # send request
-            try:
-                self.stub.DeleteObject(request)
-            except _InactiveRpcError:
-                self.logger.error(f"[Garbage Collector] - gRPC service seems to be unavailable. Please make sure the "
-                                  f"service is running.")
-            self.__close_channel()
+    # def __del__(self):
+    #     # check if object was uploaded to the server
+    #     if self.__object_id_accessed:
+    #
+    #         # opening channel if not already open
+    #         if self.stub is None:
+    #             self.__create_channel()
+    #
+    #         # create a delete object request
+    #         request = prismGrpc_pb2.DeleteObjectRequest(object_id=self.__object_id)
+    #
+    #         # send request
+    #         try:
+    #             self.stub.DeleteObject(request)
+    #         except _InactiveRpcError:
+    #             self.logger.error(f"[Garbage Collector] - gRPC service seems to be unavailable. Please make sure the "
+    #                               f"service is running.")
+    #         self.__close_channel()
 
     # function to upload a generic file to the prism server
     def upload_file(self, filename):
@@ -158,3 +158,17 @@ class PrismPyBaseModel(ABC):
                     self.logger.info(f"Uploaded chunk of size {len(piece)}")
         except Exception as e:
             self.logger.error(f"Unknown error.\n{str(e)}")
+
+    def clean_up(self):
+        self.logger.info("[Garbage Collection] Cleaning up...")
+
+        for prism_object in self.prism_object_map.values():
+            if prism_object.__object_id_accessed:
+                self.logger.info("[Garbage Collection] Deleting object: " + prism_object.__object_id)
+
+                request = prismGrpc_pb2.DeleteObjectRequest(object_id=prism_object.__object_id)
+                # send request
+            try:
+                self.stub.DeleteObject(request)
+            except Exception as e:
+                self.logger.error("Error deleting object: " + str(e))

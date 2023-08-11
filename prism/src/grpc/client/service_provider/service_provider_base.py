@@ -22,8 +22,6 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
         self.load_model_gen_thread = threading.Thread(target=self.init_client_service_provider_stream)
         self.load_model_gen_thread.start()
 
-    def __del__(self):
-        self.logger.info("Closing stream to prism server.")
 
     def handle_requests(self, requests):
         # Iterate over the stream of ClientModelGeneratorResponseWrapper objects

@@ -1,5 +1,3 @@
-from time import sleep
-
 import grpc
 
 from service_provider.service_provider_base import ServiceProviderBase
@@ -189,7 +187,6 @@ class Prism(PrismPyBaseModel):
         return properties_file
 
     def close_down(self):
-        self.service_provider.load_model_gen_thread.join()
         self.logger.info("Closing down Prism Engine.")
 
         # Create a CloseDownRequest
@@ -200,6 +197,8 @@ class Prism(PrismPyBaseModel):
 
         self.logger.info("Received message {}.".format(response.status))
 
+        # Garbage collect all objects
+        super().clean_up()
         return self
 
     def load_model_generator(self, model_gen):
