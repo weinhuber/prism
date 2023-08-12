@@ -1343,6 +1343,1066 @@ public final class PrismGrpc {
 
   }
 
+  public interface DownloadRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:DownloadRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string fileName = 1;</code>
+     * @return The fileName.
+     */
+    java.lang.String getFileName();
+    /**
+     * <code>string fileName = 1;</code>
+     * @return The bytes for fileName.
+     */
+    com.google.protobuf.ByteString
+        getFileNameBytes();
+  }
+  /**
+   * Protobuf type {@code DownloadRequest}
+   */
+  public static final class DownloadRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:DownloadRequest)
+      DownloadRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use DownloadRequest.newBuilder() to construct.
+    private DownloadRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DownloadRequest() {
+      fileName_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new DownloadRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DownloadRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              fileName_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.server.services.PrismGrpc.internal_static_DownloadRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.server.services.PrismGrpc.internal_static_DownloadRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.server.services.PrismGrpc.DownloadRequest.class, grpc.server.services.PrismGrpc.DownloadRequest.Builder.class);
+    }
+
+    public static final int FILENAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object fileName_;
+    /**
+     * <code>string fileName = 1;</code>
+     * @return The fileName.
+     */
+    @java.lang.Override
+    public java.lang.String getFileName() {
+      java.lang.Object ref = fileName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        fileName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string fileName = 1;</code>
+     * @return The bytes for fileName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getFileNameBytes() {
+      java.lang.Object ref = fileName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        fileName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getFileNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, fileName_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getFileNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, fileName_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.server.services.PrismGrpc.DownloadRequest)) {
+        return super.equals(obj);
+      }
+      grpc.server.services.PrismGrpc.DownloadRequest other = (grpc.server.services.PrismGrpc.DownloadRequest) obj;
+
+      if (!getFileName()
+          .equals(other.getFileName())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + FILENAME_FIELD_NUMBER;
+      hash = (53 * hash) + getFileName().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.server.services.PrismGrpc.DownloadRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.DownloadRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.DownloadRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.DownloadRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.DownloadRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.DownloadRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.DownloadRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.DownloadRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.DownloadRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.DownloadRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.DownloadRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.DownloadRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.server.services.PrismGrpc.DownloadRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code DownloadRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:DownloadRequest)
+        grpc.server.services.PrismGrpc.DownloadRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.server.services.PrismGrpc.internal_static_DownloadRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.server.services.PrismGrpc.internal_static_DownloadRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.server.services.PrismGrpc.DownloadRequest.class, grpc.server.services.PrismGrpc.DownloadRequest.Builder.class);
+      }
+
+      // Construct using grpc.server.services.PrismGrpc.DownloadRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        fileName_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.server.services.PrismGrpc.internal_static_DownloadRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.DownloadRequest getDefaultInstanceForType() {
+        return grpc.server.services.PrismGrpc.DownloadRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.DownloadRequest build() {
+        grpc.server.services.PrismGrpc.DownloadRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.DownloadRequest buildPartial() {
+        grpc.server.services.PrismGrpc.DownloadRequest result = new grpc.server.services.PrismGrpc.DownloadRequest(this);
+        result.fileName_ = fileName_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.server.services.PrismGrpc.DownloadRequest) {
+          return mergeFrom((grpc.server.services.PrismGrpc.DownloadRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.server.services.PrismGrpc.DownloadRequest other) {
+        if (other == grpc.server.services.PrismGrpc.DownloadRequest.getDefaultInstance()) return this;
+        if (!other.getFileName().isEmpty()) {
+          fileName_ = other.fileName_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.server.services.PrismGrpc.DownloadRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.server.services.PrismGrpc.DownloadRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object fileName_ = "";
+      /**
+       * <code>string fileName = 1;</code>
+       * @return The fileName.
+       */
+      public java.lang.String getFileName() {
+        java.lang.Object ref = fileName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          fileName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string fileName = 1;</code>
+       * @return The bytes for fileName.
+       */
+      public com.google.protobuf.ByteString
+          getFileNameBytes() {
+        java.lang.Object ref = fileName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          fileName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string fileName = 1;</code>
+       * @param value The fileName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFileName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        fileName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string fileName = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFileName() {
+        
+        fileName_ = getDefaultInstance().getFileName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string fileName = 1;</code>
+       * @param value The bytes for fileName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFileNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        fileName_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:DownloadRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:DownloadRequest)
+    private static final grpc.server.services.PrismGrpc.DownloadRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.DownloadRequest();
+    }
+
+    public static grpc.server.services.PrismGrpc.DownloadRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DownloadRequest>
+        PARSER = new com.google.protobuf.AbstractParser<DownloadRequest>() {
+      @java.lang.Override
+      public DownloadRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DownloadRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DownloadRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DownloadRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.server.services.PrismGrpc.DownloadRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface FileChunkOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:FileChunk)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>bytes content = 1;</code>
+     * @return The content.
+     */
+    com.google.protobuf.ByteString getContent();
+  }
+  /**
+   * Protobuf type {@code FileChunk}
+   */
+  public static final class FileChunk extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:FileChunk)
+      FileChunkOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use FileChunk.newBuilder() to construct.
+    private FileChunk(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FileChunk() {
+      content_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FileChunk();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private FileChunk(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+
+              content_ = input.readBytes();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.server.services.PrismGrpc.internal_static_FileChunk_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.server.services.PrismGrpc.internal_static_FileChunk_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.server.services.PrismGrpc.FileChunk.class, grpc.server.services.PrismGrpc.FileChunk.Builder.class);
+    }
+
+    public static final int CONTENT_FIELD_NUMBER = 1;
+    private com.google.protobuf.ByteString content_;
+    /**
+     * <code>bytes content = 1;</code>
+     * @return The content.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getContent() {
+      return content_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!content_.isEmpty()) {
+        output.writeBytes(1, content_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!content_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, content_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.server.services.PrismGrpc.FileChunk)) {
+        return super.equals(obj);
+      }
+      grpc.server.services.PrismGrpc.FileChunk other = (grpc.server.services.PrismGrpc.FileChunk) obj;
+
+      if (!getContent()
+          .equals(other.getContent())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + CONTENT_FIELD_NUMBER;
+      hash = (53 * hash) + getContent().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.server.services.PrismGrpc.FileChunk parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.FileChunk parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.FileChunk parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.FileChunk parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.FileChunk parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.server.services.PrismGrpc.FileChunk parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.FileChunk parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.FileChunk parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.FileChunk parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.FileChunk parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.server.services.PrismGrpc.FileChunk parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.server.services.PrismGrpc.FileChunk parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.server.services.PrismGrpc.FileChunk prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code FileChunk}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:FileChunk)
+        grpc.server.services.PrismGrpc.FileChunkOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.server.services.PrismGrpc.internal_static_FileChunk_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.server.services.PrismGrpc.internal_static_FileChunk_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.server.services.PrismGrpc.FileChunk.class, grpc.server.services.PrismGrpc.FileChunk.Builder.class);
+      }
+
+      // Construct using grpc.server.services.PrismGrpc.FileChunk.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        content_ = com.google.protobuf.ByteString.EMPTY;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.server.services.PrismGrpc.internal_static_FileChunk_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.FileChunk getDefaultInstanceForType() {
+        return grpc.server.services.PrismGrpc.FileChunk.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.FileChunk build() {
+        grpc.server.services.PrismGrpc.FileChunk result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.server.services.PrismGrpc.FileChunk buildPartial() {
+        grpc.server.services.PrismGrpc.FileChunk result = new grpc.server.services.PrismGrpc.FileChunk(this);
+        result.content_ = content_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.server.services.PrismGrpc.FileChunk) {
+          return mergeFrom((grpc.server.services.PrismGrpc.FileChunk)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.server.services.PrismGrpc.FileChunk other) {
+        if (other == grpc.server.services.PrismGrpc.FileChunk.getDefaultInstance()) return this;
+        if (other.getContent() != com.google.protobuf.ByteString.EMPTY) {
+          setContent(other.getContent());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.server.services.PrismGrpc.FileChunk parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.server.services.PrismGrpc.FileChunk) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private com.google.protobuf.ByteString content_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>bytes content = 1;</code>
+       * @return The content.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getContent() {
+        return content_;
+      }
+      /**
+       * <code>bytes content = 1;</code>
+       * @param value The content to set.
+       * @return This builder for chaining.
+       */
+      public Builder setContent(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        content_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes content = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearContent() {
+        
+        content_ = getDefaultInstance().getContent();
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:FileChunk)
+    }
+
+    // @@protoc_insertion_point(class_scope:FileChunk)
+    private static final grpc.server.services.PrismGrpc.FileChunk DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.server.services.PrismGrpc.FileChunk();
+    }
+
+    public static grpc.server.services.PrismGrpc.FileChunk getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FileChunk>
+        PARSER = new com.google.protobuf.AbstractParser<FileChunk>() {
+      @java.lang.Override
+      public FileChunk parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new FileChunk(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<FileChunk> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FileChunk> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.server.services.PrismGrpc.FileChunk getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface PrismDevNullLogOrBuilder extends
       // @@protoc_insertion_point(interface_extends:PrismDevNullLog)
       com.google.protobuf.MessageOrBuilder {
@@ -72930,6 +73990,16 @@ public final class PrismGrpc {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_UploadReply_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DownloadRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_DownloadRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_FileChunk_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_FileChunk_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_PrismDevNullLog_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -73416,276 +74486,279 @@ public final class PrismGrpc {
       "\n\017prismGrpc.proto\032\036google/protobuf/wrapp" +
       "ers.proto\"A\n\rUploadRequest\022\022\n\010filename\030\002" +
       " \001(\tH\000\022\024\n\nchunk_data\030\003 \001(\014H\000B\006\n\004data\"\037\n\013" +
-      "UploadReply\022\020\n\010filename\030\001 \001(\t\"\021\n\017PrismDe" +
-      "vNullLog\"\034\n\014PrismFileLog\022\014\n\004type\030\001 \001(\t\"c" +
-      "\n\010PrismLog\022(\n\014dev_null_log\030\001 \001(\0132\020.Prism" +
-      "DevNullLogH\000\022!\n\010file_log\030\002 \001(\0132\r.PrismFi" +
-      "leLogH\000B\n\n\010log_type\",\n\021InitialiseRequest" +
-      "\022\027\n\017prism_object_id\030\001 \001(\t\"$\n\022InitialiseR" +
-      "esponse\022\016\n\006status\030\002 \001(\t\"J\n\025LoadPRISMMode" +
-      "lRequest\022\027\n\017prism_object_id\030\001 \001(\t\022\030\n\020mod" +
-      "ule_object_id\030\002 \001(\t\"[\n\026LoadPRISMModelRes" +
-      "ponse\022\027\n\017prism_object_id\030\001 \001(\t\022\030\n\020module" +
-      "_object_id\030\002 \001(\t\022\016\n\006status\030\003 \001(\t\"\220\001\n\032Par" +
-      "sePropertiesFileRequest\022\027\n\017prism_object_" +
-      "id\030\001 \001(\t\022\030\n\020module_object_id\030\002 \001(\t\022!\n\031pr" +
-      "operties_file_object_id\030\003 \001(\t\022\034\n\024propert" +
-      "ies_file_name\030\004 \001(\t\"Z\n\033ParsePropertiesFi" +
-      "leResponse\022\027\n\017prism_object_id\030\001 \001(\t\022\016\n\006s" +
-      "tatus\030\002 \001(\t\022\022\n\nproperties\030\003 \001(\t\"\224\001\n Mode" +
-      "lCheckPropFilePropObjRequest\022\027\n\017prism_ob" +
-      "ject_id\030\001 \001(\t\022!\n\031properties_file_object_" +
-      "id\030\002 \001(\t\022\032\n\022property_object_id\030\003 \001(\t\022\030\n\020" +
-      "result_object_id\030\004 \001(\t\"C\n!ModelCheckProp" +
-      "FilePropObjResponse\022\016\n\006result\030\001 \001(\t\022\016\n\006s" +
-      "tatus\030\002 \001(\t\"L\n\030ParseAndLoadModelRequest\022" +
-      "\027\n\017prism_object_id\030\001 \001(\t\022\027\n\017model_file_n" +
-      "ame\030\002 \001(\t\"A\n\026ParseAndLoadModelReply\022\027\n\017p" +
-      "rism_object_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\",\n\021" +
-      "ClosePrismRequest\022\027\n\017prism_object_id\030\001 \001" +
-      "(\t\"=\n\022ClosePrismResponse\022\027\n\017prism_object" +
-      "_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"c\n\025ParseModelF" +
-      "ileRequest\022\027\n\017prism_object_id\030\001 \001(\t\022\030\n\020m" +
-      "odule_object_id\030\002 \001(\t\022\027\n\017model_file_name" +
-      "\030\003 \001(\t\"[\n\026ParseModelFileResponse\022\027\n\017pris" +
+      "UploadReply\022\020\n\010filename\030\001 \001(\t\"#\n\017Downloa" +
+      "dRequest\022\020\n\010fileName\030\001 \001(\t\"\034\n\tFileChunk\022" +
+      "\017\n\007content\030\001 \001(\014\"\021\n\017PrismDevNullLog\"\034\n\014P" +
+      "rismFileLog\022\014\n\004type\030\001 \001(\t\"c\n\010PrismLog\022(\n" +
+      "\014dev_null_log\030\001 \001(\0132\020.PrismDevNullLogH\000\022" +
+      "!\n\010file_log\030\002 \001(\0132\r.PrismFileLogH\000B\n\n\010lo" +
+      "g_type\",\n\021InitialiseRequest\022\027\n\017prism_obj" +
+      "ect_id\030\001 \001(\t\"$\n\022InitialiseResponse\022\016\n\006st" +
+      "atus\030\002 \001(\t\"J\n\025LoadPRISMModelRequest\022\027\n\017p" +
+      "rism_object_id\030\001 \001(\t\022\030\n\020module_object_id" +
+      "\030\002 \001(\t\"[\n\026LoadPRISMModelResponse\022\027\n\017pris" +
       "m_object_id\030\001 \001(\t\022\030\n\020module_object_id\030\002 " +
-      "\001(\t\022\016\n\006status\030\003 \001(\t\"q\n\030GetPropertyObject" +
-      "Request\022!\n\031properties_file_object_id\030\001 \001" +
-      "(\t\022\032\n\022property_object_id\030\002 \001(\t\022\026\n\016proper" +
-      "ty_index\030\003 \001(\005\"`\n\031GetPropertyObjectRespo" +
-      "nse\022!\n\031properties_file_object_id\030\001 \001(\t\022\016" +
-      "\n\006status\030\002 \001(\t\022\020\n\010property\030\003 \001(\t\"y\n&Prop" +
-      "ertiesFileForwardMethodCallRequest\022!\n\031pr" +
-      "operties_file_object_id\030\001 \001(\t\022\016\n\006method\030" +
-      "\002 \001(\t\022\014\n\004args\030\003 \001(\t\022\016\n\006kwargs\030\004 \001(\t\"l\n\'P" +
-      "ropertiesFileForwardMethodCallResponse\022!" +
-      "\n\031properties_file_object_id\030\001 \001(\t\022\016\n\006sta" +
-      "tus\030\002 \001(\t\022\016\n\006result\030\003 \001(\t\"k\n*GetUndefine" +
-      "dConstantsUsedInPropertyRequest\022!\n\031prope" +
-      "rties_file_object_id\030\001 \001(\t\022\032\n\022property_o" +
-      "bject_id\030\002 \001(\t\"P\n+GetUndefinedConstantsU" +
-      "sedInPropertyResponse\022\016\n\006status\030\001 \001(\t\022\021\n" +
-      "\tconstants\030\002 \003(\t\"N\n\017AddValueRequest\022\030\n\020v" +
-      "alues_object_id\030\001 \001(\t\022\022\n\nconst_name\030\002 \001(" +
-      "\t\022\r\n\005value\030\003 \001(\005\"2\n\020AddValueResponse\022\016\n\006" +
-      "result\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"_\n SetSomeU" +
-      "ndefinedConstantsRequest\022!\n\031properties_f" +
-      "ile_object_id\030\001 \001(\t\022\030\n\020values_object_id\030" +
-      "\002 \001(\t\"3\n!SetSomeUndefinedConstantsRespon" +
-      "se\022\016\n\006status\030\001 \001(\t\"(\n\023DeleteObjectReques" +
-      "t\022\021\n\tobject_id\030\001 \001(\t\"&\n\024DeleteObjectResp" +
-      "onse\022\016\n\006status\030\001 \001(\t\"0\n\036InitUndefinedCon" +
-      "stantsResponse\022\016\n\006status\030\001 \001(\t\"X\n\035Define" +
-      "UsingConstSwitchRequest\022%\n\035undefined_con" +
-      "stants_object_id\030\001 \001(\t\022\020\n\010constant\030\002 \001(\t" +
-      "\"0\n\036DefineUsingConstSwitchResponse\022\016\n\006st" +
-      "atus\030\001 \001(\t\"K\n\"GetNumberPropertyIteration" +
-      "sRequest\022%\n\035undefined_constants_object_i" +
-      "d\030\001 \001(\t\"P\n#GetNumberPropertyIterationsRe" +
-      "sponse\022\016\n\006status\030\001 \001(\t\022\031\n\021number_iterati" +
-      "ons\030\002 \001(\005\"$\n\022InitValuesResponse\022\016\n\006statu" +
-      "s\030\001 \001(\t\"]\n\032GetPFConstantValuesRequest\022%\n" +
-      "\035undefined_constants_object_id\030\001 \001(\t\022\030\n\020" +
-      "values_object_id\030\002 \001(\t\"=\n\033GetPFConstantV" +
-      "aluesResponse\022\016\n\006status\030\001 \001(\t\022\016\n\006values\030" +
-      "\002 \001(\t\"\036\n\014InitResponse\022\016\n\006status\030\001 \001(\t\"@\n" +
-      "\023InitPrismLogRequest\022\033\n\023prism_log_object" +
-      "_id\030\001 \001(\t\022\014\n\004type\030\002 \001(\t\"G\n\020InitPrismRequ" +
-      "est\022\027\n\017prism_object_id\030\001 \001(\t\022\032\n\022main_log" +
-      "_object_id\030\002 \001(\t\"8\n\026InitModulesFileReque" +
-      "st\022\036\n\026modules_file_object_id\030\001 \001(\t\"8\n\032In" +
-      "itPrismDevNullLogRequest\022\032\n\022main_log_obj" +
-      "ect_id\030\001 \001(\t\"J\n\027InitPrismFileLogRequest\022" +
-      "\032\n\022main_log_object_id\030\001 \001(\t\022\023\n\013output_ty" +
-      "pe\030\002 \001(\t\">\n\031InitPropertiesFileRequest\022!\n" +
-      "\031properties_file_object_id\030\001 \001(\t\">\n\031Init" +
-      "PropertyObjectRequest\022!\n\031property_object" +
-      "_object_id\030\001 \001(\t\"-\n\021InitResultRequest\022\030\n" +
-      "\020result_object_id\030\001 \001(\t\"\237\001\n\035InitUndefine" +
-      "dConstantsRequest\022\030\n\020module_object_id\030\001 " +
-      "\001(\t\022!\n\031properties_file_object_id\030\002 \001(\t\022\032" +
-      "\n\022property_object_id\030\003 \001(\t\022%\n\035undefined_" +
-      "constants_object_id\030\004 \001(\t\"-\n\021InitValuesR" +
-      "equest\022\030\n\020values_object_id\030\001 \001(\t\"\275\001\n\020Ini" +
-      "tStateRequest\022\027\n\017state_object_id\030\001 \001(\t\022C" +
-      "\n\024arg_state_object_ids\030\002 \001(\0132#.InitState" +
-      "Request.ArgStateObjectIDsH\000\022\026\n\014state_num" +
-      "ber\030\003 \001(\005H\000\032,\n\021ArgStateObjectIDs\022\027\n\017stat" +
-      "e_object_id\030\001 \003(\tB\005\n\003arg\"0\n\025StateVarValu" +
-      "esRequest\022\027\n\017state_object_id\030\001 \001(\t\"8\n\026St" +
-      "ateVarValuesResponse\022\016\n\006status\030\001 \001(\t\022\016\n\006" +
-      "values\030\002 \003(\005\"?\n\026IteratePropertyRequest\022%" +
-      "\n\035undefined_constants_object_id\030\001 \001(\t\")\n" +
-      "\027IteratePropertyResponse\022\016\n\006status\030\001 \001(\t" +
-      "\"\217\001\n\034ParsePropertiesStringRequest\022\027\n\017pri" +
-      "sm_object_id\030\001 \001(\t\022\030\n\020module_object_id\030\002" +
-      " \001(\t\022\031\n\021properties_string\030\003 \001(\t\022!\n\031prope" +
-      "rties_file_object_id\030\004 \001(\t\"/\n\035ParsePrope" +
-      "rtiesStringResponse\022\016\n\006status\030\001 \001(\t\"k\n\033M" +
-      "odelCheckPropStringRequest\022\027\n\017prism_obje" +
-      "ct_id\030\001 \001(\t\022\031\n\021properties_string\030\002 \001(\t\022\030" +
-      "\n\020result_object_id\030\003 \001(\t\">\n\034ModelCheckPr" +
-      "opStringResponse\022\016\n\006status\030\001 \001(\t\022\016\n\006resu" +
-      "lt\030\002 \001(\t\"+\n\020CloseDownRequest\022\027\n\017prism_ob" +
-      "ject_id\030\001 \001(\t\"#\n\021CloseDownResponse\022\016\n\006st" +
-      "atus\030\001 \001(\t\" \n\016StatusResponse\022\016\n\006status\030\001" +
-      " \001(\t\"d\n&InitialiseClientModelGeneratorRe" +
-      "sponse\022\027\n\017prism_object_id\030\001 \001(\t\022!\n\031model" +
-      "_generator_object_id\030\002 \001(\t\"W\n\031LoadModelG" +
-      "eneratorRequest\022\027\n\017prism_object_id\030\001 \001(\t" +
-      "\022!\n\031model_generator_object_id\030\002 \001(\t\"8\n\nI" +
-      "ntRequest\022*\n\005value\030\001 \001(\0132\033.google.protob" +
-      "uf.Int32Value\"<\n\rArrayResponse\022+\n\006values" +
-      "\030\001 \003(\0132\033.google.protobuf.Int32Value\"9\n\013I" +
-      "ntResponse\022*\n\005value\030\001 \001(\0132\033.google.proto" +
-      "buf.Int32Value\"=\n\016DoubleResponse\022+\n\005valu" +
-      "e\030\001 \001(\0132\034.google.protobuf.DoubleValue\"=\n" +
-      "\016StringResponse\022+\n\005value\030\001 \001(\0132\034.google." +
-      "protobuf.StringValue\"9\n\014BoolResponse\022)\n\005" +
-      "value\030\001 \001(\0132\032.google.protobuf.BoolValue\"" +
-      "C\n\023StringArrayResponse\022,\n\006values\030\001 \003(\0132\034" +
-      ".google.protobuf.StringValue\"\036\n\014ArrayReq" +
-      "uest\022\016\n\006values\030\001 \003(\005\"\022\n\020ModelTypeRequest" +
-      "\"\021\n\017VarNamesRequest\"\021\n\017VarTypesRequest\"*" +
-      "\n\031VarDeclarationTypeRequest\022\r\n\005index\030\001 \001" +
-      "(\005\"\023\n\021LabelNamesRequest\"\025\n\023InitialStateR" +
-      "equest\"3\n\023ExploreStateRequest\022\034\n\005state\030\001" +
-      " \001(\0132\r.ArrayRequest\"\023\n\021NumChoicesRequest" +
-      "\"&\n\025NumTransitionsRequest\022\r\n\005index\030\001 \001(\005" +
-      "\"8\n\027TransitionActionRequest\022\r\n\005index\030\001 \001" +
-      "(\005\022\016\n\006offset\030\002 \001(\005\"=\n\034TransitionProbabil" +
-      "ityRequest\022\r\n\005index\030\001 \001(\005\022\016\n\006offset\030\002 \001(" +
-      "\005\"8\n\027TransitionTargetRequest\022\r\n\005index\030\001 " +
-      "\001(\005\022\016\n\006offset\030\002 \001(\005\"!\n\020LabelTrueRequest\022" +
-      "\r\n\005index\030\001 \001(\005\"\032\n\030RewardStructNamesReque" +
-      "st\";\n\022StateRewardRequest\022\016\n\006reward\030\001 \001(\005" +
-      "\022\025\n\005state\030\002 \001(\0132\006.State\"n\n\030StateActionRe" +
+      "\001(\t\022\016\n\006status\030\003 \001(\t\"\220\001\n\032ParsePropertiesF" +
+      "ileRequest\022\027\n\017prism_object_id\030\001 \001(\t\022\030\n\020m" +
+      "odule_object_id\030\002 \001(\t\022!\n\031properties_file" +
+      "_object_id\030\003 \001(\t\022\034\n\024properties_file_name" +
+      "\030\004 \001(\t\"Z\n\033ParsePropertiesFileResponse\022\027\n" +
+      "\017prism_object_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\022" +
+      "\n\nproperties\030\003 \001(\t\"\224\001\n ModelCheckPropFil" +
+      "ePropObjRequest\022\027\n\017prism_object_id\030\001 \001(\t" +
+      "\022!\n\031properties_file_object_id\030\002 \001(\t\022\032\n\022p" +
+      "roperty_object_id\030\003 \001(\t\022\030\n\020result_object" +
+      "_id\030\004 \001(\t\"C\n!ModelCheckPropFilePropObjRe" +
+      "sponse\022\016\n\006result\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"L" +
+      "\n\030ParseAndLoadModelRequest\022\027\n\017prism_obje" +
+      "ct_id\030\001 \001(\t\022\027\n\017model_file_name\030\002 \001(\t\"A\n\026" +
+      "ParseAndLoadModelReply\022\027\n\017prism_object_i" +
+      "d\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\",\n\021ClosePrismReq" +
+      "uest\022\027\n\017prism_object_id\030\001 \001(\t\"=\n\022ClosePr" +
+      "ismResponse\022\027\n\017prism_object_id\030\001 \001(\t\022\016\n\006" +
+      "status\030\002 \001(\t\"c\n\025ParseModelFileRequest\022\027\n" +
+      "\017prism_object_id\030\001 \001(\t\022\030\n\020module_object_" +
+      "id\030\002 \001(\t\022\027\n\017model_file_name\030\003 \001(\t\"[\n\026Par" +
+      "seModelFileResponse\022\027\n\017prism_object_id\030\001" +
+      " \001(\t\022\030\n\020module_object_id\030\002 \001(\t\022\016\n\006status" +
+      "\030\003 \001(\t\"q\n\030GetPropertyObjectRequest\022!\n\031pr" +
+      "operties_file_object_id\030\001 \001(\t\022\032\n\022propert" +
+      "y_object_id\030\002 \001(\t\022\026\n\016property_index\030\003 \001(" +
+      "\005\"`\n\031GetPropertyObjectResponse\022!\n\031proper" +
+      "ties_file_object_id\030\001 \001(\t\022\016\n\006status\030\002 \001(" +
+      "\t\022\020\n\010property\030\003 \001(\t\"y\n&PropertiesFileFor" +
+      "wardMethodCallRequest\022!\n\031properties_file" +
+      "_object_id\030\001 \001(\t\022\016\n\006method\030\002 \001(\t\022\014\n\004args" +
+      "\030\003 \001(\t\022\016\n\006kwargs\030\004 \001(\t\"l\n\'PropertiesFile" +
+      "ForwardMethodCallResponse\022!\n\031properties_" +
+      "file_object_id\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\016\n\006" +
+      "result\030\003 \001(\t\"k\n*GetUndefinedConstantsUse" +
+      "dInPropertyRequest\022!\n\031properties_file_ob" +
+      "ject_id\030\001 \001(\t\022\032\n\022property_object_id\030\002 \001(" +
+      "\t\"P\n+GetUndefinedConstantsUsedInProperty" +
+      "Response\022\016\n\006status\030\001 \001(\t\022\021\n\tconstants\030\002 " +
+      "\003(\t\"N\n\017AddValueRequest\022\030\n\020values_object_" +
+      "id\030\001 \001(\t\022\022\n\nconst_name\030\002 \001(\t\022\r\n\005value\030\003 " +
+      "\001(\005\"2\n\020AddValueResponse\022\016\n\006result\030\001 \001(\t\022" +
+      "\016\n\006status\030\002 \001(\t\"_\n SetSomeUndefinedConst" +
+      "antsRequest\022!\n\031properties_file_object_id" +
+      "\030\001 \001(\t\022\030\n\020values_object_id\030\002 \001(\t\"3\n!SetS" +
+      "omeUndefinedConstantsResponse\022\016\n\006status\030" +
+      "\001 \001(\t\"(\n\023DeleteObjectRequest\022\021\n\tobject_i" +
+      "d\030\001 \001(\t\"&\n\024DeleteObjectResponse\022\016\n\006statu" +
+      "s\030\001 \001(\t\"0\n\036InitUndefinedConstantsRespons" +
+      "e\022\016\n\006status\030\001 \001(\t\"X\n\035DefineUsingConstSwi" +
+      "tchRequest\022%\n\035undefined_constants_object" +
+      "_id\030\001 \001(\t\022\020\n\010constant\030\002 \001(\t\"0\n\036DefineUsi" +
+      "ngConstSwitchResponse\022\016\n\006status\030\001 \001(\t\"K\n" +
+      "\"GetNumberPropertyIterationsRequest\022%\n\035u" +
+      "ndefined_constants_object_id\030\001 \001(\t\"P\n#Ge" +
+      "tNumberPropertyIterationsResponse\022\016\n\006sta" +
+      "tus\030\001 \001(\t\022\031\n\021number_iterations\030\002 \001(\005\"$\n\022" +
+      "InitValuesResponse\022\016\n\006status\030\001 \001(\t\"]\n\032Ge" +
+      "tPFConstantValuesRequest\022%\n\035undefined_co" +
+      "nstants_object_id\030\001 \001(\t\022\030\n\020values_object" +
+      "_id\030\002 \001(\t\"=\n\033GetPFConstantValuesResponse" +
+      "\022\016\n\006status\030\001 \001(\t\022\016\n\006values\030\002 \001(\t\"\036\n\014Init" +
+      "Response\022\016\n\006status\030\001 \001(\t\"@\n\023InitPrismLog" +
+      "Request\022\033\n\023prism_log_object_id\030\001 \001(\t\022\014\n\004" +
+      "type\030\002 \001(\t\"G\n\020InitPrismRequest\022\027\n\017prism_" +
+      "object_id\030\001 \001(\t\022\032\n\022main_log_object_id\030\002 " +
+      "\001(\t\"8\n\026InitModulesFileRequest\022\036\n\026modules" +
+      "_file_object_id\030\001 \001(\t\"8\n\032InitPrismDevNul" +
+      "lLogRequest\022\032\n\022main_log_object_id\030\001 \001(\t\"" +
+      "J\n\027InitPrismFileLogRequest\022\032\n\022main_log_o" +
+      "bject_id\030\001 \001(\t\022\023\n\013output_type\030\002 \001(\t\">\n\031I" +
+      "nitPropertiesFileRequest\022!\n\031properties_f" +
+      "ile_object_id\030\001 \001(\t\">\n\031InitPropertyObjec" +
+      "tRequest\022!\n\031property_object_object_id\030\001 " +
+      "\001(\t\"-\n\021InitResultRequest\022\030\n\020result_objec" +
+      "t_id\030\001 \001(\t\"\237\001\n\035InitUndefinedConstantsReq" +
+      "uest\022\030\n\020module_object_id\030\001 \001(\t\022!\n\031proper" +
+      "ties_file_object_id\030\002 \001(\t\022\032\n\022property_ob" +
+      "ject_id\030\003 \001(\t\022%\n\035undefined_constants_obj" +
+      "ect_id\030\004 \001(\t\"-\n\021InitValuesRequest\022\030\n\020val" +
+      "ues_object_id\030\001 \001(\t\"\275\001\n\020InitStateRequest" +
+      "\022\027\n\017state_object_id\030\001 \001(\t\022C\n\024arg_state_o" +
+      "bject_ids\030\002 \001(\0132#.InitStateRequest.ArgSt" +
+      "ateObjectIDsH\000\022\026\n\014state_number\030\003 \001(\005H\000\032," +
+      "\n\021ArgStateObjectIDs\022\027\n\017state_object_id\030\001" +
+      " \003(\tB\005\n\003arg\"0\n\025StateVarValuesRequest\022\027\n\017" +
+      "state_object_id\030\001 \001(\t\"8\n\026StateVarValuesR" +
+      "esponse\022\016\n\006status\030\001 \001(\t\022\016\n\006values\030\002 \003(\005\"" +
+      "?\n\026IteratePropertyRequest\022%\n\035undefined_c" +
+      "onstants_object_id\030\001 \001(\t\")\n\027IteratePrope" +
+      "rtyResponse\022\016\n\006status\030\001 \001(\t\"\217\001\n\034ParsePro" +
+      "pertiesStringRequest\022\027\n\017prism_object_id\030" +
+      "\001 \001(\t\022\030\n\020module_object_id\030\002 \001(\t\022\031\n\021prope" +
+      "rties_string\030\003 \001(\t\022!\n\031properties_file_ob" +
+      "ject_id\030\004 \001(\t\"/\n\035ParsePropertiesStringRe" +
+      "sponse\022\016\n\006status\030\001 \001(\t\"k\n\033ModelCheckProp" +
+      "StringRequest\022\027\n\017prism_object_id\030\001 \001(\t\022\031" +
+      "\n\021properties_string\030\002 \001(\t\022\030\n\020result_obje" +
+      "ct_id\030\003 \001(\t\">\n\034ModelCheckPropStringRespo" +
+      "nse\022\016\n\006status\030\001 \001(\t\022\016\n\006result\030\002 \001(\t\"+\n\020C" +
+      "loseDownRequest\022\027\n\017prism_object_id\030\001 \001(\t" +
+      "\"#\n\021CloseDownResponse\022\016\n\006status\030\001 \001(\t\" \n" +
+      "\016StatusResponse\022\016\n\006status\030\001 \001(\t\"d\n&Initi" +
+      "aliseClientModelGeneratorResponse\022\027\n\017pri" +
+      "sm_object_id\030\001 \001(\t\022!\n\031model_generator_ob" +
+      "ject_id\030\002 \001(\t\"W\n\031LoadModelGeneratorReque" +
+      "st\022\027\n\017prism_object_id\030\001 \001(\t\022!\n\031model_gen" +
+      "erator_object_id\030\002 \001(\t\"8\n\nIntRequest\022*\n\005" +
+      "value\030\001 \001(\0132\033.google.protobuf.Int32Value" +
+      "\"<\n\rArrayResponse\022+\n\006values\030\001 \003(\0132\033.goog" +
+      "le.protobuf.Int32Value\"9\n\013IntResponse\022*\n" +
+      "\005value\030\001 \001(\0132\033.google.protobuf.Int32Valu" +
+      "e\"=\n\016DoubleResponse\022+\n\005value\030\001 \001(\0132\034.goo" +
+      "gle.protobuf.DoubleValue\"=\n\016StringRespon" +
+      "se\022+\n\005value\030\001 \001(\0132\034.google.protobuf.Stri" +
+      "ngValue\"9\n\014BoolResponse\022)\n\005value\030\001 \001(\0132\032" +
+      ".google.protobuf.BoolValue\"C\n\023StringArra" +
+      "yResponse\022,\n\006values\030\001 \003(\0132\034.google.proto" +
+      "buf.StringValue\"\036\n\014ArrayRequest\022\016\n\006value" +
+      "s\030\001 \003(\005\"\022\n\020ModelTypeRequest\"\021\n\017VarNamesR" +
+      "equest\"\021\n\017VarTypesRequest\"*\n\031VarDeclarat" +
+      "ionTypeRequest\022\r\n\005index\030\001 \001(\005\"\023\n\021LabelNa" +
+      "mesRequest\"\025\n\023InitialStateRequest\"3\n\023Exp" +
+      "loreStateRequest\022\034\n\005state\030\001 \001(\0132\r.ArrayR" +
+      "equest\"\023\n\021NumChoicesRequest\"&\n\025NumTransi" +
+      "tionsRequest\022\r\n\005index\030\001 \001(\005\"8\n\027Transitio" +
+      "nActionRequest\022\r\n\005index\030\001 \001(\005\022\016\n\006offset\030" +
+      "\002 \001(\005\"=\n\034TransitionProbabilityRequest\022\r\n" +
+      "\005index\030\001 \001(\005\022\016\n\006offset\030\002 \001(\005\"8\n\027Transiti" +
+      "onTargetRequest\022\r\n\005index\030\001 \001(\005\022\016\n\006offset" +
+      "\030\002 \001(\005\"!\n\020LabelTrueRequest\022\r\n\005index\030\001 \001(" +
+      "\005\"\032\n\030RewardStructNamesRequest\";\n\022StateRe" +
       "wardRequest\022\016\n\006reward\030\001 \001(\005\022\025\n\005state\030\002 \001" +
-      "(\0132\006.State\022+\n\006action\030\003 \001(\0132\033.google.prot" +
-      "obuf.Int32Value\"\"\n CloseClientModelGener" +
-      "atorRequest\" \n\005State\022\027\n\017state_object_id\030" +
-      "\001 \001(\t\"\335\010\n\"ClientModelGeneratorRequestWra" +
-      "pper\022-\n\020modelTypeRequest\030\001 \001(\0132\021.ModelTy" +
-      "peRequestH\000\022+\n\017varNamesRequest\030\002 \001(\0132\020.V" +
-      "arNamesRequestH\000\022+\n\017varTypesRequest\030\003 \001(" +
-      "\0132\020.VarTypesRequestH\000\022?\n\031varDeclarationT" +
-      "ypeRequest\030\004 \001(\0132\032.VarDeclarationTypeReq" +
-      "uestH\000\022/\n\021labelNamesRequest\030\005 \001(\0132\022.Labe" +
-      "lNamesRequestH\000\0223\n\023initialStateRequest\030\006" +
-      " \001(\0132\024.InitialStateRequestH\000\022%\n\023exploreS" +
-      "tateRequest\030\007 \001(\0132\006.StateH\000\022/\n\021numChoice" +
-      "sRequest\030\010 \001(\0132\022.NumChoicesRequestH\000\0227\n\025" +
-      "numTransitionsRequest\030\t \001(\0132\026.NumTransit" +
-      "ionsRequestH\000\022;\n\027transitionActionRequest" +
-      "\030\n \001(\0132\030.TransitionActionRequestH\000\022E\n\034tr" +
-      "ansitionProbabilityRequest\030\013 \001(\0132\035.Trans" +
-      "itionProbabilityRequestH\000\022;\n\027transitionT" +
-      "argetRequest\030\014 \001(\0132\030.TransitionTargetReq" +
-      "uestH\000\022-\n\020labelTrueRequest\030\r \001(\0132\021.Label" +
-      "TrueRequestH\000\022=\n\030rewardStructNamesReques" +
-      "t\030\016 \001(\0132\031.RewardStructNamesRequestH\000\0221\n\022" +
-      "stateRewardRequest\030\017 \001(\0132\023.StateRewardRe" +
-      "questH\000\022=\n\030stateActionRewardRequest\030\020 \001(" +
-      "\0132\031.StateActionRewardRequestH\000\022M\n closeC" +
-      "lientModelGeneratorRequest\030\021 \001(\0132!.Close" +
-      "ClientModelGeneratorRequestH\000\0224\n\031exportT" +
-      "ransToFileResponse\030\022 \001(\0132\017.StatusRespons" +
-      "eH\000\022E\n\034modelCheckPropStringResponse\030\023 \001(" +
-      "\0132\035.ModelCheckPropStringResponseH\000B\t\n\007re" +
-      "quest\"\347\010\n#ClientModelGeneratorResponseWr" +
-      "apper\022,\n\021modelTypeResponse\030\001 \001(\0132\017.Strin" +
-      "gResponseH\000\0220\n\020varNamesResponse\030\002 \001(\0132\024." +
-      "StringArrayResponseH\000\0220\n\020varTypesRespons" +
-      "e\030\003 \001(\0132\024.StringArrayResponseH\000\0224\n\032varDe" +
-      "clarationTypeResponse\030\004 \001(\0132\016.ArrayRespo" +
-      "nseH\000\0222\n\022labelNamesResponse\030\005 \001(\0132\024.Stri" +
-      "ngArrayResponseH\000\022&\n\024initialStateRespons" +
-      "e\030\006 \001(\0132\006.StateH\000\022/\n\024exploreStateRespons" +
-      "e\030\007 \001(\0132\017.StatusResponseH\000\022*\n\022numChoices" +
-      "Response\030\010 \001(\0132\014.IntResponseH\000\022.\n\026numTra" +
-      "nsitionsResponse\030\t \001(\0132\014.IntResponseH\000\0220" +
-      "\n\030transitionActionResponse\030\n \001(\0132\014.IntRe" +
-      "sponseH\000\0228\n\035transitionProbabilityRespons" +
-      "e\030\013 \001(\0132\017.DoubleResponseH\000\022*\n\030transition" +
-      "TargetResponse\030\014 \001(\0132\006.StateH\000\022*\n\021labelT" +
-      "rueResponse\030\r \001(\0132\r.BoolResponseH\000\0229\n\031re" +
-      "wardStructNamesResponse\030\016 \001(\0132\024.StringAr" +
-      "rayResponseH\000\022.\n\023stateRewardResponse\030\017 \001" +
-      "(\0132\017.DoubleResponseH\000\0224\n\031stateActionRewa" +
-      "rdResponse\030\020 \001(\0132\017.DoubleResponseH\000\022Y\n&i" +
-      "nitialiseClientModelGeneratorResponse\030\021 " +
-      "\001(\0132\'.InitialiseClientModelGeneratorResp" +
-      "onseH\000\022=\n\030exportTransToFileRequest\030\022 \001(\013" +
-      "2\031.ExportTransToFileRequestH\000\022C\n\033modelCh" +
-      "eckPropStringRequest\030\023 \001(\0132\034.ModelCheckP" +
-      "ropStringRequestH\000\022?\n\031loadModelGenerator" +
-      "Request\030\024 \001(\0132\032.LoadModelGeneratorReques" +
-      "tH\000B\n\n\010response\"M\n\024SetStateValueRequest\022" +
-      "\027\n\017state_object_id\030\001 \001(\t\022\r\n\005index\030\002 \001(\005\022" +
-      "\r\n\005value\030\003 \001(\005\"\'\n\025SetStateValueResponse\022" +
-      "\016\n\006status\030\001 \001(\t\"l\n\030ExportTransToFileRequ" +
-      "est\022\027\n\017prism_object_id\030\001 \001(\t\022\017\n\007ordered\030" +
-      "\002 \001(\010\022\023\n\013export_type\030\003 \001(\005\022\021\n\tfile_name\030" +
-      "\004 \001(\t\"+\n\031ExportTransToFileResponse\022\016\n\006st" +
-      "atus\030\001 \001(\t2\202\022\n\021PrismProtoService\0225\n\014Init" +
-      "PrismLog\022\024.InitPrismLogRequest\032\r.InitRes" +
-      "ponse\"\000\022;\n\017InitModulesFile\022\027.InitModules" +
-      "FileRequest\032\r.InitResponse\"\000\022/\n\tInitPris" +
-      "m\022\021.InitPrismRequest\032\r.InitResponse\"\000\022A\n" +
-      "\022InitPropertiesFile\022\032.InitPropertiesFile" +
-      "Request\032\r.InitResponse\"\000\022A\n\022InitProperty" +
-      "Object\022\032.InitPropertyObjectRequest\032\r.Ini" +
-      "tResponse\"\000\0221\n\nInitResult\022\022.InitResultRe" +
-      "quest\032\r.InitResponse\"\000\022I\n\026InitUndefinedC" +
-      "onstants\022\036.InitUndefinedConstantsRequest" +
-      "\032\r.InitResponse\"\000\0221\n\nInitValues\022\022.InitVa" +
-      "luesRequest\032\r.InitResponse\"\000\022/\n\tInitStat" +
-      "e\022\021.InitStateRequest\032\r.InitResponse\"\000\022C\n" +
-      "\016StateVarValues\022\026.StateVarValuesRequest\032" +
-      "\027.StateVarValuesResponse\"\000\022=\n\014DeleteObje" +
-      "ct\022\024.DeleteObjectRequest\032\025.DeleteObjectR" +
-      "esponse\"\000\022.\n\nUploadFile\022\016.UploadRequest\032" +
-      "\014.UploadReply\"\000(\001\0227\n\nInitialise\022\022.Initia" +
-      "liseRequest\032\023.InitialiseResponse\"\000\022C\n\016Pa" +
-      "rseModelFile\022\026.ParseModelFileRequest\032\027.P" +
-      "arseModelFileResponse\"\000\022C\n\016LoadPRISMMode" +
-      "l\022\026.LoadPRISMModelRequest\032\027.LoadPRISMMod" +
-      "elResponse\"\000\022R\n\023ParsePropertiesFile\022\033.Pa" +
-      "rsePropertiesFileRequest\032\034.ParseProperti" +
-      "esFileResponse\"\000\022L\n\021GetPropertyObject\022\031." +
-      "GetPropertyObjectRequest\032\032.GetPropertyOb" +
-      "jectResponse\"\000\022d\n\031ModelCheckPropFileProp" +
-      "Obj\022!.ModelCheckPropFilePropObjRequest\032\"" +
-      ".ModelCheckPropFilePropObjResponse\"\000\022\202\001\n" +
-      "#GetUndefinedConstantsUsedInProperty\022+.G" +
-      "etUndefinedConstantsUsedInPropertyReques" +
-      "t\032,.GetUndefinedConstantsUsedInPropertyR" +
-      "esponse\"\000\0221\n\010AddValue\022\020.AddValueRequest\032" +
-      "\021.AddValueResponse\"\000\022d\n\031SetSomeUndefined" +
-      "Constants\022!.SetSomeUndefinedConstantsReq" +
-      "uest\032\".SetSomeUndefinedConstantsResponse" +
-      "\"\000\022[\n\026DefineUsingConstSwitch\022\036.DefineUsi" +
-      "ngConstSwitchRequest\032\037.DefineUsingConstS" +
-      "witchResponse\"\000\022j\n\033GetNumberPropertyIter" +
-      "ations\022#.GetNumberPropertyIterationsRequ" +
-      "est\032$.GetNumberPropertyIterationsRespons" +
-      "e\"\000\022R\n\023GetPFConstantValues\022\033.GetPFConsta" +
-      "ntValuesRequest\032\034.GetPFConstantValuesRes" +
-      "ponse\"\000\022F\n\017IterateProperty\022\027.IterateProp" +
-      "ertyRequest\032\030.IteratePropertyResponse\"\000\022" +
-      "X\n\025ParsePropertiesString\022\035.ParseProperti" +
-      "esStringRequest\032\036.ParsePropertiesStringR" +
-      "esponse\"\000\022U\n\024ModelCheckPropString\022\034.Mode" +
-      "lCheckPropStringRequest\032\035.ModelCheckProp" +
-      "StringResponse\"\000\0224\n\tCloseDown\022\021.CloseDow" +
-      "nRequest\032\022.CloseDownResponse\"\000\022@\n\rSetSta" +
-      "teValue\022\025.SetStateValueRequest\032\026.SetStat" +
-      "eValueResponse\"\000\022L\n\021ExportTransToFile\022\031." +
-      "ExportTransToFileRequest\032\032.ExportTransTo" +
-      "FileResponse\"\000\022g\n\024ClientModelGenerator\022$" +
-      ".ClientModelGeneratorResponseWrapper\032#.C" +
-      "lientModelGeneratorRequestWrapper\"\000(\0010\001B" +
-      "\026\n\024grpc.server.servicesb\006proto3"
+      "(\0132\006.State\"n\n\030StateActionRewardRequest\022\016" +
+      "\n\006reward\030\001 \001(\005\022\025\n\005state\030\002 \001(\0132\006.State\022+\n" +
+      "\006action\030\003 \001(\0132\033.google.protobuf.Int32Val" +
+      "ue\"\"\n CloseClientModelGeneratorRequest\" " +
+      "\n\005State\022\027\n\017state_object_id\030\001 \001(\t\"\335\010\n\"Cli" +
+      "entModelGeneratorRequestWrapper\022-\n\020model" +
+      "TypeRequest\030\001 \001(\0132\021.ModelTypeRequestH\000\022+" +
+      "\n\017varNamesRequest\030\002 \001(\0132\020.VarNamesReques" +
+      "tH\000\022+\n\017varTypesRequest\030\003 \001(\0132\020.VarTypesR" +
+      "equestH\000\022?\n\031varDeclarationTypeRequest\030\004 " +
+      "\001(\0132\032.VarDeclarationTypeRequestH\000\022/\n\021lab" +
+      "elNamesRequest\030\005 \001(\0132\022.LabelNamesRequest" +
+      "H\000\0223\n\023initialStateRequest\030\006 \001(\0132\024.Initia" +
+      "lStateRequestH\000\022%\n\023exploreStateRequest\030\007" +
+      " \001(\0132\006.StateH\000\022/\n\021numChoicesRequest\030\010 \001(" +
+      "\0132\022.NumChoicesRequestH\000\0227\n\025numTransition" +
+      "sRequest\030\t \001(\0132\026.NumTransitionsRequestH\000" +
+      "\022;\n\027transitionActionRequest\030\n \001(\0132\030.Tran" +
+      "sitionActionRequestH\000\022E\n\034transitionProba" +
+      "bilityRequest\030\013 \001(\0132\035.TransitionProbabil" +
+      "ityRequestH\000\022;\n\027transitionTargetRequest\030" +
+      "\014 \001(\0132\030.TransitionTargetRequestH\000\022-\n\020lab" +
+      "elTrueRequest\030\r \001(\0132\021.LabelTrueRequestH\000" +
+      "\022=\n\030rewardStructNamesRequest\030\016 \001(\0132\031.Rew" +
+      "ardStructNamesRequestH\000\0221\n\022stateRewardRe" +
+      "quest\030\017 \001(\0132\023.StateRewardRequestH\000\022=\n\030st" +
+      "ateActionRewardRequest\030\020 \001(\0132\031.StateActi" +
+      "onRewardRequestH\000\022M\n closeClientModelGen" +
+      "eratorRequest\030\021 \001(\0132!.CloseClientModelGe" +
+      "neratorRequestH\000\0224\n\031exportTransToFileRes" +
+      "ponse\030\022 \001(\0132\017.StatusResponseH\000\022E\n\034modelC" +
+      "heckPropStringResponse\030\023 \001(\0132\035.ModelChec" +
+      "kPropStringResponseH\000B\t\n\007request\"\347\010\n#Cli" +
+      "entModelGeneratorResponseWrapper\022,\n\021mode" +
+      "lTypeResponse\030\001 \001(\0132\017.StringResponseH\000\0220" +
+      "\n\020varNamesResponse\030\002 \001(\0132\024.StringArrayRe" +
+      "sponseH\000\0220\n\020varTypesResponse\030\003 \001(\0132\024.Str" +
+      "ingArrayResponseH\000\0224\n\032varDeclarationType" +
+      "Response\030\004 \001(\0132\016.ArrayResponseH\000\0222\n\022labe" +
+      "lNamesResponse\030\005 \001(\0132\024.StringArrayRespon" +
+      "seH\000\022&\n\024initialStateResponse\030\006 \001(\0132\006.Sta" +
+      "teH\000\022/\n\024exploreStateResponse\030\007 \001(\0132\017.Sta" +
+      "tusResponseH\000\022*\n\022numChoicesResponse\030\010 \001(" +
+      "\0132\014.IntResponseH\000\022.\n\026numTransitionsRespo" +
+      "nse\030\t \001(\0132\014.IntResponseH\000\0220\n\030transitionA" +
+      "ctionResponse\030\n \001(\0132\014.IntResponseH\000\0228\n\035t" +
+      "ransitionProbabilityResponse\030\013 \001(\0132\017.Dou" +
+      "bleResponseH\000\022*\n\030transitionTargetRespons" +
+      "e\030\014 \001(\0132\006.StateH\000\022*\n\021labelTrueResponse\030\r" +
+      " \001(\0132\r.BoolResponseH\000\0229\n\031rewardStructNam" +
+      "esResponse\030\016 \001(\0132\024.StringArrayResponseH\000" +
+      "\022.\n\023stateRewardResponse\030\017 \001(\0132\017.DoubleRe" +
+      "sponseH\000\0224\n\031stateActionRewardResponse\030\020 " +
+      "\001(\0132\017.DoubleResponseH\000\022Y\n&initialiseClie" +
+      "ntModelGeneratorResponse\030\021 \001(\0132\'.Initial" +
+      "iseClientModelGeneratorResponseH\000\022=\n\030exp" +
+      "ortTransToFileRequest\030\022 \001(\0132\031.ExportTran" +
+      "sToFileRequestH\000\022C\n\033modelCheckPropString" +
+      "Request\030\023 \001(\0132\034.ModelCheckPropStringRequ" +
+      "estH\000\022?\n\031loadModelGeneratorRequest\030\024 \001(\013" +
+      "2\032.LoadModelGeneratorRequestH\000B\n\n\010respon" +
+      "se\"M\n\024SetStateValueRequest\022\027\n\017state_obje" +
+      "ct_id\030\001 \001(\t\022\r\n\005index\030\002 \001(\005\022\r\n\005value\030\003 \001(" +
+      "\005\"\'\n\025SetStateValueResponse\022\016\n\006status\030\001 \001" +
+      "(\t\"l\n\030ExportTransToFileRequest\022\027\n\017prism_" +
+      "object_id\030\001 \001(\t\022\017\n\007ordered\030\002 \001(\010\022\023\n\013expo" +
+      "rt_type\030\003 \001(\005\022\021\n\tfile_name\030\004 \001(\t\"+\n\031Expo" +
+      "rtTransToFileResponse\022\016\n\006status\030\001 \001(\t2\264\022" +
+      "\n\021PrismProtoService\0225\n\014InitPrismLog\022\024.In" +
+      "itPrismLogRequest\032\r.InitResponse\"\000\022;\n\017In" +
+      "itModulesFile\022\027.InitModulesFileRequest\032\r" +
+      ".InitResponse\"\000\022/\n\tInitPrism\022\021.InitPrism" +
+      "Request\032\r.InitResponse\"\000\022A\n\022InitProperti" +
+      "esFile\022\032.InitPropertiesFileRequest\032\r.Ini" +
+      "tResponse\"\000\022A\n\022InitPropertyObject\022\032.Init" +
+      "PropertyObjectRequest\032\r.InitResponse\"\000\0221" +
+      "\n\nInitResult\022\022.InitResultRequest\032\r.InitR" +
+      "esponse\"\000\022I\n\026InitUndefinedConstants\022\036.In" +
+      "itUndefinedConstantsRequest\032\r.InitRespon" +
+      "se\"\000\0221\n\nInitValues\022\022.InitValuesRequest\032\r" +
+      ".InitResponse\"\000\022/\n\tInitState\022\021.InitState" +
+      "Request\032\r.InitResponse\"\000\022C\n\016StateVarValu" +
+      "es\022\026.StateVarValuesRequest\032\027.StateVarVal" +
+      "uesResponse\"\000\022=\n\014DeleteObject\022\024.DeleteOb" +
+      "jectRequest\032\025.DeleteObjectResponse\"\000\022.\n\n" +
+      "UploadFile\022\016.UploadRequest\032\014.UploadReply" +
+      "\"\000(\001\0220\n\014DownloadFile\022\020.DownloadRequest\032\n" +
+      ".FileChunk\"\0000\001\0227\n\nInitialise\022\022.Initialis" +
+      "eRequest\032\023.InitialiseResponse\"\000\022C\n\016Parse" +
+      "ModelFile\022\026.ParseModelFileRequest\032\027.Pars" +
+      "eModelFileResponse\"\000\022C\n\016LoadPRISMModel\022\026" +
+      ".LoadPRISMModelRequest\032\027.LoadPRISMModelR" +
+      "esponse\"\000\022R\n\023ParsePropertiesFile\022\033.Parse" +
+      "PropertiesFileRequest\032\034.ParsePropertiesF" +
+      "ileResponse\"\000\022L\n\021GetPropertyObject\022\031.Get" +
+      "PropertyObjectRequest\032\032.GetPropertyObjec" +
+      "tResponse\"\000\022d\n\031ModelCheckPropFilePropObj" +
+      "\022!.ModelCheckPropFilePropObjRequest\032\".Mo" +
+      "delCheckPropFilePropObjResponse\"\000\022\202\001\n#Ge" +
+      "tUndefinedConstantsUsedInProperty\022+.GetU" +
+      "ndefinedConstantsUsedInPropertyRequest\032," +
+      ".GetUndefinedConstantsUsedInPropertyResp" +
+      "onse\"\000\0221\n\010AddValue\022\020.AddValueRequest\032\021.A" +
+      "ddValueResponse\"\000\022d\n\031SetSomeUndefinedCon" +
+      "stants\022!.SetSomeUndefinedConstantsReques" +
+      "t\032\".SetSomeUndefinedConstantsResponse\"\000\022" +
+      "[\n\026DefineUsingConstSwitch\022\036.DefineUsingC" +
+      "onstSwitchRequest\032\037.DefineUsingConstSwit" +
+      "chResponse\"\000\022j\n\033GetNumberPropertyIterati" +
+      "ons\022#.GetNumberPropertyIterationsRequest" +
+      "\032$.GetNumberPropertyIterationsResponse\"\000" +
+      "\022R\n\023GetPFConstantValues\022\033.GetPFConstantV" +
+      "aluesRequest\032\034.GetPFConstantValuesRespon" +
+      "se\"\000\022F\n\017IterateProperty\022\027.IteratePropert" +
+      "yRequest\032\030.IteratePropertyResponse\"\000\022X\n\025" +
+      "ParsePropertiesString\022\035.ParsePropertiesS" +
+      "tringRequest\032\036.ParsePropertiesStringResp" +
+      "onse\"\000\022U\n\024ModelCheckPropString\022\034.ModelCh" +
+      "eckPropStringRequest\032\035.ModelCheckPropStr" +
+      "ingResponse\"\000\0224\n\tCloseDown\022\021.CloseDownRe" +
+      "quest\032\022.CloseDownResponse\"\000\022@\n\rSetStateV" +
+      "alue\022\025.SetStateValueRequest\032\026.SetStateVa" +
+      "lueResponse\"\000\022L\n\021ExportTransToFile\022\031.Exp" +
+      "ortTransToFileRequest\032\032.ExportTransToFil" +
+      "eResponse\"\000\022g\n\024ClientModelGenerator\022$.Cl" +
+      "ientModelGeneratorResponseWrapper\032#.Clie" +
+      "ntModelGeneratorRequestWrapper\"\000(\0010\001B\026\n\024" +
+      "grpc.server.servicesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -73704,296 +74777,308 @@ public final class PrismGrpc {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UploadReply_descriptor,
         new java.lang.String[] { "Filename", });
-    internal_static_PrismDevNullLog_descriptor =
+    internal_static_DownloadRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
+    internal_static_DownloadRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_DownloadRequest_descriptor,
+        new java.lang.String[] { "FileName", });
+    internal_static_FileChunk_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_FileChunk_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_FileChunk_descriptor,
+        new java.lang.String[] { "Content", });
+    internal_static_PrismDevNullLog_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_PrismDevNullLog_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PrismDevNullLog_descriptor,
         new java.lang.String[] { });
     internal_static_PrismFileLog_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_PrismFileLog_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PrismFileLog_descriptor,
         new java.lang.String[] { "Type", });
     internal_static_PrismLog_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_PrismLog_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PrismLog_descriptor,
         new java.lang.String[] { "DevNullLog", "FileLog", "LogType", });
     internal_static_InitialiseRequest_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_InitialiseRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitialiseRequest_descriptor,
         new java.lang.String[] { "PrismObjectId", });
     internal_static_InitialiseResponse_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_InitialiseResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitialiseResponse_descriptor,
         new java.lang.String[] { "Status", });
     internal_static_LoadPRISMModelRequest_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_LoadPRISMModelRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LoadPRISMModelRequest_descriptor,
         new java.lang.String[] { "PrismObjectId", "ModuleObjectId", });
     internal_static_LoadPRISMModelResponse_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_LoadPRISMModelResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LoadPRISMModelResponse_descriptor,
         new java.lang.String[] { "PrismObjectId", "ModuleObjectId", "Status", });
     internal_static_ParsePropertiesFileRequest_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_ParsePropertiesFileRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ParsePropertiesFileRequest_descriptor,
         new java.lang.String[] { "PrismObjectId", "ModuleObjectId", "PropertiesFileObjectId", "PropertiesFileName", });
     internal_static_ParsePropertiesFileResponse_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_ParsePropertiesFileResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ParsePropertiesFileResponse_descriptor,
         new java.lang.String[] { "PrismObjectId", "Status", "Properties", });
     internal_static_ModelCheckPropFilePropObjRequest_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_ModelCheckPropFilePropObjRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ModelCheckPropFilePropObjRequest_descriptor,
         new java.lang.String[] { "PrismObjectId", "PropertiesFileObjectId", "PropertyObjectId", "ResultObjectId", });
     internal_static_ModelCheckPropFilePropObjResponse_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_ModelCheckPropFilePropObjResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ModelCheckPropFilePropObjResponse_descriptor,
         new java.lang.String[] { "Result", "Status", });
     internal_static_ParseAndLoadModelRequest_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_ParseAndLoadModelRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ParseAndLoadModelRequest_descriptor,
         new java.lang.String[] { "PrismObjectId", "ModelFileName", });
     internal_static_ParseAndLoadModelReply_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_ParseAndLoadModelReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ParseAndLoadModelReply_descriptor,
         new java.lang.String[] { "PrismObjectId", "Status", });
     internal_static_ClosePrismRequest_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_ClosePrismRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClosePrismRequest_descriptor,
         new java.lang.String[] { "PrismObjectId", });
     internal_static_ClosePrismResponse_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_ClosePrismResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClosePrismResponse_descriptor,
         new java.lang.String[] { "PrismObjectId", "Status", });
     internal_static_ParseModelFileRequest_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_ParseModelFileRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ParseModelFileRequest_descriptor,
         new java.lang.String[] { "PrismObjectId", "ModuleObjectId", "ModelFileName", });
     internal_static_ParseModelFileResponse_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_ParseModelFileResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ParseModelFileResponse_descriptor,
         new java.lang.String[] { "PrismObjectId", "ModuleObjectId", "Status", });
     internal_static_GetPropertyObjectRequest_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_GetPropertyObjectRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetPropertyObjectRequest_descriptor,
         new java.lang.String[] { "PropertiesFileObjectId", "PropertyObjectId", "PropertyIndex", });
     internal_static_GetPropertyObjectResponse_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_GetPropertyObjectResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetPropertyObjectResponse_descriptor,
         new java.lang.String[] { "PropertiesFileObjectId", "Status", "Property", });
     internal_static_PropertiesFileForwardMethodCallRequest_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(23);
     internal_static_PropertiesFileForwardMethodCallRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PropertiesFileForwardMethodCallRequest_descriptor,
         new java.lang.String[] { "PropertiesFileObjectId", "Method", "Args", "Kwargs", });
     internal_static_PropertiesFileForwardMethodCallResponse_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_PropertiesFileForwardMethodCallResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PropertiesFileForwardMethodCallResponse_descriptor,
         new java.lang.String[] { "PropertiesFileObjectId", "Status", "Result", });
     internal_static_GetUndefinedConstantsUsedInPropertyRequest_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(25);
     internal_static_GetUndefinedConstantsUsedInPropertyRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetUndefinedConstantsUsedInPropertyRequest_descriptor,
         new java.lang.String[] { "PropertiesFileObjectId", "PropertyObjectId", });
     internal_static_GetUndefinedConstantsUsedInPropertyResponse_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_GetUndefinedConstantsUsedInPropertyResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetUndefinedConstantsUsedInPropertyResponse_descriptor,
         new java.lang.String[] { "Status", "Constants", });
     internal_static_AddValueRequest_descriptor =
-      getDescriptor().getMessageTypes().get(25);
+      getDescriptor().getMessageTypes().get(27);
     internal_static_AddValueRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AddValueRequest_descriptor,
         new java.lang.String[] { "ValuesObjectId", "ConstName", "Value", });
     internal_static_AddValueResponse_descriptor =
-      getDescriptor().getMessageTypes().get(26);
+      getDescriptor().getMessageTypes().get(28);
     internal_static_AddValueResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AddValueResponse_descriptor,
         new java.lang.String[] { "Result", "Status", });
     internal_static_SetSomeUndefinedConstantsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(27);
+      getDescriptor().getMessageTypes().get(29);
     internal_static_SetSomeUndefinedConstantsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SetSomeUndefinedConstantsRequest_descriptor,
         new java.lang.String[] { "PropertiesFileObjectId", "ValuesObjectId", });
     internal_static_SetSomeUndefinedConstantsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(28);
+      getDescriptor().getMessageTypes().get(30);
     internal_static_SetSomeUndefinedConstantsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SetSomeUndefinedConstantsResponse_descriptor,
         new java.lang.String[] { "Status", });
     internal_static_DeleteObjectRequest_descriptor =
-      getDescriptor().getMessageTypes().get(29);
+      getDescriptor().getMessageTypes().get(31);
     internal_static_DeleteObjectRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DeleteObjectRequest_descriptor,
         new java.lang.String[] { "ObjectId", });
     internal_static_DeleteObjectResponse_descriptor =
-      getDescriptor().getMessageTypes().get(30);
+      getDescriptor().getMessageTypes().get(32);
     internal_static_DeleteObjectResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DeleteObjectResponse_descriptor,
         new java.lang.String[] { "Status", });
     internal_static_InitUndefinedConstantsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(31);
+      getDescriptor().getMessageTypes().get(33);
     internal_static_InitUndefinedConstantsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitUndefinedConstantsResponse_descriptor,
         new java.lang.String[] { "Status", });
     internal_static_DefineUsingConstSwitchRequest_descriptor =
-      getDescriptor().getMessageTypes().get(32);
+      getDescriptor().getMessageTypes().get(34);
     internal_static_DefineUsingConstSwitchRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DefineUsingConstSwitchRequest_descriptor,
         new java.lang.String[] { "UndefinedConstantsObjectId", "Constant", });
     internal_static_DefineUsingConstSwitchResponse_descriptor =
-      getDescriptor().getMessageTypes().get(33);
+      getDescriptor().getMessageTypes().get(35);
     internal_static_DefineUsingConstSwitchResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DefineUsingConstSwitchResponse_descriptor,
         new java.lang.String[] { "Status", });
     internal_static_GetNumberPropertyIterationsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(34);
+      getDescriptor().getMessageTypes().get(36);
     internal_static_GetNumberPropertyIterationsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetNumberPropertyIterationsRequest_descriptor,
         new java.lang.String[] { "UndefinedConstantsObjectId", });
     internal_static_GetNumberPropertyIterationsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(35);
+      getDescriptor().getMessageTypes().get(37);
     internal_static_GetNumberPropertyIterationsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetNumberPropertyIterationsResponse_descriptor,
         new java.lang.String[] { "Status", "NumberIterations", });
     internal_static_InitValuesResponse_descriptor =
-      getDescriptor().getMessageTypes().get(36);
+      getDescriptor().getMessageTypes().get(38);
     internal_static_InitValuesResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitValuesResponse_descriptor,
         new java.lang.String[] { "Status", });
     internal_static_GetPFConstantValuesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(37);
+      getDescriptor().getMessageTypes().get(39);
     internal_static_GetPFConstantValuesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetPFConstantValuesRequest_descriptor,
         new java.lang.String[] { "UndefinedConstantsObjectId", "ValuesObjectId", });
     internal_static_GetPFConstantValuesResponse_descriptor =
-      getDescriptor().getMessageTypes().get(38);
+      getDescriptor().getMessageTypes().get(40);
     internal_static_GetPFConstantValuesResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetPFConstantValuesResponse_descriptor,
         new java.lang.String[] { "Status", "Values", });
     internal_static_InitResponse_descriptor =
-      getDescriptor().getMessageTypes().get(39);
+      getDescriptor().getMessageTypes().get(41);
     internal_static_InitResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitResponse_descriptor,
         new java.lang.String[] { "Status", });
     internal_static_InitPrismLogRequest_descriptor =
-      getDescriptor().getMessageTypes().get(40);
+      getDescriptor().getMessageTypes().get(42);
     internal_static_InitPrismLogRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitPrismLogRequest_descriptor,
         new java.lang.String[] { "PrismLogObjectId", "Type", });
     internal_static_InitPrismRequest_descriptor =
-      getDescriptor().getMessageTypes().get(41);
+      getDescriptor().getMessageTypes().get(43);
     internal_static_InitPrismRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitPrismRequest_descriptor,
         new java.lang.String[] { "PrismObjectId", "MainLogObjectId", });
     internal_static_InitModulesFileRequest_descriptor =
-      getDescriptor().getMessageTypes().get(42);
+      getDescriptor().getMessageTypes().get(44);
     internal_static_InitModulesFileRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitModulesFileRequest_descriptor,
         new java.lang.String[] { "ModulesFileObjectId", });
     internal_static_InitPrismDevNullLogRequest_descriptor =
-      getDescriptor().getMessageTypes().get(43);
+      getDescriptor().getMessageTypes().get(45);
     internal_static_InitPrismDevNullLogRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitPrismDevNullLogRequest_descriptor,
         new java.lang.String[] { "MainLogObjectId", });
     internal_static_InitPrismFileLogRequest_descriptor =
-      getDescriptor().getMessageTypes().get(44);
+      getDescriptor().getMessageTypes().get(46);
     internal_static_InitPrismFileLogRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitPrismFileLogRequest_descriptor,
         new java.lang.String[] { "MainLogObjectId", "OutputType", });
     internal_static_InitPropertiesFileRequest_descriptor =
-      getDescriptor().getMessageTypes().get(45);
+      getDescriptor().getMessageTypes().get(47);
     internal_static_InitPropertiesFileRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitPropertiesFileRequest_descriptor,
         new java.lang.String[] { "PropertiesFileObjectId", });
     internal_static_InitPropertyObjectRequest_descriptor =
-      getDescriptor().getMessageTypes().get(46);
+      getDescriptor().getMessageTypes().get(48);
     internal_static_InitPropertyObjectRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitPropertyObjectRequest_descriptor,
         new java.lang.String[] { "PropertyObjectObjectId", });
     internal_static_InitResultRequest_descriptor =
-      getDescriptor().getMessageTypes().get(47);
+      getDescriptor().getMessageTypes().get(49);
     internal_static_InitResultRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitResultRequest_descriptor,
         new java.lang.String[] { "ResultObjectId", });
     internal_static_InitUndefinedConstantsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(48);
+      getDescriptor().getMessageTypes().get(50);
     internal_static_InitUndefinedConstantsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitUndefinedConstantsRequest_descriptor,
         new java.lang.String[] { "ModuleObjectId", "PropertiesFileObjectId", "PropertyObjectId", "UndefinedConstantsObjectId", });
     internal_static_InitValuesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(49);
+      getDescriptor().getMessageTypes().get(51);
     internal_static_InitValuesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitValuesRequest_descriptor,
         new java.lang.String[] { "ValuesObjectId", });
     internal_static_InitStateRequest_descriptor =
-      getDescriptor().getMessageTypes().get(50);
+      getDescriptor().getMessageTypes().get(52);
     internal_static_InitStateRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitStateRequest_descriptor,
@@ -74005,271 +75090,271 @@ public final class PrismGrpc {
         internal_static_InitStateRequest_ArgStateObjectIDs_descriptor,
         new java.lang.String[] { "StateObjectId", });
     internal_static_StateVarValuesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(51);
+      getDescriptor().getMessageTypes().get(53);
     internal_static_StateVarValuesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_StateVarValuesRequest_descriptor,
         new java.lang.String[] { "StateObjectId", });
     internal_static_StateVarValuesResponse_descriptor =
-      getDescriptor().getMessageTypes().get(52);
+      getDescriptor().getMessageTypes().get(54);
     internal_static_StateVarValuesResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_StateVarValuesResponse_descriptor,
         new java.lang.String[] { "Status", "Values", });
     internal_static_IteratePropertyRequest_descriptor =
-      getDescriptor().getMessageTypes().get(53);
+      getDescriptor().getMessageTypes().get(55);
     internal_static_IteratePropertyRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_IteratePropertyRequest_descriptor,
         new java.lang.String[] { "UndefinedConstantsObjectId", });
     internal_static_IteratePropertyResponse_descriptor =
-      getDescriptor().getMessageTypes().get(54);
+      getDescriptor().getMessageTypes().get(56);
     internal_static_IteratePropertyResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_IteratePropertyResponse_descriptor,
         new java.lang.String[] { "Status", });
     internal_static_ParsePropertiesStringRequest_descriptor =
-      getDescriptor().getMessageTypes().get(55);
+      getDescriptor().getMessageTypes().get(57);
     internal_static_ParsePropertiesStringRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ParsePropertiesStringRequest_descriptor,
         new java.lang.String[] { "PrismObjectId", "ModuleObjectId", "PropertiesString", "PropertiesFileObjectId", });
     internal_static_ParsePropertiesStringResponse_descriptor =
-      getDescriptor().getMessageTypes().get(56);
+      getDescriptor().getMessageTypes().get(58);
     internal_static_ParsePropertiesStringResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ParsePropertiesStringResponse_descriptor,
         new java.lang.String[] { "Status", });
     internal_static_ModelCheckPropStringRequest_descriptor =
-      getDescriptor().getMessageTypes().get(57);
+      getDescriptor().getMessageTypes().get(59);
     internal_static_ModelCheckPropStringRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ModelCheckPropStringRequest_descriptor,
         new java.lang.String[] { "PrismObjectId", "PropertiesString", "ResultObjectId", });
     internal_static_ModelCheckPropStringResponse_descriptor =
-      getDescriptor().getMessageTypes().get(58);
+      getDescriptor().getMessageTypes().get(60);
     internal_static_ModelCheckPropStringResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ModelCheckPropStringResponse_descriptor,
         new java.lang.String[] { "Status", "Result", });
     internal_static_CloseDownRequest_descriptor =
-      getDescriptor().getMessageTypes().get(59);
+      getDescriptor().getMessageTypes().get(61);
     internal_static_CloseDownRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CloseDownRequest_descriptor,
         new java.lang.String[] { "PrismObjectId", });
     internal_static_CloseDownResponse_descriptor =
-      getDescriptor().getMessageTypes().get(60);
+      getDescriptor().getMessageTypes().get(62);
     internal_static_CloseDownResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CloseDownResponse_descriptor,
         new java.lang.String[] { "Status", });
     internal_static_StatusResponse_descriptor =
-      getDescriptor().getMessageTypes().get(61);
+      getDescriptor().getMessageTypes().get(63);
     internal_static_StatusResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_StatusResponse_descriptor,
         new java.lang.String[] { "Status", });
     internal_static_InitialiseClientModelGeneratorResponse_descriptor =
-      getDescriptor().getMessageTypes().get(62);
+      getDescriptor().getMessageTypes().get(64);
     internal_static_InitialiseClientModelGeneratorResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitialiseClientModelGeneratorResponse_descriptor,
         new java.lang.String[] { "PrismObjectId", "ModelGeneratorObjectId", });
     internal_static_LoadModelGeneratorRequest_descriptor =
-      getDescriptor().getMessageTypes().get(63);
+      getDescriptor().getMessageTypes().get(65);
     internal_static_LoadModelGeneratorRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LoadModelGeneratorRequest_descriptor,
         new java.lang.String[] { "PrismObjectId", "ModelGeneratorObjectId", });
     internal_static_IntRequest_descriptor =
-      getDescriptor().getMessageTypes().get(64);
+      getDescriptor().getMessageTypes().get(66);
     internal_static_IntRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_IntRequest_descriptor,
         new java.lang.String[] { "Value", });
     internal_static_ArrayResponse_descriptor =
-      getDescriptor().getMessageTypes().get(65);
+      getDescriptor().getMessageTypes().get(67);
     internal_static_ArrayResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ArrayResponse_descriptor,
         new java.lang.String[] { "Values", });
     internal_static_IntResponse_descriptor =
-      getDescriptor().getMessageTypes().get(66);
+      getDescriptor().getMessageTypes().get(68);
     internal_static_IntResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_IntResponse_descriptor,
         new java.lang.String[] { "Value", });
     internal_static_DoubleResponse_descriptor =
-      getDescriptor().getMessageTypes().get(67);
+      getDescriptor().getMessageTypes().get(69);
     internal_static_DoubleResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DoubleResponse_descriptor,
         new java.lang.String[] { "Value", });
     internal_static_StringResponse_descriptor =
-      getDescriptor().getMessageTypes().get(68);
+      getDescriptor().getMessageTypes().get(70);
     internal_static_StringResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_StringResponse_descriptor,
         new java.lang.String[] { "Value", });
     internal_static_BoolResponse_descriptor =
-      getDescriptor().getMessageTypes().get(69);
+      getDescriptor().getMessageTypes().get(71);
     internal_static_BoolResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_BoolResponse_descriptor,
         new java.lang.String[] { "Value", });
     internal_static_StringArrayResponse_descriptor =
-      getDescriptor().getMessageTypes().get(70);
+      getDescriptor().getMessageTypes().get(72);
     internal_static_StringArrayResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_StringArrayResponse_descriptor,
         new java.lang.String[] { "Values", });
     internal_static_ArrayRequest_descriptor =
-      getDescriptor().getMessageTypes().get(71);
+      getDescriptor().getMessageTypes().get(73);
     internal_static_ArrayRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ArrayRequest_descriptor,
         new java.lang.String[] { "Values", });
     internal_static_ModelTypeRequest_descriptor =
-      getDescriptor().getMessageTypes().get(72);
+      getDescriptor().getMessageTypes().get(74);
     internal_static_ModelTypeRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ModelTypeRequest_descriptor,
         new java.lang.String[] { });
     internal_static_VarNamesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(73);
+      getDescriptor().getMessageTypes().get(75);
     internal_static_VarNamesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_VarNamesRequest_descriptor,
         new java.lang.String[] { });
     internal_static_VarTypesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(74);
+      getDescriptor().getMessageTypes().get(76);
     internal_static_VarTypesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_VarTypesRequest_descriptor,
         new java.lang.String[] { });
     internal_static_VarDeclarationTypeRequest_descriptor =
-      getDescriptor().getMessageTypes().get(75);
+      getDescriptor().getMessageTypes().get(77);
     internal_static_VarDeclarationTypeRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_VarDeclarationTypeRequest_descriptor,
         new java.lang.String[] { "Index", });
     internal_static_LabelNamesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(76);
+      getDescriptor().getMessageTypes().get(78);
     internal_static_LabelNamesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LabelNamesRequest_descriptor,
         new java.lang.String[] { });
     internal_static_InitialStateRequest_descriptor =
-      getDescriptor().getMessageTypes().get(77);
+      getDescriptor().getMessageTypes().get(79);
     internal_static_InitialStateRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InitialStateRequest_descriptor,
         new java.lang.String[] { });
     internal_static_ExploreStateRequest_descriptor =
-      getDescriptor().getMessageTypes().get(78);
+      getDescriptor().getMessageTypes().get(80);
     internal_static_ExploreStateRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ExploreStateRequest_descriptor,
         new java.lang.String[] { "State", });
     internal_static_NumChoicesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(79);
+      getDescriptor().getMessageTypes().get(81);
     internal_static_NumChoicesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_NumChoicesRequest_descriptor,
         new java.lang.String[] { });
     internal_static_NumTransitionsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(80);
+      getDescriptor().getMessageTypes().get(82);
     internal_static_NumTransitionsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_NumTransitionsRequest_descriptor,
         new java.lang.String[] { "Index", });
     internal_static_TransitionActionRequest_descriptor =
-      getDescriptor().getMessageTypes().get(81);
+      getDescriptor().getMessageTypes().get(83);
     internal_static_TransitionActionRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TransitionActionRequest_descriptor,
         new java.lang.String[] { "Index", "Offset", });
     internal_static_TransitionProbabilityRequest_descriptor =
-      getDescriptor().getMessageTypes().get(82);
+      getDescriptor().getMessageTypes().get(84);
     internal_static_TransitionProbabilityRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TransitionProbabilityRequest_descriptor,
         new java.lang.String[] { "Index", "Offset", });
     internal_static_TransitionTargetRequest_descriptor =
-      getDescriptor().getMessageTypes().get(83);
+      getDescriptor().getMessageTypes().get(85);
     internal_static_TransitionTargetRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TransitionTargetRequest_descriptor,
         new java.lang.String[] { "Index", "Offset", });
     internal_static_LabelTrueRequest_descriptor =
-      getDescriptor().getMessageTypes().get(84);
+      getDescriptor().getMessageTypes().get(86);
     internal_static_LabelTrueRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LabelTrueRequest_descriptor,
         new java.lang.String[] { "Index", });
     internal_static_RewardStructNamesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(85);
+      getDescriptor().getMessageTypes().get(87);
     internal_static_RewardStructNamesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RewardStructNamesRequest_descriptor,
         new java.lang.String[] { });
     internal_static_StateRewardRequest_descriptor =
-      getDescriptor().getMessageTypes().get(86);
+      getDescriptor().getMessageTypes().get(88);
     internal_static_StateRewardRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_StateRewardRequest_descriptor,
         new java.lang.String[] { "Reward", "State", });
     internal_static_StateActionRewardRequest_descriptor =
-      getDescriptor().getMessageTypes().get(87);
+      getDescriptor().getMessageTypes().get(89);
     internal_static_StateActionRewardRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_StateActionRewardRequest_descriptor,
         new java.lang.String[] { "Reward", "State", "Action", });
     internal_static_CloseClientModelGeneratorRequest_descriptor =
-      getDescriptor().getMessageTypes().get(88);
+      getDescriptor().getMessageTypes().get(90);
     internal_static_CloseClientModelGeneratorRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CloseClientModelGeneratorRequest_descriptor,
         new java.lang.String[] { });
     internal_static_State_descriptor =
-      getDescriptor().getMessageTypes().get(89);
+      getDescriptor().getMessageTypes().get(91);
     internal_static_State_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_State_descriptor,
         new java.lang.String[] { "StateObjectId", });
     internal_static_ClientModelGeneratorRequestWrapper_descriptor =
-      getDescriptor().getMessageTypes().get(90);
+      getDescriptor().getMessageTypes().get(92);
     internal_static_ClientModelGeneratorRequestWrapper_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClientModelGeneratorRequestWrapper_descriptor,
         new java.lang.String[] { "ModelTypeRequest", "VarNamesRequest", "VarTypesRequest", "VarDeclarationTypeRequest", "LabelNamesRequest", "InitialStateRequest", "ExploreStateRequest", "NumChoicesRequest", "NumTransitionsRequest", "TransitionActionRequest", "TransitionProbabilityRequest", "TransitionTargetRequest", "LabelTrueRequest", "RewardStructNamesRequest", "StateRewardRequest", "StateActionRewardRequest", "CloseClientModelGeneratorRequest", "ExportTransToFileResponse", "ModelCheckPropStringResponse", "Request", });
     internal_static_ClientModelGeneratorResponseWrapper_descriptor =
-      getDescriptor().getMessageTypes().get(91);
+      getDescriptor().getMessageTypes().get(93);
     internal_static_ClientModelGeneratorResponseWrapper_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClientModelGeneratorResponseWrapper_descriptor,
         new java.lang.String[] { "ModelTypeResponse", "VarNamesResponse", "VarTypesResponse", "VarDeclarationTypeResponse", "LabelNamesResponse", "InitialStateResponse", "ExploreStateResponse", "NumChoicesResponse", "NumTransitionsResponse", "TransitionActionResponse", "TransitionProbabilityResponse", "TransitionTargetResponse", "LabelTrueResponse", "RewardStructNamesResponse", "StateRewardResponse", "StateActionRewardResponse", "InitialiseClientModelGeneratorResponse", "ExportTransToFileRequest", "ModelCheckPropStringRequest", "LoadModelGeneratorRequest", "Response", });
     internal_static_SetStateValueRequest_descriptor =
-      getDescriptor().getMessageTypes().get(92);
+      getDescriptor().getMessageTypes().get(94);
     internal_static_SetStateValueRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SetStateValueRequest_descriptor,
         new java.lang.String[] { "StateObjectId", "Index", "Value", });
     internal_static_SetStateValueResponse_descriptor =
-      getDescriptor().getMessageTypes().get(93);
+      getDescriptor().getMessageTypes().get(95);
     internal_static_SetStateValueResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SetStateValueResponse_descriptor,
         new java.lang.String[] { "Status", });
     internal_static_ExportTransToFileRequest_descriptor =
-      getDescriptor().getMessageTypes().get(94);
+      getDescriptor().getMessageTypes().get(96);
     internal_static_ExportTransToFileRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ExportTransToFileRequest_descriptor,
         new java.lang.String[] { "PrismObjectId", "Ordered", "ExportType", "FileName", });
     internal_static_ExportTransToFileResponse_descriptor =
-      getDescriptor().getMessageTypes().get(95);
+      getDescriptor().getMessageTypes().get(97);
     internal_static_ExportTransToFileResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ExportTransToFileResponse_descriptor,

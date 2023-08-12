@@ -8,10 +8,7 @@ import grpc.server.services.client.PrismEventBus;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 import parser.State;
@@ -1030,6 +1027,34 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         // complete call
         responseObserver.onCompleted();
         logger.info("[Garbage Collector] - deleteObject request completed with status: " + status);
+    }
+
+    @Override
+    public void downloadFile(PrismGrpc.DownloadRequest request, StreamObserver<PrismGrpc.FileChunk> responseObserver) {
+        logger.info("Received downloadFile request");
+        //        String filePath = "/path/to/your/files/" + request.getFileName(); // Adjust the path accordingly
+        String filePath = request.getFileName();
+
+        try {
+            byte[] buffer = new byte[4096];
+            FileInputStream fileInputStream = new FileInputStream(filePath);
+
+            int bytesRead;
+            logger.info("Sending file chunks");
+            while ((bytesRead = fileInputStream.read(buffer)) != -1) {
+                PrismGrpc.FileChunk chunk = PrismGrpc.FileChunk.newBuilder()
+                        .setContent(ByteString.copyFrom(buffer, 0, bytesRead))
+                        .build();
+                responseObserver.onNext(chunk);
+            }
+
+            fileInputStream.close();
+            logger.info("File sent");
+            responseObserver.onCompleted();
+        } catch (Exception e) {
+            logger.warning("Error sending file: " + e.getMessage());
+            responseObserver.onError(e);
+        }
     }
 
     // uploadFile is a service that allows the client to upload a file to the prism server

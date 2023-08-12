@@ -115,6 +115,18 @@ class PrismPyBaseModel(ABC):
     #                               f"service is running.")
     #         self.__close_channel()
 
+    # function to download a generic file from the prism server
+    def download_file(self, filename):
+        self.logger.info(f"Downloading file {filename} from prism server.")
+        request = prismGrpc_pb2.DownloadRequest(fileName=filename)
+
+        with open(filename, 'wb') as f:
+            for chunk in self.stub.DownloadFile(request):
+                f.write(chunk.content)
+
+        self.logger.info(f"File successfully downloaded to {filename}")
+
+
     # function to upload a generic file to the prism server
     def upload_file(self, filename):
         self.logger.info(f"Uploading file {filename} to prism server.")

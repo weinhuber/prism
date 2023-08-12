@@ -214,6 +214,7 @@ class Prism(PrismPyBaseModel):
         self.logger.info("Exporting transitions to file")
 
         self.service_provider.export_trans_to_file(ordered, export_type, filename)
+        self.download_file(filename)
 
 
 

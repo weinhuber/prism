@@ -389,6 +389,37 @@ public final class PrismProtoServiceGrpc {
     return getUploadFileMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DownloadRequest,
+      grpc.server.services.PrismGrpc.FileChunk> getDownloadFileMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "DownloadFile",
+      requestType = grpc.server.services.PrismGrpc.DownloadRequest.class,
+      responseType = grpc.server.services.PrismGrpc.FileChunk.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DownloadRequest,
+      grpc.server.services.PrismGrpc.FileChunk> getDownloadFileMethod() {
+    io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.DownloadRequest, grpc.server.services.PrismGrpc.FileChunk> getDownloadFileMethod;
+    if ((getDownloadFileMethod = PrismProtoServiceGrpc.getDownloadFileMethod) == null) {
+      synchronized (PrismProtoServiceGrpc.class) {
+        if ((getDownloadFileMethod = PrismProtoServiceGrpc.getDownloadFileMethod) == null) {
+          PrismProtoServiceGrpc.getDownloadFileMethod = getDownloadFileMethod =
+              io.grpc.MethodDescriptor.<grpc.server.services.PrismGrpc.DownloadRequest, grpc.server.services.PrismGrpc.FileChunk>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DownloadFile"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.DownloadRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.server.services.PrismGrpc.FileChunk.getDefaultInstance()))
+              .setSchemaDescriptor(new PrismProtoServiceMethodDescriptorSupplier("DownloadFile"))
+              .build();
+        }
+      }
+    }
+    return getDownloadFileMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<grpc.server.services.PrismGrpc.InitialiseRequest,
       grpc.server.services.PrismGrpc.InitialiseResponse> getInitialiseMethod;
 
@@ -1153,6 +1184,16 @@ public final class PrismProtoServiceGrpc {
 
     /**
      * <pre>
+     * Generic method to download files
+     * </pre>
+     */
+    public void downloadFile(grpc.server.services.PrismGrpc.DownloadRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.FileChunk> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDownloadFileMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
      *&#47;////////////////////////////////////// Object specific functions /////////////////////////////////////////
      * Initialise the PRISM engine
      * </pre>
@@ -1419,6 +1460,13 @@ public final class PrismProtoServiceGrpc {
                 grpc.server.services.PrismGrpc.UploadRequest,
                 grpc.server.services.PrismGrpc.UploadReply>(
                   this, METHODID_UPLOAD_FILE)))
+          .addMethod(
+            getDownloadFileMethod(),
+            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+              new MethodHandlers<
+                grpc.server.services.PrismGrpc.DownloadRequest,
+                grpc.server.services.PrismGrpc.FileChunk>(
+                  this, METHODID_DOWNLOAD_FILE)))
           .addMethod(
             getInitialiseMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -1705,6 +1753,17 @@ public final class PrismProtoServiceGrpc {
         io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.UploadReply> responseObserver) {
       return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
           getChannel().newCall(getUploadFileMethod(), getCallOptions()), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Generic method to download files
+     * </pre>
+     */
+    public void downloadFile(grpc.server.services.PrismGrpc.DownloadRequest request,
+        io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.FileChunk> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getDownloadFileMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -2036,6 +2095,17 @@ public final class PrismProtoServiceGrpc {
     public grpc.server.services.PrismGrpc.DeleteObjectResponse deleteObject(grpc.server.services.PrismGrpc.DeleteObjectRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getDeleteObjectMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Generic method to download files
+     * </pre>
+     */
+    public java.util.Iterator<grpc.server.services.PrismGrpc.FileChunk> downloadFile(
+        grpc.server.services.PrismGrpc.DownloadRequest request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getDownloadFileMethod(), getCallOptions(), request);
     }
 
     /**
@@ -2559,26 +2629,27 @@ public final class PrismProtoServiceGrpc {
   private static final int METHODID_INIT_STATE = 8;
   private static final int METHODID_STATE_VAR_VALUES = 9;
   private static final int METHODID_DELETE_OBJECT = 10;
-  private static final int METHODID_INITIALISE = 11;
-  private static final int METHODID_PARSE_MODEL_FILE = 12;
-  private static final int METHODID_LOAD_PRISMMODEL = 13;
-  private static final int METHODID_PARSE_PROPERTIES_FILE = 14;
-  private static final int METHODID_GET_PROPERTY_OBJECT = 15;
-  private static final int METHODID_MODEL_CHECK_PROP_FILE_PROP_OBJ = 16;
-  private static final int METHODID_GET_UNDEFINED_CONSTANTS_USED_IN_PROPERTY = 17;
-  private static final int METHODID_ADD_VALUE = 18;
-  private static final int METHODID_SET_SOME_UNDEFINED_CONSTANTS = 19;
-  private static final int METHODID_DEFINE_USING_CONST_SWITCH = 20;
-  private static final int METHODID_GET_NUMBER_PROPERTY_ITERATIONS = 21;
-  private static final int METHODID_GET_PFCONSTANT_VALUES = 22;
-  private static final int METHODID_ITERATE_PROPERTY = 23;
-  private static final int METHODID_PARSE_PROPERTIES_STRING = 24;
-  private static final int METHODID_MODEL_CHECK_PROP_STRING = 25;
-  private static final int METHODID_CLOSE_DOWN = 26;
-  private static final int METHODID_SET_STATE_VALUE = 27;
-  private static final int METHODID_EXPORT_TRANS_TO_FILE = 28;
-  private static final int METHODID_UPLOAD_FILE = 29;
-  private static final int METHODID_CLIENT_MODEL_GENERATOR = 30;
+  private static final int METHODID_DOWNLOAD_FILE = 11;
+  private static final int METHODID_INITIALISE = 12;
+  private static final int METHODID_PARSE_MODEL_FILE = 13;
+  private static final int METHODID_LOAD_PRISMMODEL = 14;
+  private static final int METHODID_PARSE_PROPERTIES_FILE = 15;
+  private static final int METHODID_GET_PROPERTY_OBJECT = 16;
+  private static final int METHODID_MODEL_CHECK_PROP_FILE_PROP_OBJ = 17;
+  private static final int METHODID_GET_UNDEFINED_CONSTANTS_USED_IN_PROPERTY = 18;
+  private static final int METHODID_ADD_VALUE = 19;
+  private static final int METHODID_SET_SOME_UNDEFINED_CONSTANTS = 20;
+  private static final int METHODID_DEFINE_USING_CONST_SWITCH = 21;
+  private static final int METHODID_GET_NUMBER_PROPERTY_ITERATIONS = 22;
+  private static final int METHODID_GET_PFCONSTANT_VALUES = 23;
+  private static final int METHODID_ITERATE_PROPERTY = 24;
+  private static final int METHODID_PARSE_PROPERTIES_STRING = 25;
+  private static final int METHODID_MODEL_CHECK_PROP_STRING = 26;
+  private static final int METHODID_CLOSE_DOWN = 27;
+  private static final int METHODID_SET_STATE_VALUE = 28;
+  private static final int METHODID_EXPORT_TRANS_TO_FILE = 29;
+  private static final int METHODID_UPLOAD_FILE = 30;
+  private static final int METHODID_CLIENT_MODEL_GENERATOR = 31;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -2640,6 +2711,10 @@ public final class PrismProtoServiceGrpc {
         case METHODID_DELETE_OBJECT:
           serviceImpl.deleteObject((grpc.server.services.PrismGrpc.DeleteObjectRequest) request,
               (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.DeleteObjectResponse>) responseObserver);
+          break;
+        case METHODID_DOWNLOAD_FILE:
+          serviceImpl.downloadFile((grpc.server.services.PrismGrpc.DownloadRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.server.services.PrismGrpc.FileChunk>) responseObserver);
           break;
         case METHODID_INITIALISE:
           serviceImpl.initialise((grpc.server.services.PrismGrpc.InitialiseRequest) request,
@@ -2792,6 +2867,7 @@ public final class PrismProtoServiceGrpc {
               .addMethod(getStateVarValuesMethod())
               .addMethod(getDeleteObjectMethod())
               .addMethod(getUploadFileMethod())
+              .addMethod(getDownloadFileMethod())
               .addMethod(getInitialiseMethod())
               .addMethod(getParseModelFileMethod())
               .addMethod(getLoadPRISMModelMethod())

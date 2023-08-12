@@ -75,6 +75,11 @@ class PrismProtoServiceStub(object):
                 request_serializer=prismGrpc__pb2.UploadRequest.SerializeToString,
                 response_deserializer=prismGrpc__pb2.UploadReply.FromString,
                 )
+        self.DownloadFile = channel.unary_stream(
+                '/PrismProtoService/DownloadFile',
+                request_serializer=prismGrpc__pb2.DownloadRequest.SerializeToString,
+                response_deserializer=prismGrpc__pb2.FileChunk.FromString,
+                )
         self.Initialise = channel.unary_unary(
                 '/PrismProtoService/Initialise',
                 request_serializer=prismGrpc__pb2.InitialiseRequest.SerializeToString,
@@ -257,6 +262,13 @@ class PrismProtoServiceServicer(object):
 
     def UploadFile(self, request_iterator, context):
         """Generic method to upload files
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DownloadFile(self, request, context):
+        """Generic method to download files
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -458,6 +470,11 @@ def add_PrismProtoServiceServicer_to_server(servicer, server):
                     servicer.UploadFile,
                     request_deserializer=prismGrpc__pb2.UploadRequest.FromString,
                     response_serializer=prismGrpc__pb2.UploadReply.SerializeToString,
+            ),
+            'DownloadFile': grpc.unary_stream_rpc_method_handler(
+                    servicer.DownloadFile,
+                    request_deserializer=prismGrpc__pb2.DownloadRequest.FromString,
+                    response_serializer=prismGrpc__pb2.FileChunk.SerializeToString,
             ),
             'Initialise': grpc.unary_unary_rpc_method_handler(
                     servicer.Initialise,
@@ -766,6 +783,23 @@ class PrismProtoService(object):
         return grpc.experimental.stream_unary(request_iterator, target, '/PrismProtoService/UploadFile',
             prismGrpc__pb2.UploadRequest.SerializeToString,
             prismGrpc__pb2.UploadReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DownloadFile(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/PrismProtoService/DownloadFile',
+            prismGrpc__pb2.DownloadRequest.SerializeToString,
+            prismGrpc__pb2.FileChunk.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
