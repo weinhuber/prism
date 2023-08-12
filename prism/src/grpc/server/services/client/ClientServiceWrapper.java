@@ -142,8 +142,6 @@ public class ClientServiceWrapper implements ModelGenerator<Double>, RewardGener
 
         // waiting for the response
         List<Int32Value> response = eventBus.getResponse(event).getVarDeclarationTypeResponse().getValuesList();
-        System.out.println(response.get(0).getValue());
-        System.out.println(response.get(1).getValue());
         // casting the response to DeclarationType
         DeclarationType declarationType = new DeclarationInt(
             Expression.Int(response.get(0).getValue()),
