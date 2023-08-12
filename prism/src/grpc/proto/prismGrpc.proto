@@ -345,6 +345,11 @@ message InitialiseClientModelGeneratorResponse {
   string model_generator_object_id = 2;
 }
 
+message LoadModelGeneratorRequest {
+  string prism_object_id = 1;
+  string model_generator_object_id = 2;
+}
+
 message IntRequest {
   google.protobuf.Int32Value value = 1;
 }
@@ -501,6 +506,7 @@ message ClientModelGeneratorResponseWrapper {
     InitialiseClientModelGeneratorResponse initialiseClientModelGeneratorResponse = 17;
     ExportTransToFileRequest exportTransToFileRequest = 18;
     ModelCheckPropStringRequest modelCheckPropStringRequest = 19;
+    LoadModelGeneratorRequest loadModelGeneratorRequest = 20;
   }
 }
 

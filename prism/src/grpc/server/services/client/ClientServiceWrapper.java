@@ -247,7 +247,7 @@ public class ClientServiceWrapper implements ModelGenerator<Double>, RewardGener
 
         // waiting for the response
         PrismGrpc.ClientModelGeneratorResponseWrapper response = eventBus.getResponse(event);
-        logger.info("[ClientServiceWrapper] - received exploreState response with value: " + response);
+        logger.info("[ClientServiceWrapper] - received exploreState response");
     }
 
     @Override

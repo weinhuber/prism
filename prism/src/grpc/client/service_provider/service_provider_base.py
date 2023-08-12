@@ -62,7 +62,8 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
 
                 # create response
                 var_types_response = prismGrpc_pb2.StringArrayResponse(
-                    values=[wrappers_pb2.StringValue(value=single_type) for single_type in var_types] if var_types else None
+                    values=[wrappers_pb2.StringValue(value=single_type) for single_type in
+                            var_types] if var_types else None
                 )
 
                 # wrap response
@@ -217,7 +218,8 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
 
                 # create response
                 transition_probability_response = prismGrpc_pb2.DoubleResponse(
-                    value=wrappers_pb2.DoubleValue(value=transition_probability) if transition_probability is not None else None
+                    value=wrappers_pb2.DoubleValue(
+                        value=transition_probability) if transition_probability is not None else None
                 )
 
                 # wrap response
@@ -274,7 +276,8 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
 
                 # create response
                 reward_struct_names_response = prismGrpc_pb2.StringArrayResponse(
-                    values=[wrappers_pb2.StringValue(value=name) for name in reward_struct_names] if reward_struct_names else None
+                    values=[wrappers_pb2.StringValue(value=name) for name in
+                            reward_struct_names] if reward_struct_names else None
                 )
 
                 # wrap response
@@ -322,7 +325,8 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
 
                 # create response
                 state_action_reward_response = prismGrpc_pb2.DoubleResponse(
-                    value=wrappers_pb2.DoubleValue(value=state_action_reward) if state_action_reward is not None else None
+                    value=wrappers_pb2.DoubleValue(
+                        value=state_action_reward) if state_action_reward is not None else None
                 )
 
                 # wrap response
@@ -336,7 +340,8 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
                 self.logger.info(f"[STREAM] - Closing stream")
                 return
             elif request_type == "exportTransToFileResponse":
-                self.logger.info(f"[STREAM] - received exportTransToFileResponse {request_wrapper.exportTransToFileResponse.status}")
+                self.logger.info(
+                    f"[STREAM] - received exportTransToFileResponse {request_wrapper.exportTransToFileResponse.status}")
                 return
             elif request_type == "modelCheckPropStringResponse":
                 self.__result.result = request_wrapper.modelCheckPropStringResponse.result
@@ -357,13 +362,14 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
         self.handle_requests(handle_requests_response)
 
     def load_model_generator(self):
-        # Instantiate the InitialiseClientModelGeneratorRequest object
-        initialise_client_model_generator_response = prismGrpc_pb2.InitialiseClientModelGeneratorResponse(
+        # Instantiate the LoadModelGeneratorRequest object
+        load_model_generator_request = prismGrpc_pb2.LoadModelGeneratorRequest(
             prism_object_id=self.prism_object_id,
             model_generator_object_id=self.object_id
         )
+
         client_model_generator_response_wrapper = prismGrpc_pb2.ClientModelGeneratorResponseWrapper(
-            initialiseClientModelGeneratorResponse=initialise_client_model_generator_response
+            loadModelGeneratorRequest=load_model_generator_request
         )
 
         # sending the request
@@ -406,7 +412,7 @@ class ServiceProviderBase(PrismPyBaseModel, ABC):
             file_name=filename
         )
         client_model_generator_response_wrapper = prismGrpc_pb2.ClientModelGeneratorResponseWrapper(
-            exportTransToFileRequest = export_trans_to_file_request
+            exportTransToFileRequest=export_trans_to_file_request
         )
 
         # send request

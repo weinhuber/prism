@@ -46,23 +46,23 @@ public class PrismEventBus {
 
     public PrismEvent getNextEvent() throws InterruptedException {
         // waits until an event is available
-//        return eventQueue.take();
-        PrismEvent event = eventQueue.poll(3, TimeUnit.SECONDS);
-
-        if (event != null) {
-            return event;
-        } else {
-            // create a CloseClientModelGeneratorRequest
-            logger.info("No more requests coming...shutting down");
-            PrismEvent closeClientModelGeneratorRequest = new PrismEvent(
-                    PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
-                            .setCloseClientModelGeneratorRequest(
-                                    PrismGrpc.CloseClientModelGeneratorRequest.newBuilder().build())
-                            .build(),PrismGrpc.ClientModelGeneratorResponseWrapper.ResponseCase.EXPORTTRANSTOFILEREQUEST);
-
-            prismEventMutex = closeClientModelGeneratorRequest;
-            return closeClientModelGeneratorRequest;
-        }
+        return eventQueue.take();
+//        PrismEvent event = eventQueue.poll(3, TimeUnit.SECONDS);
+//
+//        if (event != null) {
+//            return event;
+//        } else {
+//            // create a CloseClientModelGeneratorRequest
+//            logger.info("No more requests coming...shutting down");
+//            PrismEvent closeClientModelGeneratorRequest = new PrismEvent(
+//                    PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+//                            .setCloseClientModelGeneratorRequest(
+//                                    PrismGrpc.CloseClientModelGeneratorRequest.newBuilder().build())
+//                            .build(),PrismGrpc.ClientModelGeneratorResponseWrapper.ResponseCase.EXPORTTRANSTOFILEREQUEST);
+//
+//            prismEventMutex = closeClientModelGeneratorRequest;
+//            return closeClientModelGeneratorRequest;
+//        }
 
     }
 
