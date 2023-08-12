@@ -783,7 +783,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
                     Prism prism = (Prism) prismObjectMap.get(prismId);
 
                     // get ordered
-                    Boolean ordered = value.getExportTransToFileRequest().getOrdered();
+                    boolean ordered = value.getExportTransToFileRequest().getOrdered();
 
                     // get file name
                     String fileName = value.getExportTransToFileRequest().getFileName();
@@ -796,24 +796,24 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
                     // Thread 1
                     new Thread(() -> {
                         try {
+                            logger.info("[DEBUG] - exportTransToFile");
                             prism.exportTransToFile(ordered, exportType, new File(fileName));
+                            logger.info("[DEBUG] - exportTransToFile done");
+
+                            PrismGrpc.CloseClientModelGeneratorRequest closeClientModelGeneratorRequest = PrismGrpc.CloseClientModelGeneratorRequest.newBuilder()
+                                    .build();
+
+                            PrismGrpc.ClientModelGeneratorRequestWrapper closeClientModelGeneratorRequestWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+                                    .setCloseClientModelGeneratorRequest(closeClientModelGeneratorRequest)
+                                    .build();
+
+                            prismEventBus.postEvent(new PrismEvent(closeClientModelGeneratorRequestWrapper, null));
+
                         } catch (PrismException | FileNotFoundException e) {
+                            logger.info("[DEBUG] - exportTransToFile error");
                             logger.warning("[ClientModelGeneratorStream] - Error within exportTransToFile: " + e.getMessage());
                         }
-
                     }).start();
-
-
-                    // build response
-                    PrismGrpc.StatusResponse response = PrismGrpc.StatusResponse.newBuilder()
-                            .setStatus(status)
-                            .build();
-
-                    // send response
-                    responseObserver.onNext(PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
-                            .setExportTransToFileResponse(response)
-                            .build());
-
                 }
                 else if (value.getResponseCase() == PrismGrpc.ClientModelGeneratorResponseWrapper.ResponseCase.MODELCHECKPROPSTRINGREQUEST) {
 
@@ -846,23 +846,23 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
                             status = "Success";
 
                             logger.info("modelCheckPropString request completed with status: " + status);
+
+                            // build response
+                            PrismGrpc.ModelCheckPropStringResponse response = PrismGrpc.ModelCheckPropStringResponse.newBuilder()
+                                    .setStatus(status)
+                                    .setResult(result)
+                                    .build();
+
+                            // wrap response
+                            PrismGrpc.ClientModelGeneratorRequestWrapper responseWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
+                                    .setModelCheckPropStringResponse(response)
+                                    .build();
+                            PrismEvent event = new PrismEvent(responseWrapper, null);
+                            prismEventBus.postEvent(event);
+
                         } catch (PrismException e) {
                             logger.warning("[ClientModelGeneratorStream] - Error handling model check: " + e.getMessage());
                         }
-
-                        // build response
-                        PrismGrpc.ModelCheckPropStringResponse response = PrismGrpc.ModelCheckPropStringResponse.newBuilder()
-                                .setStatus(status)
-                                .setResult(result)
-                                .build();
-
-                        // wrap response
-                        PrismGrpc.ClientModelGeneratorRequestWrapper responseWrapper = PrismGrpc.ClientModelGeneratorRequestWrapper.newBuilder()
-                                .setModelCheckPropStringResponse(response)
-                                .build();
-                        PrismEvent event = new PrismEvent(responseWrapper, null);
-                        prismEventBus.postEvent(event);
-
                     }).start();
                 }
                 else if (value.getResponseCase() == PrismGrpc.ClientModelGeneratorResponseWrapper.ResponseCase.LOADMODELGENERATORREQUEST) {
