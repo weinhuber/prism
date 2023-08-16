@@ -50,8 +50,9 @@ check_command
 sleep 2
 
 # Execute the proto command
+
 echo "Executing the proto command..."
-python -m grpc_tools.protoc -I../proto/ --python_out=services/ --grpc_python_out=services prismGrpc.proto
+python -m grpc_tools.protoc -I../proto/ --python_out=prismpy/services/grpc --grpc_python_out=prismpy/services/grpc prismGrpc.proto
 check_command
 
 # Deactivate the venv
