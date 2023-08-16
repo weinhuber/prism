@@ -1,7 +1,4 @@
-from stub_classes.prism_log import PrismLog
-from stub_classes.undefined_constants import UndefinedConstants
-from stub_classes.values import Values
-from stub_classes.prism import Prism
+from prismpy import Prism, PrismLog, UndefinedConstants, Values
 
 main_log = PrismLog("devnull")
 main_log2 = PrismLog("stdout")

@@ -1,7 +1,6 @@
-from service_provider.model_generator import ModelGenerator
-from service_provider.model_type import ModelType
-from service_provider.reward_generator import RewardGenerator
-from stub_classes.state import State
+from prismpy import ModelGenerator
+from prismpy import RewardGenerator
+from prismpy import State
 
 
 class RandomWalk(ModelGenerator, RewardGenerator):

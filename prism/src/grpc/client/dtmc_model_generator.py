@@ -1,6 +1,4 @@
-from service_provider.service_provider_base import ServiceProviderBase
-from stub_classes.prism_log import PrismLog
-from stub_classes.prism import Prism
+from prismpy import Prism, PrismLog
 from random_walk import RandomWalk
 
 main_log = PrismLog("devnull")
