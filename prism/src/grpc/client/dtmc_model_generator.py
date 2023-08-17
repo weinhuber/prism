@@ -1,6 +1,9 @@
 from prismpy import Prism, PrismLog
 from random_walk import RandomWalk
 
+# from prismpy.services.prismpy_logger import PrismPyLogger
+# PrismPyLogger().set_level("DEBUG")
+
 main_log = PrismLog("devnull")
 
 # Initialise PRISM engine

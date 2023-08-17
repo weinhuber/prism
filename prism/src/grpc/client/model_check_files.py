@@ -1,5 +1,8 @@
 from prismpy import Prism, PrismLog, UndefinedConstants, Values
 
+# from prismpy.services.prismpy_logger import PrismPyLogger
+# PrismPyLogger().set_level("DEBUG")
+
 main_log = PrismLog("devnull")
 main_log2 = PrismLog("stdout")
 main_log3 = PrismLog("hidden")
