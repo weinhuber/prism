@@ -1,6 +1,17 @@
 import os
 import sys
 
+"""
+REASON FOR THIS FILE:
+    1. Easier imports for the end user 
+        Instead of having to import 'from prismpy.stub_classes.xzz import XYZ', 
+        user can simply import 'from prismpy import xzz'
+    2. Sys path appending for grpc files
+        Since one of the generated grpc files uses relative imports, we need to append the path to the grpc directory.
+        Alternatively, we could change the import statements in the generated grpc files to absolute imports but 
+        then every time we change the proto file and generate new grpc files, we would need re-apply these changes.
+        This seems like a more robust solution since we don't have to worry about this in the future.
+"""
 # Get the directory of the currently executing script
 current_directory = os.path.dirname(os.path.abspath(__file__))
 
