@@ -2,7 +2,7 @@ import os
 import sys
 
 """
-REASON FOR THIS FILE:
+REASONS FOR THIS FILE:
     1. Easier imports for the end user 
         Instead of having to import 'from prismpy.stub_classes.xzz import XYZ', 
         user can simply import 'from prismpy import xzz'
