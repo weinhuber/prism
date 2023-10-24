@@ -8,6 +8,7 @@ setup(
         'grpcio==1.54.0',
         'grpcio-tools==1.54.0',
         'protobuf==4.23.0',
+        'halo==0.0.31',
     ],
     python_requires='>=3.8',
     author="Christoph Weinhuber",
