@@ -41,3 +41,15 @@ prism/\.settings/
 prism/src/grpc/dependency-reduced-pom.xml
 prism/src/grpc/server/tmpFileStorage/*
 prism/src/grpc/target
+
+# Python
+**/venv/
+**/__pycache__/
+
+# PEP 582
+**/__pypackages__/
+
+# IntelliJ
+**/\.idea/
+*.iml
+prism/out/
