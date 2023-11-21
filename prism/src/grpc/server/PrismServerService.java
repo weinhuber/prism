@@ -21,13 +21,25 @@ import prism.*;
 // implementation of all prism services
 class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase {
 
-    private final FileStore fileStore = new FileStore("src/grpc/server/tmpFileStorage/");
+    private final FileStore fileStore;
+
+    private final String directoryPath = "tmp/";
+
     private final PrismGrpcLogger logger = PrismGrpcLogger.getLogger();
 
     // dict storing all prism instances
     private Map<String, Object> prismObjectMap = new HashMap<>();
 
     private PrismEventBus prismEventBus = PrismEventBus.getInstance();
+
+    public PrismServerService() {
+        // Create tmp directory if it doesn't exist
+        File directory = new File(directoryPath);
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+        fileStore = new FileStore(directoryPath);
+    }
 
     @Override
     public void initialise(PrismGrpc.InitialiseRequest request, StreamObserver<PrismGrpc.InitialiseResponse> responseObserver) {
@@ -77,7 +89,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
 
         try{
             Prism prism = (Prism) prismObjectMap.get(prismId);
-            ModulesFile modulesFile = prism.parseModelFile(new File("src/grpc/server/tmpFileStorage/" + request.getModelFileName()));
+            ModulesFile modulesFile = prism.parseModelFile(new File(directoryPath + request.getModelFileName()));
             prismObjectMap.put(moduleId, modulesFile);
             status = "Success";
         } catch (PrismException | IllegalArgumentException | FileNotFoundException e) {
@@ -154,7 +166,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
         try{
             Prism prism = (Prism) prismObjectMap.get(prismId);
             ModulesFile modulesFile = (ModulesFile) prismObjectMap.get(moduleId);
-            PropertiesFile propertiesFile = prism.parsePropertiesFile(modulesFile, new File("src/grpc/server/tmpFileStorage/" + request.getPropertiesFileName()));
+            PropertiesFile propertiesFile = prism.parsePropertiesFile(modulesFile, new File(directoryPath + request.getPropertiesFileName()));
             prismObjectMap.put(propertyId, propertiesFile);
             status = "Success";
         } catch (PrismException | IllegalArgumentException | FileNotFoundException e) {
@@ -344,7 +356,7 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
             Property propertyObject = (Property) prismObjectMap.get(propertyId);
             constants = propertiesFile.getUndefinedConstantsUsedInProperty(propertyObject);
             status = "Success";
-            
+
         } catch (IllegalArgumentException e) {
             logger.warning("Error loading prism properties: " + e.getMessage());
             status += " : " + e.getMessage();
@@ -739,10 +751,10 @@ class PrismServerService extends PrismProtoServiceGrpc.PrismProtoServiceImplBase
     public void stateVarValues(PrismGrpc.StateVarValuesRequest request, StreamObserver<PrismGrpc.StateVarValuesResponse> responseObserver) {
         // get state object id from request
         String stateObjectId = request.getStateObjectId();
-        
+
         // get state object
         State state = (State) prismObjectMap.get(stateObjectId);
-        
+
         // get var values
         Object[] varValues = state.varValues;
 
