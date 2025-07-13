@@ -4,8 +4,7 @@ import owl.automaton.Automaton;
 import owl.automaton.acceptance.BuchiAcceptance;
 import owl.automaton.hoa.HoaWriter;
 import owl.ltl.LabelledFormula;
-import owl.ltl.parser.LtlfParser;
-import owl.ltl2ldba;
+import owl.ltl.parser.LtlParser;
 import owl.translations.LtlTranslationRepository;
 import owl.translations.ltl2ldba.AnnotatedLDBA;
 import owl.translations.ltl2ldba.AsymmetricLDBAConstruction;
@@ -35,13 +34,14 @@ public class LTL2LDBA {
 //            System.exit(1);
 //        }
         LabelledFormula inputFormula = null;
-        inputFormula = LtlfParser.parse("F(a) & G(b -> F(c))");
+        inputFormula = LtlParser.parse("a & X((FG a) || (FG b))");
 
         Set<LtlTranslationRepository.Option> translationOptions = new HashSet<>();
 
         translationOptions.add(LtlTranslationRepository.Option.SIMPLIFY_AUTOMATON);
         translationOptions.add(LtlTranslationRepository.Option.SIMPLIFY_FORMULA);
         translationOptions.add(LtlTranslationRepository.Option.USE_PORTFOLIO_FOR_SYNTACTIC_LTL_FRAGMENTS);
+        translationOptions.add(LtlTranslationRepository.Option.COMPLETE);
 
 
         Automaton ldbaPostprocessed = applyPreAndPostProcessing(AsymmetricLDBAConstruction.of(BuchiAcceptance.class).andThen(AnnotatedLDBA::copyAsMutable),
